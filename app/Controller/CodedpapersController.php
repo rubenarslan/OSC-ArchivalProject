@@ -1,8 +1,10 @@
 <?php
 class CodedpapersController extends AppController {
-		public $scaffold = "";
+	public $helpers = array("Html", "Form", "TwitterBootstrap.TwitterBootstrap", 'BootstrapCake.Bootstrap');
+	public function show () {
+		$specificallyThisOne = $this->Codedpaper->find('threaded', array(
+		       'conditions' => array('Codedpaper.id' => 1)
+		   ));
+		$this->set('thiscodedpaper', $specificallyThisOne);
 	}
-#    public function index() {
-#        $this->set('effects', $this->Effect->find('all'));
-#    }
-
+}
