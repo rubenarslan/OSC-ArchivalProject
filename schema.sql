@@ -235,6 +235,7 @@ COMMIT;
 START TRANSACTION;
 USE `archival`;
 INSERT INTO `archival`.`effects` (`id`, `prior_hypothesis`, `novel_effect`, `study_id`) VALUES (1, 'Yes', 'No', 1);
+INSERT INTO `archival`.`effects` (`id`, `prior_hypothesis`, `novel_effect`, `study_id`) VALUES (2, 'No', 'Yes', 1);
 
 COMMIT;
 

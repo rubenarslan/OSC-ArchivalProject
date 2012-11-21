@@ -6,6 +6,10 @@ class User extends AppModel {
 	public $hasMany = 'Codedpaper';
 	public $displayField = 'name';
 	public $validate = array(
+		'email' => array(
+		        'rule'    => array('email', true),
+		        'message' => 'Please supply a valid email address.'
+		),
         'username' => array(
             'required' => array(
                 'rule' => array('notEmpty'),

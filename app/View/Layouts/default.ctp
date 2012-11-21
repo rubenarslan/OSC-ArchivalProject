@@ -9,6 +9,7 @@
 		<!--[if lt IE 9]>
       		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 
     	<?php
     		//Load Bootstrap:
@@ -17,8 +18,6 @@
 
 
 			echo $this->fetch('meta');
-			echo $this->fetch('css');
-			echo $this->fetch('script');
     	?>
 
 	</head>
@@ -74,6 +73,6 @@
 	      </footer>
 
 	    </div> <!-- /container -->
-
+<?php echo $this->Js->writeBuffer(); ?>
 	</body>
 </html>

@@ -1,17 +1,30 @@
 <?php
 class CodedpapersController extends AppController {
-	public $helpers = array("Html", "Form", "TwitterBootstrap.TwitterBootstrap", 'BootstrapCake.Bootstrap');
 	public function show () {
 		$specificallyThisOne = $this->Codedpaper->find('threaded', array(
-		       'conditions' => array('Codedpaper.id' => 1)
+		       'conditions' => array('Codedpaper.id' => 1),
+				'recursive' => -1,
 		   ));
 		$this->set('thiscodedpaper', $specificallyThisOne);
 	}
-	public function code () {
-		$specificallyThisOne = $this->Codedpaper->find('threaded', array(
-		       'conditions' => array('Codedpaper.id' => 1)
-		   ));
-		$this->set('thiscodedpaper', $specificallyThisOne);
+	public function code ($id = NULL) {
+		$this->Codedpaper->id = $id;
+		if (!$this->Codedpaper->exists()) {
+		    throw new NotFoundException('Invalid paper');
+		}
+		if (!$this->request->is('get')){ # if it was posted or ajaxed
+			if($this->Codedpaper->saveAssociated($this->request->data, 
+				array("deep" => TRUE)
+				)) {
+				$this->Session->setFlash('Study Saved!');
+			}
+			else {
+				$this->Session->setFlash("Could not save.");
+			}
+		}
+		$this->request->data = $this->Codedpaper->find('first',array("recursive" => 3));
+	}
+	public function moretests () {
 	}
 	public function isAuthorized($user) {
 	    // All registered users can code studies
