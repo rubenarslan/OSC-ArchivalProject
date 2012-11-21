@@ -1,9 +1,9 @@
 <?php
 App::uses('AuthComponent', 'Controller/Component');
-class user extends AppModel {
-	public $belongsTo = 'group'
+class User extends AppModel {
+	public $belongsTo = 'Group';
 	public $actsAs = array('Acl' => array('type' => 'requester'));
-	public $hasMany = 'codedpaper';
+	public $hasMany = 'Codedpaper';
 	public $displayField = 'name';
 	public $validate = array(
         'username' => array(

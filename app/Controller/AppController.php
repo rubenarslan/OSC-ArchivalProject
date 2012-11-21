@@ -43,10 +43,10 @@ class AppController extends Controller {
 			)
 			);
 	function beforeFilter() {
-	        $this->Auth->allow('index','view','/users/register');
-	        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
-	        $this->Auth->logoutRedirect = array('controller' => 'papers', 'action' => 'view');
-	        $this->Auth->loginRedirect = array('controller' => 'papers', 'action' => 'code');
+	        $this->Auth->allow('index','view','register');
+	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
+	        $this->Auth->logoutRedirect = array('controller' => 'Papers', 'action' => 'view');
+	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'code');
 			$this->Acl->Aco->create(array('parent_id' => null, 'alias' => 'controllers'));
 			$this->Acl->Aco->save();
 	}
