@@ -33,5 +33,21 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	public $helpers = array("Html", "Form", "TwitterBootstrap.TwitterBootstrap", 'BootstrapCake.Bootstrap');
-	public $components = array('Auth');
+	public $components = array(
+			'Acl',
+			'Session',
+	        'Auth' => array(
+		            'authorize' => array(
+		                'Actions' => array('actionPath' => 'controllers')
+		            )
+			)
+			);
+	function beforeFilter() {
+	        $this->Auth->allow('index','view','/users/register');
+	        $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login');
+	        $this->Auth->logoutRedirect = array('controller' => 'papers', 'action' => 'view');
+	        $this->Auth->loginRedirect = array('controller' => 'papers', 'action' => 'code');
+			$this->Acl->Aco->create(array('parent_id' => null, 'alias' => 'controllers'));
+			$this->Acl->Aco->save();
+	}
 }

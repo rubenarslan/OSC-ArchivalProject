@@ -31,12 +31,12 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <?php echo $this->Html->link('MyCompany', '/', array('class' => 'brand')); ?>
+	          <?php echo $this->Html->link('Archival Project', '/', array('class' => 'brand')); ?>
 	          <div class="container nav-collapse">
 	            <ul class="nav">
-	            	<li><?php echo $this->Html->link('Link1', '/link1'); ?></li>
-	                <li><?php echo $this->Html->link('Link2', '/link2'); ?></li>
-	                <li><?php echo $this->Html->link('Link3', '/link3'); ?></li>
+	            	<li><?php echo $this->Html->link('Sign up', '/users/register'); ?></li>
+	                <li><?php echo $this->Html->link('Code a new paper', '/papers/code'); ?></li>
+	                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index'); ?></li>
 	            </ul>
 	          </div><!--/.nav-collapse -->
 	        </div>
@@ -50,16 +50,17 @@
 	                <h3>Sidebar</h3>
 	                <ul class="nav nav-list">
 	                  <li class="nav-header">Sidebar</li>
-	                  <li><?php echo $this->Html->link('Link1', '/link1'); ?></li>
-	                  <li><?php echo $this->Html->link('Link2', '/link2'); ?></li>
-	                  <li><?php echo $this->Html->link('Link3', '/link3'); ?></li>
+	                  <li><?php echo $this->Html->link('Login', '/users/login'); ?></li>
 	                </ul>
 	              </div><!--/.well -->
 	            </div><!--/span-->
 
 	           	<div id="main-content" class="span9">
 
-					<?php echo $this->Session->flash(); ?>
+					<?php
+					    echo $this->Session->flash();
+					    echo $this->Session->flash('auth');
+					?>
 
 					<?php echo $this->fetch('content'); ?>
 
@@ -68,7 +69,7 @@
 	        </div><!--/row-->
 
 	      <footer>
-	        <p>&copy; MyCompany <?php echo date('Y'); ?></p>
+	        <p>&copy; Archival Project <?php echo date('Y'); ?></p>
 	      </footer>
 
 	    </div> <!-- /container -->
