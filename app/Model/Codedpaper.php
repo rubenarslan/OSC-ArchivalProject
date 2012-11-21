@@ -5,6 +5,7 @@ class Codedpaper extends AppModel {
 		'Study' => array(
 			"className" => 'Codedpaper',
 			"foreign_key" => 'codedpaper_id'
-		);
+		)
+	);
 }
 

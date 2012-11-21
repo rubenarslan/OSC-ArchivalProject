@@ -91,7 +91,7 @@ CREATE  TABLE IF NOT EXISTS `archival`.`studies` (
   `id` INT NOT NULL AUTO_INCREMENT ,
   `replication_code` VARCHAR(255) NULL ,
   `codedpaper_id` INT NOT NULL ,
-  `replicates_study_id` INT NOT NULL ,
+  `replicates_study_id` INT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_studies_codedpapers1_idx` (`codedpaper_id` ASC) ,
   INDEX `fk_studies_studies1_idx` (`replicates_study_id` ASC) ,
@@ -183,3 +183,66 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`groups`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`groups` (`id`, `name`, `created`, `modified`) VALUES (1, 'admin', '2012-11-08 00:00:00', '2012-11-08 00:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`users`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`users` (`id`, `group_id`, `username`, `password`, `email`, `created`) VALUES (1, 1, 'ruben', 'bla', 'rubenarslan@gmail.com', '2012-11-08 00:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`papers`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`papers` (`id`, `doi`) VALUES (1, 'Puh');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`codedpapers`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`codedpapers` (`id`, `paper_id`, `user_id`, `created`, `modified`) VALUES (1, 1, 1, '2012-11-08 00:00:00', '2012-11-08 00:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`studies`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`studies` (`id`, `replication_code`, `codedpaper_id`, `replicates_study_id`) VALUES (1, 'WAS', 1, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`effects`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`effects` (`id`, `prior_hypothesis`, `novel_effect`, `study_id`) VALUES (1, 'Yes', 'No', 1);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`tests`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`tests` (`effect_id`, `id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excuded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, 'Lalal', 'XX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+COMMIT;

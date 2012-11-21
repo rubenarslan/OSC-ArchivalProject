@@ -1,8 +1,7 @@
 <?php
 class PapersController extends AppController {
-		public $scaffold = "";
-	}
-#    public function index() {
-#        $this->set('effects', $this->Effect->find('all'));
-#    }
-
+		public $scaffold = "";		
+#		public function index() {
+#			$this->set('Papers', $this->Paper->find('all'));
+#		}
+}

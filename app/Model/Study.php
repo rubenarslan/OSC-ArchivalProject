@@ -1,6 +1,6 @@
 <?php
 class Study extends AppModel {
-	public $belongsTo = 'Paper';
+	public $belongsTo = 'Codedpaper';
 	public $hasMany = 'Effect';
 }
 
