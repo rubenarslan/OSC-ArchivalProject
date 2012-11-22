@@ -2,9 +2,9 @@
 class Test extends AppModel {
 	public $belongsTo = 'Effect';
 	public $validate = array(
-        'inferential_test_statistic' => array(
+        'inferential_test_statistic_value' => array(
             'decimal' => array(
-                'rule'     => array('decimal',NULL,"^\d+(\.\d+)?$"),
+                'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
                 'required' => true,
                 'message'  => 'Numbers only',
             )
@@ -15,9 +15,9 @@ class Test extends AppModel {
             'message' => 'Must be a natural number'
         ),
 	    'data_points_excluded' => array(
-	        'rule'    => "naturalNumber",
-            'required' => true,
-	        'message' => 'Must be a natural number'
+	       'rule'    => "naturalNumber",
+           'required' => true,
+	       'message' => 'Must be a natural number'
 	    ),
         'analytic_design_code' => array(
             'rule'       => 'alphaNumeric',

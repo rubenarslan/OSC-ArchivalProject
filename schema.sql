@@ -134,14 +134,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `archival`.`tests` ;
 
 CREATE  TABLE IF NOT EXISTS `archival`.`tests` (
-  `effect_id` INT NOT NULL AUTO_INCREMENT ,
-  `id` INT NOT NULL ,
+  `effect_id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `analytic_design_code` VARCHAR(45) NULL ,
   `methodology_codes` VARCHAR(45) NULL ,
   `independent_variables` TEXT NULL ,
   `dependent_variables` TEXT NULL ,
   `other_variables` TEXT NULL ,
-  `data_points_excuded` INT NULL ,
+  `data_points_excluded` INT NULL ,
   `reasons_for_exclusions` TEXT NULL ,
   `type_statistical_test` VARCHAR(255) NULL ,
   `N_used` INT NULL ,
@@ -244,6 +244,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `archival`;
-INSERT INTO `archival`.`tests` (`effect_id`, `id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excuded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, 'Lalal', 'XX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `archival`.`tests` (`effect_id`, `id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, 'Lalal', 'XX', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `archival`.`tests` (`effect_id`, `id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (2, 2, 'Lulul', 'XY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `archival`.`tests` (`effect_id`, `id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (2, 3, 'Lölöl', 'YY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;

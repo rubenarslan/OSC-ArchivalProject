@@ -22,7 +22,13 @@ class CodedpapersController extends AppController {
 				$this->Session->setFlash("Could not save.");
 			}
 		}
-		$this->request->data = $this->Codedpaper->find('first',array("recursive" => 3));
+		else {
+			$this->request->data = $this->Codedpaper->find('first',array("recursive" => 3));
+		}
+	}
+	public function morestudies () {
+	}
+	public function moreeffects () {
 	}
 	public function moretests () {
 	}
