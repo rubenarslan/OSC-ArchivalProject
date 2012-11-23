@@ -25,9 +25,20 @@ echo "</h5>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function () {$("#<?=$addtestid?>").bind("click", function (event) {$.ajax( {data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>", dataType:"html", success:function (data, textStatus) {
-	$("#<?=$addtestid?>").replaceWith(data);
-	}, url:"\/ArchivalProject\/codedpapers\/moretests"});
-return false;});});
+$(document).ready(function () {
+	$("#<?=$addtestid?>").bind("click", function (event) {
+		$.ajax( {
+			data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>", 
+			dataType:"html", 
+			success:function (data, textStatus) {
+				$("#<?=$addtestid?>").replaceWith(data);
+			}, 
+			url:"\/ArchivalProject\/codedpapers\/moretests"
+			});
+		return false;
+		});
+<?php if($newadd) echo	"addonblurtoallinputs(); // new inputs need the JS love too
+"; ?>
+	});
 //]]>;
 </script>
