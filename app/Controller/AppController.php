@@ -44,11 +44,11 @@ class AppController extends Controller {
 			'RequestHandler'
 			);
 	function beforeFilter() {
-	        $this->Auth->allow('index','view','register','edit','code','moretests','moreeffects','morestudies');
+#	        $this->Auth->allow('index','view','register','edit','code','moretests','moreeffects','morestudies');
+#	        $this->Auth->allow('index','view','register','acoinit');
+		    $this->Auth->allow('*');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Papers', 'action' => 'view');
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'code');
-			$this->Acl->Aco->create(array('parent_id' => null, 'alias' => 'controllers'));
-			$this->Acl->Aco->save();
 	}
 }

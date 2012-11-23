@@ -74,4 +74,8 @@ class UsersController extends AppController {
         $this->Session->setFlash(__('User was not deleted'));
         $this->redirect(array('action' => 'index'));
     }
+	public function acoinit () {
+		$this->Acl->Aco->create(array('parent_id' => null, 'alias' => 'controllers'));
+		$this->Acl->Aco->save();
+	}
 }

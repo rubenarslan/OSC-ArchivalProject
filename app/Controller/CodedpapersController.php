@@ -32,20 +32,4 @@ class CodedpapersController extends AppController {
 	}
 	public function moretests () {
 	}
-	public function isAuthorized($user) {
-	    // All registered users can code studies
-	    if ($this->action === 'code') {
-	        return true;
-	    }
-
-	    // The owner of a post can edit and delete it
-	    if (in_array($this->action, array('edit'))) {
-	        $postId = $this->request->params['pass'][0];
-	        if ($this->Post->isOwnedBy($postId, $user['id'])) {
-	            return true;
-	        }
-	    }
-
-	    return parent::isAuthorized($user);
-	}
 }
