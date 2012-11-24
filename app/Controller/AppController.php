@@ -38,15 +38,14 @@ class AppController extends Controller {
 			'Session',
 	        'Auth' => array(
 		            'authorize' => array(
-		                'Actions' => array('actionPath' => 'controllers')
+		                'Actions' => array('actionPath' => 'controllers/')
 		            )
 			),
 			'RequestHandler'
 			);
 	function beforeFilter() {
-#	        $this->Auth->allow('index','view','register','edit','code','moretests','moreeffects','morestudies');
-#	        $this->Auth->allow('index','view','register','acoinit');
-		    $this->Auth->allow('*');
+	        $this->Auth->allow('index','view','login','logout','register','acoinit');
+#		    $this->Auth->allow('*');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Papers', 'action' => 'view');
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'code');

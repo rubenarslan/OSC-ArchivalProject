@@ -2,11 +2,8 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-DROP SCHEMA IF EXISTS `mydb` ;
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 DROP SCHEMA IF EXISTS `archival` ;
 CREATE SCHEMA IF NOT EXISTS `archival` DEFAULT CHARACTER SET latin1 ;
-USE `mydb` ;
 USE `archival` ;
 
 -- -----------------------------------------------------
@@ -100,7 +97,7 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `archival`.`users` ;
 
 CREATE  TABLE IF NOT EXISTS `archival`.`users` (
-  `id` INT(11) NOT NULL ,
+  `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `group_id` INT(11) NOT NULL ,
   `username` VARCHAR(255) NULL DEFAULT NULL ,
   `password` VARCHAR(255) NULL DEFAULT NULL ,
@@ -203,8 +200,8 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `archival`.`tests` ;
 
 CREATE  TABLE IF NOT EXISTS `archival`.`tests` (
-  `effect_id` INT(11) NOT NULL ,
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `effect_id` INT(11) NOT NULL ,
   `analytic_design_code` VARCHAR(45) NULL DEFAULT NULL ,
   `methodology_codes` VARCHAR(45) NULL DEFAULT NULL ,
   `independent_variables` TEXT NULL DEFAULT NULL ,
@@ -247,9 +244,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `archival`;
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (1, NULL, 'Group', 1, NULL, 1, 4);
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (2, NULL, 'Group', 2, NULL, 5, 8);
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (3, NULL, 'Group', 3, NULL, 9, 12);
+INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (1, NULL, 'Group', 1, 'admin', 1, 4);
+INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (2, NULL, 'Group', 2, 'manager', 5, 8);
+INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (3, NULL, 'Group', 3, 'user', 9, 12);
 
 COMMIT;
 
@@ -269,6 +266,6 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `archival`;
-INSERT INTO `archival`.`users` (`id`, `group_id`, `username`, `password`, `email`, `created`) VALUES (1, 1, 'ruben', 'heinz', 'rubenarslan@gmail.com', '2012-11-08 00:00:00');
+INSERT INTO `archival`.`users` (`id`, `group_id`, `username`, `password`, `email`, `created`) VALUES (1, 1, 'ruben', 'e24396d1f42befa5f644081e395228c71027d94e', 'rubenarslan@gmail.com', '2012-11-08 00:00:00');
 
 COMMIT;

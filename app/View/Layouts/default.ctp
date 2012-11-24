@@ -33,9 +33,16 @@
 	          </a>
 	          <?php echo $this->Html->link('Archival Project', '/', array('class' => 'brand')); ?>
 	          <div class="container nav-collapse">
-	            <ul class="nav">
-	            	<li><?php echo $this->Html->link('Sign up', '/users/register'); ?></li>
-	                <li><?php echo $this->Html->link('Code a new paper', '/papers/code'); ?></li>
+	            <ul class="nav">	
+		<?php
+		if($this->Session->read('Auth.User.username') === NULL) { ?>
+	                <li><?php echo $this->Html->link('Login', '/users/login'); ?></li>
+				    <li><?php echo $this->Html->link('Sign up', '/users/register'); ?></li>
+		<?php }
+		else {?>
+					<li><?php echo $this->Html->link("Logout ". $this->Session->read('Auth.User.username'), '/users/logout'); ?></li>
+		<?php }?>
+	                <li><?php echo $this->Html->link('Code a new paper', '/papers/index'); ?></li>
 	                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index'); ?></li>
 	            </ul>
 	          </div><!--/.nav-collapse -->
@@ -45,15 +52,6 @@
 
 	    <div class="container-fluid">
 	        <div class="row-fluid">
-	            <div class="span3">
-	              <div class="well sidebar-nav">
-	                <h3>Sidebar</h3>
-	                <ul class="nav nav-list">
-	                  <li class="nav-header">Sidebar</li>
-	                  <li><?php echo $this->Html->link('Login', '/users/login'); ?></li>
-	                </ul>
-	              </div><!--/.well -->
-	            </div><!--/span-->
 
 	           	<div id="main-content" class="span9">
 
