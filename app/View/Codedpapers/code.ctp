@@ -1,7 +1,3 @@
-<?php
-#if($this->request->is('ajax') AND $this->Session->flash()=='<div class="message" id="flashMessage">Study Saved!</div>' ) echo $this->Session->flash();
-#else {
-?>
 <h1>Code paper</h1>
 <h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
 
@@ -92,6 +88,6 @@ $(document).ready(function () {
 //]]>
 </script>
 <?php
-debug($this->data);  
+#debug($this->data);  
 #} 
 ?>

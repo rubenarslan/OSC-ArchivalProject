@@ -7,61 +7,6 @@ CREATE SCHEMA IF NOT EXISTS `archival` DEFAULT CHARACTER SET latin1 ;
 USE `archival` ;
 
 -- -----------------------------------------------------
--- Table `archival`.`acos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `archival`.`acos` ;
-
-CREATE  TABLE IF NOT EXISTS `archival`.`acos` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(10) NULL DEFAULT NULL ,
-  `model` VARCHAR(255) NULL DEFAULT NULL ,
-  `foreign_key` INT(10) NULL DEFAULT NULL ,
-  `alias` VARCHAR(255) NULL DEFAULT NULL ,
-  `lft` INT(10) NULL DEFAULT NULL ,
-  `rght` INT(10) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `archival`.`aros`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `archival`.`aros` ;
-
-CREATE  TABLE IF NOT EXISTS `archival`.`aros` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT ,
-  `parent_id` INT(10) NULL DEFAULT NULL ,
-  `model` VARCHAR(255) NULL DEFAULT NULL ,
-  `foreign_key` INT(10) NULL DEFAULT NULL ,
-  `alias` VARCHAR(255) NULL DEFAULT NULL ,
-  `lft` INT(10) NULL DEFAULT NULL ,
-  `rght` INT(10) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
--- Table `archival`.`aros_acos`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `archival`.`aros_acos` ;
-
-CREATE  TABLE IF NOT EXISTS `archival`.`aros_acos` (
-  `id` INT(10) NOT NULL AUTO_INCREMENT ,
-  `aro_id` INT(10) NOT NULL ,
-  `aco_id` INT(10) NOT NULL ,
-  `_create` VARCHAR(2) NOT NULL DEFAULT '0' ,
-  `_read` VARCHAR(2) NOT NULL DEFAULT '0' ,
-  `_update` VARCHAR(2) NOT NULL DEFAULT '0' ,
-  `_delete` VARCHAR(2) NOT NULL DEFAULT '0' ,
-  PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `ARO_ACO_KEY` (`aro_id` ASC, `aco_id` ASC) )
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
-
-
--- -----------------------------------------------------
 -- Table `archival`.`papers`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `archival`.`papers` ;
@@ -179,9 +124,9 @@ DROP TABLE IF EXISTS `archival`.`effects` ;
 
 CREATE  TABLE IF NOT EXISTS `archival`.`effects` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
+  `study_id` INT(11) NOT NULL ,
   `prior_hypothesis` TEXT NULL DEFAULT NULL ,
   `novel_effect` VARCHAR(45) NULL DEFAULT NULL ,
-  `study_id` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_effects_studies1_idx` (`study_id` ASC) ,
   CONSTRAINT `fk_effects_studies1`
@@ -240,13 +185,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `archival`.`aros`
+-- Data for table `archival`.`papers`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `archival`;
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (1, NULL, 'Group', 1, 'admin', 1, 4);
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (2, NULL, 'Group', 2, 'manager', 5, 8);
-INSERT INTO `archival`.`aros` (`id`, `parent_id`, `model`, `foreign_key`, `alias`, `lft`, `rght`) VALUES (3, NULL, 'Group', 3, 'user', 9, 12);
+INSERT INTO `archival`.`papers` (`id`, `doi`) VALUES (1, 'testpaper');
 
 COMMIT;
 
@@ -267,5 +210,41 @@ COMMIT;
 START TRANSACTION;
 USE `archival`;
 INSERT INTO `archival`.`users` (`id`, `group_id`, `username`, `password`, `email`, `created`) VALUES (1, 1, 'ruben', 'e24396d1f42befa5f644081e395228c71027d94e', 'rubenarslan@gmail.com', '2012-11-08 00:00:00');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`codedpapers`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`codedpapers` (`id`, `paper_id`, `user_id`, `created`, `modified`) VALUES (1, 1, 1, NULL, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`studies`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`studies` (`id`, `replication_code`, `codedpaper_id`, `replicates_study_id`) VALUES (1, 'NON', 1, NULL);
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`effects`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`effects` (`id`, `study_id`, `prior_hypothesis`, `novel_effect`) VALUES (1, 1, 'None', 'Yes');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `archival`.`tests`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `archival`;
+INSERT INTO `archival`.`tests` (`id`, `effect_id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;

@@ -1,15 +1,31 @@
 <?php
 class CodedpapersController extends AppController {
-	public $actsAs = array('Acl' => array('type' => 'controlled'));
-	public function show () {
-		$specificallyThisOne = $this->Codedpaper->find('threaded', array(
-		       'conditions' => array('Codedpaper.id' => 1),
-				'recursive' => -1,
-		   ));
-		$this->set('thiscodedpaper', $specificallyThisOne);
+	function beforeFilter() {
+		parent::beforeFilter();
+	}
+	function isAuthorized($user = null) {	
+		parent::isAuthorized($user); # allow admins to do anything
+			
+		$codedpaper_id = $this->request->params['pass'][0];
+		$this->Codedpaper->id = $codedpaper_id;
+		if (!$this->Codedpaper->exists()) {
+		    throw new NotFoundException('Invalid paper');
+		}
+		else {
+			$allowed = $this->Codedpaper->find('first',array("recursive" => -1));
+			if( $allowed['Codedpaper']['user_id'] == $this->Auth->user('id')) { # is this the creator of the coded paper
+				return true;
+			}
+		}
+		return false;
 	}
 	public function code ($id = NULL) {
+		
+		
 		$this->Codedpaper->id = $id;
+		
+		# todo: add auth for paper-user
+		
 		if (!$this->Codedpaper->exists()) {
 		    throw new NotFoundException('Invalid paper');
 		}

@@ -1,14 +1,9 @@
 <?php
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {
-	public $actsAs = array('Acl' => array('type' => 'controlled'));
-	public function beforeFilter() {
-	        parent::beforeFilter();
-	   //     $this->Auth->allow('register', 'logout');
-	}
 	public function login() {
 	    if ($this->request->is('post')) {
-	        if ($this->Auth->login($this->request->data['User'])) {
+			if ($this->Auth->login()) {
 	            $this->redirect($this->Auth->redirect());
 	        } else {
 	            $this->Session->setFlash(__('Invalid username or password, try again'));
@@ -33,29 +28,6 @@ class UsersController extends AppController {
             }
         }
     }
-	public function acoinit () {
-		$this->Acl->Aco->create(array('parent_id' => null, 'alias' => 'controllers'));
-		$group = $this->User->Group;
-	   //Allow admins to everything
-	   	$group->id = 1;
-		$this->Acl->allow($group,'controllers');
-		
-		//allow managers to posts and widgets
-	    $group->id = 2;
-	    $this->Acl->deny($group, 'controllers');
-	    $this->Acl->allow($group, 'controllers','Papers');
-	    $this->Acl->allow($group, 'controllers','Users/index');
-	    $this->Acl->allow($group, 'controllers','Codedpapers');
-
-	    //allow users to only add and edit on posts and widgets
-	    $group->id = 3;
-	    $this->Acl->deny($group, 'controllers');
-	    $this->Acl->allow($group, 'controllers','Codedpaper/code');
-	    //we add an exit to avoid an ugly "missing views" error message
-	    echo "all done";
-	    exit;
-	}
-
 /**
  * index method
  *

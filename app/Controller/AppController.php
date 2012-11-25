@@ -34,20 +34,22 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $helpers = array("Html", "Form", "Js","TwitterBootstrap.TwitterBootstrap", 'BootstrapCake.Bootstrap');
 	public $components = array(
-			'Acl',
+#			'Acl',
 			'Session',
-	        'Auth' => array(
-		            'authorize' => array(
-		                'Actions' => array('actionPath' => 'controllers/')
-		            )
-			),
+	        'Auth' => array('authorize' => array('Controller' =>
+	array('userModel' => 'User',
+		'recursive' => 3))), # Controller means that the controller's function isAuthorized will be called
 			'RequestHandler'
 			);
 	function beforeFilter() {
-	        $this->Auth->allow('index','view','login','logout','register','acoinit');
+			parent::beforeFilter();
+			$this->Auth->allow('index','view','login','logout','register');
 #		    $this->Auth->allow('*');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
-	        $this->Auth->logoutRedirect = array('controller' => 'Papers', 'action' => 'view');
-	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'code');
+	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
+	        $this->Auth->loginRedirect = array('controller' => 'Users', 'action' => 'login');
+	}
+	public function isAuthorized($user = null) {
+		if($user['Group']['name']==='admin') return true–; 
 	}
 }
