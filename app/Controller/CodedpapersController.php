@@ -7,7 +7,7 @@ class CodedpapersController extends AppController {
 		parent::isAuthorized($user); # allow admins to do anything
 
 		$req_action = $this->request->params['action'];
-		if($req_action === 'view' || $req_action === 'add') return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('view', 'add', 'index_mine', 'index'))) return true; # viewing and adding is allowed to all users
 		
 
 		$codedpaper_id = $this->request->params['pass'][0];
@@ -89,5 +89,20 @@ class CodedpapersController extends AppController {
 			throw new NotFoundException(__('Invalid coded paper'));
 		}
 		$this->set('codedpaper', $this->Codedpaper->read(null, $id));
+	}
+	public function index_mine() {
+		$this->set('codedpapers', $this->Codedpaper->find('all',
+			array('conditions' => 
+				array('user_id' => $this->Auth->user('id')),
+				'recursive' => 1
+			)
+		));
+	}
+	public function index() {
+		$this->set('codedpapers', $this->Codedpaper->find('all',
+			array(
+				'recursive' => 1
+			)
+		));
 	}
 }
