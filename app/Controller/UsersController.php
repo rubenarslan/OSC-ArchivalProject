@@ -2,8 +2,9 @@
 App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
-		parent::isAuthorized($user); # allow admins to do anything
-
+		$admin = parent::isAuthorized($user); # allow admins to do anything
+		if($admin) return true;
+		
 		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array('view', 'index'))) return true; # viewing and adding is allowed to all users
 	}

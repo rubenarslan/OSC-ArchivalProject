@@ -35,15 +35,16 @@
 	          <div class="container nav-collapse">
 	            <ul class="nav">	
 		<?php
-		if($this->Session->read('Auth.User.username') === NULL) { ?>
+		if(AuthComponent::user() === NULL) { ?>
 	                <li><?php echo $this->Html->link('Login', '/users/login'); ?></li>
 				    <li><?php echo $this->Html->link('Sign up', '/users/register'); ?></li>
 		<?php }
 		else {?>
-					<li><?php echo $this->Html->link("Logout ". $this->Session->read('Auth.User.username'), '/users/logout'); ?></li>
+					<li><?php echo $this->Html->link("Logout [". AuthComponent::user('Group.name').'] '.AuthComponent::user('username'), '/users/logout'); ?></li>
 		<?php }?>
 	                <li><?php echo $this->Html->link('Code a new paper', '/papers/index'); ?></li>
-	                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index'); ?></li>
+	                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
+	                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
 	            </ul>
 	          </div><!--/.nav-collapse -->
 	        </div>

@@ -34,11 +34,13 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $helpers = array("Html", "Form", "Js","TwitterBootstrap.TwitterBootstrap", 'BootstrapCake.Bootstrap');
 	public $components = array(
-#			'Acl',
 			'Session',
-	        'Auth' => array('authorize' => array('Controller' =>
-	array('userModel' => 'User',
-		'recursive' => 3))), # Controller means that the controller's function isAuthorized will be called
+	        'Auth' => array('authorize' => array(
+		'Controller' => 
+			array(
+				'userModel' => 'User',
+		'		recursive' => 3)
+		)), # Controller means that the controller's function isAuthorized will be called
 			'RequestHandler'
 			);
 	function beforeFilter() {
@@ -49,6 +51,7 @@ class AppController extends Controller {
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
 	}
 	public function isAuthorized($user = null, $request = null) {
-		if($user['Group']['name']==='admin') return true; # admins can do anything 
+		$admin = $user['Group']['name']==='admin';
+		if($admin) return $admin; # admins can do anything 
 	}
 }

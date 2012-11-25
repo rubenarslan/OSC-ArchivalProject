@@ -1,4 +1,3 @@
 <?php
-class TestsController extends AppController {
-		public $scaffold = "";
+class TestsController extends EffectsController {
 	}
