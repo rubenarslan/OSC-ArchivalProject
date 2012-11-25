@@ -6,11 +6,7 @@ App::uses('AppModel', 'Model');
  * @property User $User
  */
 class Group extends AppModel {
-	public function parentNode() {
-	        return null;
-	    }
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
-
 /**
  * hasMany associations
  *

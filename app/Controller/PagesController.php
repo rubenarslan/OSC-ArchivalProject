@@ -30,6 +30,12 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
+	function isAuthorized($user = null, $request = null) {	
+		parent::isAuthorized($user); # allow admins to do anything
+
+		$req_action = $this->request->params['action'];
+		if(in_array($req_action, array('display'))) return true; # viewing and adding is allowed to all users
+	}
 /**
  * Controller name
  *

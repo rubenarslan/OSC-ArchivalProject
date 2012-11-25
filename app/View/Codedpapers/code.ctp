@@ -88,6 +88,5 @@ $(document).ready(function () {
 //]]>
 </script>
 <?php
-#debug($this->data);  
-#} 
+debug($this->data);   
 ?>

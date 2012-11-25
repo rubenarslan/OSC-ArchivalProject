@@ -1,8 +1,5 @@
 <?php
 class CodedpapersController extends AppController {
-	function beforeFilter() {
-		parent::beforeFilter();
-	}
 	function isAuthorized($user = null, $request = null) {	
 		parent::isAuthorized($user); # allow admins to do anything
 
@@ -16,7 +13,13 @@ class CodedpapersController extends AppController {
 		    throw new NotFoundException('Invalid coded paper');
 		}
 		else {
-			$allowed = $this->Codedpaper->find('first',array("recursive" => -1));
+			$allowed = $this->Codedpaper->find('first',array(
+				"recursive" => -1,
+				"conditions" => array(
+					'user_id' => $this->Auth->user('id'),
+					'id' => $codedpaper_id
+					)
+				));
 			if( $allowed['Codedpaper']['user_id'] == $this->Auth->user('id')) { # is this the creator of the coded paper
 				return true;
 			}
