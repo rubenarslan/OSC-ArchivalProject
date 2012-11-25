@@ -3,13 +3,17 @@ class CodedpapersController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 	}
-	function isAuthorized($user = null) {	
+	function isAuthorized($user = null, $request = null) {	
 		parent::isAuthorized($user); # allow admins to do anything
-			
+
+		$req_action = $this->request->params['action'];
+		if($req_action === 'view' || $req_action === 'add') return true; # viewing and adding is allowed to all users
+		
+
 		$codedpaper_id = $this->request->params['pass'][0];
 		$this->Codedpaper->id = $codedpaper_id;
 		if (!$this->Codedpaper->exists()) {
-		    throw new NotFoundException('Invalid paper');
+		    throw new NotFoundException('Invalid coded paper');
 		}
 		else {
 			$allowed = $this->Codedpaper->find('first',array("recursive" => -1));
@@ -19,6 +23,35 @@ class CodedpapersController extends AppController {
 		}
 		return false;
 	}
+	public function add ($id = NULL) {
+		
+		$this->Codedpaper->create();
+		$this->Codedpaper->Paper->id = $id;
+		
+		if (!$this->Codedpaper->Paper->exists()) {
+		    throw new NotFoundException('Invalid paper');
+		}
+		
+		$newcodedpaper['paper_id'] = $id;
+		$newcodedpaper['user_id'] = $this->Auth->user('id');
+		$this->Codedpaper->create(); # have to call this for save to work, but apparently it doesn't confound the find query.
+		
+		$preexisting = $this->Codedpaper->find('first',array('conditions' => $newcodedpaper));		
+		if( $preexisting ) { # use the user and paper id to see whether this has been coded by this user already, if so, send him there
+			$this->Session->setFlash(__('You can\'t code the same paper twice.'));
+			$cid = $preexisting['Codedpaper']['id'];
+			$this->redirect('code/'.$cid);
+			exit;
+		}
+		else if( $this->Codedpaper->save($newcodedpaper) ) { # if not, create a new one, save it and send him there
+			$this->Session->setFlash(__('A new paper can be coded now.'));
+			$cid = $this->Codedpaper->read(null);
+			$cid = $cid['Codedpaper']['id'];
+			$this->redirect('code/'.$cid);
+		} else {
+			$this->Session->setFlash(__('The new coded paper could not be saved. Please, try again.'));
+		}
+	}
 	public function code ($id = NULL) {
 		
 		
@@ -27,7 +60,7 @@ class CodedpapersController extends AppController {
 		# todo: add auth for paper-user
 		
 		if (!$this->Codedpaper->exists()) {
-		    throw new NotFoundException('Invalid paper');
+		    throw new NotFoundException('Invalid coded paper');
 		}
 		if (!$this->request->is('get')){ # if it was posted or ajaxed
 			if($this->Codedpaper->saveAssociated($this->request->data, 
@@ -48,5 +81,13 @@ class CodedpapersController extends AppController {
 	public function moreeffects () {
 	}
 	public function moretests () {
+	}
+	public function view($id = null) {
+		## todo: make a view that's basically equivalent to the form but is read only / can't be submitted
+		$this->Codedpaper->id = $id;
+		if (!$this->Codedpaper->exists()) {
+			throw new NotFoundException(__('Invalid coded paper'));
+		}
+		$this->set('codedpaper', $this->Codedpaper->read(null, $id));
 	}
 }

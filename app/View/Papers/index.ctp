@@ -12,6 +12,7 @@
 		<td><?php echo h($paper['Paper']['id']); ?>&nbsp;</td>
 		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
 		<td class="actions">
+			<?php echo $this->Html->link(__('Code'), "/codedpapers/add/". $paper['Paper']['id']); ?>
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $paper['Paper']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $paper['Paper']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?>

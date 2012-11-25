@@ -71,7 +71,7 @@ function submitcodingform() {
 $(document).ready(function () {
 	theQueue = $({}); // jQuery on an empty object - a perfect queue holder
 	addonblurtoallinputs();
-	$("#flashMessage").fadeOut(1000);
+	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
 		submitcodingform();
 	return false;

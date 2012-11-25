@@ -73,7 +73,7 @@ CREATE  TABLE IF NOT EXISTS `archival`.`codedpapers` (
   PRIMARY KEY (`id`) ,
   INDEX `fk_codedpapers_papers_idx` (`paper_id` ASC) ,
   INDEX `fk_codedpapers_users1_idx` (`user_id` ASC) ,
-  INDEX `paper_user` (`paper_id` ASC, `user_id` ASC) ,
+  UNIQUE INDEX `paper_user` (`paper_id` ASC, `user_id` ASC) ,
   CONSTRAINT `fk_codedpapers_papers`
     FOREIGN KEY (`paper_id` )
     REFERENCES `archival`.`papers` (`id` )

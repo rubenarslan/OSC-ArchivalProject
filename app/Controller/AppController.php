@@ -43,13 +43,12 @@ class AppController extends Controller {
 			);
 	function beforeFilter() {
 			parent::beforeFilter();
-			$this->Auth->allow('index','view','login','logout','register');
-#		    $this->Auth->allow('*');
+			$this->Auth->allow('login','logout','register');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
-	        $this->Auth->loginRedirect = array('controller' => 'Users', 'action' => 'login');
+	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
 	}
-	public function isAuthorized($user = null) {
-		if($user['Group']['name']==='admin') return true–; 
+	public function isAuthorized($user = null, $request = null) {
+		if($user['Group']['name']==='admin') return true; # admins can do anything 
 	}
 }
