@@ -51,8 +51,13 @@
 	      </div>
 	    </div>
 
-	    <div class="container-fluid">
-	        <div class="row-fluid">
+	  <div class="container-fluid">
+	                <div class="row-fluid">
+	                    <div class="span3">
+	                      <div class="well sidebar-nav">
+	                        <?php echo $this->fetch('sidebar'); ?>
+	                      </div><!--/.well -->
+	                    </div><!--/span-->
 
 	           	<div id="main-content" class="span9">
 

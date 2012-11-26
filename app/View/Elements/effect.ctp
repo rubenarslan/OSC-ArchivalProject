@@ -16,16 +16,18 @@ for($e= $estart; $e < $length; $e++) {
 #	if($this->data['Study'][$s]['Effect'][$e]['novel_effect'] == 'No') 
 #	echo $this->Form->input("Study.$s.replicates_study_id");
 	
+	echo '<div class="row-fluid"><div class="span11 offset1">';
 	$options = array( "s" => $s, "e" => $e );
 	if($newadd) $options["tstart"] = 0;
 	else $options["data"] = $this->data;
 	echo $this->element('test', $options);
+	echo '</div></div>';
 }
 $addeffectid = "effect{$s}";
-echo "<h4>";
+echo "<h4 id='$addeffectid'>";
 echo  $this->Html->link("Add effect $s.$e",
-	array('controller' => 'codedpapers', 'action' => 'moreeffects'),
-	array('id' => $addeffectid));
+	array('controller' => 'codedpapers', 'action' => 'moreeffects')
+	);
 echo "</h4>";
 ?>
 <script type="text/javascript">

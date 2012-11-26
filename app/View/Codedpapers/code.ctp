@@ -1,8 +1,12 @@
 <h1>Code paper</h1>
+<?php $this->start('sidebar'); ?>
+   	<h3>Tips</h3>
+   <p>You can save at any time with Ctrl+Enter (simply Enter works in input fields as well), use it so you aren't interrupted by autosaves.</p>
+	<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <a href="#" id="toggle_autosave">Toggle Autosave.</a></p>
+<?php $this->end(); ?>
 <h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
 
 <script src="http://malsup.github.com/jquery.form.js"></script>	
-<p>
 <?php
 echo $this->Form->create("Codedpaper");
 echo $this->Session->flash();
@@ -11,19 +15,21 @@ echo $this->Form->hidden("Paper.doi");
 echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 
+echo '<div class="row-fluid"><div class="span12">';
 echo $this->element('study', array(
 	"data" => $this->data
 ));
+echo '</div></div">';
 
-echo $this->Form->submit('Save',array(
-	'id' => 'CodedpaperCodeFormSubmit'
+echo $this->Form->end(array(
+    'label' => 'Save!',
+    'id' => 'CodedpaperCodeFormSubmit',
 ));
 ?>
-</p>
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">
 //<![CDATA[
-function addonblurtoallinputs () {
+function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 //		console.log(i,elm);
 		$(elm).off('change','*');
@@ -70,7 +76,7 @@ function submitcodingform() {
 }
 $(document).ready(function () {
 	theQueue = $({}); // jQuery on an empty object - a perfect queue holder
-	addonblurtoallinputs();
+	activateinputs();
 	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
 		submitcodingform();
@@ -85,8 +91,6 @@ $(document).ready(function () {
 		} else return true;
 	});
 });
+// TODO: toggle autosave
 //]]>
 </script>
-<?php
-debug($this->data);   
-?>
