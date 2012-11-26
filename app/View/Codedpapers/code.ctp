@@ -24,7 +24,7 @@ echo $this->Form->submit('Save',array(
 <script type="text/javascript">
 //<![CDATA[
 function addonblurtoallinputs () {
-	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=select],#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
+	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 //		console.log(i,elm);
 		$(elm).off('change','*');
 		$(elm).on('change',function() {

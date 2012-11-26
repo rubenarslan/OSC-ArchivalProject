@@ -12,10 +12,9 @@ for($s= $sstart; $s < $length; $s++) {
 	
 	echo $this->Form->hidden("Study.$s.id");	
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
-	echo $this->Form->input("Study.$s.replication_code");
+	echo $this->TwitterBootstrap->input("Study.$s.replication_code");
 #	debug($replicable_studies);
-#	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies);
-	echo $this->Form->select("Study.$s.replicates_study_id",array(1,2));
+	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies);
 
 	$options = array( "s" => $s );
 	if($newadd) $options["estart"] = 0;

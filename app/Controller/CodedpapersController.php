@@ -87,13 +87,36 @@ class CodedpapersController extends AppController {
 						)
 				));
 		}
-		$this->set('replicable_studies', $this->Codedpaper->find('all',array(
-			"recursive" => 1,
-			'fields' => array('id')
-		))); # todo: get all replicable studies and label them meaningfully
+		#http://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
+#		$all_codedpaper_studies = $this->Codedpaper->Study->find('all',array(
+#			"recursive" => 0,
+#			'fields' => array('Codedpaper.id')
+#		));
+		$all_studies = $this->Codedpaper->Study->find('all',array(
+			"recursive" => 0,
+			'fields' => array('Study.id')
+		));
+		$all_studies = array_flip(Set::flatten($all_studies) );
+#		$all_codedpapers = array_diff($all_studies,Set::flatten($all_codedpaper_studies));
+#	$all_studies = $this->Codedpaper->Paper->find('threaded',array(
+#		"recursive" => 2,
+#		'fields' => array('Study.id')
+#	));
+#		$all_studies = Set::classicExtract($all_studies,"{n}.Codedpaper.{n}.Paper.id");
+#		$all_studies = Set::classicExtract($all_studies,"{n}.Codedpaper.{n}.Study.{n}.id");
+		
+		#$all_studies = array_combine(array_keys($all_studies), $all_studies);
+		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
 		
 	}
 	public function morestudies () {
+		$all_studies = $this->Codedpaper->Study->find('all',array(
+			"recursive" => 0,
+			'fields' => array('Study.id')
+		));
+		$all_studies = array_flip(Set::flatten($all_studies) );
+		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
+		
 	}
 	public function moreeffects () {
 	}
