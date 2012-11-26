@@ -9,9 +9,12 @@
 		<!--[if lt IE 9]>
       		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+		<script src="/ArchivalProject/js/twitter/bootstrap/jquery-1.8.3.js"></script>
 
-		<link rel="stylesheet" type="text/css" href="/ArchivalProject/css/twitter/bootstrap/bootstrap.css" /><script type="text/javascript" src="/ArchivalProject/js/twitter/bootstrap/bootstrap.js"></script>
+		<link rel="stylesheet" type="text/css" href="/ArchivalProject/css/twitter/bootstrap/bootstrap.css" />
+		<script type="text/javascript" src="/ArchivalProject/js/twitter/bootstrap/bootstrap.js"></script>
+		<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>	<!-- TODO: do i still need jquery.form? -->
+		
     	<?php
 			echo $this->fetch('meta');
     	?>

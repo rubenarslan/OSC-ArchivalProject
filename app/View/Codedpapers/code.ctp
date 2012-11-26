@@ -1,12 +1,12 @@
 <h1>Code paper</h1>
 <?php $this->start('sidebar'); ?>
-   	<h3>Tips</h3>
-   <p>You can save at any time with Ctrl+Enter (simply Enter works in input fields as well), use it so you aren't interrupted by autosaves.</p>
-	<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <a href="#" id="toggle_autosave">Toggle Autosave.</a></p>
+<h3>Tips</h3>
+<p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
+<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <a href="#" id="toggle_autosave">Toggle Autosave.</a></p>
 <?php $this->end(); ?>
+
 <h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
 
-<script src="http://malsup.github.com/jquery.form.js"></script>	
 <?php
 echo $this->Form->create("Codedpaper");
 echo $this->Session->flash();
@@ -15,11 +15,9 @@ echo $this->Form->hidden("Paper.doi");
 echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 
-echo '<div class="row-fluid"><div class="span12">';
 echo $this->element('study', array(
 	"data" => $this->data
 ));
-echo '</div></div">';
 
 echo $this->Form->end(array(
     'label' => 'Save!',
@@ -29,30 +27,31 @@ echo $this->Form->end(array(
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">
 //<![CDATA[
+function autosave () {
+		if(theQueue.queue().length==0) {
+			$('#flashMessage').remove();
+			$('<div id="flashMessage" class="message">Unsaved changes…<br>Autosave in <span>5.0</span> seconds</div>').appendTo('#main-content');
+			var sec = $('#flashMessage span').text()
+			var timer = setInterval(function() {
+				sec = sec - 0.4;
+				sec = parseFloat(sec).toFixed(1);
+				if(sec.length==1) sec = sec + ".0";
+			   $('#flashMessage span').text(sec);
+			   if (sec < 0.5) {
+			      clearInterval(timer);
+			   } 
+			}, 400);
+			theQueue.delay(5000);
+			theQueue.queue(submitcodingform);
+		}
+}
 function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 //		console.log(i,elm);
 		$(elm).off('change','*');
-		$(elm).on('change',function() {
-			if(theQueue.queue().length==0) {
-				$('#flashMessage').remove();
-				$('<div id="flashMessage" class="message">Unsaved changes…<br>Autosave in <span>5.0</span> seconds</div>').appendTo('#main-content');
-				var sec = $('#flashMessage span').text()
-				var timer = setInterval(function() {
-					sec = sec - 0.4;
-					sec = parseFloat(sec).toFixed(1);
-					if(sec.length==1) sec = sec + ".0";
-				   $('#flashMessage span').text(sec);
-				   if (sec < 0.5) {
-				      clearInterval(timer);
-				   } 
-				}, 400);
-				theQueue.delay(5000);
-				theQueue.queue(submitcodingform);
-			}
-		});
+		$(elm).on('change',autosave);
 //		console.log($(elm).attr('name'));
-		if($(elm).attr('name').match(/\[N_used\]$/)) {
+		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
 			if($(elm).attr('value')>0)
 				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
 			$(elm).on('change',function (event) {
@@ -60,6 +59,16 @@ function activateinputs () {
 					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
 			});
 		}
+	});
+	$('a.selfdestroyer').each(function(i,elm) {
+		$(elm).off('click','*');
+		$(elm).on('click', function(evnt) {
+			console.log($(evnt.target).closest('.formblock'));
+			if(confirm('Do you really want to delete this study?')) {
+				$(evnt.target).closest('.formblock').remove();
+				autosave();
+			}
+		});
 	});
 }
 function submitcodingform() {

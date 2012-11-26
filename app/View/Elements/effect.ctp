@@ -7,7 +7,10 @@ if($newadd = isset($estart)) {
 	$estart = 0; # start from the beginning
 }
 for($e= $estart; $e < $length; $e++) {
-	echo "<h4>Effect Nr. $s.$e </h4>";
+
+echo '<div class="row-fluid formblock"><div class="span12">';
+	echo "<h4>Effect Nr. $s.$e <a href='#' class='selfdestroyer'>" . $this->TB->icon("trash", "black") . "</a></h4>";
+	
 	echo $this->Form->hidden("Study.$s.Effect.$e.id");
 	echo $this->Form->hidden("Study.$s.Effect.$e.study_id");	
 	echo $this->Form->input("Study.$s.Effect.$e.prior_hypothesis");
@@ -17,11 +20,13 @@ for($e= $estart; $e < $length; $e++) {
 #	echo $this->Form->input("Study.$s.replicates_study_id");
 	
 	echo '<div class="row-fluid"><div class="span11 offset1">';
-	$options = array( "s" => $s, "e" => $e );
-	if($newadd) $options["tstart"] = 0;
-	else $options["data"] = $this->data;
-	echo $this->element('test', $options);
+		$options = array( "s" => $s, "e" => $e );
+		if($newadd) $options["tstart"] = 0;
+		else $options["data"] = $this->data;
+		echo $this->element('test', $options);
 	echo '</div></div>';
+
+echo '</div></div>';
 }
 $addeffectid = "effect{$s}";
 echo "<h4 id='$addeffectid'>";

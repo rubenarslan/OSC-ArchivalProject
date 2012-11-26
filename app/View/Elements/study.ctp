@@ -8,20 +8,22 @@ if($newadd = isset($sstart)) {
 }
 for($s= $sstart; $s < $length; $s++) {
 	
-	echo "<h3>Study Nr. $s " . $this->TB->icon("trash", "black") . "</h3>";
+echo '<div class="row-fluid formblock"><div class="span12">';
+	echo "<h3>Study Nr. $s <a href='#' class='selfdestroyer'>" . $this->TB->icon("trash", "black") . "</a></h3>";
 	
 	echo $this->Form->hidden("Study.$s.id");	
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
 	echo $this->Form->input("Study.$s.replication_code");
-#	debug($replicable_studies);
+	#	debug($replicable_studies);
 	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies);
 	
 	echo '<div class="row-fluid"><div class="span12">';
-	$options = array( "s" => $s );
-	if($newadd) $options["estart"] = 0;
-	else $options["data"] = $this->data;
-	echo $this->element('effect', $options);
+		$options = array( "s" => $s );
+		if($newadd) $options["estart"] = 0;
+		else $options["data"] = $this->data;
+		echo $this->element('effect', $options);
 	echo '</div></div>';
+echo '</div></div>';
 }
 
 $addstudyid = "study_adder";
