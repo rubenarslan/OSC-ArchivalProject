@@ -8,7 +8,7 @@ echo $this->Form->create("Codedpaper");
 echo $this->Session->flash();
 echo $this->Form->hidden("Paper.id");
 echo $this->Form->hidden("Paper.doi");
-echo $this->Form->hidden("id");	
+echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 
 echo $this->element('study', array(

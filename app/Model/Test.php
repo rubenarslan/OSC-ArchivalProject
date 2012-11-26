@@ -2,28 +2,124 @@
 class Test extends AppModel {
 	public $belongsTo = 'Effect';
 	public $validate = array(
-        'inferential_test_statistic_value' => array(
-            'decimal' => array(
-                'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
-                'required' => true,
-                'message'  => 'Numbers only',
-            )
+		'analytic_design_code' => array(
+            'required' => true,
+            #'allowEmpty' => false
         ),
+		'methodology_codes' => array(
+	        'required' => true,
+            #'allowEmpty' => false
+	    ),
+		'independent_variables' => array(
+	       'required' => true	,
+            #'allowEmpty' => false
+	   ),
+		'dependent_variables' => array(
+			'required' => true,
+            #'allowEmpty' => false
+		),
+		'other_variables' => array(
+			'required' => false,
+            #'allowEmpty' => false
+		),
+		'data_points_excluded' => array(
+	       'rule'    => "naturalNumber",
+           'required' => true,
+           #'allowEmpty' => false,
+	       'message' => 'Must be a natural number'
+	    ),
+		'reasons_for_exclusions' => array(
+			'required' => false,
+            #'allowEmpty' => false
+		),
+		'type_statistical_text' => array(
+			'required' => true,
+            #'allowEmpty' => false
+		),
         'N_used' => array(
             'rule'    => "naturalNumber",
             'required' => true,
+            #'allowEmpty' => false,
             'message' => 'Must be a natural number'
         ),
-	    'data_points_excluded' => array(
-	       'rule'    => "naturalNumber",
-           'required' => true,
-	       'message' => 'Must be a natural number'
+		'inferential_test_statistic' => array(
+	        'required' => true,
+            #'allowEmpty' => false,
+		),
+		'inferential_test_statistic_value' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+		),
+	    'degrees_of_freedom' => array(
+	        'rule'    => "naturalNumber",
+	        'required' => true,
+            #'allowEmpty' => false,
+	        'message' => 'Must be a natural number'
 	    ),
-        'analytic_design_code' => array(
-            'rule'       => 'alphaNumeric',
-            'message'    => 'Must be alphanumeric.',
-            'required' => true
-        )
+        'reported_significance_of_test' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+        ),
+	    'computed_significance_of_test' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
+	    'main_result_of_test' => array(
+	        'required' => true,
+            #'allowEmpty' => false,
+	    ),
+		'reported_effect_size' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
+		'computed_effect_size' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
+		'reported_effect_size' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
+		'reported_statistical_power' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
+		'computed_statistical_power' => array(
+		    'decimal' => array(
+		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'required' => true,
+	            #'allowEmpty' => false,
+		        'message'  => 'Numbers only, decimals marked by dot.',
+		    )
+	    ),
     );
 }
 

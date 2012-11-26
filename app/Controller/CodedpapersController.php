@@ -79,6 +79,11 @@ class CodedpapersController extends AppController {
 		else {
 			$this->request->data = $this->Codedpaper->find('first',array("recursive" => 3));
 		}
+		$this->set('replicable_studies', $this->Codedpaper->find('all',array(
+			"recursive" => 1,
+			'fields' => array('id')
+		))); # todo: get all replicable studies and label them meaningfully
+		
 	}
 	public function morestudies () {
 	}
