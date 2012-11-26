@@ -34,7 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $helpers = array("Html","Form", "Js","TB" => array(
 	        "className" => "TwitterBootstrap.TwitterBootstrap"
-	    ), 'BootstrapCake.Bootstrap');
+	    ));
 	public $components = array(
 			'Session',
 	        'Auth' => array('authorize' => array(

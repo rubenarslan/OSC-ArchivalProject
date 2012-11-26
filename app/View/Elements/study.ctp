@@ -8,7 +8,7 @@ if($newadd = isset($sstart)) {
 }
 for($s= $sstart; $s < $length; $s++) {
 	
-	echo "<h3>Study Nr. $s </h3>";
+	echo "<h3>Study Nr. $s " . $this->TB->icon("trash", "black") . "</h3>";
 	
 	echo $this->Form->hidden("Study.$s.id");	
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	

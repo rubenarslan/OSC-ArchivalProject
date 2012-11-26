@@ -11,12 +11,8 @@
     	<![endif]-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 
+		<link rel="stylesheet" type="text/css" href="/ArchivalProject/css/twitter/bootstrap/bootstrap.css" /><script type="text/javascript" src="/ArchivalProject/js/twitter/bootstrap/bootstrap.js"></script>
     	<?php
-    		//Load Bootstrap:
-    		echo $this->Bootstrap->load('dev'); # use dev while still working on it
-    		#echo $this->Bootstrap->load(); 
-
-
 			echo $this->fetch('meta');
     	?>
 

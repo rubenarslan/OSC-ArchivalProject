@@ -30,7 +30,7 @@ echo $this->Form->end(array(
 <script type="text/javascript">
 //<![CDATA[
 function activateinputs () {
-	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
+	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 //		console.log(i,elm);
 		$(elm).off('change','*');
 		$(elm).on('change',function() {
@@ -51,6 +51,15 @@ function activateinputs () {
 				theQueue.queue(submitcodingform);
 			}
 		});
+//		console.log($(elm).attr('name'));
+		if($(elm).attr('name').match(/\[N_used\]$/)) {
+			if($(elm).attr('value')>0)
+				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			$(elm).on('change',function (event) {
+				if($(event.target).attr('value')>0)
+					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			});
+		}
 	});
 }
 function submitcodingform() {
