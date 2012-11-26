@@ -39,7 +39,7 @@ echo "</h4>";
 //<![CDATA[
 $(document).ready(function () {$("#<?=$addeffectid?>").bind("click", function (event) {$.ajax( {data:"s=<?=$s?>&estart=<?=$e?>", dataType:"html", success:function (data, textStatus) {
 	$("#<?=$addeffectid?>").replaceWith(data);
-	}, url:"\/ArchivalProject\/codedpapers\/moreeffects"});
+	}, url:"<?php echo $this->webroot; ?>codedpapers/moreeffects"});
 return false;});});
 //]]>;
 </script>

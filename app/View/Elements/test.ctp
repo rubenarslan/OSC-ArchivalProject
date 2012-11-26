@@ -125,7 +125,7 @@ $(document).ready(function () {
 			success:function (data, textStatus) {
 				$("#<?=$addtestid?>").replaceWith(data);
 			}, 
-			url:"\/ArchivalProject\/codedpapers\/moretests"
+			url:"<?php echo $this->webroot; ?>codedpapers/moretests"
 			});
 		return false;
 		});

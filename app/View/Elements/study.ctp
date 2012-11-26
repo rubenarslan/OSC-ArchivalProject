@@ -37,7 +37,7 @@ echo "</h4>";
 //<![CDATA[
 $(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (event) {$.ajax( {data:"sstart=<?=$s?>", dataType:"html", success:function (data, textStatus) {
 	$("#<?=$addstudyid?>").replaceWith(data);
-	}, url:"\/ArchivalProject\/codedpapers\/morestudies"});
+	}, url:"<?php echo $this->webroot; ?>codedpapers/morestudies"});
 return false;});});
 //]]>;
 </script>
