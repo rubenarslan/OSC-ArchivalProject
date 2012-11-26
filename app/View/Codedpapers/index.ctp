@@ -1,6 +1,6 @@
 <div class="papers index">
 	<h2><?php echo __('Papers'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table  class="table">
 	<tr>
 			<th>DOI</th>
 			<th class="actions"><?php echo __('Actions'); ?></th>

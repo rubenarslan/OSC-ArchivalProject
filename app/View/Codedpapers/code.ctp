@@ -2,7 +2,8 @@
 <?php $this->start('sidebar'); ?>
 <h3>Tips</h3>
 <p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
-<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <a href="#" id="toggle_autosave">Toggle Autosave.</a></p>
+<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <br>
+	<a href="#" id="toggle_autosave">Toggle Autosave <i class="icon-refresh"></i></a>.</p>
 <?php $this->end(); ?>
 
 <h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
@@ -27,7 +28,15 @@ echo $this->Form->end(array(
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">
 //<![CDATA[
+function toggleautosave() {
+	autosaveglobal = !autosaveglobal;
+	icon = autosaveglobal ? ' <i class="icon-refresh"></i>' : '';
+//	console.log(icon);
+	$("#toggle_autosave").html('Toggle Autosave' + icon);
+	return false;
+}
 function autosave () {
+	if(autosaveglobal) {
 		if(theQueue.queue().length==0) {
 			$('#flashMessage').remove();
 			$('<div id="flashMessage" class="message">Unsaved changes…<br>Autosave in <span>5.0</span> seconds</div>').appendTo('#main-content');
@@ -44,6 +53,7 @@ function autosave () {
 			theQueue.delay(5000);
 			theQueue.queue(submitcodingform);
 		}
+	}
 }
 function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
@@ -64,10 +74,11 @@ function activateinputs () {
 		$(elm).off('click','*');
 		$(elm).on('click', function(evnt) {
 			console.log($(evnt.target).closest('.formblock'));
-			if(confirm('Do you really want to delete this study?')) {
+			if(confirm('Do you really want to remove this block?')) {
 				$(evnt.target).closest('.formblock').remove();
 				autosave();
 			}
+			return false;
 		});
 	});
 }
@@ -98,8 +109,14 @@ $(document).ready(function () {
 	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
 		submitcodingform();
-	return false;
+		return false;
 	});
+	
+	if(typeof autosaveglobal == 'undefined') autosaveglobal = true; // only set when loading the first time
+	$("#toggle_autosave").off('click'); // dont double events on reloading the form
+	$("#toggle_autosave").on('click', toggleautosave);
+	
+	
 	$(document).off('keydown');
 	$(document).keydown(function(event) {
 		if (event.keyCode === 10 || event.keyCode == 13 && event.ctrlKey) {
@@ -109,6 +126,5 @@ $(document).ready(function () {
 		} else return true;
 	});
 });
-// TODO: toggle autosave
 //]]>
 </script>
