@@ -8,12 +8,38 @@ if($newadd = isset($tstart)) {
 }
 for($t=$tstart; $t < $length; $t++) {
 	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.id");	
-	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.effect_id");	
+	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.effect_id");
+	
 	echo "<h5>Test Nr. $s.$e.$t </h5>";
 	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.analytic_design_code");
-	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.N_used");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.methodology_codes");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.independent_variables");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.dependent_variables");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.other_variables");
+	
 	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.data_points_excluded");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reasons_for_exclusions"); # TODO: conditional
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.type_statistical_test");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.N_used");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic");
 	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic_value");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.degrees_of_freedom");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_significance_of_test");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_significance_of_test");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.main_result_of_test");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_effect_size");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_effect_size");
+	
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_statistical_power");
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_statistical_power");
 }
 
 $addtestid = "test{$s}_{$e}";

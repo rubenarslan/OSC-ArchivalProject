@@ -3,68 +3,77 @@ class Test extends AppModel {
 	public $belongsTo = 'Effect';
 	public $validate = array(
 		'analytic_design_code' => array(
+			'rule' => 'notEmpty',
             'required' => true,
-            #'allowEmpty' => false
+            'allowEmpty' => false
         ),
 		'methodology_codes' => array(
+			'rule' => 'notEmpty',
 	        'required' => true,
-            #'allowEmpty' => false
+            'allowEmpty' => false
 	    ),
 		'independent_variables' => array(
-	       'required' => true	,
-            #'allowEmpty' => false
+	       	'rule' => 'notEmpty',
+			'required' => true	,
+            'allowEmpty' => false
 	   ),
 		'dependent_variables' => array(
+			'rule' => 'notEmpty',
 			'required' => true,
-            #'allowEmpty' => false
+            'allowEmpty' => false
 		),
 		'other_variables' => array(
+			'rule' => 'notEmpty',
 			'required' => false,
-            #'allowEmpty' => false
+            'allowEmpty' => false
 		),
 		'data_points_excluded' => array(
 	       'rule'    => "naturalNumber",
            'required' => true,
-           #'allowEmpty' => false,
+           'allowEmpty' => false,
 	       'message' => 'Must be a natural number'
 	    ),
 		'reasons_for_exclusions' => array(
+			'rule' => 'notEmpty',
 			'required' => false,
-            #'allowEmpty' => false
+            'allowEmpty' => false
 		),
-		'type_statistical_text' => array(
+		'type_statistical_test' => array(
+			'rule' => 'notEmpty',
 			'required' => true,
-            #'allowEmpty' => false
+            'allowEmpty' => false
 		),
         'N_used' => array(
-            'rule'    => "naturalNumber",
+            'rule' => 'notEmpty',
+			'rule'    => "naturalNumber",
             'required' => true,
-            #'allowEmpty' => false,
+            'allowEmpty' => false,
             'message' => 'Must be a natural number'
         ),
 		'inferential_test_statistic' => array(
-	        'required' => true,
-            #'allowEmpty' => false,
+	        'rule' => 'notEmpty',
+			'required' => true,
+            'allowEmpty' => false,
 		),
 		'inferential_test_statistic_value' => array(
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 		),
 	    'degrees_of_freedom' => array(
 	        'rule'    => "naturalNumber",
 	        'required' => true,
-            #'allowEmpty' => false,
+            'allowEmpty' => false,
 	        'message' => 'Must be a natural number'
 	    ),
         'reported_significance_of_test' => array(
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
         ),
@@ -72,19 +81,20 @@ class Test extends AppModel {
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
 	    'main_result_of_test' => array(
-	        'required' => true,
-            #'allowEmpty' => false,
+	        'rule' => 'notEmpty',
+			'required' => true,
+            'allowEmpty' => false,
 	    ),
 		'reported_effect_size' => array(
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
@@ -92,7 +102,7 @@ class Test extends AppModel {
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
@@ -100,7 +110,7 @@ class Test extends AppModel {
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
@@ -108,7 +118,7 @@ class Test extends AppModel {
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
@@ -116,10 +126,11 @@ class Test extends AppModel {
 		    'decimal' => array(
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
-	            #'allowEmpty' => false,
+	            'allowEmpty' => false,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
+	    
     );
 }
 

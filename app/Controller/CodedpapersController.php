@@ -60,6 +60,7 @@ class CodedpapersController extends AppController {
 		
 		
 		$this->Codedpaper->id = $id;
+		$this->Codedpaper->user_id = $this->Auth->user('id');
 		
 		# todo: add auth for paper-user
 		
@@ -77,7 +78,14 @@ class CodedpapersController extends AppController {
 			}
 		}
 		else {
-			$this->request->data = $this->Codedpaper->find('first',array("recursive" => 3));
+			$this->request->data = $this->Codedpaper->find('first', # get this user's paper
+				array(
+					"recursive" => 3,
+					"conditions" => array(
+						'user_id' => $this->Auth->user('id'),
+						'Codedpaper.id' => $id
+						)
+				));
 		}
 		$this->set('replicable_studies', $this->Codedpaper->find('all',array(
 			"recursive" => 1,

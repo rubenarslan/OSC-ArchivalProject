@@ -22,6 +22,7 @@ for($s= $sstart; $s < $length; $s++) {
 	else $options["data"] = $this->data;
 	echo $this->element('effect', $options);
 }
+
 $addstudyid = "study_adder";
 echo "<h4>";
 echo  $this->Html->link("Add Study $s",

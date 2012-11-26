@@ -4,11 +4,14 @@ class Study extends AppModel {
 	public $hasMany = 'Effect';
 	public $validate = array(
 		'replication_code' => array(
-#            'required' => true,
-            #'allowEmpty' => false,
+			'rule' => 'notEmpty',
+			'required' => true,
+            'allowEmpty' => false,
         ),
-##		'replicates_study_id' => array(
-#	    ),
-    );
+		'replicates_study_id' => array(
+			'rule' => 'numeric',
+			'required' => true,
+            'allowEmpty' => true,	
+	    ),
+   );
 }
-
