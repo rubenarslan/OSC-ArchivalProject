@@ -92,7 +92,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 						$dialog.find('p.message').html(o.message);
 						
 						function targetclickfun () {
-							$(e.target).closest('.formblock').remove();
+							$(e.target).closest('div.formblock').remove();
 							autosave();
 						}
 						$dialog.find('a.btn:eq(0)').text(o.confirmButton).bind('click', function(e) {
