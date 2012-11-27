@@ -7,6 +7,18 @@ App::uses('AppModel', 'Model');
  * @property Codedpaper $Codedpaper
  */
 class User extends AppModel {
+
+	 public $components = array(
+			'Session',
+			'Security', # the one addition
+	        'Auth' => array('authorize' => array(
+		'Controller' => 
+			array(
+				'userModel' => 'User',
+		'		recursive' => 3)
+		)), # Controller means that the controller's function isAuthorized will be called
+			'RequestHandler'
+			);
 	public function beforeSave($options = array()) {
 		if (isset($this->data['User']['password'])) {
             $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']); ## hash
@@ -29,6 +41,15 @@ class User extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+		'email' => array('email' => array(
+			'rule' => 'email',
+			'message' => 'Please provide a valid email address',
+			'allowEmpty' => false,
+		)),
+		'username' => array('isUnique' => array(
+			'rule' => 'isUnique',
+			'message' => 'This username is already taken. Please choose another one.'
+		))
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

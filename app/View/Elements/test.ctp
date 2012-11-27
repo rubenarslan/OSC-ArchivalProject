@@ -9,7 +9,7 @@ if($newadd = isset($tstart)) {
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
 
-	echo "<h5>Test Nr. $s.$e.$t <a href='#' class='selfdestroyer'>" . $this->TB->icon("trash", "black") . "</a></h5>";
+	echo "<h5>Test Nr. $s.$e.$t <a href='#' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this effect'><i class='icon-trash'></i></a></h5>";
 
 	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.id");	
 	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.effect_id");
@@ -38,7 +38,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '</div>';
 	echo '</div>';
 
-	echo '<div class="row-fluid">';
+	echo '<div class="row-fluid sampleinfo">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.data_points_excluded",array(
 			'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N excluded')
 		);
@@ -48,7 +48,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reasons_for_exclusions",array(
 			'class' => 'span12', 'div'=> array('class'=> array("span4",'hidden')), 'rows' => '2')
 		);
-		echo '<div class="span2 offset1">You can <a href="#" class="copysample">copy</a> the sample size from the test before.</div>';
+		echo '<div class="span2 offset1">You can <a href="#" class="copysample">copy</a> this information from the test before.</div>';
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
@@ -59,7 +59,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic",array(
-			'class' => 'span12', 'div'=> array('class'=>"span2"), 'label' => 'Test stat.')
+			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.degrees_of_freedom",array(
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
@@ -72,10 +72,10 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_significance_of_test",array(
-			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Significance (reported)', 'placeholder' => 'p-value (0.00 - 1)')
+			'class' => 'span5', 'div'=> array('class'=>"span3 input-prepend"), 'label' => 'Significance (reported)', 'placeholder' => 'p-value (0.00 - 1)', 'between' => '<span class="add-on">0.</span>')
 		);
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_significance_of_test",array(
-			'class' => 'span12', 'div'=> array('class'=>"span2"), 'label' => '(computed)')
+			'class' => 'span8', 'div'=> array('class'=>"span2 input-prepend"), 'label' => '(computed)', 'between' => '<span class="add-on">0.</span>')
 		);
 	echo '</div>';
 	
@@ -112,12 +112,24 @@ echo '</div></div>';
 $addtestid = "test{$s}_{$e}";
 echo "<h5 id='$addtestid'>";
 echo  $this->Html->link("Add test $s.$e.$t",
-	array('controller' => 'codedpapers', 'action' => 'moretests'));
+	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
 echo "</h5>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function () {
+	$('.copysample').each(function(i,elm) { // copy the sample information from the preceding test if it exists
+		$(elm).off('click','*');
+		$(elm).on('click', function(evnt) {
+			currenttestinputs = $(evnt.target).closest('.sampleinfo').find('input,textarea');
+			prevtestinputs = $(evnt.target).closest('.formblock').prev('.formblock').find('.sampleinfo input,.sampleinfo textarea');
+			for(i=0; i < prevtestinputs.length; i++) { // only if a previous test exists
+				currenttestinputs[i].value = prevtestinputs[i].value;
+				$(currenttestinputs[i]).trigger('change'); // so the textarea may be shown
+			}
+			return false;
+		});
+	});
 	$("#<?=$addtestid?>").bind("click", function (event) {
 		$.ajax( {
 			data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>", 
@@ -128,9 +140,9 @@ $(document).ready(function () {
 			url:"<?php echo $this->webroot; ?>codedpapers/moretests"
 			});
 		return false;
-		});
+	});
 <?php if($newadd) echo	"activateinputs(); // new inputs need the JS love too
 "; ?>
-	});
+});
 //]]>;
 </script>

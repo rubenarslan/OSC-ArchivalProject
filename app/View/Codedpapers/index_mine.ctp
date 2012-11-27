@@ -1,6 +1,6 @@
 <div class="papers index">
 	<h2><?php echo __('Papers'); ?></h2>
-	<table cellpadding="0" cellspacing="0">
+	<table class="table">
 	<tr>
 			<th>DOI</th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -17,9 +17,10 @@
 	</table>
 
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<div class="actions btn-group">
+	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
+	  </a>
+	<ul class="dropdown-menu">
 		<li><?php echo $this->Html->link(__('Select a new paper for coding'), '/papers/index'); ?></li>
 	</ul>
 </div>

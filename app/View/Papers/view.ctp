@@ -55,8 +55,10 @@
 	</table>
 <?php endif; ?>
 
-	<div class="actions">
-		<ul>
+<div class="actions btn-group">
+	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
+	  </a>
+	<ul class="dropdown-menu">
 			<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>
 		</ul>
 	</div>

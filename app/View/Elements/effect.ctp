@@ -9,7 +9,7 @@ if($newadd = isset($estart)) {
 for($e= $estart; $e < $length; $e++) {
 
 echo '<div class="row-fluid formblock"><div class="span12">';
-	echo "<h4>Effect Nr. $s.$e <a href='#' class='selfdestroyer'>" . $this->TB->icon("trash", "black") . "</a></h4>";
+	echo "<h4>Effect Nr. $s.$e <a href='#' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this effect'><i class='icon-trash'></i></a></h4>";
 	
 	echo $this->Form->hidden("Study.$s.Effect.$e.id");
 	echo $this->Form->hidden("Study.$s.Effect.$e.study_id");	
@@ -31,7 +31,7 @@ echo '</div></div>';
 $addeffectid = "effect{$s}";
 echo "<h4 id='$addeffectid'>";
 echo  $this->Html->link("Add effect $s.$e",
-	array('controller' => 'codedpapers', 'action' => 'moreeffects')
+	array('controller' => 'codedpapers', 'action' => 'moreeffects'), array('class' => 'btn btn-small')
 	);
 echo "</h4>";
 ?>
