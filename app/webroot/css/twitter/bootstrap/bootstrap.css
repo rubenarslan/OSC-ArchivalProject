@@ -3439,8 +3439,9 @@ input[type="submit"].btn.btn-mini {
 .navbar li.progress-nav {
   float: left;
   display: block;
-  padding: 10px 10px;
+  padding: 10px 10px 0px 10px;
   margin-left: -20px;
+  height:20px;
   font-size: 20px;
   font-weight: 200;
 }
