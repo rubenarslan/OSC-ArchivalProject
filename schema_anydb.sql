@@ -176,6 +176,19 @@ AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = latin1;
 
 
+-- -----------------------------------------------------
+-- Table `cake_sessions`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `cake_sessions` ;
+
+CREATE  TABLE IF NOT EXISTS `cake_sessions` (
+  `id` VARCHAR(255) NOT NULL ,
+  `data` TEXT NULL ,
+  `expires` INT(11) NULL DEFAULT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
