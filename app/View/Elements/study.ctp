@@ -9,7 +9,7 @@ if($newadd = isset($sstart)) {
 for($s= $sstart; $s < $length; $s++) {
 	
 echo '<div class="row-fluid formblock"><div class="span12">';
-	echo "<h3>Study Nr. $s <a href='#' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a></h3>";
+	echo "<h3>Study Nr. $s <a href='#' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip'  data-dismiss='alert' title='Delete whole study'><i class='icon-trash'></i></a></h3>";
 	
 	echo $this->Form->hidden("Study.$s.id");	
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	

@@ -1,4 +1,3 @@
-<h1>Code paper</h1>
 <?php $this->start('sidebar'); ?>
 <h3>Tips</h3>
 <p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
@@ -54,6 +53,15 @@
 
 </div>
 <?php $this->end(); ?>
+<?php $this->start('more_nav'); ?>
+<li class="divider-vertical"></li>
+<li class="progress-nav">
+	<div class="progress progress-striped span4">
+    <div class="bar" style="width: 0%;" id="codingprogress"></div>
+    </div>
+</li>
+<?php $this->end(); ?>
+<h1>Code paper</h1>
 
 <h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
 
@@ -106,12 +114,21 @@ function autosave () {
 		}
 	}
 }
+function updateprogress () {
+	formelms = $('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea');
+	
+	var nonZ = 0;
+	formelms.map(function() {
+	  nonZ += ($(this).val()=='') ? 0 : 1;
+	});
+	prog = 100 * (nonZ / (formelms.length)) + '%';
+	$('#codingprogress').css('width',prog);
+}
 function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
-//		console.log(i,elm);
 		$(elm).off('change','*');
 		$(elm).on('change',autosave);
-//		console.log($(elm).attr('name'));
+		$(elm).on('change',updateprogress);
 		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
 			if($(elm).attr('value')>0)
 				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
@@ -123,13 +140,13 @@ function activateinputs () {
 	});
 	$('a.selfdestroyer').each(function(i,elm) {
 		$(elm).off('click','*');
-		$(elm).on('click', function(evnt) {
-			if(confirm('Do you really want to remove this block?')) {
-				$(evnt.target).closest('.formblock').remove();
-				autosave();
-			}
-			return false;
+
+		$(elm).confirmDialog({
+			message: '<strong>Do you really want to delete this block?</strong>',
+			cancelButton: 'Cancel',
+			confirmButton: 'Delete',
 		});
+		
 	});
 }
 function submitcodingform() {
@@ -162,11 +179,13 @@ $(document).ready(function () {
 		return false;
 	});
 	
+	updateprogress();
 	if(typeof autosaveglobal == 'undefined') {
 		autosaveglobal = true; // only set when loading the first time
 		$("#toggle_autosave").button('toggle').on('click', toggleautosave);
 	}
-
+	
+	// TODO: add multiple progressbars dynamically, use affix to highlight the one for the study currently being coded and base progress on percentage of filled out fields
 	
 	$(document).off('keydown');
 	$(document).keydown(function(event) {
