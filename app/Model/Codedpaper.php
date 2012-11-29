@@ -1,6 +1,6 @@
 <?php
 class Codedpaper extends AppModel {
 	public $belongsTo = array('User','Paper');
-	public $hasMany = 'Study';
+	public $hasMany = array('Study' => array('dependent'=>TRUE));
 }
 

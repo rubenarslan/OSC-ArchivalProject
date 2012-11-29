@@ -276,6 +276,7 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
+  margin-top: 70px;
 }
 a {
   color: #0088cc;
@@ -595,7 +596,6 @@ a:hover {
   clear: both;
 }
 .container-fluid {
-  margin-top:70px;
   padding-right: 20px;
   padding-left: 20px;
   *zoom: 1;
@@ -5978,4 +5978,28 @@ button.close {
     height: auto !important;
     overflow: visible !important;
   }
+}
+
+input.boxless-nameinput[type='text']:focus {
+	border:0;
+}
+input.boxless-nameinput[type='text'] {
+  border:0;
+  display: inline-block;
+  height: inherit;
+  padding: inherit;
+  margin-bottom: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+  background:inherit;
+  border-radius: 0;
+  width:50%;
+  vertical-align:inherit;
 }

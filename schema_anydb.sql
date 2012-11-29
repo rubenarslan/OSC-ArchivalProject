@@ -93,8 +93,11 @@ DROP TABLE IF EXISTS `studies` ;
 
 CREATE  TABLE IF NOT EXISTS `studies` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `replication_code` VARCHAR(255) NULL DEFAULT NULL ,
   `codedpaper_id` INT(11) NOT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
+  `name` VARCHAR(255) NULL DEFAULT NULL ,
+  `replication_code` VARCHAR(255) NULL DEFAULT NULL ,
   `replicates_study_id` INT(11) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_studies_codedpapers1_idx` (`codedpaper_id` ASC) ,
@@ -102,7 +105,7 @@ CREATE  TABLE IF NOT EXISTS `studies` (
   CONSTRAINT `fk_studies_codedpapers1`
     FOREIGN KEY (`codedpaper_id` )
     REFERENCES `codedpapers` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_studies_studies1`
     FOREIGN KEY (`replicates_study_id` )
@@ -122,6 +125,9 @@ DROP TABLE IF EXISTS `effects` ;
 CREATE  TABLE IF NOT EXISTS `effects` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `study_id` INT(11) NOT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
+  `name` VARCHAR(255) NULL DEFAULT NULL ,
   `prior_hypothesis` TEXT NULL DEFAULT NULL ,
   `novel_effect` VARCHAR(45) NULL DEFAULT NULL ,
   PRIMARY KEY (`id`) ,
@@ -129,7 +135,7 @@ CREATE  TABLE IF NOT EXISTS `effects` (
   CONSTRAINT `fk_effects_studies1`
     FOREIGN KEY (`study_id` )
     REFERENCES `studies` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 3
@@ -144,6 +150,8 @@ DROP TABLE IF EXISTS `tests` ;
 CREATE  TABLE IF NOT EXISTS `tests` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `effect_id` INT(11) NOT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
   `analytic_design_code` VARCHAR(45) NULL DEFAULT NULL ,
   `methodology_codes` VARCHAR(45) NULL DEFAULT NULL ,
   `independent_variables` TEXT NULL DEFAULT NULL ,
@@ -169,7 +177,7 @@ CREATE  TABLE IF NOT EXISTS `tests` (
   CONSTRAINT `fk_tests_effects1`
     FOREIGN KEY (`effect_id` )
     REFERENCES `effects` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 AUTO_INCREMENT = 4
@@ -232,7 +240,7 @@ COMMIT;
 -- Data for table `studies`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `studies` (`id`, `replication_code`, `codedpaper_id`, `replicates_study_id`) VALUES (1, 'NON', 1, NULL);
+INSERT INTO `studies` (`id`, `codedpaper_id`, `created`, `modified`, `name`, `replication_code`, `replicates_study_id`) VALUES (1, 1, NULL, NULL, NULL, 'NON', NULL);
 
 COMMIT;
 
@@ -240,7 +248,7 @@ COMMIT;
 -- Data for table `effects`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `effects` (`id`, `study_id`, `prior_hypothesis`, `novel_effect`) VALUES (1, 1, 'None', 'Yes');
+INSERT INTO `effects` (`id`, `study_id`, `created`, `modified`, `name`, `prior_hypothesis`, `novel_effect`) VALUES (1, 1, NULL, NULL, NULL, 'None', 'Yes');
 
 COMMIT;
 
@@ -248,6 +256,6 @@ COMMIT;
 -- Data for table `tests`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `tests` (`id`, `effect_id`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `tests` (`id`, `effect_id`, `created`, `modified`, `analytic_design_code`, `methodology_codes`, `independent_variables`, `dependent_variables`, `other_variables`, `data_points_excluded`, `reasons_for_exclusions`, `type_statistical_test`, `N_used`, `inferential_test_statistic`, `inferential_test_statistic_value`, `degrees_of_freedom`, `reported_significance_of_test`, `computed_significance_of_test`, `main_result_of_test`, `reported_effect_size`, `computed_effect_size`, `reported_statistical_power`, `computed_statistical_power`) VALUES (1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;

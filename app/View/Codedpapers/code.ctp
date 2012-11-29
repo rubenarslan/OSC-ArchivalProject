@@ -84,6 +84,7 @@ echo $this->Form->end(array(
 	'class' => 'btn btn-primary',
 ));
 echo '</div>';
+pr($this->validationErrors);
 ?>
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">

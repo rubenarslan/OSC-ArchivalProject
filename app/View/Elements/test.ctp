@@ -8,8 +8,15 @@ if($newadd = isset($tstart)) {
 }
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
-
-	echo "<h5>Test Nr. $s.$e.$t <a href='#' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this effect'><i class='icon-trash'></i></a></h5>";
+	
+	if($newadd) $destroylink = "#";
+	else $destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($data,"Study.$s.Effect.$e.Test.$t.id");
+	echo "<h5><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
+	echo "Test Nr. ".($s+1).'.'.($e+1).'.'.($t+1).' ';
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.name",array(
+		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'test name (click to edit)')
+	);
+	echo "</h5>";
 
 	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.id");	
 	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.effect_id");
@@ -111,7 +118,7 @@ echo '</div></div>';
 
 $addtestid = "test{$s}_{$e}";
 echo "<h5 id='$addtestid'>";
-echo  $this->Html->link("Add test $s.$e.$t",
+echo  $this->Html->link("Add test ".($s+1).'.'.($e+1).'.'.($t+1),
 	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
 echo "</h5>";
 ?>

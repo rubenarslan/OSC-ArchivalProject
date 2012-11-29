@@ -92,6 +92,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 						$dialog.find('p.message').html(o.message);
 						
 						function targetclickfun () {
+							deletelink = $(e.currentTarget).attr('href');
+							if(deletelink!='#') {
+								$.ajax( { 
+									dataType:"html", 
+									success:function (data, textStatus) {
+										if(data.length < 40) 
+											$($("form")[0]).prepend('<div id="flashMessage" class="message">'+data+'</div>');
+										else location.reload();
+									}, 
+									url:deletelink
+									});
+							}
 							$(e.target).closest('div.formblock').remove();
 							autosave();
 						}
