@@ -10,8 +10,7 @@ for($e= $estart; $e < $length; $e++) {
 
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
-	if($newadd) $destroylink = "#";
-	else $destroylink = $this->webroot.'effects/delete/'.Set::classicExtract($data,"Study.$s.Effect.$e.id");
+	$destroylink = $this->webroot.'effects/delete/'.Set::classicExtract($data,"Study.$s.Effect.$e.id");
 	echo "<h4><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this effect'><i class='icon-trash'></i></a> ";
 	echo "Effect Nr. ".($s+1).'.'.($e+1).' ';
 	echo $this->Form->input("Study.$s.Effect.$e.name",array(
@@ -19,6 +18,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	);
 	echo "</h4>";
 	
+	$study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
 	
 	
 	echo $this->Form->hidden("Study.$s.Effect.$e.id");
@@ -47,7 +47,7 @@ echo "</h4>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function () {$("#<?=$addeffectid?>").bind("click", function (event) {$.ajax( {data:"s=<?=$s?>&estart=<?=$e?>", dataType:"html", success:function (data, textStatus) {
+$(document).ready(function () {$("#<?=$addeffectid?>").bind("click", function (event) {$.ajax( {data:"s=<?=$s?>&estart=<?=$e?>&study_id=<?=$study_id?>", dataType:"html", success:function (data, textStatus) {
 	$("#<?=$addeffectid?>").replaceWith(data);
 	}, url:"<?php echo $this->webroot; ?>codedpapers/moreeffects"});
 return false;});});

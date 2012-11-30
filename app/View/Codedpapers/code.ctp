@@ -186,8 +186,6 @@ $(document).ready(function () {
 		$("#toggle_autosave").button('toggle').on('click', toggleautosave);
 	}
 	
-	// TODO: add multiple progressbars dynamically, use affix to highlight the one for the study currently being coded and base progress on percentage of filled out fields
-	
 	$(document).off('keydown');
 	$(document).keydown(function(event) {
 		if (event.keyCode === 10 || event.keyCode == 13 && event.ctrlKey) {

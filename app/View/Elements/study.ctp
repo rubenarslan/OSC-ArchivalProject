@@ -6,12 +6,12 @@ if($newadd = isset($sstart)) {
 	$length = count ( $this->data['Study'] ); # data gets only passed if it wasn't added anew
 	$sstart = 0; # start from the beginning
 }
+
 for($s= $sstart; $s < $length; $s++) {
-	
+
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
-	if($newadd) $destroylink = "#";
-	else $destroylink = $this->webroot.'studies/delete/'.Set::classicExtract($data,"Study.$s.id");
+	$destroylink = $this->webroot.'studies/delete/'.Set::classicExtract($this->data,"Study.$s.id");
 	echo "<h3><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a> ";
 	echo "Study Nr. ".($s+1)." ";
 	echo $this->Form->input("Study.$s.name",array(
@@ -19,13 +19,14 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	);
 	echo "</h3>";
 	
+	$codedpaper_id = Set::classicExtract($this->data,"Study.$s.codedpaper_id"); # we need to give this to the add-button
 	
-	echo $this->Form->hidden("Study.$s.id");	
+	echo $this->Form->hidden("Study.$s.id");
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
 	echo $this->Form->input("Study.$s.replication_code", array(
 		'data-provide' => 'typeahead',
 		'data-source' => '["E","Direct","Conceptual","Direct+X","Conceptual+X","Novel"]', 
-		'data-min-length' => '3',
+		'data-min-length' => '1',
 		));
 /*		<li><a href="#" class="btn btn-info btn-small" rel="tooltip" data-content="
 				Novel: No replication mentioned.
@@ -40,7 +41,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '<div class="row-fluid"><div class="span12">';
 		$options = array( "s" => $s );
 		if($newadd) $options["estart"] = 0;
-		else $options["data"] = $this->data;
+		$options["data"] = $this->data;
 		echo $this->element('effect', $options);
 	echo '</div></div>';
 echo '</div></div>';
@@ -55,7 +56,7 @@ echo "</h4>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (event) {$.ajax( {data:"sstart=<?=$s?>", dataType:"html", success:function (data, textStatus) {
+$(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (event) {$.ajax( {data:"sstart=<?=$s?>&codedpaper_id=<?=$codedpaper_id?>", dataType:"html", success:function (data, textStatus) {
 	$("#<?=$addstudyid?>").replaceWith(data);
 	}, url:"<?php echo $this->webroot; ?>codedpapers/morestudies"});
 return false;});

@@ -61,9 +61,7 @@ class CodedpapersController extends AppController {
 		
 		$this->Codedpaper->id = $id;
 		$this->Codedpaper->user_id = $this->Auth->user('id');
-		
-		# todo: add auth for paper-user
-		
+				
 		if (!$this->Codedpaper->exists()) {
 		    throw new NotFoundException('Invalid coded paper');
 		}
@@ -77,7 +75,8 @@ class CodedpapersController extends AppController {
 				$this->Session->setFlash("Could not save.");
 			}
 		}
-		else {
+		$this->Codedpaper->commit(); # fixme: for some reason, when I read the data right after saving it, it isn't displayed, I have to reload. how come..?
+#		else {
 			$this->request->data = $this->Codedpaper->find('first', # get this user's paper
 				array(
 					"recursive" => 3,
@@ -86,7 +85,7 @@ class CodedpapersController extends AppController {
 						'Codedpaper.id' => $id
 						)
 				));
-		}
+#		}
 		#http://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
 #		$all_codedpaper_studies = $this->Codedpaper->Study->find('all',array(
 #			"recursive" => 0,
@@ -117,10 +116,28 @@ class CodedpapersController extends AppController {
 		$all_studies = array_flip(Set::flatten($all_studies) );
 		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
 		
+		$sstart = $this->request->query['sstart']; # I got this from the URL so that my variables will be named consistently, and won't clash with the existing ones
+		$this->Codedpaper->Study->create();
+		$data = array('Study' => array('codedpaper_id' => $this->request->query['codedpaper_id']));
+		if($dummyentry = $this->Codedpaper->Study->save($data,$validate=FALSE)) {
+			$this->request->data = array('Study' => array($sstart => $dummyentry['Study'])); # stupid acrobatics...
+		}
+		else { debug($this->Codedpaper->Study->validationErrors); die(); }
 	}
 	public function moreeffects () {
+		$sstart = $this->request->query['s']; # I got this from the URL so that my variables will be named consistently, and won't clash with the existing ones
+		$estart = $this->request->query['estart'];
+		$this->Codedpaper->Study->Effect->create();
+		$data = array('Effect' => array('study_id' => $this->request->query['study_id']));
+		if($dummyentry = $this->Codedpaper->Study->Effect->save($data,$validate=FALSE)) {
+			debug($dummyentry);
+			$this->request->data = array('Study' => array($sstart => array('Effect'=> array($estart => $dummyentry['Effect'])))); # stupid acrobatics...
+		}
+		else { debug($this->Codedpaper->Study->Effect->validationErrors); die(); }
+		
 	}
 	public function moretests () {
+		$this->Codedpaper->Study->Effect->Test->create();
 	}
 	public function view($id = null) {
 		## todo: make a view that's basically equivalent to the form but is read only / can't be submitted
