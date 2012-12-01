@@ -41,10 +41,14 @@ DROP TABLE IF EXISTS `users` ;
 CREATE  TABLE IF NOT EXISTS `users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `group_id` INT(11) NOT NULL ,
+  `created` DATETIME NULL DEFAULT NULL ,
+  `modified` DATETIME NULL DEFAULT NULL ,
   `username` VARCHAR(255) NULL DEFAULT NULL ,
   `password` VARCHAR(255) NULL DEFAULT NULL ,
   `email` VARCHAR(255) NULL DEFAULT NULL ,
-  `created` DATETIME NULL DEFAULT NULL ,
+  `affiliated_institution` VARCHAR(255) NULL ,
+  `occupation` VARCHAR(255) NULL ,
+  `your_expertise` VARCHAR(255) NULL ,
   PRIMARY KEY (`id`) ,
   INDEX `fk_users_groups1_idx` (`group_id` ASC) ,
   CONSTRAINT `fk_users_groups1`
@@ -224,7 +228,7 @@ COMMIT;
 -- Data for table `users`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `users` (`id`, `group_id`, `username`, `password`, `email`, `created`) VALUES (1, 1, 'ruben', 'e24396d1f42befa5f644081e395228c71027d94e', 'rubenarslan@gmail.com', '2012-11-08 00:00:00');
+INSERT INTO `users` (`id`, `group_id`, `created`, `modified`, `username`, `password`, `email`, `affiliated_institution`, `occupation`, `your_expertise`) VALUES (1, 1, '2012-11-08 00:00:00', NULL, 'ruben', 'e24396d1f42befa5f644081e395228c71027d94e', 'rubenarslan@gmail.com', NULL, NULL, NULL);
 
 COMMIT;
 

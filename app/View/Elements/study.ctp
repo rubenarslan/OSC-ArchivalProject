@@ -3,9 +3,13 @@ if($newadd = isset($sstart)) {
 	$this->layout = 'ajax'; # ready for insertion
 	$length = $sstart + 1; # if it's supposed to be added anew, tell me where to start
 } else {
-	$length = count ( $this->data['Study'] ); # data gets only passed if it wasn't added anew
+	if(isset($this->data['Study']))
+		$length = count ( $this->data['Study'] ); # data gets only passed if it wasn't added anew
+	else $length = 0;
 	$sstart = 0; # start from the beginning
 }
+
+$codedpaper_id = Set::classicExtract($this->data,"Codedpaper.id"); # we need to give this to the add-button
 
 for($s= $sstart; $s < $length; $s++) {
 
@@ -18,23 +22,18 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'study title (if any, click to edit)')
 	);
 	echo "</h3>";
-	
-	$codedpaper_id = Set::classicExtract($this->data,"Study.$s.codedpaper_id"); # we need to give this to the add-button
-	
+		
 	echo $this->Form->hidden("Study.$s.id");
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
 	echo $this->Form->input("Study.$s.replication_code", array(
-		'data-provide' => 'typeahead',
+		'options' => array('', 'Novel', 'Direct', 'Direct+X', 'Conceptual', 'Conceptual+X', 'E'),
+		));
+
+/*		'data-provide' => 'typeahead',
 		'data-source' => '["E","Direct","Conceptual","Direct+X","Conceptual+X","Novel"]', 
 		'data-min-length' => '1',
 		));
-/*		<li><a href="#" class="btn btn-info btn-small" rel="tooltip" data-content="
-				Novel: No replication mentioned.
-				Direct: Direct replication. The stated goal is, at least in part of the design, to exactly reproduce the hypothesis and methods of the previous study, making only those changes that are necessary to achieve the same psychological meaning among the new participant population.
-				Conceptual: Conceptual replication. The study’s stated goal is, at least in part of the design, to test the hypothesis of the previous study, using the same conceptual variables but changing their operationalization in ways that go beyond merely adapting the materials for a new population or occasion.
-				+X: The +X goes into the code if the study also contains elements of extension that go beyond the type of replication recorded.
-				+#: After the letter code, a number code without brackets is placed to show that the study is presented as a replication/extension of an earlier study in the article itself, instead of, or in addition to, replicating another article." data-original-title="Replication codes">Explain codes</a></li>*/
-	
+*/
 	#	debug($replicable_studies);
 	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies);
 	

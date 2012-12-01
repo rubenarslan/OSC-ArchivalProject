@@ -3,14 +3,18 @@ if($newadd = isset($tstart)) {
 	$this->layout = 'ajax'; # ready for insertion
 	$length = $tstart + 1; # if it's supposed to be added anew, tell me where to start
 } else {
-	$length = count ( $data['Study'][$s]['Effect'][$e]['Test'] ); # data gets only passed if it wasn't added anew
+	if(isset($this->data['Study'][$s]['Effect'][$e]['Test']))
+		$length = count ( $this->data['Study'][$s]['Effect'][$e]['Test'] ); # data gets only passed if it wasn't added anew
+	else $length = 0;
 	$tstart = 0; # start from the beginning
 }
+$study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
+$effect_id = Set::classicExtract($this->data,"Study.$s.Effect.$e.id"); # we need to give this to the add-button
+
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
-	if($newadd) $destroylink = "#";
-	else $destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($data,"Study.$s.Effect.$e.Test.$t.id");
+	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Effect.$e.Test.$t.id");
 	echo "<h5><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
 	echo "Test Nr. ".($s+1).'.'.($e+1).'.'.($t+1).' ';
 	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.name",array(
@@ -24,9 +28,19 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.analytic_design_code",array(
+			'options' => array(
+				'' => '',
+				'IA' => 'IA: correlational/multivariate internal analysis of manipulation check',
+				'X' => 'X: experimental analysis of manipulation effect',
+				'RM' => 'RM: experimental analysis of repeated-measures effect',
+				'RMX' => 'RMX: combined experimental and repeated-measures effect',
+				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
 			'class' => 'span12', 'div'=> array('class'=>"span3"))
 		);
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.methodology_codes",array(
+			'data-provide' => 'typeahead',
+			'data-source' => '["BI","P","SR","I","BC"]',  # todo: add tags with typeahead
+			'data-min-length' => '1',
 			'class' => 'span12', 'div'=> array('class'=>"span3"))
 		);
 	echo '</div>';
@@ -66,6 +80,12 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic",array(
+			'options' => array(
+				'' => '',
+				'chi.square' => 'χ²', 
+				't' => 't', 
+				'z' => 'z', 
+				'F' => 'F'),
 			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.degrees_of_freedom",array(
@@ -139,7 +159,7 @@ $(document).ready(function () {
 	});
 	$("#<?=$addtestid?>").bind("click", function (event) {
 		$.ajax( {
-			data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>", 
+			data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>&effect_id=<?=$effect_id;?>&study_id=<?=$study_id;?>", 
 			dataType:"html", 
 			success:function (data, textStatus) {
 				$("#<?=$addtestid?>").replaceWith(data);

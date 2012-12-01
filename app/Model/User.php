@@ -49,7 +49,22 @@ class User extends AppModel {
 		'username' => array('isUnique' => array(
 			'rule' => 'isUnique',
 			'message' => 'This username is already taken. Please choose another one.'
-		))
+		)),
+		'affiliated_institution' => array(
+	        'rule' => 'notEmpty',
+			'required' => true,
+            'allowEmpty' => true,
+	    ),
+		'occupation' => array(
+			'rule' => 'notEmpty',
+			'required' => true,
+			'allowEmpty' => true,
+		   ),
+		'your_expertise' => array(
+			'rule' => 'notEmpty',
+			'required' => true,
+			'allowEmpty' => true,
+		   ),
 	);
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed

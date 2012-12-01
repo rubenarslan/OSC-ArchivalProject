@@ -28,7 +28,7 @@ class Test extends AppModel {
             'allowEmpty' => true
 		),
 		'data_points_excluded' => array(
-	       'rule'    => "naturalNumber",
+	       'rule'    => array("naturalNumber",true),
            'required' => true,
            'allowEmpty' => true,
 	       'message' => 'Must be a natural number'
@@ -64,7 +64,7 @@ class Test extends AppModel {
 		    )
 		),
 	    'degrees_of_freedom' => array(
-	        'rule'    => "naturalNumber",
+	        'rule'    => array("naturalNumber",true),
 	        'required' => true,
             'allowEmpty' => true,
 	        'message' => 'Must be a natural number'
@@ -132,5 +132,19 @@ class Test extends AppModel {
 	    ),
 	    
     );
+	public function createDummy ($study_id, $effect_id, $sstart, $estart, $tstart = 0) {
+		$this->create();
+		$data = array('Test' => array('effect_id' => $effect_id));
+		if($dummyentry = $this->save($data,$validate=FALSE)) {
+			return array('Study' => array($sstart => 
+				array('id' => $study_id, 
+				'Effect'=> array($estart => array('id' => $effect_id,
+					'Test'=> array($tstart => $dummyentry['Test']
+					))
+				))
+			)); # stupid acrobatics...
+		}
+		else { debug($this->validationErrors); die(); }
+	}
 }
 

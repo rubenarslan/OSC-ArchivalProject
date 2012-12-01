@@ -3,14 +3,18 @@ if($newadd = isset($estart)) {
 	$this->layout = 'ajax'; # ready for insertion
 	$length = $estart + 1; # if it's supposed to be added anew, tell me where to start
 } else {
-	$length = count ( $this->data['Study'][$s]['Effect'] ); # data gets only passed if it wasn't added anew
+	if(isset($this->data['Study'][$s]['Effect']))
+		$length = count ( $this->data['Study'][$s]['Effect'] ); # data gets only passed if it wasn't added anew
+	else $length = 0;
 	$estart = 0; # start from the beginning
 }
+$study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
+
 for($e= $estart; $e < $length; $e++) {
 
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
-	$destroylink = $this->webroot.'effects/delete/'.Set::classicExtract($data,"Study.$s.Effect.$e.id");
+	$destroylink = $this->webroot.'effects/delete/'.Set::classicExtract($this->data,"Study.$s.Effect.$e.id");
 	echo "<h4><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this effect'><i class='icon-trash'></i></a> ";
 	echo "Effect Nr. ".($s+1).'.'.($e+1).' ';
 	echo $this->Form->input("Study.$s.Effect.$e.name",array(
@@ -18,13 +22,16 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	);
 	echo "</h4>";
 	
-	$study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
-	
-	
 	echo $this->Form->hidden("Study.$s.Effect.$e.id");
 	echo $this->Form->hidden("Study.$s.Effect.$e.study_id");	
-	echo $this->Form->input("Study.$s.Effect.$e.prior_hypothesis");
+	echo '<div class="row-fluid">';
+	echo $this->Form->input("Study.$s.Effect.$e.prior_hypothesis",array(
+		'class' => 'span12', 'rows' => '4', 'div'=> array('class'=> "span4")));
+	echo '<div class="span4 offset1"><br>Write down the prior hypothesis, if any, and its page number.</div>';
+	echo '</div>';
 	echo $this->Form->radio("Study.$s.Effect.$e.novel_effect", array('Yes','No'));
+	
+	
 	
 #	if($this->data['Study'][$s]['Effect'][$e]['novel_effect'] == 'No') 
 #	echo $this->Form->input("Study.$s.replicates_study_id");
@@ -32,7 +39,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '<div class="row-fluid"><div class="span11 offset1">';
 		$options = array( "s" => $s, "e" => $e );
 		if($newadd) $options["tstart"] = 0;
-		else $options["data"] = $this->data;
+		$options["data"] = $this->data;
 		echo $this->element('test', $options);
 	echo '</div></div>';
 
