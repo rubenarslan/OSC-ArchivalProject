@@ -12,10 +12,21 @@
 		<td><?php echo h($paper['Paper']['id']); ?>&nbsp;</td>
 		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Code'), "/codedpapers/add/". $paper['Paper']['id']); ?>
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $paper['Paper']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $paper['Paper']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?>
+			<div class="btn-toolbar">
+				<div class="actions btn-group">
+					<?php echo $this->Html->link(__('View'), array('action' => 'view', $paper['Paper']['id']), array('class' => 'btn')); ?>
+					 <button class="btn dropdown-toggle" data-toggle="dropdown">
+					    <span class="caret"></span>
+					 </button>
+					<ul class="dropdown-menu">
+						<li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $paper['Paper']['id'])); ?></li>
+						<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?></li>
+					</ul>
+				</div>
+			<?php
+			echo $this->element('get_multiple', array('paper_id' => $paper['Paper']['id']));
+			?>
+			</div>
 		</td>
 	</tr>
 <?php endforeach; ?>

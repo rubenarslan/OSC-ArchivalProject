@@ -73,7 +73,6 @@ echo $this->Form->hidden("Paper.doi");
 echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 
-
 echo $this->element('study', array(
 	"data" => $this->data
 ));
@@ -94,6 +93,10 @@ function toggleautosave() {
 	autosaveglobal = !autosaveglobal;
 	icon = autosaveglobal ? ' <i class="icon-refresh icon-white"></i>' : '';
 	$("#toggle_autosave").button('toggle').html('Toggle Autosave' + icon);
+	if(!autosaveglobal) {
+		theQueue.clearQueue();
+		$('#flashMessage').remove();
+	}
 	return false;
 }
 function autosave () {
@@ -112,7 +115,7 @@ function autosave () {
 			   } 
 			}, 400);
 			theQueue.delay(5000);
-			theQueue.queue(submitcodingform);
+			theQueue.queue(saveform);
 		}
 	}
 }
@@ -157,7 +160,7 @@ function activateinputs () {
 		
 	});
 }
-function submitcodingform() {
+function saveform() {
 	focused = "#" + $('input:focus,textarea:focus').attr("id");
 	theQueue.clearQueue();
 	options = {
@@ -165,17 +168,22 @@ function submitcodingform() {
 		dataType:"html", 
 		success:
 		function (data, textStatus) {
-			$("#main-content").html(data);
+			if(data=='Study saved.') {
+				$('#flashMessage').remove();
+				$('<div id="flashMessage" class="message">Study saved.</div>').appendTo('#main-content');
+			}
+			else {
+				if(typeof focused != 'undefined') { // if a field was focused upon autosaving
+					$.when($("#main-content").html(data)).done(
+					$(focused).focus()); // refocus it when the data has been replaced
+				} else {
+					$("#main-content").html(data);
+				}
+			}
 		}, 
 		type:"post", 
 		url: $("#CodedpaperCodeFormSubmit").closest("form").attr('action')
 	};
-	if(typeof focused != 'undefined') {
-		options.success = function(data, textStatus) {
-			$.when($("#main-content").html(data)).done(
-			$(focused).focus());
-		}
-	}
 	$.ajax(options);
 }
 $(document).ready(function () {
@@ -183,7 +191,7 @@ $(document).ready(function () {
 	activateinputs();
 	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
-		submitcodingform();
+		saveform();
 		return false;
 	});
 	
@@ -196,7 +204,7 @@ $(document).ready(function () {
 	$(document).off('keydown');
 	$(document).keydown(function(event) {
 		if (event.keyCode === 10 || event.keyCode == 13 && event.ctrlKey) {
-			submitcodingform();
+			saveform();
 		    event.preventDefault();
 		    return false;
 		} else return true;

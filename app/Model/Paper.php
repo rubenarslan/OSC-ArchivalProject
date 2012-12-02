@@ -20,15 +20,22 @@ class Paper extends AppModel {
 			'className' => 'Codedpaper',
 			'foreignKey' => 'paper_id',
 			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
-
+	
+	public function getMultipleCodings ($id = null) {
+		$mult = $this->find('first', # GET THAT PAPER
+			array(
+				"recursive" => 2,
+				"conditions" => array(
+					'Paper.id' => $id
+					)
+			));
+#		$mult = Set::remove($mult,'Codedpaper.{n}.Study');
+#		$mult = Set::remove($mult,'Codedpaper.{n}.Paper');
+		$cps = Set::extract($mult,'Codedpaper.{n}.id');
+		$usernames = Set::extract($mult,'Codedpaper.{n}.User.username');
+		$mult = array_combine($cps,$usernames);
+		return $mult;
+	}
 }

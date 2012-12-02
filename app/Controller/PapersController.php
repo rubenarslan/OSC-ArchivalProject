@@ -11,14 +11,23 @@ class PapersController extends AppController {
 		if($admin) return true;
 		
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('view', 'index'))) return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('view', 'index','find_multiple'))) return true; # viewing and indexing is allowed to all users
 	}
 /**
  * index method
  *
  * @return void
  */
+	public function find_multiple ($id) {
+		$mult = $this->Paper->getMultipleCodings($id);
+		debug($mult);
+	
+	}
 	public function index() {
+#		$ids = Set::flatten($this->Paper->find('all',array('fields'=>'Paper.id', 'recursive'=>-1) ));
+#		$mult = $this->Paper->getMultipleCodings($ids);
+#		$this->set('multipleCodings', $mult);
+		
 		$this->Paper->recursive = 0;
 		$this->set('papers', $this->paginate());
 	}

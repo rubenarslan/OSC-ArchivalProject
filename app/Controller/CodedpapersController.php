@@ -47,30 +47,26 @@ class CodedpapersController extends AppController {
 	}
 	public function code ($id = NULL) {
 		$this->Codedpaper->id = $id;
-		$this->Codedpaper->user_id = $this->Auth->user('id');
 				
 		if (!$this->Codedpaper->exists()) {
 		    throw new NotFoundException('Invalid coded paper');
 		}
-		if (!$this->request->is('get')){ # if it was posted or ajaxed			
-			if($this->Codedpaper->saveAssociated($this->request->data, 
-				array("deep" => TRUE)
-				)) {
-				$this->Session->setFlash('Study Saved!');
+		if (!$this->request->is('get')) { # if it was posted or ajaxed			
+			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) {
+				if($this->request->is('ajax')) {
+					echo 'Study saved.';
+					exit;
+				} 
+				else {
+					$this->Session->setFlash('Study Saved!');
+				}
 			}
 			else {
 				$this->Session->setFlash("Could not save.");
 			}
 		}
 		else {  # fixme: for some reason, when I read the data right after saving it, it isn't displayed, I have to reload. how come..?
-			$this->request->data = $this->Codedpaper->find('first', # get this user's paper
-				array(
-					"recursive" => 3,
-					"conditions" => array(
-						'user_id' => $this->Auth->user('id'),
-						'Codedpaper.id' => $id
-						)
-				));
+			$this->request->data = $this->Codedpaper->findDeep($id);
 		}
 		#http://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
 #		$all_codedpaper_studies = $this->Codedpaper->Study->find('all',array(
@@ -96,8 +92,7 @@ class CodedpapersController extends AppController {
 #		debug($all_studies); debug($study_names);
 		
 		$all_studies = array_merge(array(''=>''),array_combine($all_studies, $study_names));
-		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
-		
+		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully	
 	}
 	public function morestudies () {
 		$all_studies = $this->Codedpaper->Study->find('all',array(
@@ -117,8 +112,21 @@ class CodedpapersController extends AppController {
 	public function moretests () {
 		$this->request->data = $this->Codedpaper->Study->Effect->Test->createDummy($this->request->query['study_id'], $this->request->query['effect_id'], $this->request->query['s'], $this->request->query['e'], $this->request->query['tstart']);
 	}
+	public function compare ($id1 = NULL, $id2 = NULL) {
+		if (!$this->Codedpaper->exists($id1)) 
+		    throw new NotFoundException('First paper does not exist.');
+		if (!$this->Codedpaper->exists($id2)) 
+		    throw new NotFoundException('Second paper does not exist.');
+		if($this->Codedpaper->field('paper_id',array('id' => $id1))!== $this->Codedpaper->field('paper_id',array('id' => $id2)))
+			throw new NotFoundException('These are codings of two different papers.');
+		
+		$comparison = $this->Codedpaper->compare($id1,$id2);
+		$this->set('c1',$comparison[0]);
+		$this->set('c2',$comparison[1]);
+	}
 	public function view($id = null) {
 		## todo: make a view that's basically equivalent to the form but is read only / can't be submitted
+		die('View function not yet implemented. Will do this when the coding form is finished.');
 		$this->Codedpaper->id = $id;
 		if (!$this->Codedpaper->exists()) {
 			throw new NotFoundException(__('Invalid coded paper'));
