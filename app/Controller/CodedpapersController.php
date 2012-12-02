@@ -53,6 +53,9 @@ class CodedpapersController extends AppController {
 		    throw new NotFoundException('Invalid coded paper');
 		}
 		if (!$this->request->is('get')){ # if it was posted or ajaxed
+			function implodecomma ($x) { return implode(", ",$x); }
+			Set::apply('/Codedpaper/Study/Effect/Test/methodology_codes', $this->request->data, 'implodecomma');
+			
 			if($this->Codedpaper->saveAssociated($this->request->data, 
 				array("deep" => TRUE)
 				)) {

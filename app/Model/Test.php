@@ -8,9 +8,16 @@ class Test extends AppModel {
             'allowEmpty' => true
         ),
 		'methodology_codes' => array(
-			'rule' => 'notEmpty',
-	        'required' => true,
-            'allowEmpty' => true
+			'multiple' => array(
+				'rule' => array('multiple',
+					'in' => array("","BI","P","SR","I","BC"),
+					),
+				'required' => false,
+				'allowEmpty' => true,
+				)
+#			'rule' => 'notEmpty',
+#	        'required' => false,
+#            'allowEmpty' => true
 	    ),
 		'independent_variables' => array(
 	       	'rule' => 'notEmpty',

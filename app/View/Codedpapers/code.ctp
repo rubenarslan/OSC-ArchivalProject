@@ -73,6 +73,7 @@ echo $this->Form->hidden("Paper.doi");
 echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 
+
 echo $this->element('study', array(
 	"data" => $this->data
 ));
@@ -130,6 +131,8 @@ function activateinputs () {
 		$(elm).off('change','*');
 		$(elm).on('change',autosave);
 		$(elm).on('change',updateprogress);
+	});
+	$('#CodedpaperCodeForm input[type=number]').each(function(i,elm) {
 		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
 			if($(elm).attr('value')>0)
 				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
@@ -139,6 +142,9 @@ function activateinputs () {
 			});
 		}
 	});
+	
+	$(".chzn-select").chosen();
+	
 	$('a.selfdestroyer').each(function(i,elm) {
 		$(elm).off('click','*');
 
@@ -185,7 +191,7 @@ $(document).ready(function () {
 		autosaveglobal = true; // only set when loading the first time
 		$("#toggle_autosave").button('toggle').on('click', toggleautosave);
 	}
-	
+		
 	$(document).off('keydown');
 	$(document).keydown(function(event) {
 		if (event.keyCode === 10 || event.keyCode == 13 && event.ctrlKey) {

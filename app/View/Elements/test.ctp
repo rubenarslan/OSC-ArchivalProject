@@ -37,13 +37,18 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
 			'class' => 'span12', 'div'=> array('class'=>"span3"))
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.methodology_codes",array(
+		$methcode = $this->Chosen->select("Study.$s.Effect.$e.Test.$t.methodology_codes",
+			array("","BI","P","SR","I","BC"),
+		array(
+			'data-placeholder' => 'Multiple choices possible',
 			'data-provide' => 'typeahead',
-			'data-source' => '["BI","P","SR","I","BC"]',  # todo: add tags with typeahead
 			'data-min-length' => '1',
-			'class' => 'span12', 'div'=> array('class'=>"span3"))
+			'multiple' => true,
+			'class' => 'span12')
 		);
-	echo '</div>';
+		echo '<div class="span3"><label>Methodology codes</label>';
+		echo $methcode;
+	echo '</div></div>';
 
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.independent_variables",array(
