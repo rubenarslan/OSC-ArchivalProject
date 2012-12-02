@@ -52,10 +52,7 @@ class CodedpapersController extends AppController {
 		if (!$this->Codedpaper->exists()) {
 		    throw new NotFoundException('Invalid coded paper');
 		}
-		if (!$this->request->is('get')){ # if it was posted or ajaxed
-			function implodecomma ($x) { return implode(", ",$x); }
-			Set::apply('/Codedpaper/Study/Effect/Test/methodology_codes', $this->request->data, 'implodecomma');
-			
+		if (!$this->request->is('get')){ # if it was posted or ajaxed			
 			if($this->Codedpaper->saveAssociated($this->request->data, 
 				array("deep" => TRUE)
 				)) {
@@ -82,29 +79,36 @@ class CodedpapersController extends AppController {
 #		));
 		$all_studies = $this->Codedpaper->Study->find('all',array(
 			"recursive" => 0,
-			'fields' => array('Study.id')
+			'fields' => array('Codedpaper.id','Study.id','Study.name')
 		));
-		$all_studies = array_flip(Set::flatten($all_studies) );
+#		debug($all_studies);
+#		$all_studies = array_flip(Set::flatten($all_studies) );
 #		$all_codedpapers = array_diff($all_studies,Set::flatten($all_codedpaper_studies));
 #	$all_studies = $this->Codedpaper->Paper->find('threaded',array(
 #		"recursive" => 2,
 #		'fields' => array('Study.id')
 #	));
-#		$all_studies = Set::classicExtract($all_studies,"{n}.Codedpaper.{n}.Paper.id");
-#		$all_studies = Set::classicExtract($all_studies,"{n}.Codedpaper.{n}.Study.{n}.id");
+#		debug(Set::flatten(Set::extract($all_studies,"{n}.Codedpaper.id")));
+		$study_names = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/name"));
+#		$study_names = Set::format($all_studies, '{0}: {1}', array("{n}.Codedpaper.id", 'Codedpaper/Study/name'));
 		
-		#$all_studies = array_combine(array_keys($all_studies), $all_studies);
+		$all_studies = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/id"));
+#		debug($all_studies); debug($study_names);
+		
+		$all_studies = array_merge(array(''=>''),array_combine($all_studies, $study_names));
 		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
 		
 	}
 	public function morestudies () {
 		$all_studies = $this->Codedpaper->Study->find('all',array(
 			"recursive" => 0,
-			'fields' => array('Study.id')
+			'fields' => array('Codedpaper.id','Study.id','Study.name')
 		));
-		$all_studies = array_flip(Set::flatten($all_studies) );
-		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully
-		
+		$study_names = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/name"));
+		$all_studies = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/id"));
+		$all_studies = array_combine($all_studies, $study_names);
+		$this->set('replicable_studies', $all_studies);
+			
 		$this->request->data = $this->Codedpaper->Study->createDummy($this->request->query['codedpaper_id'], $this->request->query['sstart']);
 	}
 	public function moreeffects () {

@@ -37,18 +37,12 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
 			'class' => 'span12', 'div'=> array('class'=>"span3"))
 		);
-		$methcode = $this->Chosen->select("Study.$s.Effect.$e.Test.$t.methodology_codes",
-			array("","BI","P","SR","I","BC"),
-		array(
-			'data-placeholder' => 'Multiple choices possible',
-			'data-provide' => 'typeahead',
-			'data-min-length' => '1',
-			'multiple' => true,
-			'class' => 'span12')
-		);
-		echo '<div class="span3"><label>Methodology codes</label>';
-		echo $methcode;
-	echo '</div></div>';
+		
+	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.methodology_codes",array(
+		'options' => array('',"BI","P","SR","I","BC"),
+		'class' => 'span12', 'div'=> array('class'=>"span3"))
+	);
+	echo '</div>';
 
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.independent_variables",array(

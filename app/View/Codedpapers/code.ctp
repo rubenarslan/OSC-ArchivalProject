@@ -143,7 +143,8 @@ function activateinputs () {
 		}
 	});
 	
-	$(".chzn-select").chosen();
+	$(".chzn-select").chosen({allow_single_deselect: true});
+	$('div.chzn-search input').attr("tabindex",null);
 	
 	$('a.selfdestroyer').each(function(i,elm) {
 		$(elm).off('click','*');

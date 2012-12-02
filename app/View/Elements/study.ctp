@@ -35,7 +35,13 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		));
 */
 	#	debug($replicable_studies);
-	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies);
+	echo $methcode = $this->Chosen->select("Study.$s.replicates_study_id", $replicable_studies,		
+		array(
+			'data-placeholder' => 'Replicates study…',
+			'data-provide' => 'typeahead',
+			'data-min-length' => '1',
+			'class' => 'span4')
+	);
 	
 	echo '<div class="row-fluid"><div class="span12">';
 		$options = array( "s" => $s );
