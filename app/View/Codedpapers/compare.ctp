@@ -4,10 +4,12 @@
 	Please try to resolve all differences.
 	<ol>
 		<li>If you see that the other coder is correct, please change your own coding accordingly.</li>
-		<li>If you think the other one is correct, please tell him or her so (politely) via email.</li>
+		<li>If you think the other one is incorrect, please (politely) tell him or her so via email.</li>
 		<li>If you're both unsure, who's right, alert an administrator.</li>
 	</ol>
-<?php # todo: list admins? ?></p>
+<?php 
+# todo: list admins?
+ ?></p>
 <h4>View the two papers individually.</h4>
 <ul class="btn-group">
 	<li class="btn">
@@ -23,12 +25,17 @@
 <table class="table">
 <?php
 
+function inc($matches) {
+    return ++$matches[1];
+}
+
 foreach($c1 as $key => $val) {
 	$isid = substr($key,-3);
 	if($isid != '_id' AND $isid!='.id') {
+		$key1 =  preg_replace_callback( "|(\d+)|", "inc", $key);
 	?>
 	<tr>
-		<th><?=$key?></th>
+		<th><?=$key1?></th>
 		<td><?=$val?></td>
 		<td><?=$c2[$key] ?></td>
 	</tr>

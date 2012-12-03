@@ -3,6 +3,7 @@ $Paper = ClassRegistry::init('Paper');
 $multipleCodings = $Paper->getMultipleCodings($paper_id);
 $ids = array_keys($multipleCodings);
 $users = array_values($multipleCodings);
+if(count($users)>1) {
 ?>
 <div class="actions btn-group">
 	<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Compare…'); ?><span class="caret"></span>
@@ -22,3 +23,8 @@ $users = array_values($multipleCodings);
 		} ?>
 	</ul>
 </div>
+<?php }
+else {
+	?>
+	<p>Not yet.</p>
+<?php } ?>

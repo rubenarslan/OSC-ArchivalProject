@@ -5,7 +5,7 @@ class CodedpapersController extends AppController {
 		if($admin) return true;
 		
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','moreeffects','morestudies'))) return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','moreeffects','morestudies','compare'))) return true; # viewing and adding is allowed to all users. comparing, indexing and adding empty stuff too.
 		
 
 		$codedpaper_id = $this->request->params['pass'][0];

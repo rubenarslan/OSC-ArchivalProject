@@ -16,7 +16,7 @@ $users = array_values($multipleCodings);
 	</ul>
 </div>
 <?php
-if(count($users)!==0) {
+if(count($users)>1) {
 ?>
 <div class="actions btn-group">
 	<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Compare…'); ?><span class="caret"></span>

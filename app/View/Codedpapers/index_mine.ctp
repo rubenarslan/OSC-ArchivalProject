@@ -10,7 +10,12 @@
 	<tr>
 		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Code'), "/codedpapers/code/". $paper['Codedpaper']['id']); ?>
+			<div class="btn-toolbar">
+			<?php echo $this->Html->link(__('Continue coding'), "/codedpapers/code/". $paper['Codedpaper']['id'], array('class' => 'btn')); ?>
+			<?php
+			echo $this->element('get_other_codings', array('paper_id' => $paper['Paper']['id'],'user_name' => $paper['User']['username']));
+			?>
+			</div>
 		</td>
 	</tr>
 <?php endforeach; ?>
