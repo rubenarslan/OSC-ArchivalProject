@@ -3,7 +3,10 @@
 <p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
 <p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <br>
 	<button type="button" id="toggle_autosave" class="btn btn-inverse" data-toggle="button">Toggle Autosave <i class="icon-refresh icon-white"></i></button></p>
-	
+<h4>Other codings</h4>
+<?php
+echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper']['id'],'user_name' => $this->data['User']['username']));
+?>
 <h4>Replication codes</h4>
 <div class="accordion" id="accordion2">
 	<div class="accordion-group">
