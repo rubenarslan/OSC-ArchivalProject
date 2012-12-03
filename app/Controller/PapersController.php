@@ -18,11 +18,6 @@ class PapersController extends AppController {
  *
  * @return void
  */
-	public function find_multiple ($id) {
-		$mult = $this->Paper->getMultipleCodings($id);
-		debug($mult);
-	
-	}
 	public function index() {
 #		$ids = Set::flatten($this->Paper->find('all',array('fields'=>'Paper.id', 'recursive'=>-1) ));
 #		$mult = $this->Paper->getMultipleCodings($ids);
@@ -45,6 +40,16 @@ class PapersController extends AppController {
 			throw new NotFoundException(__('Invalid paper'));
 		}
 		$this->set('paper', $this->Paper->read(null, $id));
+	}
+	public function byDoi($doi = null) {
+		$doi = '10.1145/1323688.1323690';
+		$url = 'http://www.mendeley.com/oapi/documents/details/' . urlencode(urlencode($doi)) . '/?type=doi&consumer_key=CONSUMER_KEY';
+		$url = str_replace('CONSUMER_KEY', Configure::read('Mendeley.consumerkey'), $url);
+		$json = $this->Mendeley->http($url, 'GET');
+		debug($json);
+		exit;
+		
+#		$this->Paper->fetchByDoi($doi);
 	}
 
 /**

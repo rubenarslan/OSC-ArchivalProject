@@ -7,7 +7,6 @@ App::uses('AppModel', 'Model');
  */
 class Paper extends AppModel {
 
-
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
@@ -37,5 +36,13 @@ class Paper extends AppModel {
 		$usernames = Set::extract($mult,'Codedpaper.{n}.User.username');
 		$mult = array_combine($cps,$usernames);
 		return $mult;
+	}
+	public function fetchByDOI($doi = null) {
+		$Paper = ClassRegistry::init('Mendeley');
+		
+		$url = 'http://www.mendeley.com/oapi/documents/details/' . urlencode(urlencode($doi)) . '/?type=doi&consumer_key=CONSUMER_KEY';
+		$url = str_replace('CONSUMER_KEY', Configure::read('Mendeley.consumerkey'), $url);
+		$json = $this->Mendeley->http($url, 'GET');
+		debug($json);
 	}
 }

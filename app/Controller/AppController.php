@@ -21,6 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
+#App::import('OAuth/OAuthClient');
 
 /**
  * Application Controller
@@ -43,7 +44,8 @@ class AppController extends Controller {
 				'userModel' => 'User',
 		'		recursive' => 3)
 		)), # Controller means that the controller's function isAuthorized will be called
-			'RequestHandler'
+			'RequestHandler',
+			'Mendeley'
 			);
 	function beforeFilter() {
 			parent::beforeFilter();
@@ -51,6 +53,7 @@ class AppController extends Controller {
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
+	        $this->Mendeley->__construct(Configure::read('Mendeley.consumerkey'),Configure::read('Mendeley.consumersecret'));
 	}
 	public function isAuthorized($user = null, $request = null) {
 		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';
