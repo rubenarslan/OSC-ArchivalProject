@@ -31,27 +31,33 @@
 	</tr>
 <?php endforeach; ?>
 	</table>
+	<div class="actions btn-group">
+		<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
+		  </a>
+		<ul class="dropdown-menu">
+			<li><?php echo $this->Html->link(__('New Paper'), array('action' => 'add')); ?></li>
+			<li><?php echo $this->Html->link(__('List Codedpapers'), array('controller' => 'codedpapers', 'action' => 'index')); ?> </li>
+		</ul>
+	</div>
+
+	<div class="pagination pagination-centered">
+		<ul>
+	<?php
+		echo "<li>";
+		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+		echo "</li><li>";
+		echo $this->Paginator->numbers(array('separator' => '</li><li>'));
+		echo "</li><li>";
+		echo $this->Paginator->next(__('next') . ' >',array(), null, array('class' => 'next disabled'));
+		echo "</li><li>";
+	?>
+		</ul>
+	</div>
 	<p>
 	<?php
 	echo $this->Paginator->counter(array(
 	'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
 	));
 	?>	</p>
+</div>
 
-	<div class="paging">
-	<?php
-		echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
-		echo $this->Paginator->numbers(array('separator' => ''));
-		echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
-	?>
-	</div>
-</div>
-<div class="actions btn-group">
-	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
-	  </a>
-	<ul class="dropdown-menu">
-		<li><?php echo $this->Html->link(__('New Paper'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Codedpapers'), array('controller' => 'codedpapers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>
-	</ul>
-</div>

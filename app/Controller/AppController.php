@@ -34,7 +34,7 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
 	public $helpers = array("Html","Form", "Js","TB" => array(
 	        "className" => "TwitterBootstrap.TwitterBootstrap"
-	    ), 'Chosen.Chosen');
+	    ), 'Chosen.Chosen','Ordinal');
 	public $components = array(
 			'Session',
 	        'Auth' => array('authorize' => array(
@@ -53,7 +53,7 @@ class AppController extends Controller {
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
 	}
 	public function isAuthorized($user = null, $request = null) {
-		$admin = $user['Group']['name']==='admin';
+		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';
 		if($admin) return $admin; # admins can do anything 
 	}
 }

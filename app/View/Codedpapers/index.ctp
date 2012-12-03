@@ -3,14 +3,21 @@
 	<table  class="table">
 	<tr>
 			<th>DOI</th>
+			<th>Coder</th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($codedpapers as $paper): ?>
 	<tr>
 		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
+		<td><?php echo h($paper['User']['username']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), "/codedpapers/view/". $paper['Codedpaper']['id']); ?>
+			<div class="btn-toolbar">
+			<?php echo $this->Html->link(__('View'), "/codedpapers/view/". $paper['Codedpaper']['id'], array('class' => 'btn')); ?>
+			<?php
+			echo $this->element('get_other_codings', array('paper_id' => $paper['Paper']['id'],'user_name' => $paper['User']['username']));
+			?>
+			</div>
 		</td>
 	</tr>
 <?php endforeach; ?>

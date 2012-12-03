@@ -35,24 +35,32 @@
 	          </a>
 	          <?php echo $this->Html->link('Archival Project', '/', array('class' => 'brand')); ?>
 	          <div class="container nav-collapse">
-	            <ul class="nav">	
+	            <ul class="nav">
 		<?php
 		if(AuthComponent::user() === NULL) { ?>
-	                <li><?php echo $this->Html->link('Login', '/users/login'); ?></li>
-				    <li><?php echo $this->Html->link('Sign up', '/users/register'); ?></li>
+	                <li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
+				    <li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
 		<?php }
 		else {?>
 					<li><?php echo $this->Html->link("Logout [". AuthComponent::user('Group.name').'] '.AuthComponent::user('username'), '/users/logout'); ?></li>
 		<?php }?>
-				<li>
-					<div class="actions btn-group">
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Coding'); ?><span class="caret"></span></a>
+				<li class="divider-vertical"></li>
+				<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Coding'); ?><span class="caret"></span></a>
 						<ul class="dropdown-menu">
-			                <li><?php echo $this->Html->link('Code a new paper', '/papers/index'); ?></li>
+			                <li><?php echo $this->Html->link('List available papers', '/papers/index'); ?></li>
 			                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
 			                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
 			            </ul>
-					</div>
+				</li>
+			  	<li class="divider-vertical"></li>
+				<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Admin'); ?><span class="caret"></span></a>
+						<ul class="dropdown-menu">
+			                <li><?php echo $this->Html->link('List users', '/users/index'); ?></li>
+			                <li><?php echo $this->Html->link('Add paper', '/papers/add'); ?></li>
+			                <li><?php echo $this->Html->link('Other admin functions?', '#'); ?></li>
+			            </ul>
 				</li>
 				<?php echo $this->fetch('more_nav'); ?>
 				</ul>

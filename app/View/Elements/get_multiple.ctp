@@ -5,7 +5,7 @@ $ids = array_keys($multipleCodings);
 $users = array_values($multipleCodings);
 ?>
 <div class="actions btn-group">
-	<?php echo $this->Html->link(__('Code this paper'), "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary')); ?>
+	<?php echo $this->Html->link(__('Code this paper for the ').$this->Ordinal->addSuffix(count($multipleCodings)+1,true). ' time', "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary','escape' => false)); ?>
 	 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 	    <span class="caret"></span>
 	 </button>
@@ -15,6 +15,9 @@ $users = array_values($multipleCodings);
 		<?php } ?>
 	</ul>
 </div>
+<?php
+if(count($users)!==0) {
+?>
 <div class="actions btn-group">
 	<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Compare…'); ?><span class="caret"></span>
 	  </a>
@@ -33,3 +36,4 @@ $users = array_values($multipleCodings);
 		} ?>
 	</ul>
 </div>
+<?php } ?>
