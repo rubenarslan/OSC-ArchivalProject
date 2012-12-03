@@ -30,11 +30,9 @@ class Paper extends AppModel {
 					'Paper.id' => $id
 					)
 			));
-#		$mult = Set::remove($mult,'Codedpaper.{n}.Study');
-#		$mult = Set::remove($mult,'Codedpaper.{n}.Paper');
 		$cps = Set::extract($mult,'Codedpaper.{n}.id');
 		$usernames = Set::extract($mult,'Codedpaper.{n}.User.username');
-		$mult = array_combine($cps,$usernames);
+		$mult = @array_combine($cps,$usernames); # @ because I don't have PHP 4 on the server.
 		return $mult;
 	}
 	public function fetchByDOI($doi = null) {

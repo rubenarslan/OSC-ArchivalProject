@@ -1,6 +1,7 @@
 <?php
 $Paper = ClassRegistry::init('Paper');
 $multipleCodings = $Paper->getMultipleCodings($paper_id);
+if($multipleCodings AND count($multipleCodings)>0) {
 $ids = array_keys($multipleCodings);
 $users = array_values($multipleCodings);
 ?>
@@ -36,4 +37,5 @@ if(count($users)>1) {
 		} ?>
 	</ul>
 </div>
-<?php } ?>
+<?php }
+} ?>
