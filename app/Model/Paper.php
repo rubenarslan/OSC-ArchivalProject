@@ -33,6 +33,7 @@ class Paper extends AppModel {
 		$cps = Set::extract($mult,'Codedpaper.{n}.id');
 		$usernames = Set::extract($mult,'Codedpaper.{n}.User.username');
 		$mult = @array_combine($cps,$usernames); # @ because I don't have PHP 4 on the server.
+		if(!$mult) $mult = array();
 		return $mult;
 	}
 	public function fetchByDOI($doi = null) {

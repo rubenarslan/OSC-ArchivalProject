@@ -1,12 +1,15 @@
 <?php
 $Paper = ClassRegistry::init('Paper');
 $multipleCodings = $Paper->getMultipleCodings($paper_id);
-if($multipleCodings AND count($multipleCodings)>0) {
-$ids = array_keys($multipleCodings);
-$users = array_values($multipleCodings);
 ?>
 <div class="actions btn-group">
-	<?php echo $this->Html->link(__('Code this paper for the ').$this->Ordinal->addSuffix(count($multipleCodings)+1,true). ' time', "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary','escape' => false)); ?>
+	<?php 
+	echo $this->Html->link(__('Code this paper for the ').$this->Ordinal->addSuffix(count($multipleCodings)+1,true). ' time', "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary','escape' => false)); 
+	
+	if($multipleCodings AND count($multipleCodings)>0) {
+		$ids = array_keys($multipleCodings);
+		$users = array_values($multipleCodings);
+	?>
 	 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 	    <span class="caret"></span>
 	 </button>
@@ -15,9 +18,10 @@ $users = array_values($multipleCodings);
 		<li><?php echo $this->Html->link('View '.$user."'s coding", "/codedpapers/view/$id"); ?></li>
 		<?php } ?>
 	</ul>
+	<?php }  ?>
 </div>
 <?php
-if(count($users)>1) {
+if(count($multipleCodings)>1) {
 ?>
 <div class="actions btn-group">
 	<a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Compare…'); ?><span class="caret"></span>
@@ -37,5 +41,4 @@ if(count($users)>1) {
 		} ?>
 	</ul>
 </div>
-<?php }
-} ?>
+<?php } ?>
