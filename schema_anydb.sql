@@ -10,7 +10,18 @@ DROP TABLE IF EXISTS `papers` ;
 
 CREATE  TABLE IF NOT EXISTS `papers` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
-  `doi` VARCHAR(255) NULL DEFAULT NULL ,
+  `DOI` VARCHAR(255) NULL DEFAULT NULL ,
+  `APA` TEXT NULL ,
+  `title` VARCHAR(255) NULL ,
+  `first_author` VARCHAR(255) NULL ,
+  `journal` VARCHAR(255) NULL ,
+  `volume` VARCHAR(45) NULL ,
+  `issue` VARCHAR(45) NULL ,
+  `publisher` VARCHAR(255) NULL ,
+  `URL` VARCHAR(255) NULL ,
+  `year` INT NULL ,
+  `page` VARCHAR(45) NULL ,
+  `type` VARCHAR(100) NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -210,7 +221,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `papers`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `papers` (`id`, `doi`) VALUES (1, 'testpaper');
+INSERT INTO `papers` (`id`, `DOI`, `APA`, `title`, `first_author`, `journal`, `volume`, `issue`, `publisher`, `URL`, `year`, `page`, `type`) VALUES (1, 'testpaper', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 

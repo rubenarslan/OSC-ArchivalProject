@@ -2,16 +2,27 @@
 	<h2><?php echo __('Papers'); ?></h2>
 	<table class="table">
 	<tr>
-			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('doi'); ?></th>
+			<th><?php echo $this->Paginator->sort('DOI'); ?></th>
+			<th><?php echo $this->Paginator->sort('title'); ?></th>
+			<th><?php echo $this->Paginator->sort('first_author'); ?></th>
+			<th><?php echo $this->Paginator->sort('year'); ?></th>
+			<th><?php echo $this->Paginator->sort('journal'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
+	function shortensome($x) {
+		if(strlen($x)>9) $x = substr($x,0,8). "…";
+		return $x;
+	}
 	foreach ($papers as $paper): ?>
 	<tr>
-		<td><?php echo h($paper['Paper']['id']); ?>&nbsp;</td>
-		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
-		<td class="actions">
+		<td><?php 
+		echo $this->Html->link(shortensome($paper['Paper']['DOI']), $paper['Paper']['URL']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['title']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['first_author']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['year']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['journal']); ?>&nbsp;</td>
+		<td class="actions span5">
 			<div class="btn-toolbar">
 				<div class="actions btn-group">
 					<?php echo $this->Html->link(__('View'), array('action' => 'view', $paper['Paper']['id']), array('class' => 'btn')); ?>

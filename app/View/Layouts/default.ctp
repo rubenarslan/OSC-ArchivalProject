@@ -23,7 +23,7 @@
     	?>
 
 	</head>
-	<body>
+	<body data-spy="scroll" data-offset="70">
 
 	    <div class="navbar navbar-fixed-top">
 	      <div class="navbar-inner">
@@ -33,7 +33,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <?php echo $this->Html->link('Archival Project', '/', array('class' => 'brand')); ?>
+	          <?php echo $this->Html->link('OSF-Archival', '/', array('class' => 'brand')); ?>
 	          <div class="container nav-collapse">
 	            <ul class="nav">
 		<?php
@@ -71,11 +71,7 @@
 
 	  <div class="container-fluid">
 	                <div class="row-fluid">
-	                    <div class="span3">
-	                      <div class="well sidebar-nav">
 	                        <?php echo $this->fetch('sidebar'); ?>
-	                      </div><!--/.well -->
-	                    </div><!--/span-->
 
 	           	<div id="main-content" class="span9">
 

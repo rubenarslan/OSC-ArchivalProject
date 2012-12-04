@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Paper'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('doi');
+		echo $this->Form->input('DOI');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

@@ -4,7 +4,7 @@ $multipleCodings = $Paper->getMultipleCodings($paper_id);
 ?>
 <div class="actions btn-group">
 	<?php 
-	echo $this->Html->link(__('Code this paper for the ').$this->Ordinal->addSuffix(count($multipleCodings)+1,true). ' time', "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary','escape' => false)); 
+	echo $this->Html->link(__('Code for the ').$this->Ordinal->addSuffix(count($multipleCodings)+1,true). ' time', "/codedpapers/add/". $paper_id, array('class' => 'btn btn-primary','escape' => false)); 
 	
 	if($multipleCodings AND count($multipleCodings)>0) {
 		$ids = array_keys($multipleCodings);

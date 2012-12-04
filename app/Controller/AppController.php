@@ -45,15 +45,13 @@ class AppController extends Controller {
 		'		recursive' => 3)
 		)), # Controller means that the controller's function isAuthorized will be called
 			'RequestHandler',
-			'Mendeley'
 			);
 	function beforeFilter() {
 			parent::beforeFilter();
-			$this->Auth->allow('login','logout','register');
+			$this->Auth->allow('login','logout','register','pages','display');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
-	        $this->Mendeley->__construct(Configure::read('Mendeley.consumerkey'),Configure::read('Mendeley.consumersecret'));
 	}
 	public function isAuthorized($user = null, $request = null) {
 		$admin = $user['Group']['name']==='admin' OR $user['Group']['name']==='manager';

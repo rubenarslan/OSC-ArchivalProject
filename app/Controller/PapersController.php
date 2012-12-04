@@ -41,16 +41,17 @@ class PapersController extends AppController {
 		}
 		$this->set('paper', $this->Paper->read(null, $id));
 	}
-	public function byDoi($doi = null) {
-		$doi = '10.1145/1323688.1323690';
-		$url = 'http://www.mendeley.com/oapi/documents/details/' . urlencode(urlencode($doi)) . '/?type=doi&consumer_key=CONSUMER_KEY';
-		$url = str_replace('CONSUMER_KEY', Configure::read('Mendeley.consumerkey'), $url);
-		$json = $this->Mendeley->http($url, 'GET');
-		debug($json);
+	public function APAbyDOI($DOI = null) {
+		$DOI = $this->request->query['DOI'];
+		pr ($this->Paper->fetchByDOI($DOI));
 		exit;
-		
-#		$this->Paper->fetchByDoi($doi);
 	}
+	public function DOIbyAPA($APA = null) {
+		$APA = $this->request->query['APA'];
+		pr ($this->Paper->fetchByFreeForm($APA));
+		exit;
+	}
+	
 
 /**
  * add method
@@ -60,6 +61,20 @@ class PapersController extends AppController {
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Paper->create();
+			if($this->request->data['Paper']['APA'] === '' AND $this->request->data['Paper']['DOI'] === '') {
+				$this->Session->setFlash(__('You did not provide any information. The paper could not be saved. Please, try again.'));
+				$this->redirect(array('action' => 'add'));
+			}
+ 			elseif ($this->request->data['Paper']['DOI'] === '') {
+				$metadata = $this->Paper->fetchByFreeForm(urlencode($this->request->data['Paper']['APA']));
+				$this->Session->setFlash(__('Metadata was automatically retrieved based on given reference.'));
+			}
+			else {
+				$metadata = $this->Paper->fetchByDOI($this->request->data['Paper']['DOI']);
+				$this->Session->setFlash(__('Metadata was automatically retrieved based on DOI.'));
+			}
+			$this->request->data['Paper']  = array_merge($this->request->data['Paper'], $metadata);
+			
 			if ($this->Paper->save($this->request->data)) {
 				$this->Session->setFlash(__('The paper has been saved'));
 				$this->redirect(array('action' => 'index'));

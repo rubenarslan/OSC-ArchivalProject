@@ -6003,3 +6003,48 @@ input.boxless-nameinput[type='text'] {
   width:50%;
   vertical-align:inherit;
 }
+
+.osfa-affix-sidenav {
+    background-color: #FFFFFF;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    margin: 30px 0 0;
+    padding: 0;
+}
+.osfa-affix-sidenav .icon-chevron-right {
+	float: right;
+	margin-right: -6px;
+	margin-top: 2px;
+	opacity: 0.25;
+}
+.osfa-affix-sidenav > li > a {
+    border: 1px solid #E5E5E5;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 8px 14px;
+}
+.osfa-affix-sidenav > li:first-child > a {
+    border-radius: 6px 6px 0 0;
+}
+.osfa-affix-sidenav > li:last-child > a {
+    border-radius: 0 0 6px 6px;
+}
+.osfa-affix-sidenav > .active > a {
+    border: 0 none;
+    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.1) inset, -1px 0 0 rgba(0, 0, 0, 0.1) inset;
+    padding: 9px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+.osfa-affix-sidenav {
+    width: 258px;
+}
+.osfa-affix-sidenav.affix {
+    top: 40px;
+}
+
+section,header {
+	padding-top: 70px;
+	margin-top: -70px;
+}

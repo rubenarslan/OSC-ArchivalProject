@@ -1,4 +1,5 @@
 <?php $this->start('sidebar'); ?>
+<div class="well span3">
 <h3>Tips</h3>
 <p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
 <p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <br>
@@ -55,6 +56,7 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 	</div>
 
 </div>
+</div>
 <?php $this->end(); ?>
 <?php $this->start('more_nav'); ?>
 <li class="divider-vertical"></li>
@@ -66,13 +68,13 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 <?php $this->end(); ?>
 <h1>Code paper</h1>
 
-<h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['doi'] ?></h2> 
+<h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['DOI'] ?></h2> 
 
 <?php
 echo $this->Form->create("Codedpaper");
 echo $this->Session->flash();
 echo $this->Form->hidden("Paper.id");
-echo $this->Form->hidden("Paper.doi");
+echo $this->Form->hidden("Paper.DOI");
 echo $this->Form->hidden("id");
 echo $this->Form->hidden("paper_id");
 

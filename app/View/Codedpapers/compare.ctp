@@ -1,4 +1,5 @@
 <?php $this->start('sidebar'); ?>
+<div class="well span3">
 <h3>Comparison</h3>
 <p>Here you'll see a side-by-side comparison of two codings of the same paper.<br>
 	Please try to resolve all differences.
@@ -19,6 +20,7 @@
 		<?php echo $this->Html->link(__('Right'), "/codedpapers/code/". $c2['Study.0.codedpaper_id']); ?>
 	</li>
 </ul>
+</div>
 <?php $this->end(); ?>
 <h1>Compare coded papers</h1>
 

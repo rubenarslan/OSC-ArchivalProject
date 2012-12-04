@@ -1,14 +1,42 @@
 <div class="papers view">
 <h2><?php  echo __('Paper'); ?></h2>
+<p class="lead"><?php echo h($paper['Paper']['APA']); ?></p>
+
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
 			<?php echo h($paper['Paper']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Doi'); ?></dt>
+		<dt><?php echo __('DOI'); ?></dt>
 		<dd>
-			<?php echo h($paper['Paper']['doi']); ?>
+			<?php echo $this->Html->link("Go to ".$paper['Paper']['DOI'], $paper['Paper']['URL']);
+			echo "<br>". $this->Html->link("Cited By (Google Scholar)","http://scholar.google.com/scholar?cites={$paper['Paper']['URL']}"); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Title'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['title']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('First Author'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['first_author']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Year'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['year']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Journal'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['journal']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Volume (Issue)'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['volume']. "({$paper['Paper']['volume']})"); ?>
 			&nbsp;
 		</dd>
 	</dl>

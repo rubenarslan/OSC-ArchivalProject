@@ -3,12 +3,14 @@
 	<table class="table">
 	<tr>
 			<th>DOI</th>
+			<th>APA reference</th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php
 	foreach ($codedpapers as $paper): ?>
 	<tr>
-		<td><?php echo h($paper['Paper']['doi']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['DOI']); ?>&nbsp;</td>
+		<td><?php echo h($paper['Paper']['APA']); ?>&nbsp;</td>
 		<td class="actions">
 			<div class="btn-toolbar">
 			<?php echo $this->Html->link(__('Continue coding'), "/codedpapers/code/". $paper['Codedpaper']['id'], array('class' => 'btn')); ?>
