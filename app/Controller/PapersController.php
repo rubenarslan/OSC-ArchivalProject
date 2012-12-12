@@ -51,6 +51,20 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByFreeForm($APA));
 		exit;
 	}
+	# todo: Wait for updated coding scheme
+	# todo: because coders should copy-paste as much as possible from the abstract (to get agreement, especially on structure), it'd be nice to display at the top of the coding form
+	# todo: add comments and free form field to form
+	# todo: remove effect/test hierarchy?
+	# todo: improve inline help in coding form
+	# todo: add a dropdown or type your own field for p-values
+	# todo: calculate p-values based on test statistic
+	# todo: add "completed" button which makes a coded paper available for comparison by lowest-level coders
+	# todo: make the comparison table more human readable
+	
+	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
+		# related: make it easy for disoriented coders to find someone at an intermediate level (lots of badges) to ask for advice
+	# todo: roles and supervision. maybe the easiest would be if students choose their supervisor at sign up. is it sufficient for our purposes right now if all "managers" have access to all users and can simply check at what institution they are? otherwise I'll regret not going for fully-fledged ACLs.. I wouldn't mind having as much as possible data about individual users and papers out in the open.
+	
 	
 
 /**
@@ -67,7 +81,7 @@ class PapersController extends AppController {
 			}
  			elseif ($this->request->data['Paper']['DOI'] === '') {
 				$metadata = $this->Paper->fetchByFreeForm(urlencode($this->request->data['Paper']['APA']));
-				$this->Session->setFlash(__('Metadata was automatically retrieved based on given reference.'));
+				$this->Session->setFlash(__('Metadata was automatically retrieved based on given reference and the DOI that resulted from the call.'));
 			}
 			else {
 				$metadata = $this->Paper->fetchByDOI($this->request->data['Paper']['DOI']);

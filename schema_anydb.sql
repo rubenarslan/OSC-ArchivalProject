@@ -22,6 +22,8 @@ CREATE  TABLE IF NOT EXISTS `papers` (
   `year` INT NULL ,
   `page` VARCHAR(45) NULL ,
   `type` VARCHAR(100) NULL ,
+  `abstract` TEXT NULL ,
+  `readers` INT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -221,7 +223,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Data for table `papers`
 -- -----------------------------------------------------
 START TRANSACTION;
-INSERT INTO `papers` (`id`, `DOI`, `APA`, `title`, `first_author`, `journal`, `volume`, `issue`, `publisher`, `URL`, `year`, `page`, `type`) VALUES (1, 'testpaper', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `papers` (`id`, `DOI`, `APA`, `title`, `first_author`, `journal`, `volume`, `issue`, `publisher`, `URL`, `year`, `page`, `type`, `abstract`, `readers`) VALUES (1, 'testpaper', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 COMMIT;
 

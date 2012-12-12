@@ -65,13 +65,21 @@ class Paper extends AppModel {
 		$json['first_author'] = $json['author'][0]['family'] . ", " . $json['author'][0]['given'];
 		unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']);
 		
-		return array_merge(array('APA' => $apa_ref),$json);
+		$consumerkey = Configure::read('Mendeley.consumerkey');
+		$ch_mendeley = curl_init("http://api.mendeley.com/oapi/documents/details/". 
+		urlencode(urlencode($DOI)). "/?type=doi&consumer_key=" . $consumerkey);
+		curl_setopt($ch_mendeley, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch_mendeley, CURLOPT_RETURNTRANSFER, true);
+		$mendeley_json = curl_exec($ch_mendeley);
+		$mendeley_json = json_decode( $mendeley_json, true);
+
+		if(count($mendeley_json)>5) {
+			$chars_altered = strlen($json['title']) - similar_text($mendeley_json['title'],$json['title'], $similarity);
+			if($chars_altered !== 0 AND $similarity<50) debug('Mendeley and dx.doi.org disagree about the article title.');
+			$json['readers'] = $mendeley_json['stats']['readers'];
+			$json['abstract'] = $mendeley_json['abstract'];
+		}
 		
-		#curl -LH "Accept: applicationdx.doi.org/10.1038/nrd842
-#		return $apa_ref;
-#		curl -LH "Accept: text/bibliography; style=apa" http://dx.doi.org/10.1038/nrd842
-#		$piped = file_get_contents(	);
-#		debug($piped);
-		#http://www.crossref.org/openurl/?id=doi:10.3998/3336451.0009.101&noredirect=true&pid=rubenarslan@gmail.com&format=unixref
+		return array_merge(array('APA' => $apa_ref),$json);
 	}
 }
