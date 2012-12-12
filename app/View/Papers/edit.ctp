@@ -1,10 +1,8 @@
 <div class="papers form">
 <?php echo $this->Form->create('Paper'); ?>
 	<fieldset>
-		<legend><?php echo __('Edit Paper'); ?></legend>
 	<?php
-		echo $this->Form->input('id');
-		echo $this->Form->input('DOI');
+		echo $this->Form->inputs();
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

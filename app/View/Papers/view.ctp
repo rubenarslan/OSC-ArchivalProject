@@ -2,6 +2,8 @@
 <h2><?php  echo __('Paper'); ?></h2>
 <p class="lead"><?php echo h($paper['Paper']['APA']); ?></p>
 
+<blockquote><?php echo h($paper['Paper']['abstract']); ?>
+</blockquote>
 	<dl>
 		<dt><?php echo __('Id'); ?></dt>
 		<dd>
@@ -39,18 +41,31 @@
 			<?php echo h($paper['Paper']['volume']. "({$paper['Paper']['volume']})"); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Readers (on Mendeley)'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['readers']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-		<li><?php echo $this->Html->link(__('Edit Paper'), array('action' => 'edit', $paper['Paper']['id'])); ?> </li>
-		<li><?php echo $this->Form->postLink(__('Delete Paper'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?> </li>
-		<li><?php echo $this->Html->link(__('List Papers'), array('action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Paper'), array('action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Codedpapers'), array('controller' => 'codedpapers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>
-	</ul>
+
+	<div class="actions btn-group">
+		<?php echo $this->Html->link('Edit', array('action' => 'edit', $paper['Paper']['id']), array('class' => "btn", 'escape' => false)); ?>
+		<button class="btn dropdown-toggle" data-toggle="dropdown">
+		    <span class="caret"></span>
+		 </button>
+
+		<ul class="dropdown-menu">
+			<li> </li>
+			<li><?php echo $this->Form->postLink(__('Delete Paper'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?> </li>
+			<li><?php echo $this->Html->link(__('List Papers'), array('action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Paper'), array('action' => 'add')); ?> </li>
+			<li><?php echo $this->Html->link(__('List Codedpapers'), array('controller' => 'codedpapers', 'action' => 'index')); ?> </li>
+			<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>
+		</ul>
+	</div>
 </div>
 <div class="related">
 	<h3><?php echo __('Related Codedpapers'); ?></h3>
@@ -84,7 +99,7 @@
 <?php endif; ?>
 
 <div class="actions btn-group">
-	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
+	<a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
 	  </a>
 	<ul class="dropdown-menu">
 			<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>

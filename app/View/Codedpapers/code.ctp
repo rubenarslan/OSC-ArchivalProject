@@ -66,10 +66,16 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
     </div>
 </li>
 <?php $this->end(); ?>
-<h1>Code paper</h1>
+<h1>Code paper <?php echo $this->Html->link('View <span class="icon-eye-open"></span>', 
+	array('controller' => 'papers','action' => 'view', $this->data['Paper']['id']), 
+	array('escape' => false, 'class' => 'btn btn-large'));?></h1>
 
-<h2><abbr title="Digital Object Identifier">DOI</abbr>: <?php  echo $this->data['Paper']['DOI'] ?></h2> 
-
+<p class="lead span8"><?php 
+	echo $this->data['Paper']['title'];
+	?></p> 
+<p class="span6">
+	<?php  echo $this->data['Paper']['abstract']; ?>
+</p>
 <?php
 echo $this->Form->create("Codedpaper");
 echo $this->Session->flash();
