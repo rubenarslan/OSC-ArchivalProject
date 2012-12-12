@@ -65,6 +65,10 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
     <div class="bar" style="width: 0%;" id="codingprogress"></div>
     </div>
 </li>
+<li class="divider-vertical"></li>
+<li class="btn-nav">
+	<button id="navSave" class="btn" disabled="disabled">Saved</button>
+</li>
 <?php $this->end(); ?>
 <h1>Code paper <?php echo $this->Html->link('View <span class="icon-eye-open"></span>', 
 	array('controller' => 'papers','action' => 'view', $this->data['Paper']['id']), 
@@ -88,49 +92,43 @@ echo $this->element('study', array(
 	"data" => $this->data
 ));
 
-echo '<div class="form-actions">';
+echo '<div class="form-actions"><div class="btn-group">';
 echo $this->Form->end(array(
     'label' => 'Save!',
     'id' => 'CodedpaperCodeFormSubmit',
-	'class' => 'btn btn-primary',
+	'class' => 'btn btn-large',
+	'div' => false,
 ));
-echo '</div>';
+?>
+	<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
+	<label id="CodedpaperCompletedLabel" class="btn btn-large btn-primary<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
+		<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
+		Complete (for others to view)
+	</label>
+	</div>
+</div>
+<?php
 pr($this->validationErrors);
 ?>
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">
 //<![CDATA[
-function toggleautosave() {
+function toggleAutosave() {
 	autosaveglobal = !autosaveglobal;
 	icon = autosaveglobal ? ' <i class="icon-refresh icon-white"></i>' : '';
 	$("#toggle_autosave").button('toggle').html('Toggle Autosave' + icon);
-	if(!autosaveglobal) {
-		theQueue.clearQueue();
-		$('#flashMessage').remove();
-	}
 	return false;
 }
-function autosave () {
+function unsavedChanges () {
+//	console.log($("#CodedpaperCodeForm").serialize());
+	$('#navSave').addClass('btn-info').removeAttr('disabled').text('Unsaved changes…');
 	if(autosaveglobal) {
-		if(theQueue.queue().length==0) {
-			$('#flashMessage').remove();
-			$('<div id="flashMessage" class="message">Unsaved changes…<br>Autosave in <span>5.0</span> seconds</div>').appendTo('#main-content');
-			var sec = $('#flashMessage span').text()
-			var timer = setInterval(function() {
-				sec = sec - 0.4;
-				sec = parseFloat(sec).toFixed(1);
-				if(sec.length==1) sec = sec + ".0";
-			   $('#flashMessage span').text(sec);
-			   if (sec < 0.5) {
-			      clearInterval(timer);
-			   } 
-			}, 400);
-			theQueue.delay(5000);
-			theQueue.queue(saveform);
+		if( ($.now() - lastSave ) > 5000) {
+			saveform();
 		}
 	}
 }
-function updateprogress () {
+function updateProgress () {
 	formelms = $('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea');
 	
 	var nonZ = 0;
@@ -143,8 +141,8 @@ function updateprogress () {
 function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 		$(elm).off('change','*');
-		$(elm).on('change',autosave);
-		$(elm).on('change',updateprogress);
+		$(elm).on('change',unsavedChanges);
+		$(elm).on('change',updateProgress);
 	});
 	$('#CodedpaperCodeForm input[type=number]').each(function(i,elm) {
 		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
@@ -172,25 +170,20 @@ function activateinputs () {
 	});
 }
 function saveform() {
-	focused = "#" + $('input:focus,textarea:focus').attr("id");
-	theQueue.clearQueue();
 	options = {
 		data: $("#CodedpaperCodeFormSubmit").closest("form").serialize(), 
 		dataType:"html", 
 		success:
 		function (data, textStatus) {
-			if(data=='Study saved.') {
-				$('#flashMessage').remove();
-				$('<div id="flashMessage" class="message">Study saved.</div>').appendTo('#main-content');
-			}
-			else {
+			focused = "#" + $(':input:focus').attr("id"); // pseudoselector for focused selects, inputs and textarea
+			// fixme: some input is getting lost
+			$.when($("#main-content").html(data)).done(function(){
 				if(typeof focused != 'undefined') { // if a field was focused upon autosaving
-					$.when($("#main-content").html(data)).done(
-					$(focused).focus()); // refocus it when the data has been replaced
-				} else {
-					$("#main-content").html(data);
+					$(focused).focus()
 				}
-			}
+				$('#navSave').removeClass('btn-info').attr('disabled', 'disabled').text('Saved');
+				lastSave = $.now();
+			}); // refocus it when the data has been replaced
 		}, 
 		type:"post", 
 		url: $("#CodedpaperCodeFormSubmit").closest("form").attr('action')
@@ -198,28 +191,41 @@ function saveform() {
 	$.ajax(options);
 }
 $(document).ready(function () {
-	theQueue = $({}); // jQuery on an empty object - a perfect queue holder
+	if(typeof autosaveglobal == 'undefined') {
+		lastSave = $.now(); // only set when loading the first time
+		autosaveglobal = true;
+		$("#toggle_autosave").button('toggle').on('click', toggleAutosave);
+	}
+	
 	activateinputs();
 	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
 		saveform();
 		return false;
 	});
+	$("#navSave").attr('disabled','disabled').off('click').click( function (event) {
+		saveform();
+		return false;
+	});
 	
-	updateprogress();
-	if(typeof autosaveglobal == 'undefined') {
-		autosaveglobal = true; // only set when loading the first time
-		$("#toggle_autosave").button('toggle').on('click', toggleautosave);
-	}
-		
+	updateProgress();
+	$('#CodedpaperCompletedLabel').click(function() {
+		$('#CodedpaperCompletedLabel').toggleClass('active', $('#CodedpaperCompleted').prop('checked') ); // switch to checkbox state 
+	});
 	$(document).off('keydown');
-	$(document).keydown(function(event) {
+	$(document).keydown(function(event) { // add a key combo to save the form
 		if (event.keyCode === 10 || event.keyCode == 13 && event.ctrlKey) {
 			saveform();
 		    event.preventDefault();
 		    return false;
 		} else return true;
 	});
+	
+	window.onbeforeunload = function() {
+		if ( $('#navSave').text() != 'Saved' ) {
+			return 'You have unsaved changes.'
+		}
+	};
 	$("[rel=tooltip]").tooltip();
 });
 //]]>

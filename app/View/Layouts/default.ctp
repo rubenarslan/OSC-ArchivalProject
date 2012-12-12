@@ -33,7 +33,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <?php echo $this->Html->link('OSF-Archival', '/', array('class' => 'brand')); ?>
+	          <?php echo $this->Html->link('OSC-Archival', '/', array('class' => 'brand')); ?>
 	          <div class="container nav-collapse">
 	            <ul class="nav">
 		<?php

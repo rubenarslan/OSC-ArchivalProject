@@ -105,7 +105,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 									});
 							}
 							$(e.target).closest('div.formblock').remove();
-							autosave();
+							unsavedChanges();
 						}
 						$dialog.find('a.btn:eq(0)').text(o.confirmButton).bind('click', function(e) {
 							$dialog.remove();

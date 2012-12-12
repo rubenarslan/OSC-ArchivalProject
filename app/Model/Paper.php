@@ -14,6 +14,7 @@ class Paper extends AppModel {
  *
  * @var array
  */
+	public $actsAs = array('Containable');
 	public $hasMany = array(
 		'Codedpaper' => array(
 			'className' => 'Codedpaper',
@@ -25,10 +26,17 @@ class Paper extends AppModel {
 	public function getMultipleCodings ($id = null) {
 		$mult = $this->find('first', # GET THAT PAPER
 			array(
-				"recursive" => 2,
 				"conditions" => array(
-					'Paper.id' => $id
-					)
+					'Paper.id' => $id,
+					),
+				'fields' => 'id',
+				'contain' => array(
+					'Codedpaper' => array( 
+						'fields' => array('id','completed','user_id','paper_id'),
+						'User' => array('fields' => 'username'),
+						'conditions' => array( 'completed' => true ) 
+						),
+				) 
 			));
 		$cps = Set::extract($mult,'Codedpaper.{n}.id');
 		$usernames = Set::extract($mult,'Codedpaper.{n}.User.username');

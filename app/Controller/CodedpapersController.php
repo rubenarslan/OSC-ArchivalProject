@@ -53,21 +53,20 @@ class CodedpapersController extends AppController {
 		}
 		if (!$this->request->is('get')) { # if it was posted or ajaxed			
 			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) {
-				if($this->request->is('ajax')) {
-					echo 'Study saved.';
-					exit;
-				} 
-				else {
-					$this->Session->setFlash('Study Saved!');
-				}
+#				if($this->request->is('ajax')) { # commented this out, because I'm reloading the form again
+#					echo 'Study saved.';
+#					exit;
+#				} 
+#				else {
+#					$this->Session->setFlash('Study Saved!');
+#				}
 			}
 			else {
 				$this->Session->setFlash("Could not save.");
 			}
 		}
-		else {  # fixme: for some reason, when I read the data right after saving it, it isn't displayed, I have to reload. how come..?
-			$this->request->data = $this->Codedpaper->findDeep($id);
-		}
+		### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)
+		$this->request->data = $this->Codedpaper->findDeep($id);
 		#http://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
 #		$all_codedpaper_studies = $this->Codedpaper->Study->find('all',array(
 #			"recursive" => 0,
@@ -119,6 +118,8 @@ class CodedpapersController extends AppController {
 		    throw new NotFoundException('Second paper does not exist.');
 		if($this->Codedpaper->field('paper_id',array('id' => $id1))!== $this->Codedpaper->field('paper_id',array('id' => $id2)))
 			throw new NotFoundException('These are codings of two different papers.');
+		if($this->Codedpaper->field('completed',array('id' => $id1))==false OR $this->Codedpaper->field('completed',array('id' => $id2))==false)
+			throw new NotFoundException('One of these papers is not yet marked as completely coded.');
 		
 		$comparison = $this->Codedpaper->compare($id1,$id2);
 		$this->set('c1',$comparison[0]);

@@ -35,6 +35,7 @@ foreach($c1 as $key => $val) {
 	$isid = substr($key,-3);
 	if($isid != '_id' AND $isid!='.id') {
 		$key1 =  preg_replace_callback( "|(\d+)|", "inc", $key);
+		$key1 = Inflector::humanize(str_replace("."," ",$key1));
 	?>
 	<tr>
 		<th><?=$key1?></th>

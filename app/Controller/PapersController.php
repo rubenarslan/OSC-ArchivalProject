@@ -51,14 +51,12 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByFreeForm($APA));
 		exit;
 	}
-	# todo: Wait for updated coding scheme
-	# todo: because coders should copy-paste as much as possible from the abstract (to get agreement, especially on structure), it'd be nice to display at the top of the coding form
+	# todo: Implement updated coding scheme
 	# todo: add comments and free form field to form
 	# todo: remove effect/test hierarchy?
 	# todo: improve inline help in coding form
 	# todo: add a dropdown or type your own field for p-values
 	# todo: calculate p-values based on test statistic
-	# todo: add "completed" button which makes a coded paper available for comparison by lowest-level coders
 	# todo: make the comparison table more human readable
 	
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
