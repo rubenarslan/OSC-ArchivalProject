@@ -57,13 +57,13 @@ class PapersController extends AppController {
 	# todo: improve inline help in coding form
 	# todo: add a dropdown or type your own field for p-values
 	# todo: calculate p-values based on test statistic
-	# todo: make the comparison table more human readable
-	
+	# todo: update joined codedpapers thingie
+
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
 		# related: make it easy for disoriented coders to find someone at an intermediate level (lots of badges) to ask for advice
 	# todo: roles and supervision. maybe the easiest would be if students choose their supervisor at sign up. is it sufficient for our purposes right now if all "managers" have access to all users and can simply check at what institution they are? otherwise I'll regret not going for fully-fledged ACLs.. I wouldn't mind having as much as possible data about individual users and papers out in the open.
-	
-	
+
+
 
 /**
  * add method
