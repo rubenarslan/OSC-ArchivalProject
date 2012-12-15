@@ -53,7 +53,7 @@ class PapersController extends AppController {
 	}
 	# todo: Implement updated coding scheme
 	# todo: add comments and free form field to form
-	# todo: remove effect/test hierarchy?
+	# todo: finish removing effect/test hierarchy?
 	# todo: improve inline help in coding form
 	# todo: add a dropdown or type your own field for p-values
 	# todo: calculate p-values based on test statistic
@@ -89,7 +89,7 @@ class PapersController extends AppController {
 			
 			if ($this->Paper->save($this->request->data)) {
 				$this->Session->setFlash(__('The paper has been saved'));
-				$this->redirect(array('action' => 'index'));
+				$this->redirect(array('action' => 'view', $this->Paper->getInsertID()));
 			} else {
 				$this->Session->setFlash(__('The paper could not be saved. Please, try again.'));
 			}

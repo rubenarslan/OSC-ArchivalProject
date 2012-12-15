@@ -5,7 +5,7 @@ class CodedpapersController extends AppController {
 		if($admin) return true;
 		
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','moreeffects','morestudies','compare'))) return true; # viewing and adding is allowed to all users. comparing, indexing and adding empty stuff too.
+		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','morestudies','compare'))) return true; # viewing and adding is allowed to all users. comparing, indexing and adding empty stuff too.
 		
 
 		$codedpaper_id = $this->request->params['pass'][0];
@@ -105,11 +105,8 @@ class CodedpapersController extends AppController {
 			
 		$this->request->data = $this->Codedpaper->Study->createDummy($this->request->query['codedpaper_id'], $this->request->query['sstart']);
 	}
-	public function moreeffects () {
-		$this->request->data = $this->Codedpaper->Study->Effect->createDummy($this->request->query['study_id'], $this->request->query['s'], $this->request->query['estart']);
-	}
 	public function moretests () {
-		$this->request->data = $this->Codedpaper->Study->Effect->Test->createDummy($this->request->query['study_id'], $this->request->query['effect_id'], $this->request->query['s'], $this->request->query['e'], $this->request->query['tstart']);
+		$this->request->data = $this->Codedpaper->Study->Test->createDummy($this->request->query['study_id'], $this->request->query['s'], $this->request->query['tstart']);
 	}
 	public function compare ($id1 = NULL, $id2 = NULL) {
 		if (!$this->Codedpaper->exists($id1)) 

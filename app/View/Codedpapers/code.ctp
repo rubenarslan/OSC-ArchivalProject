@@ -4,6 +4,7 @@
 <p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
 <p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <br>
 	<button type="button" id="toggle_autosave" class="btn btn-inverse" data-toggle="button">Toggle Autosave <i class="icon-refresh icon-white"></i></button></p>
+<h4><?= $this->Html->link('Coding scheme', array('controller' => 'pages','action' => 'coding_scheme')); ?></h4>
 <h4>Coded by others</h4>
 <?php
 echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper']['id'],'user_name' => $this->data['User']['username']));
@@ -108,6 +109,7 @@ echo $this->Form->end(array(
 	</div>
 </div>
 <?php
+debug($this->data);
 pr($this->validationErrors);
 ?>
 <?php echo $this->Js->writeBuffer(); ?>
@@ -155,7 +157,6 @@ function activateinputs () {
 		}
 	});
 	
-	$(".chzn-select").chosen({allow_single_deselect: true});
 	$('div.chzn-search input').attr("tabindex",null);
 	
 	$('a.selfdestroyer').each(function(i,elm) {

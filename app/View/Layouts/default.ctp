@@ -12,11 +12,11 @@
 		<script src="<?php echo $this->webroot; ?>js/twitter/bootstrap/jquery-1.8.3.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/twitter/bootstrap/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/chosen.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/select2.css" />
 		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/bootstrap.js"></script>
 		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/jquery.bootstrap.confirm.popover.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/chosen.jquery.js"></script>
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.js"></script>
 		
     	<?php
 			echo $this->fetch('meta');

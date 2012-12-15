@@ -25,29 +25,30 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		
 	echo $this->Form->hidden("Study.$s.id");
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
+	
+	echo '<div class="row-fluid"><span class="span1">Replication: </span>';
 	echo $this->Form->input("Study.$s.replication_code", array(
 		'options' => array('', 'Novel', 'Direct', 'Direct+X', 'Conceptual', 'Conceptual+X', 'E'),
-		));
+		'label' => false,
+		'div' => array('class'=>'span3 offset1')
+	));
 
-/*		'data-provide' => 'typeahead',
-		'data-source' => '["E","Direct","Conceptual","Direct+X","Conceptual+X","Novel"]', 
-		'data-min-length' => '1',
-		));
-*/
-	#	debug($replicable_studies);
-	echo $methcode = $this->Chosen->select("Study.$s.replicates_study_id", $replicable_studies,		
+	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies,		
 		array(
 			'data-placeholder' => 'Replicates study…',
 			'data-provide' => 'typeahead',
 			'data-min-length' => '1',
-			'class' => 'span4')
-	);
+			'class' => 'span4 select2single',
+			'div' => array('class' => 'span4' ),
+			'before' => '<br>' 
+		));
+	echo '</div>';
 	
-	echo '<div class="row-fluid"><div class="span12">';
-		$options = array( "s" => $s );
-		if($newadd) $options["estart"] = 0;
+	echo '<div class="row-fluid"><div class="span11 offset1">';
+		$options = array( "s" => $s);
+		if($newadd) $options["tstart"] = 0;
 		$options["data"] = $this->data;
-		echo $this->element('effect', $options);
+		echo $this->element('test', $options);
 	echo '</div></div>';
 echo '</div></div>';
 }
@@ -65,8 +66,8 @@ $(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (ev
 	$("#<?=$addstudyid?>").replaceWith(data);
 	}, url:"<?php echo $this->webroot; ?>codedpapers/morestudies"});
 return false;});
-$("[rel=popover]").popover();
-
+	$("[rel=popover]").popover();
+	$(".select2single").select2({allowClear:true});
 
 });
 //]]>;

@@ -45,7 +45,6 @@ class Paper extends AppModel {
 		return $mult;
 	}
 	public function fetchByFreeForm($freeform = null) {
-		# http://search.labs.crossref.org/dois?q=Carberry%2C+Josiah.+%E2%80%9CToward+a+Unified+Theory+of+High-Energy+Metaphysics%3A+Silly+String+Theory.%E2%80%9D+Journal+of+Psychoceramics+5.11+%282008%29%3A+1-3.#
 		$ch = curl_init('http://search.labs.crossref.org/dois?q='.urlencode($freeform));
 #		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application; style=apa']);
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);

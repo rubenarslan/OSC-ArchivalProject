@@ -13,7 +13,11 @@
 		echo $this->Form->input('APA', array('class' => 'span6','rows'=>'3', 'after' => '<span class="help-inline">We\'ll try to automatically retrieve the APA formatted reference and other metadata using <a href="http://dx.doi.org">http://dx.doi.org</a>.</span></div>', 'label' => array('text'=>'<abbr title="American Psychological Association" class="initialism">APA</abbr> formatted reference','class' => 'control-label'), 'between'=> '<div class="controls">'));
 		    ?>
 		</div>
-<?php echo $this->Form->end(__('Submit')); ?>
+<?php echo $this->Form->end(array(
+	    'label' => 'Add new paper and try to auto-retrieve metadata!',
+		'class' => 'btn btn-large btn-success',
+		'div' => false,
+	)); ?>
 </div>
 <div class="actions btn-group">
 	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>

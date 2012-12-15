@@ -3,31 +3,42 @@ if($newadd = isset($tstart)) {
 	$this->layout = 'ajax'; # ready for insertion
 	$length = $tstart + 1; # if it's supposed to be added anew, tell me where to start
 } else {
-	if(isset($this->data['Study'][$s]['Effect'][$e]['Test']))
-		$length = count ( $this->data['Study'][$s]['Effect'][$e]['Test'] ); # data gets only passed if it wasn't added anew
+	if(isset($this->data['Study'][$s]['Test']))
+		$length = count ( $this->data['Study'][$s]['Test'] ); # data gets only passed if it wasn't added anew
 	else $length = 0;
 	$tstart = 0; # start from the beginning
 }
 $study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
-$effect_id = Set::classicExtract($this->data,"Study.$s.Effect.$e.id"); # we need to give this to the add-button
 
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
-	
-	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Effect.$e.Test.$t.id");
+		
+	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Test.$t.id");
 	echo "<h5><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
-	echo "Test Nr. ".($s+1).'.'.($e+1).'.'.($t+1).' ';
-	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.name",array(
+	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
+	echo $this->Form->input("Study.$s.Test.$t.name",array(
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'test name (click to edit)')
 	);
 	echo "</h5>";
 
-	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.id");	
-	echo $this->Form->hidden("Study.$s.Effect.$e.Test.$t.effect_id");
+	echo $this->Form->hidden("Study.$s.Test.$t.id");	
+	echo $this->Form->hidden("Study.$s.Test.$t.effect_id");
+	
+	
+	echo '<div class="row-fluid">'; # todo: only show textarea if the first or second option is selected
+		echo '<div class="span3">Prior hypothesis:<br>';
+	echo $this->Form->radio("Study.$s.Test.$t.hypothesized", array('Yes, directional', 'Yes, nondirectional', 'No, no hypothesis'),
+		array('legend'=> false, 'separator' => '<br>'));
+	echo '</div>';
+	
+	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array('label' => false,
+		'class' => 'span12', 'rows' => '4', 'div'=> array('class'=> "span4")));
+	echo '<div class="span4 offset1"><br>Write down the prior hypothesis, if any, and its page number.</div>';
+	echo '</div>';
 	
 		
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.analytic_design_code",array(
+		echo $this->Form->input("Study.$s.Test.$t.analytic_design_code",array(
 			'options' => array(
 				'' => '',
 				'IA' => 'IA: correlational/multivariate internal analysis of manipulation check',
@@ -35,50 +46,62 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'RM' => 'RM: experimental analysis of repeated-measures effect',
 				'RMX' => 'RMX: combined experimental and repeated-measures effect',
 				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
-			'class' => 'span12', 'div'=> array('class'=>"span3"))
+			'class' => 'span12 select2single', 'div'=> array('class'=>"span3"))
 		);
 		
-	echo $this->Form->input("Study.$s.Effect.$e.Test.$t.methodology_codes",array(
-		'options' => array('',"BI","P","SR","I","BC"),
-		'class' => 'span12', 'div'=> array('class'=>"span3"))
+	$meth_codes = array('A'  => 'archival measures',
+	'BI' => 'brain imaging measures',
+	'J'  => 'judgment of the participant', 
+	'P'  => 'non-imaging physiological measures',
+	'SR' => 'self-report measures',
+	'BC' => 'behavioral/choice measures',
+	'O'  => 'Other',);
+		
+	$selected = array_intersect(array_keys($meth_codes),
+		Set::classicExtract($this->data,"Study.$s.Test.$t.MethodologyCode.{n}.methodology_code") );
+	echo $this->Form->select("Study.$s.Test.$t.MethodologyCode.{n}.methodology_code", $meth_codes,
+		array(
+		'value' => $selected,
+		'multiple' => true,
+		'class' => 'select2multiple2', 'div'=> array('class'=>"span3"))
 	);
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.independent_variables",array(
+		echo $this->Form->input("Study.$s.Test.$t.independent_variables",array(
 			'class' => 'span12', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated IVs')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.dependent_variables",array(
+		echo $this->Form->input("Study.$s.Test.$t.dependent_variables",array(
 			'class' => 'span12', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated DVs')
 		);
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.other_variables",array(
+		echo $this->Form->input("Study.$s.Test.$t.other_variables",array(
 			'class' => 'span12', 'div'=> array('class'=>"span8"), 'rows' => 1, 'placeholder' => 'comma-separated covariates etc.')
 		);
 	echo '</div>';
 	echo '</div>';
 
 	echo '<div class="row-fluid sampleinfo">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.data_points_excluded",array(
+		echo $this->Form->input("Study.$s.Test.$t.data_points_excluded",array(
 			'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N excluded')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.N_used",array(
+		echo $this->Form->input("Study.$s.Test.$t.N_used_in_analysis",array(
 				'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N used')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reasons_for_exclusions",array(
+		echo $this->Form->input("Study.$s.Test.$t.reasons_for_exclusions",array(
 			'class' => 'span12', 'div'=> array('class'=> array("span4",'hidden')), 'rows' => '2')
 		);
 		echo '<div class="span2 offset1">You can <a href="#" class="copysample">copy</a> this information from the test before.</div>';
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.type_statistical_test",array(
+		echo $this->Form->input("Study.$s.Test.$t.type_of_statistical_test_used",array(
 			'class' => 'span12', 'div'=> array('class'=>"span4"), 'label' => 'Type of statistical test')
 		);
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic",array(
+		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic",array(
 			'options' => array(
 				'' => '',
 				'chi.square' => 'χ²', 
@@ -87,63 +110,75 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'F' => 'F'),
 			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.degrees_of_freedom",array(
+		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.inferential_test_statistic_value",array(
+		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic_value",array(
 			'class' => 'span9', 'div'=> array('class'=>"span2"), 'label' => 'value')
 		);
 		echo '<div class="span4 offset1">Enter the name and value of the test statistic and its associated degrees of freedom.</div>';
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_significance_of_test",array(
+		echo $this->Form->input("Study.$s.Test.$t.reported_significance_of_test",array(
 			'class' => 'span5', 'div'=> array('class'=>"span3 input-prepend"), 'label' => 'Significance (reported)', 'placeholder' => 'p-value (0.00 - 1)', 'between' => '<span class="add-on">0.</span>')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_significance_of_test",array(
+		echo $this->Form->input("Study.$s.Test.$t.computed_significance_of_test",array(
 			'class' => 'span8', 'div'=> array('class'=>"span2 input-prepend"), 'label' => '(computed)', 'between' => '<span class="add-on">0.</span>')
 		);
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.main_result_of_test",array(
+		echo $this->Form->input("Study.$s.Test.$t.hypothesis_supported",array(
 			'class' => 'span12', 'div'=> array('class'=>"span6"))
 		);
-		echo '<div class="span4"><br>Summarise the main result.</div>';
+		echo '<div class="span4"><br>Was the hypothesis supported?</div>';
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_effect_size",array(
+		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic",array(
+			'options' => array(
+				'' => '',
+				'r' => 'r',
+				'partial.r' => 'partial r',
+				'r.squared' => 'R²',
+				'delta.r.squared' => 'ΔR²',
+				'regression.b' => 'B (regression coefficient)',
+				'regression.beta' => 'b* (standardized regression coefficient)',
+				'cohens.d' => 'Cohen\'s d\' (t-test)', 
+				'anova.d' => 'd (ANOVA)', 
+				'f.squared' => 'f²', 
+				'eta.squared' => 'η²', 
+				'partial.eta.squared' => 'partial η²', 
+				'omega.squared' => 'ω²', 
+				'odds.ratio' => 'Odds Ratio', 
+				'spearmans.rho' => 'Spearman\'s rho (rank order correlation)', 
+				'phi.coefficient' => 'Phi coefficient', 
+				'cramers.v' => 'Cramer\'s v', 
+				),
+			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+		);
+		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic_value",array(
 			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Effect size (reported)')
 		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_effect_size",array(
-			'class' => 'span12', 'div'=> array('class'=>"span2"), 'label' => '(computed)')
-		);
 	echo '</div>';
-	
-	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.reported_statistical_power",array(
-			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Power (reported)', 'placeholder' => '0.00 - 1')
-		);
-		echo $this->Form->input("Study.$s.Effect.$e.Test.$t.computed_statistical_power",array(
-			'class' => 'span12', 'div'=> array('class'=>"span2"), 'label' => '(computed)')
-		);
-		echo '<div class="span4 offset1"><br>You can use G*Power to calculate the power.</div>';
-	echo '</div>';
+
 
 echo '</div></div>';
 	
 }
 
-$addtestid = "test{$s}_{$e}";
+$addtestid = "test{$s}";
 echo "<h5 id='$addtestid'>";
-echo  $this->Html->link("Add test ".($s+1).'.'.($e+1).'.'.($t+1),
+echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
 	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
 echo "</h5>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function () {
+	$(".select2multiple").select2({allowClear:true});
+	
 	$('.copysample').each(function(i,elm) { // copy the sample information from the preceding test if it exists
 		$(elm).off('click','*');
 		$(elm).on('click', function(evnt) {
@@ -158,7 +193,7 @@ $(document).ready(function () {
 	});
 	$("#<?=$addtestid?>").bind("click", function (event) {
 		$.ajax( {
-			data:"e=<?=$e?>&s=<?=$s?>&tstart=<?=$t?>&effect_id=<?=$effect_id;?>&study_id=<?=$study_id;?>", 
+			data:"s=<?=$s?>&tstart=<?=$t?>&study_id=<?=$study_id;?>", 
 			dataType:"html", 
 			success:function (data, textStatus) {
 				$("#<?=$addtestid?>").replaceWith(data);
