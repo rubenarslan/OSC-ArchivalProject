@@ -16,7 +16,7 @@ for($s= $sstart; $s < $length; $s++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	$destroylink = $this->webroot.'studies/delete/'.Set::classicExtract($this->data,"Study.$s.id");
-	echo "<h3><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a> ";
+	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a> ";
 	echo "Study Nr. ".($s+1)." ";
 	echo $this->Form->input("Study.$s.name",array(
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'study title (if any, click to edit)')
@@ -28,21 +28,33 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid"><span class="span1">Replication: </span>';
 	echo $this->Form->input("Study.$s.replication_code", array(
-		'options' => array('', 'Novel', 'Direct', 'Direct+X', 'Conceptual', 'Conceptual+X', 'E'),
+		'options' => array('' => '', 
+			'Novel' => 'Novel', 
+			'Direct' => 'Direct', 
+			'Direct+X' => 'Direct+X', 
+			'Conceptual' => 'Conceptual', 
+			'Conceptual+X' => 'Conceptual+X', 
+			'E' => 'E'),
 		'label' => false,
-		'div' => array('class'=>'span3 offset1')
+		'div' => array('class'=>'span3')
 	));
 
-	echo $this->Form->select("Study.$s.replicates_study_id", $replicable_studies,		
-		array(
-			'data-placeholder' => 'Replicates study…',
-			'data-provide' => 'typeahead',
-			'data-min-length' => '1',
-			'class' => 'span4 select2single',
-			'div' => array('class' => 'span4' ),
-			'before' => '<br>' 
+	echo $this->Form->input("Study.$s.replicates_study_id", array(
+			'options' => $replicatesStudyId,
+			'class' => 'span12 select2studies',
+			'label' => false,
+			'div' => array('class' => 'hidden span4' ),
 		));
+	echo $this->Form->input("Study.$s.replicates_study_freetext", array(
+			'class' => 'span12',
+			'label' => false,
+			'placeholder' => "If it hasn't been coded, paste a free-form reference here.",
+			'div' => array('class' => 'hidden span4' ),
+		));
+	
+	
 	echo '</div>';
+	
 	
 	echo '<div class="row-fluid"><div class="span11 offset1">';
 		$options = array( "s" => $s);
@@ -54,9 +66,9 @@ echo '</div></div>';
 }
 
 $addstudyid = "study_adder";
-echo "<h4 id='$addstudyid'>";
+echo "<h4>";
 echo  $this->Html->link("Add Study ".($s+1),
-	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn')
+	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn', 'id' => $addstudyid)
 	);
 echo "</h4>";
 ?>
@@ -67,7 +79,6 @@ $(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (ev
 	}, url:"<?php echo $this->webroot; ?>codedpapers/morestudies"});
 return false;});
 	$("[rel=popover]").popover();
-	$(".select2single").select2({allowClear:true});
 
 });
 //]]>;

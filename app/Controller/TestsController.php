@@ -1,4 +1,7 @@
 <?php
+App::uses('AppController', 'Controller');
+<?php
+App::uses('AppController', 'Controller');
 class TestsController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
 		$admin = parent::isAuthorized($user); # allow admins to do anything
@@ -41,5 +44,29 @@ class TestsController extends AppController {
 		}
 		$this->Session->setFlash(__('Test was not deleted'));
 		$this->redirect("/codedpapers/index_mine");
+	}
+
+	public function edit($id = null) {
+		$this->Test->id = $id;
+		if (!$this->Test->exists()) {
+			throw new NotFoundException(__('Invalid test'));
+		}
+		if ($this->request->is('post') || $this->request->is('put')) {
+			if ($this->Test->saveAssociated($this->request->data)) {
+				
+				debug($this->request->data);
+				$this->Session->setFlash(__('The test has been saved'));
+#				$this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The test could not be saved. Please, try again.'));
+			}
+		} else {
+			$this->request->data = $this->Test->read(null, $id);
+			debug($this->request->data);
+		}
+		$studies = $this->Test->Study->find('list');
+		$methodologyCodes = $this->Test->MethodologyCode->find('list');
+		$independentVariables = $this->Test->IndependentVariable->find('list');
+		$this->set(compact('studies', 'methodologyCodes','independentVariables'));
 	}
 }

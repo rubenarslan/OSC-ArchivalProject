@@ -2,6 +2,7 @@
 class Codedpaper extends AppModel {
 	public $belongsTo = array('User','Paper');
 	public $hasMany = array('Study' => array('dependent'=>TRUE));
+	public $actsAs = array('Containable');
 	public function createDummy ($paper_id = NULL, $user_id = NULL, $cascade = true) {
 		$newcodedpaper['paper_id'] = $paper_id;
 		$newcodedpaper['user_id'] = $user_id;

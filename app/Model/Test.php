@@ -1,8 +1,16 @@
 <?php
 class Test extends AppModel {
 	public $belongsTo = 'Study';
+	public $hasAndBelongsToMany = array(
+	        'MethodologyCode' => array(
+	            'className' => 'MethodologyCode',
+	            'joinTable' => 'tests_to_methodology_codes',
+	            'foreignKey' => 'test_id',
+	            'associationForeignKey' => 'methodology_code_id',
+	            'with' => 'TestsToMethodologyCodes',
+	        ),
+	    );
 	public $hasMany = array(
-		'MethodologyCode' => array('dependent' => true),
 		'IndependentVariable'  => array('dependent' => true)
 	);
 	public $validate = array(

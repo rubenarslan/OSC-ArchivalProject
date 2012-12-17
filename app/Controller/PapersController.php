@@ -51,13 +51,11 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByFreeForm($APA));
 		exit;
 	}
-	# todo: Implement updated coding scheme
-	# todo: add comments and free form field to form
-	# todo: finish removing effect/test hierarchy?
+	# fixme: methodology codes have to be populated in DB, IVs can't be easily added
 	# todo: improve inline help in coding form
-	# todo: add a dropdown or type your own field for p-values
 	# todo: calculate p-values based on test statistic
 	# todo: update joined codedpapers thingie
+	# todo: implement PUBMED API
 
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
 		# related: make it easy for disoriented coders to find someone at an intermediate level (lots of badges) to ask for advice

@@ -1,4 +1,5 @@
 <?php
+App::uses('AppController', 'Controller');
 class CodedpapersController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
 		$admin = parent::isAuthorized($user); # allow admins to do anything
@@ -52,6 +53,7 @@ class CodedpapersController extends AppController {
 		    throw new NotFoundException('Invalid coded paper');
 		}
 		if (!$this->request->is('get')) { # if it was posted or ajaxed			
+			debug($this->request->data);
 			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) {
 #				if($this->request->is('ajax')) { # commented this out, because I'm reloading the form again
 #					echo 'Study saved.';
@@ -67,42 +69,16 @@ class CodedpapersController extends AppController {
 		}
 		### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)
 		$this->request->data = $this->Codedpaper->findDeep($id);
-		#http://book.cakephp.org/2.0/en/core-utility-libraries/set.html#Set::flatten
-#		$all_codedpaper_studies = $this->Codedpaper->Study->find('all',array(
-#			"recursive" => 0,
-#			'fields' => array('Codedpaper.id')
-#		));
-		$all_studies = $this->Codedpaper->Study->find('all',array(
-			"recursive" => 0,
-			'fields' => array('Codedpaper.id','Study.id','Study.name')
-		));
-#		debug($all_studies);
-#		$all_studies = array_flip(Set::flatten($all_studies) );
-#		$all_codedpapers = array_diff($all_studies,Set::flatten($all_codedpaper_studies));
-#	$all_studies = $this->Codedpaper->Paper->find('threaded',array(
-#		"recursive" => 2,
-#		'fields' => array('Study.id')
-#	));
-#		debug(Set::flatten(Set::extract($all_studies,"{n}.Codedpaper.id")));
-		$study_names = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/name"));
-#		$study_names = Set::format($all_studies, '{0}: {1}', array("{n}.Codedpaper.id", 'Codedpaper/Study/name'));
+
+		$methodologyCodes = $this->Codedpaper->Study->Test->MethodologyCode->find('list');
+		$replicatesStudyId = $this->Codedpaper->Study->getReplicable($id);
 		
-		$all_studies = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/id"));
-#		debug($all_studies); debug($study_names);
-		
-		$all_studies = array_merge(array(''=>''),array_combine($all_studies, $study_names));
-		$this->set('replicable_studies', $all_studies); # todo: get all replicable studies and label them meaningfully	
+		$this->set(compact('methodologyCodes','replicatesStudyId'));
 	}
 	public function morestudies () {
-		$all_studies = $this->Codedpaper->Study->find('all',array(
-			"recursive" => 0,
-			'fields' => array('Codedpaper.id','Study.id','Study.name')
-		));
-		$study_names = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/name"));
-		$all_studies = Set::flatten(Set::extract($all_studies,"Codedpaper/Study/id"));
-		$all_studies = array_combine($all_studies, $study_names);
-		$this->set('replicable_studies', $all_studies);
-			
+		$replicatesStudyId = $this->Codedpaper->Study->getReplicable();
+		$this->set(compact('replicatesStudyId')); 
+		
 		$this->request->data = $this->Codedpaper->Study->createDummy($this->request->query['codedpaper_id'], $this->request->query['sstart']);
 	}
 	public function moretests () {

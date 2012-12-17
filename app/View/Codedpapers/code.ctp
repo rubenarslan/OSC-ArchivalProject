@@ -102,7 +102,7 @@ echo $this->Form->end(array(
 ));
 ?>
 	<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
-	<label id="CodedpaperCompletedLabel" class="btn btn-large btn-primary<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
+	<label id="CodedpaperCompletedLabel" class="btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
 		<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
 		Complete (for others to view)
 	</label>
@@ -156,9 +156,39 @@ function activateinputs () {
 			});
 		}
 	});
+	$('#CodedpaperCodeForm input[type=radio]').each(function(i,elm) {
+		if($(elm).attr('name').match(/\[hypothesized\]$/)) {
+			var val = $("input[name='" + $(elm).attr('name') + "']:checked").attr('value');
+			if(val != 'No, no hypothesis')
+				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			$(elm).on('change',function (event) {
+				var val = $("input[name='" + $(event.target).attr('name') + "']:checked").attr('value');				
+				if(val != 'No, no hypothesis')
+					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			});
+		}
+	});
+	$('#CodedpaperCodeForm select').each(function(i,elm) {
+		if($(elm).attr('name').match(/\[replication_code\]$/)) {
+			console.log($(elm).attr('value'));
+			if($(elm).attr('value') != 'Novel' && $(elm).attr('value') != '')
+				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			$(elm).on('change',function (event) {
+				if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '')
+					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+			});
+		}
+	});
 	
-	$('div.chzn-search input').attr("tabindex",null);
-	
+	$(".select2multiple").select2({allowClear:true});
+	$(".select2single").select2();
+	$(".select2studies").select2();
+	$(".select2pvalue").select2({tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
+	multiple: false, allowClear: true,
+	maximumSelectionSize: 1, formatSelectionTooBig: function(maxSize) {
+		return "Enter the p-value, its range or choose from these common representations.";
+	} });
+		
 	$('a.selfdestroyer').each(function(i,elm) {
 		$(elm).off('click','*');
 
@@ -177,7 +207,7 @@ function saveform() {
 		success:
 		function (data, textStatus) {
 			focused = "#" + $(':input:focus').attr("id"); // pseudoselector for focused selects, inputs and textarea
-			// fixme: some input is getting lost
+
 			$.when($("#main-content").html(data)).done(function(){
 				if(typeof focused != 'undefined') { // if a field was focused upon autosaving
 					$(focused).focus()

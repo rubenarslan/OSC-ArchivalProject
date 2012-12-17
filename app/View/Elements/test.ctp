@@ -12,9 +12,9 @@ $study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give th
 
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
-		
+	
 	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Test.$t.id");
-	echo "<h5><a href='$destroylink' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
+	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
 	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
 	echo $this->Form->input("Study.$s.Test.$t.name",array(
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'test name (click to edit)')
@@ -25,15 +25,22 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo $this->Form->hidden("Study.$s.Test.$t.effect_id");
 	
 	
-	echo '<div class="row-fluid">'; # todo: only show textarea if the first or second option is selected
+	echo '<div class="row-fluid">';
 		echo '<div class="span3">Prior hypothesis:<br>';
-	echo $this->Form->radio("Study.$s.Test.$t.hypothesized", array('Yes, directional', 'Yes, nondirectional', 'No, no hypothesis'),
+	echo $this->Form->radio("Study.$s.Test.$t.hypothesized", array(
+		'Yes, directional' => 'Yes, directional', 
+		'Yes, nondirectional' => 'Yes, nondirectional', 
+		'No, no hypothesis' => 'No, no hypothesis'),
 		array('legend'=> false, 'separator' => '<br>'));
 	echo '</div>';
 	
-	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array('label' => false,
-		'class' => 'span12', 'rows' => '4', 'div'=> array('class'=> "span4")));
-	echo '<div class="span4 offset1"><br>Write down the prior hypothesis, if any, and its page number.</div>';
+	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array(
+		'label' => false,
+		'placeholder' => 'Copy-paste the prior hypothesis with its page number.',
+		'class' => 'span12 hidden', 
+		'rows' => '4', 
+		'div'=> array('class'=> "span4")));
+#	echo '<div class="span4 offset1"><br>Write down the prior hypothesis, if any, and its page number.</div>';
 	echo '</div>';
 	
 		
@@ -49,23 +56,33 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'class' => 'span12 select2single', 'div'=> array('class'=>"span3"))
 		);
 		
-	$meth_codes = array('A'  => 'archival measures',
+	$meth_codes = array(
+	'' => '',
+	'A'  => 'archival measures',
 	'BI' => 'brain imaging measures',
 	'J'  => 'judgment of the participant', 
 	'P'  => 'non-imaging physiological measures',
 	'SR' => 'self-report measures',
 	'BC' => 'behavioral/choice measures',
 	'O'  => 'Other',);
-		
-	$selected = array_intersect(array_keys($meth_codes),
-		Set::classicExtract($this->data,"Study.$s.Test.$t.MethodologyCode.{n}.methodology_code") );
-	echo $this->Form->select("Study.$s.Test.$t.MethodologyCode.{n}.methodology_code", $meth_codes,
+	
+	echo $this->Form->input("Study.$s.Test.$t.MethodologyCode", array(
+	#	'options' => $meth_codes,
+		'multiple' => true, 
+		'class' => "span12 no-margin select2multiple", 
+		'div'=> array('class'=>"span4")
+		)
+	);
+	echo '</div>';
+#	$selected = array_intersect(array_keys($meth_codes),
+#		Set::classicExtract($this->data,"Study.$s.Test.$t.MethodologyCode.{n}.methodology_code") );
+/*	echo $this->Form->select("Study.$s.Test.$t.MethodologyCode.{n}.methodology_code", $meth_codes,
 		array(
 		'value' => $selected,
 		'multiple' => true,
-		'class' => 'select2multiple2', 'div'=> array('class'=>"span3"))
+		'class' => 'select2multiple', 'div'=> array('class'=>"span3"))
 	);
-	echo '</div>';
+*/	
 
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.independent_variables",array(
@@ -108,7 +125,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				't' => 't', 
 				'z' => 'z', 
 				'F' => 'F'),
-			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+			'class' => 'select2single span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
@@ -121,18 +138,24 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.reported_significance_of_test",array(
-			'class' => 'span5', 'div'=> array('class'=>"span3 input-prepend"), 'label' => 'Significance (reported)', 'placeholder' => 'p-value (0.00 - 1)', 'between' => '<span class="add-on">0.</span>')
+			'class' => 'select2pvalue span11',
+			'div'=> array('class'=> "span3"), 
+			'label' => 'Significance (reported)', 
+			'placeholder' => 'p-value (0.00 - 1)')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.computed_significance_of_test",array(
-			'class' => 'span8', 'div'=> array('class'=>"span2 input-prepend"), 'label' => '(computed)', 'between' => '<span class="add-on">0.</span>')
+			'class' => 'span9', 'div'=> array('class'=>"span3"), 'label' => '(exactly computed)')
 		);
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
+	echo '<div class="span4">Was the hypothesis supported?</div>';
 		echo $this->Form->input("Study.$s.Test.$t.hypothesis_supported",array(
-			'class' => 'span12', 'div'=> array('class'=>"span6"))
+			'options' => array('Yes','No','Reverse','Complex'),
+			'type' => 'radio',
+			'legend'=> false,
+			'class' => '', 'div'=> array('class'=>"span4"))
 		);
-		echo '<div class="span4"><br>Was the hypothesis supported?</div>';
 	echo '</div>';
 	
 	echo '<div class="row-fluid">';
@@ -156,10 +179,19 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'phi.coefficient' => 'Phi coefficient', 
 				'cramers.v' => 'Cramer\'s v', 
 				),
-			'class' => 'span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+			'class' => 'select2single span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic_value",array(
 			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Effect size (reported)')
+		);
+	echo '</div>';
+	
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.Test.$t.comment",array(
+			'class' => 'span12', 
+			'div'=> array('class'=>"span6"), 
+			'rows' => 2, 
+			'placeholder' => 'Enter any comments on the effect test that were not captured by this coding form…')
 		);
 	echo '</div>';
 
@@ -169,16 +201,14 @@ echo '</div></div>';
 }
 
 $addtestid = "test{$s}";
-echo "<h5 id='$addtestid'>";
+echo "<h5>";
 echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
-	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
+	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini', 'id' => $addtestid));
 echo "</h5>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
 $(document).ready(function () {
-	$(".select2multiple").select2({allowClear:true});
-	
 	$('.copysample').each(function(i,elm) { // copy the sample information from the preceding test if it exists
 		$(elm).off('click','*');
 		$(elm).on('click', function(evnt) {
