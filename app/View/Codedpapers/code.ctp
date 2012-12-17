@@ -122,7 +122,6 @@ function toggleAutosave() {
 	return false;
 }
 function unsavedChanges () {
-//	console.log($("#CodedpaperCodeForm").serialize());
 	$('#navSave').addClass('btn-info').removeAttr('disabled').text('Unsaved changes…');
 	if(autosaveglobal) {
 		if( ($.now() - lastSave ) > 5000) {
@@ -170,20 +169,24 @@ function activateinputs () {
 	});
 	$('#CodedpaperCodeForm select').each(function(i,elm) {
 		if($(elm).attr('name').match(/\[replication_code\]$/)) {
-			console.log($(elm).attr('value'));
-			if($(elm).attr('value') != 'Novel' && $(elm).attr('value') != '')
+			if($(elm).attr('value') != 'Novel' && $(elm).attr('value') != '') {
 				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+				$(elm).closest('div.row-fluid').next('div.row-fluid').find('.hidden').removeClass('hidden');
+			}
 			$(elm).on('change',function (event) {
-				if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '')
+				if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '') {
 					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
+					$(event.target).closest('div.row-fluid').next('div.row-fluid').find('.hidden').removeClass('hidden');
+				}
+					
 			});
 		}
 	});
 	
-	$(".select2multiple").select2({allowClear:true});
-	$(".select2single").select2();
-	$(".select2studies").select2();
-	$(".select2pvalue").select2({tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
+	$("select.select2multiple").select2({allowClear:true});
+	$("select.select2single").select2();
+	$("select.select2studies").select2();
+	$("input.select2pvalue").select2({tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
 	multiple: false, allowClear: true,
 	maximumSelectionSize: 1, formatSelectionTooBig: function(maxSize) {
 		return "Enter the p-value, its range or choose from these common representations.";

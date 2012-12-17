@@ -43,16 +43,16 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'options' => $replicatesStudyId,
 			'class' => 'span12 select2studies',
 			'label' => false,
-			'div' => array('class' => 'hidden span4' ),
+			'div' => array('class' => 'hidden span5' ),
 		));
+	echo '</div>';
+	echo '<div class="row-fluid">';
 	echo $this->Form->input("Study.$s.replicates_study_freetext", array(
 			'class' => 'span12',
 			'label' => false,
-			'placeholder' => "If it hasn't been coded, paste a free-form reference here.",
-			'div' => array('class' => 'hidden span4' ),
+			'placeholder' => "If it hasn't been coded, paste a free-form reference.",
+			'div' => array('class' => 'offset4 span5 hidden' ),
 		));
-	
-	
 	echo '</div>';
 	
 	
