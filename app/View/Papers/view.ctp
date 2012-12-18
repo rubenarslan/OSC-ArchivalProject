@@ -12,8 +12,13 @@
 		</dd>
 		<dt><?php echo __('DOI'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link("Go to ".$paper['Paper']['DOI'], $paper['Paper']['URL']);
-			echo "<br>". $this->Html->link("Cited By (Google Scholar)","http://scholar.google.com/scholar?cites={$paper['Paper']['URL']}"); ?>
+			<?php 
+			if(isset($paper['Paper']['URL']) AND $paper['Paper']['URL']!='')
+				echo $this->Html->link("Go to ".$paper['Paper']['DOI'], $paper['Paper']['URL']) ;
+			else
+				echo h($paper['Paper']['DOI']);
+			echo "<br>";
+			echo $this->Html->link("Cited By (Google Scholar)","http://scholar.google.com/scholar?cites={$paper['Paper']['URL']}"); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Title'); ?></dt>

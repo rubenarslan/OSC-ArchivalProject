@@ -53,49 +53,30 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'RM' => 'RM: experimental analysis of repeated-measures effect',
 				'RMX' => 'RMX: combined experimental and repeated-measures effect',
 				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
-			'class' => 'span12 select2single', 'div'=> array('class'=>"span3"))
+			'class' => 'span12 select2analytic_design_code', 
+			'div'=> array('class'=>"span4"))
 		);
 		
-	$meth_codes = array(
-	'' => '',
-	'A'  => 'archival measures',
-	'BI' => 'brain imaging measures',
-	'J'  => 'judgment of the participant', 
-	'P'  => 'non-imaging physiological measures',
-	'SR' => 'self-report measures',
-	'BC' => 'behavioral/choice measures',
-	'O'  => 'Other',);
-	
-	echo $this->Form->input("Study.$s.Test.$t.MethodologyCode", array(
-	#	'options' => $meth_codes,
-		'multiple' => true, 
-		'class' => "span12 no-margin select2multiple", 
-		'div'=> array('class'=>"span4")
+
+	echo $this->Form->input("Study.$s.Test.$t.methodology_codes", array(
+		'class' => "span12 select2no-margin select2methodology_codes", 
+		'div'=> array('class'=>"span4"),
 		)
 	);
 	echo '</div>';
-#	$selected = array_intersect(array_keys($meth_codes),
-#		Set::classicExtract($this->data,"Study.$s.Test.$t.MethodologyCode.{n}.methodology_code") );
-/*	echo $this->Form->select("Study.$s.Test.$t.MethodologyCode.{n}.methodology_code", $meth_codes,
-		array(
-		'value' => $selected,
-		'multiple' => true,
-		'class' => 'select2multiple', 'div'=> array('class'=>"span3"))
-	);
-*/	
 
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.independent_variables",array(
-			'class' => 'span12', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated IVs')
+			'class' => 'span12 select2variables select2no-margin', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated IVs')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.dependent_variables",array(
-			'class' => 'span12', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated DVs')
-		);
-	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Test.$t.other_variables",array(
-			'class' => 'span12', 'div'=> array('class'=>"span8"), 'rows' => 1, 'placeholder' => 'comma-separated covariates etc.')
+			'class' => 'span12 select2variables select2no-margin', 'div'=> array('class'=>"span4"), 'rows' => 2, 'placeholder' => 'comma-separated DVs')
 		);
 	echo '</div>';
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.Test.$t.other_variables",array(
+			'class' => 'span12 select2variables select2no-margin', 'div'=> array('class'=>"span8"), 'rows' => 1, 'placeholder' => 'comma-separated covariates etc.')
+		);
 	echo '</div>';
 
 	echo '<div class="row-fluid sampleinfo">';
@@ -125,7 +106,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				't' => 't', 
 				'z' => 'z', 
 				'F' => 'F'),
-			'class' => 'select2single span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+			'class' => 'select2inferential_test_statistic span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
@@ -179,10 +160,10 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'phi.coefficient' => 'Phi coefficient', 
 				'cramers.v' => 'Cramer\'s v', 
 				),
-			'class' => 'select2single span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 'label' => 'Effect size statistic')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic_value",array(
-			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Effect size (reported)')
+			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Reported effect size')
 		);
 	echo '</div>';
 	
@@ -201,9 +182,9 @@ echo '</div></div>';
 }
 
 $addtestid = "test{$s}";
-echo "<h5>";
+echo "<h5 id='$addtestid'>";
 echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
-	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini', 'id' => $addtestid));
+	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
 echo "</h5>";
 ?>
 <script type="text/javascript">
@@ -221,7 +202,7 @@ $(document).ready(function () {
 			return false;
 		});
 	});
-	$("#<?=$addtestid?>").bind("click", function (event) {
+	$("#<?=$addtestid?> a.btn").bind("click", function (event) {
 		$.ajax( {
 			data:"s=<?=$s?>&tstart=<?=$t?>&study_id=<?=$study_id;?>", 
 			dataType:"html", 
@@ -232,6 +213,8 @@ $(document).ready(function () {
 			});
 		return false;
 	});
+	$("[rel=tooltip]").tooltip();
+	
 <?php if($newadd) echo	"activateinputs(); // new inputs need the JS love too
 "; ?>
 });

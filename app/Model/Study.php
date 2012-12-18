@@ -15,9 +15,15 @@ class Study extends AppModel {
         ),
 		'replicates_study_id' => array(
 			'rule' => 'numeric',
-			'required' => true,
+			'required' => false,
             'allowEmpty' => true,	
 	    ),
+		'replication_freetext' => array(
+			'rule' => 'notEmpty',
+			'required' => false,
+	        'allowEmpty' => true,
+	    ),
+	
 	);
 	public function createDummy ($codedpaper_id, $sstart = 0, $cascade=true) {
 		$this->create();
@@ -46,17 +52,17 @@ class Study extends AppModel {
 
 		if(count($all_studies)> 0) {
 			$study_names = array_combine(
-					Set::extract($all_studies,"{n}.studies.id"), 
-					Set::format($all_studies,"{0} ({1}): {2} – {3} coded by {4}", array(
+					array_merge((array)'', Set::extract($all_studies,"{n}.studies.id") ), 
+					array_merge((array)'', Set::format($all_studies,"{0} ({1}): {2} – {3} coded by {4}", array(
 						"{n}.papers.first_author",
 						"{n}.papers.year",
 						"{n}.papers.title",
 						"{n}.studies.name",
 						"{n}.users.username")
-					)
+					) )
 			);
 		} else {
-			$study_names = array();
+			$study_names = array('' => '');
 		}
 		
 		return $study_names;

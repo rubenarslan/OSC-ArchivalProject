@@ -109,7 +109,6 @@ echo $this->Form->end(array(
 	</div>
 </div>
 <?php
-debug($this->data);
 pr($this->validationErrors);
 ?>
 <?php echo $this->Js->writeBuffer(); ?>
@@ -124,26 +123,28 @@ function toggleAutosave() {
 function unsavedChanges () {
 	$('#navSave').addClass('btn-info').removeAttr('disabled').text('Unsaved changes…');
 	if(autosaveglobal) {
-		if( ($.now() - lastSave ) > 5000) {
+		if( ($.now() - lastSave ) > 7000) {
 			saveform();
 		}
 	}
 }
 function updateProgress () {
-	formelms = $('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea');
+	formelms = $('#CodedpaperCodeForm input[type=text]:not([class*="select2-input"]),	#CodedpaperCodeForm input[type=number],			#CodedpaperCodeForm input[type=search],	#CodedpaperCodeForm select,	#CodedpaperCodeForm input[type=radio],	#CodedpaperCodeForm input[type=checkbox],	#CodedpaperCodeForm textarea').filter(':visible').filter(':not([class*="hidden"])');
+	either_or_elms = formelms.filter('[class*="study-freetext"]');
 	
 	var nonZ = 0;
 	formelms.map(function() {
+//		if($(this).val()=='') console.log($(this));
 	  nonZ += ($(this).val()=='') ? 0 : 1;
 	});
-	prog = 100 * (nonZ / (formelms.length)) + '%';
+	var prog = 100 * (nonZ / (formelms.length - either_or_elms.length)) + '%';
+	if(prog > 100) prog = 100;
 	$('#codingprogress').css('width',prog);
 }
 function activateinputs () {
 	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
 		$(elm).off('change','*');
 		$(elm).on('change',unsavedChanges);
-		$(elm).on('change',updateProgress);
 	});
 	$('#CodedpaperCodeForm input[type=number]').each(function(i,elm) {
 		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
@@ -183,14 +184,48 @@ function activateinputs () {
 		}
 	});
 	
-	$("select.select2multiple").select2({allowClear:true});
-	$("select.select2single").select2();
-	$("select.select2studies").select2();
-	$("input.select2pvalue").select2({tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
-	multiple: false, allowClear: true,
-	maximumSelectionSize: 1, formatSelectionTooBig: function(maxSize) {
-		return "Enter the p-value, its range or choose from these common representations.";
-	} });
+	$("select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
+		minimumResultsForSearch: 20,
+		allowClear: true,
+		placeholder: '',
+	});
+	$("select.select2studies").select2({
+		minimumResultsForSearch: 10,
+		allowClear: true,
+		placeholder: 'Choose a coded study from this list'
+	});
+	$("input.select2pvalue").select2({
+		minimumResultsForSearch: 20,
+		tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
+		multiple: false, 
+		allowClear: true,
+		maximumSelectionSize: 1, 
+		formatSelectionTooBig: function(maxSize) {
+			return "Enter the p-value, its range or choose from these common representations.";
+		} 
+	});
+	
+	$("textarea.select2methodology_codes").select2({
+		tags: [
+			{id:'A',text:'archival measures'},
+			{id:'BI', text:'brain imaging measures' },
+			{id:'J', text:'judgment of the participant' }, 
+			{id:'P', text:'non-imaging physiological measures'},
+			{id:'SR', text:'self-report measures'},
+			{id:'BC', text:'behavioral/choice measures'}],
+		placeholder: "Choose from list or specify another.",
+		allowClear: true, 
+		tokenSeparators : [',',', '] 
+	});
+	
+	$("textarea.select2variables").select2({
+		tags: [], 
+		allowClear: true, 
+		tokenSeparators : [',',', '],
+		formatNoMatches: function (term) {
+			return "Enter the variables, type 'comma' to add a new one.";
+		}
+	});
 		
 	$('a.selfdestroyer').each(function(i,elm) {
 		$(elm).off('click','*');
@@ -209,13 +244,18 @@ function saveform() {
 		dataType:"html", 
 		success:
 		function (data, textStatus) {
-			focused = "#" + $(':input:focus').attr("id"); // pseudoselector for focused selects, inputs and textarea
+			focused = $(':focus').attr('id'); // pseudoselector for focused selects, inputs and textarea
+			if(typeof focused == 'undefined') 
+				select2focused = $(':focus').closest('[id]').attr('id');
 
 			$.when($("#main-content").html(data)).done(function(){
 				if(typeof focused != 'undefined') { // if a field was focused upon autosaving
-					$(focused).focus()
+					$("#" + focused).focus();
+				} else if(select2focused != 'undefined') {
+					$("#" + select2focused).select2('focus');
 				}
 				$('#navSave').removeClass('btn-info').attr('disabled', 'disabled').text('Saved');
+				updateProgress();
 				lastSave = $.now();
 			}); // refocus it when the data has been replaced
 		}, 

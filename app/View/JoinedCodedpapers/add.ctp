@@ -27,9 +27,29 @@
 		echo $this->Form->input('occupation');
 		echo $this->Form->input('your_expertise');
 		echo $this->Form->input('codedpaper_id');
-		echo $this->Form->input('name');
+		echo $this->Form->input('study_name');
 		echo $this->Form->input('replication_code');
 		echo $this->Form->input('replicates_study_id');
+		echo $this->Form->input('test_name');
+		echo $this->Form->input('analytic_design_code');
+		echo $this->Form->input('methodology_codes');
+		echo $this->Form->input('independent_variables');
+		echo $this->Form->input('dependent_variables');
+		echo $this->Form->input('other_variables');
+		echo $this->Form->input('hypothesized');
+		echo $this->Form->input('prior_hypothesis');
+		echo $this->Form->input('data_points_excluded');
+		echo $this->Form->input('reasons_for_exclusions');
+		echo $this->Form->input('type_of_statistical_test_used');
+		echo $this->Form->input('N_used_in_analysis');
+		echo $this->Form->input('inferential_test_statistic');
+		echo $this->Form->input('inferential_test_statistic_value');
+		echo $this->Form->input('degrees_of_freedom');
+		echo $this->Form->input('reported_significance_of_test');
+		echo $this->Form->input('computed_significance_of_test');
+		echo $this->Form->input('hypothesis_supported');
+		echo $this->Form->input('reported_effect_size_statistic');
+		echo $this->Form->input('reported_effect_size_statistic_value');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

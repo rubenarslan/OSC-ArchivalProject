@@ -51,7 +51,6 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByFreeForm($APA));
 		exit;
 	}
-	# fixme: methodology codes have to be populated in DB, IVs can't be easily added
 	# todo: improve inline help in coding form
 	# todo: calculate p-values based on test statistic
 	# todo: update joined codedpapers thingie

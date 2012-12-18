@@ -47,10 +47,11 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		));
 	echo '</div>';
 	echo '<div class="row-fluid">';
-	echo $this->Form->input("Study.$s.replicates_study_freetext", array(
-			'class' => 'span12',
+	echo $this->Form->input("Study.$s.replication_freetext", array(
+			'class' => 'study-freetext span12',
 			'label' => false,
-			'placeholder' => "If it hasn't been coded, paste a free-form reference.",
+			'rows' => 2,
+			'placeholder' => "… or if it's not yet coded, paste a free-form reference.",
 			'div' => array('class' => 'offset4 span5 hidden' ),
 		));
 	echo '</div>';
@@ -66,20 +67,27 @@ echo '</div></div>';
 }
 
 $addstudyid = "study_adder";
-echo "<h4>";
+echo "<h4 id='$addstudyid'>";
 echo  $this->Html->link("Add Study ".($s+1),
-	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn', 'id' => $addstudyid)
+	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn')
 	);
 echo "</h4>";
 ?>
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function () {$("#<?=$addstudyid?>").bind("click", function (event) {$.ajax( {data:"sstart=<?=$s?>&codedpaper_id=<?=$codedpaper_id?>", dataType:"html", success:function (data, textStatus) {
-	$("#<?=$addstudyid?>").replaceWith(data);
-	}, url:"<?php echo $this->webroot; ?>codedpapers/morestudies"});
-return false;});
-	$("[rel=popover]").popover();
-
+$(document).ready(function () {
+	$("#<?=$addstudyid?> a.btn").bind("click", function (event) {
+		$.ajax( {
+			data:"sstart=<?=$s?>&codedpaper_id=<?=$codedpaper_id?>", 
+			dataType:"html", 
+			success:function (data, textStatus) {
+				$("#<?=$addstudyid?>").replaceWith(data);
+			}, 
+			url:"<?php echo $this->webroot; ?>codedpapers/morestudies"
+		});
+		return false;
+	});
+	
 });
 //]]>;
 </script>

@@ -53,7 +53,6 @@ class CodedpapersController extends AppController {
 		    throw new NotFoundException('Invalid coded paper');
 		}
 		if (!$this->request->is('get')) { # if it was posted or ajaxed			
-			debug($this->request->data);
 			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) {
 #				if($this->request->is('ajax')) { # commented this out, because I'm reloading the form again
 #					echo 'Study saved.';
@@ -70,10 +69,9 @@ class CodedpapersController extends AppController {
 		### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)
 		$this->request->data = $this->Codedpaper->findDeep($id);
 
-		$methodologyCodes = $this->Codedpaper->Study->Test->MethodologyCode->find('list');
 		$replicatesStudyId = $this->Codedpaper->Study->getReplicable($id);
 		
-		$this->set(compact('methodologyCodes','replicatesStudyId'));
+		$this->set(compact('replicatesStudyId'));
 	}
 	public function morestudies () {
 		$replicatesStudyId = $this->Codedpaper->Study->getReplicable();

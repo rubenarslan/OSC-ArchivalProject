@@ -1,18 +1,6 @@
 <?php
 class Test extends AppModel {
 	public $belongsTo = 'Study';
-	public $hasAndBelongsToMany = array(
-	        'MethodologyCode' => array(
-	            'className' => 'MethodologyCode',
-	            'joinTable' => 'tests_to_methodology_codes',
-	            'foreignKey' => 'test_id',
-	            'associationForeignKey' => 'methodology_code_id',
-	            'with' => 'TestsToMethodologyCodes',
-	        ),
-	    );
-	public $hasMany = array(
-		'IndependentVariable'  => array('dependent' => true)
-	);
 	public $validate = array(
 		
 		'hypothesized' => array(
@@ -30,7 +18,7 @@ class Test extends AppModel {
 	        'required' => true,
 	        'allowEmpty' => true
 	    ),
-/*		'methodology_codes' => array(
+		'methodology_codes' => array(
 			'rule' => 'notEmpty',
 	        'required' => false,
 	        'allowEmpty' => true
@@ -50,7 +38,7 @@ class Test extends AppModel {
 			'required' => true,
             'allowEmpty' => true
 		),
-*/		'data_points_excluded' => array(
+		'data_points_excluded' => array(
 	       'rule'    => array("naturalNumber",true),
            'required' => true,
            'allowEmpty' => true,

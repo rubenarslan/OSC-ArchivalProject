@@ -3,9 +3,13 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
 		$admin = parent::isAuthorized($user); # allow admins to do anything
+		$req_action = $this->request->params['action'];
+		
+		if($req_action == 'edit' AND $user['Group']['name']==='admin') return true; # only admins can change groups
+		elseif($req_action == 'edit') return false;
+		
 		if($admin) return true;
 		
-		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array('view', 'index'))) return true; # viewing and adding is allowed to all users
 	}
 	public function login() {
