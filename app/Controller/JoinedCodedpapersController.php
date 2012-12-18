@@ -12,6 +12,20 @@ class JoinedCodedpapersController extends AppController {
 		if($admin) return true;
 		return false;
 	}
+	
+	function export($exportformat='CSV')
+	{
+		$joinedCodedpapers = $this->JoinedCodedpaper->find('all');
+
+	    $this->set(compact('joinedCodedpapers','exportformat'));
+		if($exportformat=='excel') $this->layout = 'export_xls';
+		else { 
+			$this->layout = null;
+	    	$this->autoLayout = false;
+		}
+		
+#		Configure::write('debug', '0');
+	}
 /**
  * index method
  *

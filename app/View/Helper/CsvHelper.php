@@ -36,7 +36,7 @@ function addRow($row)
 function renderHeaders() 
 {
     header('Content-Type: text/csv');
-    header("Content-type:application/vnd.ms-excel");
+    header("Content-type: application/vnd.ms-excel");
     header("Content-disposition:attachment;filename=".$this->filename);
 }
 

@@ -59,7 +59,9 @@
 						<ul class="dropdown-menu">
 			                <li><?php echo $this->Html->link('List users', '/users/index'); ?></li>
 			                <li><?php echo $this->Html->link('Add paper', '/papers/add'); ?></li>
-			                <li><?php echo $this->Html->link('Other admin functions?', '#'); ?></li>
+			                <li><?php echo $this->Html->link('Export CSV', '/joinedCodedpapers/export/CSV'); ?></li>
+			                <li><?php echo $this->Html->link('Export TSV', '/joinedCodedpapers/export/TSV'); ?></li>
+			                <li><?php echo $this->Html->link('Export Excel', '/joinedCodedpapers/export/excel'); ?></li>
 			            </ul>
 				</li>
 				<?php echo $this->fetch('more_nav'); ?>
