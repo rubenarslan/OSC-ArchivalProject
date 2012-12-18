@@ -97,13 +97,20 @@ class CodedpapersController extends AppController {
 		$this->set('c2',$comparison[1]);
 	}
 	public function view($id = null) {
-		## todo: make a view that's basically equivalent to the form but is read only / can't be submitted
-		die('View function not yet implemented. Will do this when the coding form is finished.');
 		$this->Codedpaper->id = $id;
+				
 		if (!$this->Codedpaper->exists()) {
-			throw new NotFoundException(__('Invalid coded paper'));
+		    throw new NotFoundException('Invalid coded paper');
 		}
-		$this->set('codedpaper', $this->Codedpaper->read(null, $id));
+		$this->request->data = $this->Codedpaper->findDeep($id);
+
+		$replicatesStudyId = $this->Codedpaper->Study->getReplicable($id);
+		
+		$onlyView = true;
+		
+		$this->set(compact('replicatesStudyId','onlyView'));
+		
+		$this -> render('code'); ## added a couple of hooks in code.ctp		
 	}
 	public function index_mine() {
 		$this->set('codedpapers', $this->Codedpaper->find('all',

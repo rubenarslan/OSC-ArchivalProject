@@ -82,7 +82,17 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 	<?php  echo $this->data['Paper']['abstract']; ?>
 </p>
 <?php
-echo $this->Form->create("Codedpaper");
+if(isset($onlyView) AND !$this->data['Codedpaper']['completed']) {
+	die('Not yet complete.');
+}
+if(isset($onlyView)) {
+	echo $this->Form->create("Codedpaper",array(
+		'inputDefaults' => array('disabled' => 'disabled'),
+		));
+	}
+else {
+	echo $this->Form->create("Codedpaper");
+}
 echo $this->Session->flash();
 echo $this->Form->hidden("Paper.id");
 echo $this->Form->hidden("Paper.DOI");
@@ -304,3 +314,16 @@ $(document).ready(function () {
 });
 //]]>
 </script>
+<?php if(isset($onlyView)) {
+?>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function () {
+	console.log($('#CodedpaperViewForm .btn'));
+	$('#CodedpaperViewForm .btn').each(function(i,elm) {
+		$(elm).remove();
+	});
+});
+//]]>
+</script>
+<?php } ?>

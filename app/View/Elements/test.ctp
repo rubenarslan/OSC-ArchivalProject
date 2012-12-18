@@ -27,11 +27,16 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo '<div class="span3">Prior hypothesis:<br>';
-	echo $this->Form->radio("Study.$s.Test.$t.hypothesized", array(
-		'Yes, directional' => 'Yes, directional', 
-		'Yes, nondirectional' => 'Yes, nondirectional', 
-		'No, no hypothesis' => 'No, no hypothesis'),
-		array('legend'=> false, 'separator' => '<br>'));
+	echo $this->Form->input("Study.$s.Test.$t.hypothesized", array(
+		'options' => array(
+			'Yes, directional' => 'Yes, directional', 
+			'Yes, nondirectional' => 'Yes, nondirectional', 
+			'No, no hypothesis' => 'No, no hypothesis'
+		),
+		'type' => 'radio',
+		'legend'=> false, 
+		'separator' => '<br>'
+		));
 	echo '</div>';
 	
 	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array(
@@ -53,7 +58,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'RM' => 'RM: experimental analysis of repeated-measures effect',
 				'RMX' => 'RMX: combined experimental and repeated-measures effect',
 				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
-			'class' => 'span12 select2analytic_design_code', 
+			'class' => 'span12 select2analytic_design_code select2no-margin', 
 			'div'=> array('class'=>"span4"))
 		);
 		
@@ -106,7 +111,9 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				't' => 't', 
 				'z' => 'z', 
 				'F' => 'F'),
-			'class' => 'select2inferential_test_statistic span12', 'div'=> array('class'=> "span2"), 'label' => 'Test stat.')
+			'class' => 'select2inferential_test_statistic span12 select2no-margin', 
+			'div'=> array('class'=> "span2"), 
+			'label' => 'Test stat.')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')

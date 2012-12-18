@@ -53,7 +53,6 @@ class PapersController extends AppController {
 	}
 	# todo: improve inline help in coding form
 	# todo: calculate p-values based on test statistic
-	# todo: update joined codedpapers thingie
 	# todo: implement PUBMED API
 
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
