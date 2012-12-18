@@ -10,7 +10,7 @@ class UsersController extends AppController {
 		
 		if($admin) return true;
 		
-		if(in_array($req_action, array('view', 'index'))) return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('index'))) return true; # viewing and adding is allowed to all users
 	}
 	public function login() {
 	    if ($this->request->is('post')) {

@@ -18,12 +18,12 @@ class Codedpaper extends AppModel {
 			$message = __('A new paper can be coded now.');
 			$cid = $this->read(null);
 			$cid = $cid['Codedpaper']['id'];
+			if($cascade) {
+				$this->Study->createDummy($cid);
+			}
 		} else {
 			$message = __('The new coded paper could not be saved. Please, try again.');
 			$cid = null;
-		}
-		if($cascade) {
-			$this->Study->createDummy($cid);
 		}
 		return array('cid' => $cid,'message' => $message);
 	}
