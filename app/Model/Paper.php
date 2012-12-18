@@ -5,6 +5,8 @@ App::uses('AppModel', 'Model');
  *
  * @property Codedpaper $Codedpaper
  */
+
+
 class Paper extends AppModel {
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
@@ -46,10 +48,10 @@ class Paper extends AppModel {
 	}
 	public function fetchByFreeForm($freeform = null) {
 		$ch = curl_init('http://search.labs.crossref.org/dois?q='.urlencode($freeform));
-#		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application; style=apa']);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application; style=apa'));
+#		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$matches = curl_exec($ch);
+		$matches = curl_exec_follow($ch);
 	#	print($matches);
 		$json = json_decode( $matches , true);
 
@@ -87,20 +89,22 @@ class Paper extends AppModel {
 	}
 	public function fetchByDOI($DOI = null) {
 		$ch = curl_init('http://dx.doi.org/'.$DOI);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: text/bibliography; style=apa']);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: text/bibliography; style=apa'));
+#		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		$apa_ref = curl_exec($ch);
+		$apa_ref = curl_exec_follow($ch);
 		
-		curl_setopt($ch, CURLOPT_HTTPHEADER, ["Accept: application/citeproc+json"]);
-		$json = curl_exec($ch); # get associative array
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/citeproc+json"));
+		$json = curl_exec_follow($ch); # get associative array
 		curl_close($ch);
-
-		$json = json_decode( trim( $json, '"' ), true);
-		$json['journal'] = $json['container-title'];
-		$json['year'] = $json['issued']['date-parts'][0][0];
-		$json['first_author'] = $json['author'][0]['family'] . ", " . $json['author'][0]['given'];
-		unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']);
+		if(substr($json,0,2)=='"{') {
+			$json = json_decode( trim( $json, '"' ), true);
+			$json['journal'] = $json['container-title'];
+			$json['year'] = $json['issued']['date-parts'][0][0];
+			$json['first_author'] = $json['author'][0]['family'] . ", " . $json['author'][0]['given'];
+			unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']);
+		}
+		else $json = array('DOI' => $DOI);
 		
 		/*
 		$consumerkey = Configure::read('Mendeley.consumerkey');
