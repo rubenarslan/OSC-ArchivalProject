@@ -55,6 +55,36 @@ class Paper extends AppModel {
 
 		return array_merge(array('APA' => $freeform),$this->fetchByDOI($json[0]['doi']));
 	}
+	public function fetchAbstractByDOIpubmed($DOI = null, $email= 'rubenarslan@gmail.com') {
+		$database = 'pubmed';
+		$params = array(
+			'db' => $database,
+			'tool' => 'homemadePHPquery',
+			'email' => $email,
+			'term' => $DOI,
+			'usehistory' => 'y',
+			'retmax' => 1
+		);
+		$url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?' . http_build_query($params);
+		$xml = file_get_contents($url);
+		$dom = new DomDocument();
+		$dom->loadXml($xml);
+		$id = (int) $dom->getElementsByTagName('Id')->item(0)->nodeValue;
+		unset($params['term']); unset($params['usehistory']); unset($params['retmax']);
+		$params['id'] = $id;
+		$params['retmode'] = 'xml';
+		$url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?' . http_build_query($params);
+		$xml = file_get_contents($url);
+#		debug($xml);
+		$dom = new DomDocument();
+	 	$dom->loadXML($xml);
+#	var_dump($dom);
+		if( $dom->getElementsByTagName('AbstractText')->length > 0 )
+			$abstract = $dom->getElementsByTagName('AbstractText') ->item(0)->nodeValue;
+		else $abstract = '';
+		
+		return $abstract;
+	}
 	public function fetchByDOI($DOI = null) {
 		$ch = curl_init('http://dx.doi.org/'.$DOI);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: text/bibliography; style=apa']);
@@ -72,6 +102,7 @@ class Paper extends AppModel {
 		$json['first_author'] = $json['author'][0]['family'] . ", " . $json['author'][0]['given'];
 		unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']);
 		
+		/*
 		$consumerkey = Configure::read('Mendeley.consumerkey');
 		$ch_mendeley = curl_init("http://api.mendeley.com/oapi/documents/details/". 
 		urlencode(urlencode($DOI)). "/?type=doi&consumer_key=" . $consumerkey);
@@ -86,6 +117,8 @@ class Paper extends AppModel {
 			$json['readers'] = $mendeley_json['stats']['readers'];
 			$json['abstract'] = $mendeley_json['abstract'];
 		}
+		*/
+		$json['abstract'] = $this->fetchAbstractByDOIpubmed($DOI);
 		
 		return array_merge(array('APA' => $apa_ref),$json);
 	}

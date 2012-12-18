@@ -51,9 +51,13 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByFreeForm($APA));
 		exit;
 	}
+	public function pubmeddoi($DOI = null) {
+		$DOI = $this->request->query['DOI'];
+		pr ($this->Paper->fetchByDOIpubmed($DOI));
+		exit;
+	}
 	# todo: improve inline help in coding form
 	# todo: calculate p-values based on test statistic
-	# todo: implement PUBMED API
 
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
 		# related: make it easy for disoriented coders to find someone at an intermediate level (lots of badges) to ask for advice
