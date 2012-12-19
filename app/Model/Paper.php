@@ -47,34 +47,53 @@ class Paper extends AppModel {
 		return $mult;
 	}
 	public function fetchByFreeForm($freeform = null) {
-		$ch = curl_init('http://search.labs.crossref.org/dois?q='.urlencode($freeform));
+#		echo urldecode($freeform)."<br>";
+		$freeform = urldecode($freeform);
+		$url = 'http://search.labs.crossref.org/dois?q='.rawurlencode($freeform);
+		$ch = curl_init($url);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: application; style=apa'));
 #		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$matches = curl_exec_follow($ch);
 	#	print($matches);
 		$json = json_decode( $matches , true);
-
+		if($json[0]['score'] < 2) {
+			echo $freeform;
+			echo "<br>";
+			echo 'No good matches. Copy the DOI and go back if the right one is in here, otherwise try
+			Google Scholar or another service<br>';
+			pr($json);
+		}
+		
 		return array_merge(array('APA' => $freeform),$this->fetchByDOI($json[0]['doi']));
 	}
-	public function fetchAbstractByDOIpubmed($DOI = null, $email= 'rubenarslan@gmail.com') {
-		$database = 'pubmed';
+	public function fetchPubmedIDByDOI($DOI = null) {
 		$params = array(
-			'db' => $database,
+			'db' => 'pubmed',
 			'tool' => 'homemadePHPquery',
-			'email' => $email,
+			'email' => Configure::read('Pubmed.email'),
 			'term' => $DOI,
 			'usehistory' => 'y',
 			'retmax' => 1
 		);
 		$url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?' . http_build_query($params);
 		$xml = file_get_contents($url);
+#		var_dump($xml);
 		$dom = new DomDocument();
 		$dom->loadXml($xml);
-		$id = (int) $dom->getElementsByTagName('Id')->item(0)->nodeValue;
-		unset($params['term']); unset($params['usehistory']); unset($params['retmax']);
-		$params['id'] = $id;
-		$params['retmode'] = 'xml';
+		if($dom->getElementsByTagName('Id')->length==0)
+			return null;
+		else
+			return (int) $dom->getElementsByTagName('Id')->item(0)->nodeValue;
+	}
+	public function fetchAbstractByPubmedID($id = null) {
+		$params = array(
+			'db' => 'pubmed',
+			'tool' => 'homemadePHPquery',
+			'email' => Configure::read('Pubmed.email'),
+			'id' => $id,
+			'retmode' => 'xml',
+		);
 		$url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?' . http_build_query($params);
 		$xml = file_get_contents($url);
 #		debug($xml);
@@ -87,6 +106,25 @@ class Paper extends AppModel {
 		
 		return $abstract;
 	}
+	public function fetchCitationCountByPubmedID($id = null) {
+		$params = array(
+			'db' => 'pubmed',
+			'tool' => 'homemadePHPquery',
+			'email' => Configure::read('Pubmed.email'),
+			'id' => $id,
+			'retmode' => 'xml',
+			'linkname' => 'pubmed_pmc_refs',
+			'cmd' => 'neighbor',
+		);
+		$url = 'http://eutils.ncbi.nlm.nih.gov/entrez/eutils/elink.fcgi?' . http_build_query($params);
+		$xml = file_get_contents($url);
+#		var_dump($xml);
+		$dom = new DomDocument();
+		$dom->loadXml($xml);
+		$cites = (int) $dom->getElementsByTagName('Id')->length - 1; # one ID is the article itself
+		
+		return $cites;
+	}
 	public function fetchByDOI($DOI = null) {
 		$ch = curl_init('http://dx.doi.org/'.$DOI);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array('Accept: text/bibliography; style=apa'));
@@ -97,7 +135,7 @@ class Paper extends AppModel {
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array("Accept: application/citeproc+json"));
 		$json = curl_exec_follow($ch); # get associative array
 		curl_close($ch);
-		if(substr($json,0,2)=='"{') {
+		if(substr($json,0,2)=='{"') {
 			$json = json_decode( trim( $json, '"' ), true);
 			$json['journal'] = $json['container-title'];
 			$json['year'] = $json['issued']['date-parts'][0][0];
@@ -122,8 +160,14 @@ class Paper extends AppModel {
 			$json['abstract'] = $mendeley_json['abstract'];
 		}
 		*/
-		$json['abstract'] = $this->fetchAbstractByDOIpubmed($DOI);
-		
-		return array_merge(array('APA' => $apa_ref),$json);
+		if(count($json)>1) { // if the metadata request was successful (I just check whether I got JSON back)
+			$json['pubmed_id'] = $this->fetchPubmedIDByDOI($DOI);
+			if(is_numeric($json['pubmed_id'])) {
+				$json['abstract'] = $this->fetchAbstractByPubmedID($json['pubmed_id']);
+				$json['pubmed_nr_of_citations'] = $this->fetchCitationCountByPubmedID($json['pubmed_id']);
+			}
+			$json['APA'] = $apa_ref;
+		}
+		return $json;
 	}
 }

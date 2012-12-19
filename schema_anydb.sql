@@ -24,6 +24,8 @@ CREATE  TABLE IF NOT EXISTS `papers` (
   `type` VARCHAR(100) NULL ,
   `abstract` TEXT NULL ,
   `readers` INT NULL ,
+  `pubmed_id` INT NULL ,
+  `pubmed_nr_of_citations` INT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = InnoDB
 AUTO_INCREMENT = 2
@@ -196,7 +198,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Placeholder table for view `joined_codedpapers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication_code` INT, `replicates_study_id` INT, `study_id` INT, `test_name` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `hypothesized` INT, `prior_hypothesis` INT, `data_points_excluded` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `N_used_in_analysis` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT);
+CREATE TABLE IF NOT EXISTS `joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `number_of_citations` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication_code` INT, `replicates_study_id` INT, `replication_freetext` INT, `study_id` INT, `test_name` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `hypothesized` INT, `prior_hypothesis` INT, `data_points_excluded` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `N_used_in_analysis` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT, `comment` INT);
 
 -- -----------------------------------------------------
 -- View `joined_codedpapers`
@@ -208,19 +210,22 @@ SELECT papers.DOI, papers.APA, papers.title, papers.first_author, papers.journal
 papers.issue, papers.publisher, papers.URL, papers.year, papers.page, papers.type, 
 papers.abstract, papers.readers,
 
-codedpapers.paper_id, user_id, codedpapers.created, codedpapers.modified, codedpapers.completed,
+codedpapers.paper_id, user_id, codedpapers.created, codedpapers.modified, codedpapers.completed, 
+codedpapers.number_of_citations,
 
 users.group_id, users.username, users.email, users.affiliated_institution, users.occupation, 
 users.your_expertise,
 
-studies.codedpaper_id, studies.name AS study_name, studies.replication_code, studies.replicates_study_id,
+studies.codedpaper_id, studies.name AS study_name, 
+studies.replication_code, studies.replicates_study_id, studies.replication_freetext,
+
 tests.study_id, tests.name AS test_name, tests.analytic_design_code, tests.methodology_codes, 
 tests.independent_variables, tests.dependent_variables, tests.other_variables,
 tests.hypothesized, tests.prior_hypothesis, tests.data_points_excluded,
 tests.reasons_for_exclusions, tests.type_of_statistical_test_used, tests.N_used_in_analysis,
 tests.inferential_test_statistic, tests.inferential_test_statistic_value, tests.degrees_of_freedom,
 tests.reported_significance_of_test, tests.computed_significance_of_test, tests.hypothesis_supported,
-tests.reported_effect_size_statistic, tests.reported_effect_size_statistic_value
+tests.reported_effect_size_statistic, tests.reported_effect_size_statistic_value, tests.`comment`
 	FROM papers 
 	INNER JOIN codedpapers
 		ON papers.id = codedpapers.paper_id

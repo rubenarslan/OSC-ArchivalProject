@@ -46,6 +46,16 @@
 			<?php echo h($paper['Paper']['volume']. "({$paper['Paper']['volume']})"); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Citation Count (on Pubmed)'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['pubmed_nr_of_citations']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Pubmed ID'); ?></dt>
+		<dd>
+			<?php echo h($paper['Paper']['pubmed_id']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Readers (on Mendeley)'); ?></dt>
 		<dd>
 			<?php echo h($paper['Paper']['readers']); ?>
