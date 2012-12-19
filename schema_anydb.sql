@@ -198,7 +198,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Placeholder table for view `joined_codedpapers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `number_of_citations` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication_code` INT, `replicates_study_id` INT, `replication_freetext` INT, `study_id` INT, `test_name` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `hypothesized` INT, `prior_hypothesis` INT, `data_points_excluded` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `N_used_in_analysis` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT, `comment` INT);
+CREATE TABLE IF NOT EXISTS `joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `pubmed_id` INT, `pubmed_nr_of_citations` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `number_of_citations` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication_code` INT, `replicates_study_id` INT, `replication_freetext` INT, `study_id` INT, `test_name` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `hypothesized` INT, `prior_hypothesis` INT, `data_points_excluded` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `N_used_in_analysis` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT, `comment` INT);
 
 -- -----------------------------------------------------
 -- View `joined_codedpapers`
@@ -208,7 +208,7 @@ DROP TABLE IF EXISTS `joined_codedpapers`;
 CREATE  OR REPLACE VIEW `joined_codedpapers` AS
 SELECT papers.DOI, papers.APA, papers.title, papers.first_author, papers.journal, papers.volume, 
 papers.issue, papers.publisher, papers.URL, papers.year, papers.page, papers.type, 
-papers.abstract, papers.readers,
+papers.abstract, papers.readers, papers.pubmed_id, papers.pubmed_nr_of_citations,
 
 codedpapers.paper_id, user_id, codedpapers.created, codedpapers.modified, codedpapers.completed, 
 codedpapers.number_of_citations,

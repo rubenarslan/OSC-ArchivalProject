@@ -45,6 +45,8 @@ if($exportformat!='excel') {
 				<th>type</th>
 				<th>abstract</th>
 				<th>readers</th>
+				<th>pubmed_id</th>
+				<th>pubmed_nr_of_citations</th>
 				<th>paper_id</th>
 				<th>user_id</th>
 				<th>created</th>
@@ -99,6 +101,8 @@ if($exportformat!='excel') {
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['type']); ?></td>
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['abstract']); ?></td>
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['readers']); ?></td>
+				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['pubmed_id']); ?></td>
+				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['pubmed_nr_of_citations']); ?></td>
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['paper_id']); ?></td>
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['user_id']); ?></td>
 				<td><?php echo h($joinedCodedpaper['JoinedCodedpaper']['created']); ?></td>

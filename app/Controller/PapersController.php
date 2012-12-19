@@ -78,17 +78,18 @@ class PapersController extends AppController {
 				$this->redirect(array('action' => 'add'));
 			}
  			elseif ($this->request->data['Paper']['DOI'] === '') {
+				if(substr($this->request->data['Paper']['DOI'],0,4) == 'doi:') $this->request->data['Paper']['DOI'] = substr($this->request->data['Paper']['DOI'],4);
 				$metadata = $this->Paper->fetchByFreeForm(urlencode($this->request->data['Paper']['APA']));
 				$this->Session->setFlash(__('Metadata was automatically retrieved based on given reference and the DOI that resulted from the call.'));
 			}
 			else {
+				if(substr($this->request->data['Paper']['DOI'],0,4) == 'doi:') $this->request->data['Paper']['DOI'] = substr($this->request->data['Paper']['DOI'],4);
 				$metadata = $this->Paper->fetchByDOI($this->request->data['Paper']['DOI']);
 				$this->Session->setFlash(__('Metadata was automatically retrieved based on DOI.'));
 			}
 			$this->request->data['Paper']  = array_merge($this->request->data['Paper'], $metadata);
 			
 			if ($this->Paper->save($this->request->data)) {
-				$this->Session->setFlash(__('The paper has been saved'));
 				$this->redirect(array('action' => 'view', $this->Paper->getInsertID()));
 			} else {
 				$this->Session->setFlash(__('The paper could not be saved. Please, try again.'));

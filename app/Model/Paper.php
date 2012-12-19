@@ -65,7 +65,7 @@ class Paper extends AppModel {
 			pr($json);
 		}
 		
-		return array_merge(array('APA' => $freeform),$this->fetchByDOI($json[0]['doi']));
+		return $this->fetchByDOI($json[0]['doi']);
 	}
 	public function fetchPubmedIDByDOI($DOI = null) {
 		$params = array(
@@ -140,7 +140,8 @@ class Paper extends AppModel {
 			$json['journal'] = $json['container-title'];
 			$json['year'] = $json['issued']['date-parts'][0][0];
 			$json['first_author'] = $json['author'][0]['family'] . ", " . $json['author'][0]['given'];
-			unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']);
+			$json['URL'] = 'http://dx.doi.org/'.$json['DOI'];
+			unset($json['container-title']); unset($json['issued']); unset($json['author']); unset($json['editor']); 
 		}
 		else $json = array('DOI' => $DOI);
 		
