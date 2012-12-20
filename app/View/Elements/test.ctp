@@ -53,11 +53,13 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		echo $this->Form->input("Study.$s.Test.$t.analytic_design_code",array(
 			'options' => array(
 				'' => '',
+				'C' => 'C: correlational/multivariate analysis without manipulation',
 				'IA' => 'IA: correlational/multivariate internal analysis of manipulation check',
 				'X' => 'X: experimental analysis of manipulation effect',
 				'RM' => 'RM: experimental analysis of repeated-measures effect',
 				'RMX' => 'RMX: combined experimental and repeated-measures effect',
-				'Q' => 'Q: quasi- experimental analysis of manipulation effect'),
+				'Q' => 'Q: quasi-experimental analysis of manipulation effect',
+				'O' => 'O: Other, describe in comments'),
 			'class' => 'span12 select2analytic_design_code select2no-margin', 
 			'div'=> array('class'=>"span4"))
 		);
@@ -179,7 +181,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'class' => 'span12', 
 			'div'=> array('class'=>"span6"), 
 			'rows' => 2, 
-			'placeholder' => 'Enter any comments on the effect test that were not captured by this coding form…')
+			'placeholder' => 'Enter any comments (coding format did not apply to the effect test, difficulties or uncertainties during coding)…')
 		);
 	echo '</div>';
 

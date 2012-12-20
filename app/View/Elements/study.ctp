@@ -36,6 +36,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'Conceptual+X' => 'Conceptual+X', 
 			'E' => 'E'),
 		'label' => false,
+		'class' => 'span12 select2replication_code',
 		'div' => array('class'=>'span3')
 	));
 

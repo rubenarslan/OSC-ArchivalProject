@@ -86,13 +86,13 @@ class Test extends AppModel {
 	     ),
 	    'computed_significance_of_test' => array(
 		    'decimal' => array(
-		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'rule'    => array('range', 0, 1.0000000000001),
 		        'required' => true,
 	            'allowEmpty' => true,
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
-	    'hypothesis_supported' => array(
+	    'hypothesis_supported' => array( # todo: optionally hide
 	        'rule' => 'notEmpty',
 			'required' => true,
             'allowEmpty' => true,
@@ -104,7 +104,7 @@ class Test extends AppModel {
 	    ),
 		'reported_effect_size_statistic_value' => array(
 		    'decimal' => array(
-		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
+		        'rule'     => 'decimal', #array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
 	            'allowEmpty' => true,
 		        'message'  => 'Numbers only, decimals marked by dot.',

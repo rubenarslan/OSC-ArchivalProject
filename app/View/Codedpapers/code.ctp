@@ -194,7 +194,7 @@ function activateinputs () {
 		}
 	});
 	
-	$("select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
+	$("select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
 		minimumResultsForSearch: 20,
 		allowClear: true,
 		placeholder: '',
@@ -206,7 +206,7 @@ function activateinputs () {
 	});
 	$("input.select2pvalue").select2({
 		minimumResultsForSearch: 20,
-		tags: ['ns','†','p<0.10','marginal','*','significant','p<0.05','**','p<0.01','***','p<0.001'], 
+		tags: ['ns','†','p<.10','marginal','*','significant','p<.05','**','p<.01','***','p<.001'], 
 		multiple: false, 
 		allowClear: true,
 		maximumSelectionSize: 1, 
@@ -222,6 +222,7 @@ function activateinputs () {
 			{id:'J', text:'judgment of the participant' }, 
 			{id:'P', text:'non-imaging physiological measures'},
 			{id:'SR', text:'self-report measures'},
+			{id:'I', text:'indirect verbal or response-time measures'},
 			{id:'BC', text:'behavioral/choice measures'}],
 		placeholder: "Choose from list or specify another.",
 		allowClear: true, 
