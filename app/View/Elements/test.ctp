@@ -27,16 +27,16 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo '<div class="span3">Prior hypothesis:<br>';
-	echo $this->Form->input("Study.$s.Test.$t.hypothesized", array(
-		'options' => array(
-			'Yes, directional' => 'Yes, directional', 
-			'Yes, nondirectional' => 'Yes, nondirectional', 
-			'No, no hypothesis' => 'No, no hypothesis'
-		),
-		'type' => 'radio',
-		'legend'=> false, 
-		'separator' => '<br>'
-		));
+		echo $this->Form->input("Study.$s.Test.$t.hypothesized", array(
+			'options' => array(
+				'Yes, directional' => 'Yes, directional', 
+				'Yes, nondirectional' => 'Yes, nondirectional', 
+				'No, no hypothesis' => 'No, no hypothesis'
+			),
+			'type' => 'radio',
+			'legend'=> false, 
+			'separator' => '<br>',
+			));
 	echo '</div>';
 	
 	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array(
@@ -141,10 +141,11 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '<div class="row-fluid">';
 	echo '<div class="span4">Was the hypothesis supported?</div>';
 		echo $this->Form->input("Study.$s.Test.$t.hypothesis_supported",array(
-			'options' => array('Yes','No','Reverse','Complex'),
+			'options' => array('Yes' => 'Yes','No' => 'No','Reverse' => 'Reverse','Complex' => 'Complex'),
 			'type' => 'radio',
 			'legend'=> false,
-			'class' => '', 'div'=> array('class'=>"span4"))
+			'class' => '', 'div'=> array('class'=>"span4")
+			)
 		);
 	echo '</div>';
 	

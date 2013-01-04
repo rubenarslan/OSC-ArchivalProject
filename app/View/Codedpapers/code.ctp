@@ -152,46 +152,49 @@ function updateProgress () {
 	$('#codingprogress').css('width',prog);
 }
 function activateinputs () {
-	$('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea').each(function(i,elm) {
-		$(elm).off('change','*');
-		$(elm).on('change',unsavedChanges);
+	var formelms = $('#CodedpaperCodeForm input[type=text],#CodedpaperCodeForm input[type=number],#CodedpaperCodeForm input[type=search],#CodedpaperCodeForm select,#CodedpaperCodeForm input[type=radio],#CodedpaperCodeForm input[type=checkbox], #CodedpaperCodeForm textarea');
+	formelms.each(function(i,elm) {
+		$(elm).off('change','*'); // deactivate all handlers
 	});
-	$('#CodedpaperCodeForm input[type=number]').each(function(i,elm) {
-		if($(elm).attr('name').match(/\[data_points_excluded\]$/)) {
-			if($(elm).attr('value')>0)
-				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-			$(elm).on('change',function (event) {
-				if($(event.target).attr('value')>0)
-					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-			});
-		}
-	});
-	$('#CodedpaperCodeForm input[type=radio]').each(function(i,elm) {
-		if($(elm).attr('name').match(/\[hypothesized\]$/)) {
-			var val = $("input[name='" + $(elm).attr('name') + "']:checked").attr('value');
-			if(val != 'No, no hypothesis')
-				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-			$(elm).on('change',function (event) {
-				var val = $("input[name='" + $(event.target).attr('name') + "']:checked").attr('value');				
-				if(val != 'No, no hypothesis')
-					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-			});
-		}
-	});
-	$('#CodedpaperCodeForm select').each(function(i,elm) {
-		if($(elm).attr('name').match(/\[replication_code\]$/)) {
-			if($(elm).attr('value') != 'Novel' && $(elm).attr('value') != '') {
-				$(elm).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-				$(elm).closest('div.row-fluid').next('div.row-fluid').find('.hidden').removeClass('hidden');
+	formelms.filter("input[name*='data_points_excluded']").each(function(i,elm) {
+		$(elm).on('change',function (event) {
+			opt_hide = $(event.target).closest('div.row-fluid').find('textarea[name*=reasons_for_exclusions]').parent('div');
+			if($(event.target).attr('value')>0) {
+				opt_hide.removeClass('hidden');
+			} else {
+				opt_hide.addClass('hidden');
 			}
-			$(elm).on('change',function (event) {
-				if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '') {
-					$(event.target).closest('div.row-fluid').find('.hidden').removeClass('hidden');
-					$(event.target).closest('div.row-fluid').next('div.row-fluid').find('.hidden').removeClass('hidden');
-				}
-					
-			});
-		}
+		});
+		$(elm).trigger('change');
+	});
+	formelms.filter('input[type=radio][name*=hypothesized]').each(function(i,elm) {
+		$(elm).on('change',function (event) {
+			var val = $("input[name='" + $(event.target).attr('name') + "']:checked").attr('value');
+			opt_hide1 = $(event.target).closest('div.row-fluid').find("textarea[name*='prior_hypothesis']");
+			opt_hide2 = $(event.target).closest('div.formblock').find("input[type=radio][id*='HypothesisSupportedYes']").parent('div').parent('div');			
+			if(val != 'No, no hypothesis') {
+				opt_hide1.removeClass('hidden');
+				opt_hide2.removeClass('hidden');
+			} else {
+				opt_hide1.addClass('hidden');
+				opt_hide2.addClass('hidden');
+			}
+		});
+		$(elm).trigger('change');
+	});
+	formelms.filter("select[name*='replication_code']").each(function(i,elm) {
+		$(elm).on('change',function (event) {
+			opt_hide1 = $(event.target).closest('div.row-fluid').find("select[name*='replicates_study_id']").parent('div');
+			opt_hide2 = $(event.target).closest('div.row-fluid').next('div.row-fluid').find("textarea[name*='replication_freetext']").parent('div');
+			if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '') {
+				opt_hide1.removeClass('hidden');
+				opt_hide2.removeClass('hidden');
+			} else {
+				opt_hide1.addClass('hidden');
+				opt_hide2.addClass('hidden');
+			}
+		});
+		$(elm).trigger('change');
 	});
 	
 	$("select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
@@ -248,6 +251,9 @@ function activateinputs () {
 		});
 		
 	});
+	formelms.each(function(i,elm) {
+		$(elm).on('change',unsavedChanges);
+	});	
 }
 function saveform() {
 	options = {

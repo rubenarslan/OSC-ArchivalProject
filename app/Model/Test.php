@@ -4,9 +4,9 @@ class Test extends AppModel {
 	public $validate = array(
 		
 		'hypothesized' => array(
-			'rule' => 'notEmpty',
-	        'required' => false,
-	        'allowEmpty' => true
+	        'rule' => 'notEmpty',
+			'required' => true,
+            'allowEmpty' => true,
 	    ),
 		'prior_hypothesis' => array(
 			'rule' => 'notEmpty',
@@ -92,7 +92,7 @@ class Test extends AppModel {
 		        'message'  => 'Numbers only, decimals marked by dot.',
 		    )
 	    ),
-	    'hypothesis_supported' => array( # todo: optionally hide
+	    'hypothesis_supported' => array(
 	        'rule' => 'notEmpty',
 			'required' => true,
             'allowEmpty' => true,
