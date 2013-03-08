@@ -9,6 +9,7 @@ if($newadd = isset($tstart)) {
 	$tstart = 0; # start from the beginning
 }
 $study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
+$addtestid = "test{$s}";
 
 for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
@@ -17,9 +18,13 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
 	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
 	echo $this->Form->input("Study.$s.Test.$t.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'test name (click to edit)')
+		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Test description (optional)')
 	);
 	echo "</h5>";
+	?>
+	<p>You can add more tests <a href="#<?=$addtestid;?>"> to this study below</a>.</p>
+	<?php
+	
 
 	echo $this->Form->hidden("Study.$s.Test.$t.id");	
 	echo $this->Form->hidden("Study.$s.Test.$t.effect_id");
@@ -61,6 +66,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'Q' => 'Q: quasi-experimental analysis of manipulation effect',
 				'O' => 'O: Other, describe in comments'),
 			'class' => 'span12 select2analytic_design_code select2no-margin', 
+			'placeholder' => 'Choose one',
 			'div'=> array('class'=>"span4"))
 		);
 		
@@ -100,51 +106,12 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Test.$t.type_of_statistical_test_used",array(
-			'class' => 'span12', 'div'=> array('class'=>"span4"), 'label' => 'Type of statistical test')
-		);
-	echo '</div>';
-	
-	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic",array(
-			'options' => array(
-				'' => '',
-				'chi.square' => 'χ²', 
-				't' => 't', 
-				'z' => 'z', 
-				'F' => 'F'),
-			'class' => 'select2inferential_test_statistic span12 select2no-margin', 
-			'div'=> array('class'=> "span2"), 
-			'label' => 'Test stat.')
-		);
-		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
-			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
-		);
-		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic_value",array(
-			'class' => 'span9', 'div'=> array('class'=>"span2"), 'label' => 'value')
-		);
-		echo '<div class="span4 offset1">Enter the name and value of the test statistic and its associated degrees of freedom.</div>';
-	echo '</div>';
-	
-	echo '<div class="row-fluid">';
-		echo $this->Form->input("Study.$s.Test.$t.reported_significance_of_test",array(
-			'class' => 'select2pvalue span11',
-			'div'=> array('class'=> "span3"), 
-			'label' => 'Significance (reported)', 
-			'placeholder' => 'p-value (0.00 - 1)')
-		);
-		echo $this->Form->input("Study.$s.Test.$t.computed_significance_of_test",array(
-			'class' => 'span9', 'div'=> array('class'=>"span3"), 'label' => '(exactly computed)')
-		);
-	echo '</div>';
-	
-	echo '<div class="row-fluid">';
-	echo '<div class="span4">Was the hypothesis supported?</div>';
-		echo $this->Form->input("Study.$s.Test.$t.hypothesis_supported",array(
-			'options' => array('Yes' => 'Yes','No' => 'No','Reverse' => 'Reverse','Complex' => 'Complex'),
-			'type' => 'radio',
-			'legend'=> false,
-			'class' => '', 'div'=> array('class'=>"span4")
+		echo $this->Form->input("Study.$s.Test.$t.type_of_statistical_test_used",
+				array(
+			'class' => 'span12', 
+			'div'=> array('class'=>"span4"), 
+			'label' => 'Type of statistical test',
+			'placeholder' => 'e.g. ANOVA, SEM, regression',
 			)
 		);
 	echo '</div>';
@@ -170,13 +137,102 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'phi.coefficient' => 'Phi coefficient', 
 				'cramers.v' => 'Cramer\'s v', 
 				),
-			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 'label' => 'Effect size statistic')
+			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 
+			'label' => 'Effect size statistic',
+			'placeholder' => 'Choose one',
+			)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic_value",array(
 			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Reported effect size')
 		);
+		echo '<div class="span4 coding-hint">Look in the menus for test and effect size statistics for this effect test. Both, or only one may be reported.</div>';
+		
 	echo '</div>';
 	
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic",array(
+			'options' => array(
+				'' => '',
+				'chi.square' => 'χ²', 
+				't' => 't', 
+				'z' => 'z', 
+				'F' => 'F'),
+			'class' => 'select2inferential_test_statistic span12 select2no-margin', 
+			'div'=> array('class'=> "span2"), 
+			'label' => 'Test stat.',
+			'placeholder' => 'Choose one',
+
+			)
+		);
+		echo $this->Form->input("Study.$s.Test.$t.degrees_of_freedom",array(
+			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
+		);
+		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic_value",array(
+			'class' => 'span9', 'div'=> array('class'=>"span2"), 'label' => 'value')
+		);
+		echo '<div class="span4 offset1 coding-hint">Enter the name and value of the test statistic and its associated degrees of freedom.</div>';
+	echo '</div>';
+	
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.Test.$t.reported_significance_of_test",array(
+			'class' => 'select2pvalue span11',
+			'div'=> array('class'=> "span3"), 
+			'label' => 'Significance (reported)', 
+			'placeholder' => 'p-value (0.00 - 1)')
+		);
+		echo $this->Form->input("Study.$s.Test.$t.computed_significance_of_test",array(
+			'class' => 'span9', 'div'=> array('class'=>"span3"), 'label' => '(exactly computed)')
+		);
+	echo '</div>';
+	
+	echo '<div class="row-fluid">';
+	echo '<div class="span4">Was the hypothesis supported?</div>';
+		echo $this->Form->input("Study.$s.Test.$t.hypothesis_supported",array(
+			'options' => array('Yes' => 'Yes','No' => 'No','Reverse' => 'Reverse','Complex' => 'Complex'),
+			'type' => 'radio',
+			'legend'=> false,
+			'class' => '', 'div'=> array('class'=>"span4")
+			)
+		);
+	echo '</div>';
+	
+	
+	echo '<div class="row-fluid">';
+	echo '<div class="span12">How certain are you that you correctly identified the test\'s:</div>';
+	echo '<div class="span4">… hypothesis</div>';
+		echo $this->Form->input("Study.$s.Test.$t.certainty_hypothesis",array(
+			'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+			'type' => 'radio',
+			'legend'=> false,
+			'class' => '', 'div'=> array('class'=>"span4")
+			)
+		);
+		echo '<div class="span4">… methodology and variables</div>';
+			echo $this->Form->input("Study.$s.Test.$t.certainty_meth_var",array(
+				'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+				'type' => 'radio',
+				'legend'=> false,
+				'class' => '', 'div'=> array('class'=>"span4")
+				)
+			);
+		echo '<div class="span4">… statistics</div>';
+			echo $this->Form->input("Study.$s.Test.$t.certainty_statistics",array(
+				'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+				'type' => 'radio',
+				'legend'=> false,
+				'class' => '', 'div'=> array('class'=>"span4")
+				)
+			);
+		echo '<div class="span4">… support for hypothesis</div>';
+			echo $this->Form->input("Study.$s.Test.$t.certainty_hypothesis_supported",array(
+				'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+				'type' => 'radio',
+				'legend'=> false,
+				'class' => '', 'div'=> array('class'=>"span4")
+				)
+			);
+	echo '</div>';
+
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.comment",array(
 			'class' => 'span12', 
@@ -191,7 +247,6 @@ echo '</div></div>';
 	
 }
 
-$addtestid = "test{$s}";
 echo "<h5 id='$addtestid'>";
 echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
 	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));

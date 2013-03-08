@@ -10,6 +10,7 @@ if($newadd = isset($sstart)) {
 }
 
 $codedpaper_id = Set::classicExtract($this->data,"Codedpaper.id"); # we need to give this to the add-button
+$addstudyid = "study_adder";
 
 for($s= $sstart; $s < $length; $s++) {
 
@@ -19,9 +20,12 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a> ";
 	echo "Study Nr. ".($s+1)." ";
 	echo $this->Form->input("Study.$s.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'study title (if any, click to edit)')
+		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Description (optional)')
 	);
 	echo "</h3>";
+	?>
+	<p>You can add more studies <a href="#<?=$addstudyid;?>">below</a>.</p>
+	<?php
 		
 	echo $this->Form->hidden("Study.$s.id");
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
@@ -53,21 +57,59 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'label' => false,
 			'rows' => 2,
 			'placeholder' => "… or if it's not yet coded, paste a free-form reference.",
-			'div' => array('class' => 'offset4 span5 hidden' ),
+			'div' => array('class' => 'offset4 span4 hidden' ),
+		));
+	echo $this->Form->input("Study.$s.replication_freetext_study", array(
+			'class' => 'study-freetext span12',
+			'label' => false,
+			'rows' => 2,
+			'placeholder' => "(if multi-study paper, identify the study here)",
+			'div' => array('class' => 'span3 hidden' ),
 		));
 	echo '</div>';
 	
-	
+	?>
+	<p>Each study has one or more tests of a main hypothesis.</p>
+	<?php
 	echo '<div class="row-fluid"><div class="span11 offset1">';
 		$options = array( "s" => $s);
 		if($newadd) $options["tstart"] = 0;
 		$options["data"] = $this->data;
 		echo $this->element('test', $options);
 	echo '</div></div>';
+	
+	echo '<div class="row-fluid">';
+	echo '<div class="span12">How certain are you that you correctly identified the study\'s:</div>';
+	echo '<div class="span4">… key effect test(s)</div>';
+		echo $this->Form->input("Study.$s.certainty_key_effect_tests",array(
+			'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+			'type' => 'radio',
+			'legend'=> false,
+			'class' => '', 'div'=> array('class'=>"span4")
+			)
+		);
+		echo '<div class="span4">… status as a replication</div>';
+			echo $this->Form->input("Study.$s.certainty_replication_status",array(
+				'options' => array('0' => 'not at all','1' => 'somewhat','2' => 'very'),
+				'type' => 'radio',
+				'legend'=> false,
+				'class' => '', 'div'=> array('class'=>"span4")
+				)
+			);
+	echo '</div>';
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.study_comment",array(
+			'class' => 'span12', 
+			'div'=> array('class'=>"span6"), 
+			'rows' => 2, 
+			'placeholder' => 'Enter any comments on this study…')
+		);
+	echo '</div>';
+	
 echo '</div></div>';
+
 }
 
-$addstudyid = "study_adder";
 echo "<h4 id='$addstudyid'>";
 echo  $this->Html->link("Add Study ".($s+1),
 	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn')

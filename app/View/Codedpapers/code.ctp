@@ -227,7 +227,7 @@ function activateinputs () {
 			{id:'SR', text:'self-report measures'},
 			{id:'I', text:'indirect verbal or response-time measures'},
 			{id:'BC', text:'behavioral/choice measures'}],
-		placeholder: "Choose from list or specify another.",
+		placeholder: "Choose or write as many as apply",
 		allowClear: true, 
 		tokenSeparators : [',',', '] 
 	});
