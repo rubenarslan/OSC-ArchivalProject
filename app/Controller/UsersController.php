@@ -12,6 +12,9 @@ class UsersController extends AppController {
 		
 		if(in_array($req_action, array('index'))) return true; # viewing and adding is allowed to all users
 	}
+	public function leaderboard() {
+		$this->set($this->User->getAchievement());
+	}
 	public function login() {
 	    if ($this->request->is('post')) {
 			if ($this->Auth->login()) {
@@ -39,6 +42,65 @@ class UsersController extends AppController {
             }
         }
     }
+		public function forgotPassword() {
+			if ($this->request->is('post')) {
+			 	$user = $this->User->find('first', array(
+					'fields' => array('email','id'),
+					'conditions' => array('User.email' => $this->request->data['User']['email'] ),
+					'limit' => 1,
+				));
+				$user = $user['User'];
+		    	$reset_token = $this->User->generateResetToken($user['id']);
+				$email = new CakeEmail('smtp');
+				$email
+				    ->to($user['email'])
+				    ->subject(__('Reset password OSC Archival Project'))
+				    ->send(
+"Dear user,
+
+You asked us to send you a link to reset your 
+password. If it wasn't you who requested the
+link, please contact us by replying to this
+email.
+
+".Router::url( "/users/resetPassword/".$user['email']."/".$reset_token, true)
+."
+
+Best regards,
+
+the OSC Archival Project team");
+				$this->redirect("/");
+			}
+		}
+		public function resetPassword($email = null,$reset_token = null) {
+			if($reset_token == '' OR $reset_token == null OR $email == '' OR $email == null) throw new MethodNotAllowedException(__('Invalid reset token.'));
+			if ($this->request->is('post')) {
+			 	$user = $this->User->find('first', array(
+						'fields' => array('id','hashed_reset_token'),
+						'conditions' => array(
+							'User.email' => $email,
+							'User.reset_token_expiration >' => date('Y-m-d H:i:s') 
+						)
+				));
+				$user_id = $user['User']['id'];
+				$hashed_reset_token = $user['User']['hashed_reset_token'];
+				$rehashed = AuthComponent::password($reset_token);
+				if($user_id AND $hashed_reset_token === $rehashed) {
+					$this->User->read(null,$user_id);
+					$this->User->set(array(
+						'hashed_reset_token' => null,
+						'reset_token_expiration' => null,
+						'password' => $this->request->data['User']['password'],
+					));
+					if($this->User->save()) {
+						$this->Session->setFlash(__('Passwort successfully changed. Log in now.'));
+						$this->redirect("/users/login");
+					}
+				} else {
+					$this->Session->setFlash(__('Passwort reset token was invalid. Please follow the link in your email or copy it to the browser.'));
+				}
+			}
+		}
 /**
  * index method
  *

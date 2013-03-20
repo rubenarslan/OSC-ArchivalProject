@@ -3,6 +3,8 @@
 <?php echo $this->Session->flash('auth'); ?>
 <?php echo $this->Form->create('User'); ?>
         <p><?php echo __('Please enter your username and password'); ?></p>
+				<p><?=$this->Html->link(__('Forgot your password?'),'/users/forgotPassword'); ?></p>
+
     <?php   
 		echo $this->Form->input('username', array('autofocus'=>'autofocus'));
         echo $this->Form->input('password');

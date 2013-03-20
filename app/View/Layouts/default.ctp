@@ -51,6 +51,7 @@
 			                <li><?php echo $this->Html->link('List available papers', '/papers/index'); ?></li>
 			                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
 			                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
+			                <li><?php echo $this->Html->link('Leaderboard', '/users/leaderboard'); ?></li>
 			            </ul>
 				</li>
 			  	<li class="divider-vertical"></li>

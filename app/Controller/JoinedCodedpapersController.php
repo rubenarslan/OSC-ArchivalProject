@@ -15,9 +15,9 @@ class JoinedCodedpapersController extends AppController {
 	
 	function export($exportformat='CSV')
 	{
-		$joinedCodedpapers = $this->JoinedCodedpaper->find('all');
+		$toExport = $this->JoinedCodedpaper->find('all');
 
-	    $this->set(compact('joinedCodedpapers','exportformat'));
+	    $this->set(compact('toExport','exportformat'));
 		if($exportformat=='excel') $this->layout = 'export_xls';
 		else { 
 			$this->layout = null;

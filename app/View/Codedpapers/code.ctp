@@ -167,10 +167,21 @@ function activateinputs () {
 		});
 		$(elm).trigger('change');
 	});
+	formelms.filter("input[name*='data_points_excluded'],input[name*='N_total']").each(function(i,elm) {
+		$(elm).on('change',function (event) {
+			n_used = $(event.target).closest('div.row-fluid').find('input[name*=N_used_in_analysis]');
+			n_excluded = $(event.target).closest('div.row-fluid').find('input[name*=data_points_excluded]');
+			n_total = $(event.target).closest('div.row-fluid').find('input[name*=N_total]');
+			
+			if(!isNaN(parseFloat(n_total.attr('value'))) && !isNaN(parseFloat(n_excluded.attr('value'))))
+				n_used.attr('value', n_total.attr('value') - n_excluded.attr('value') );
+		});
+		$(elm).trigger('change');
+	});
 	formelms.filter('input[type=radio][name*=hypothesized]').each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			var val = $("input[name='" + $(event.target).attr('name') + "']:checked").attr('value');
-			opt_hide1 = $(event.target).closest('div.row-fluid').find("textarea[name*='prior_hypothesis']");
+			opt_hide1 = $(event.target).closest('div.row-fluid').find("div.prior_hypothesis");
 			opt_hide2 = $(event.target).closest('div.formblock').find("input[type=radio][id*='HypothesisSupportedYes']").parent('div').parent('div');			
 			if(val != 'No, no hypothesis') {
 				opt_hide1.removeClass('hidden');
@@ -182,10 +193,10 @@ function activateinputs () {
 		});
 		$(elm).trigger('change');
 	});
-	formelms.filter("select[name*='replication_code']").each(function(i,elm) {
+	formelms.filter("select[name*='[replication]']").each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			opt_hide1 = $(event.target).closest('div.row-fluid').find("select[name*='replicates_study_id']").parent('div');
-			opt_hide2 = $(event.target).closest('div.row-fluid').next('div.row-fluid').find("textarea[name*='replication_freetext']").parent('div');
+			opt_hide2 = $(event.target).closest('div.row-fluid').find('div.replication_optional');
 			if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '') {
 				opt_hide1.removeClass('hidden');
 				opt_hide2.removeClass('hidden');
@@ -197,7 +208,7 @@ function activateinputs () {
 		$(elm).trigger('change');
 	});
 	
-	$("select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
+	$("select.select2replication,select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
 		minimumResultsForSearch: 20,
 		allowClear: true,
 		placeholder: '',

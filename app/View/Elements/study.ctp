@@ -30,46 +30,62 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo $this->Form->hidden("Study.$s.id");
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
 	
-	echo '<div class="row-fluid"><span class="span1">Replication: </span>';
-	echo $this->Form->input("Study.$s.replication_code", array(
-		'options' => array('' => '', 
-			'Novel' => 'Novel', 
-			'Direct' => 'Direct', 
-			'Direct+X' => 'Direct+X', 
-			'Conceptual' => 'Conceptual', 
-			'Conceptual+X' => 'Conceptual+X', 
-			'E' => 'E'),
-		'label' => false,
-		'class' => 'span12 select2replication_code',
-		'div' => array('class'=>'span3')
-	));
+	echo '<div class="row-fluid">
+		<span class="span1">Replication: </span>';
+		echo '<div class="span3">';
+			echo $this->Form->input("Study.$s.replication", array(
+				'options' => array('' => '', 
+					'Novel' => 'Novel', 
+					'Replication' => 'Replication of some sort',
+					),
+				'label' => false,
+				'class' => 'span12 select2replication',
+				'div' => false
+			));
+			echo '<div class="replication_optional">';
+				echo $this->Form->input("Study.$s.replication_code", array(
+					'options' => array('' => '', 
+						'Direct' => 'Direct', 
+						'Direct+X' => 'Direct+X', 
+						'Conceptual' => 'Conceptual', 
+						'Conceptual+X' => 'Conceptual+X', 
+						'E' => 'E'
+						),
+					'placeholder' => 'Replication Code',
+					'label' => false,
+					'class' => 'span12 select2replication_code',
+					'div' => false
+				));
+			echo '</div>';
+		echo '</div>';
 
-	echo $this->Form->input("Study.$s.replicates_study_id", array(
-			'options' => $replicatesStudyId,
-			'class' => 'span12 select2studies',
-			'label' => false,
-			'div' => array('class' => 'hidden span5' ),
-		));
-	echo '</div>';
-	echo '<div class="row-fluid">';
-	echo $this->Form->input("Study.$s.replication_freetext", array(
-			'class' => 'study-freetext span12',
-			'label' => false,
-			'rows' => 2,
-			'placeholder' => "… or if it's not yet coded, paste a free-form reference.",
-			'div' => array('class' => 'offset4 span4 hidden' ),
-		));
-	echo $this->Form->input("Study.$s.replication_freetext_study", array(
-			'class' => 'study-freetext span12',
-			'label' => false,
-			'rows' => 2,
-			'placeholder' => "(if multi-study paper, identify the study here)",
-			'div' => array('class' => 'span3 hidden' ),
-		));
-	echo '</div>';
+		echo '<div class="span6 replication_optional">';
 	
+			echo $this->Form->input("Study.$s.replicates_study_id", array(
+					'options' => $replicatesStudyId,
+					'class' => 'span12 select2studies',
+					'label' => false,
+					'div' => array('class' => 'span12' ),
+				));
+			echo $this->Form->input("Study.$s.replication_freetext", array(
+					'class' => 'study-freetext span12',
+					'label' => false,
+					'rows' => 2,
+					'placeholder' => "… or if it's not yet coded, paste a free-form reference.",
+					'div' => array('class' => 'span8 no-left-margin' ),
+				));
+			echo $this->Form->input("Study.$s.replication_freetext_study", array(
+					'class' => 'study-freetext span12',
+					'label' => false,
+					'rows' => 2,
+					'placeholder' => "(if multi-study paper, identify study here)",
+					'div' => array('class' => 'span4' ),
+				));
+		echo '</div>';
+	echo '</div>';
+		
 	?>
-	<p>Each study has one or more tests of a main hypothesis.</p>
+	<p>Read the article's abstract, looking for statements of key effects. Each effect will have one or more statistical tests supporting it. Tests may or may not have a prior hypothesis stated in the article.</p>
 	<?php
 	echo '<div class="row-fluid"><div class="span11 offset1">';
 		$options = array( "s" => $s);

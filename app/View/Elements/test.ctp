@@ -42,15 +42,31 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'legend'=> false, 
 			'separator' => '<br>',
 			));
+
 	echo '</div>';
 	
+	echo '<div class="prior_hypothesis">';
 	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis",array(
 		'label' => false,
-		'placeholder' => 'Copy-paste the prior hypothesis with its page number.',
-		'class' => 'span12 hidden', 
+		'placeholder' => 'Copy-paste the prior hypothesis, write down its page number on the right.',
+		'class' => 'span12', 
 		'rows' => '4', 
 		'div'=> array('class'=> "span4")));
-#	echo '<div class="span4 offset1"><br>Write down the prior hypothesis, if any, and its page number.</div>';
+	echo $this->Form->input("Study.$s.Test.$t.prior_hypothesis_page",array(
+		'label' => 'Page',
+		'placeholder' => '42-43',
+		'class' => 'span12', 
+		'div'=> array('class'=> "span1")));
+	echo '</div>';
+	echo '</div>';
+	
+	echo '<div class="row-fluid">';
+		echo $this->Form->input("Study.$s.Test.$t.subsample",array(
+			'class' => 'span12', 
+			'type' => 'text',
+			'placeholder' => 'Was this test done on a subsample/-group? If so, please note its characteristics.',
+			'div'=> array('class'=>"span8"))
+		);
 	echo '</div>';
 	
 		
@@ -93,16 +109,29 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo '</div>';
 
 	echo '<div class="row-fluid sampleinfo">';
+		echo $this->Form->input("Study.$s.Test.$t.N_total",array(
+			'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N total',
+			'placeholder' => 'Sample size')
+		);
 		echo $this->Form->input("Study.$s.Test.$t.data_points_excluded",array(
-			'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N excluded')
+			'class' => 'span8', 'div'=> array('class'=>"span2 no-left-margin"), 'label' => 'N excluded',
+			'placeholder' => 'if any'
+			)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.N_used_in_analysis",array(
-				'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N used')
+			'class' => 'span8', 'div'=> array('class'=>"span2 no-left-margin"), 'label' => 'N used',
+			'readonly' => 'readonly'
+			)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.reasons_for_exclusions",array(
-			'class' => 'span12', 'div'=> array('class'=> array("span4",'hidden')), 'rows' => '2')
+			'class' => 'span12', 
+			'div'=> array('class'=> "span4 no-left-margin"), 
+			'rows' => '2',
+			'placeholder' => 'If they were given, please paste the reasons for exclusions',
+			'label' => false,
+			)
 		);
-		echo '<div class="span2 offset1">You can <a href="#" class="copysample">copy</a> this information from the test before.</div>';
+		echo '<div class="span2">You can <a href="#" class="copysample">copy</a> this information from the test before.</div>';
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
@@ -136,6 +165,8 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				'spearmans.rho' => 'Spearman\'s rho (rank order correlation)', 
 				'phi.coefficient' => 'Phi coefficient', 
 				'cramers.v' => 'Cramer\'s v', 
+				'sem.coefficient' => 'SEM coefficient (details in comments please)', 
+				'multilevel.coefficient' => 'Multilevel coefficient (details in comments please)', 
 				),
 			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 
 			'label' => 'Effect size statistic',

@@ -6048,7 +6048,9 @@ section,header {
 	padding-top: 70px;
 	margin-top: -70px;
 }
-
+.no-left-margin {
+	margin-left:0 !important;
+}
 .select2no-margin {
 	margin-left:0 !important;
 	padding-left:0 !important;

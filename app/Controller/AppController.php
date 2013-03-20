@@ -21,6 +21,7 @@
  */
 
 App::uses('Controller', 'Controller');
+App::uses('CakeEmail', 'Network/Email');
 #App::import('OAuth/OAuthClient');
 
 /**
@@ -48,7 +49,7 @@ class AppController extends Controller {
 			);
 	function beforeFilter() {
 			parent::beforeFilter();
-			$this->Auth->allow('login','logout','register','pages','display');
+			$this->Auth->allow('login','logout','register','pages','display','forgotPassword','resetPassword');
 	        $this->Auth->loginAction = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->logoutRedirect = array('controller' => 'Users', 'action' => 'login');
 	        $this->Auth->loginRedirect = array('controller' => 'Papers', 'action' => 'index');
