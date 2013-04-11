@@ -1,8 +1,11 @@
-<h1>OSC Archival</h1>
-<h2>PURPOSE AND GOALS</h2>
-<h3>What is OSC-Archival?</h3>
-<p>OSC stands for the <a href="http://openscienceframework.org">Open Science Collaboration</a>: an international online collaboration that aims to investigate and improve research reporting practices, mainly in psychology. <strong>OSC-Archival</strong> is an online coding project spread across many teams and sites. It will code a set of published articles from top psychology journals on several criteria relevant to good research reporting and practice. It will also search the social science literature for research articles citing the original set, and code whether those papers are replications of the original research, as well as what the replications found.</p>
-
+<div class="hero-unit">	
+	<h1>OSC Archival</h1>
+	<p><strong>OSC-Archival</strong> is an online coding project spread across many teams and sites.</p>
+	<p><?=$this->Html->link('Sign up here!','/users/register',array('class' => 'btn btn-large btn-warning'))?></p>
+	<p>
+		The project members will code a set of published articles from top psychology journals on several criteria relevant to good research reporting and practice. It will also search the social science literature for research articles citing the original set, and code whether those papers are replications of the original research, as well as what the replications found. The <abbr>OSC</abbr> in our name stands for the <a href="http://openscienceframework.org">Open Science Collaboration</a>: an international online collaboration that aims to investigate and improve research reporting practices, mainly in psychology.</p>
+</div>
+<h2>Purpose and goals</h2>
 <h3>What articles will OSC-Archival look at?</h3>
 <p>Our starting selection consists of journal issues from the first three months of 2008 in part because five years is a long enough time for replications of the article to have been published, yet short enough that the research is still relevant to current practices. By coincidence, this is also the time period chosen for the OSC’s Replication Project (link). The coincidence is also a convenience; for that project, some studies have already been coded on some of the items we need, such as main hypothesis and effect size. Unlike the Replication Project, the Archival Project’s goals let us analyze all articles without caring about how feasible it would be to replicate them.
 We also start with the same three journals as the Replication Project, representing high-impact journals (that is, with a relatively high number of citations per article) in multidisciplinary psychology (<em>Psychological Science</em>), social psychology (<em>Journal of Personality and Social Psychology</em>), and cognitive psychology (<em>Journal of Experimental Psychology: Learning, Memory and Cognition</em>). Social and cognitive psychology were chosen as a focus for the Replication Project because studies in those disciplines are relatively easy to replicate. But if the Archival Project finds enough human resources, its first priority will be to expand to the following journals in order, representing the highest 2011 ISI impact factor in their psychology sub-discipline:</p>

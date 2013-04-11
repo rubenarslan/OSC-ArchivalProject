@@ -11,11 +11,13 @@ class Codedpaper extends AppModel {
 		
 		$preexisting = $this->find('first',array('conditions' => $newcodedpaper));
 		if( $preexisting ) { # use the user and paper id to see whether this has been coded by this user already, if so, send him there
-			$message = __('You can\'t code the same paper twice.');
+			$message = __('You can\'t code the same paper twice. We thus took you to your first coding attempt.');
+			$alert = 'alert-info';
 			$cid = $preexisting['Codedpaper']['id'];
 		}
 		else if( $this->save($newcodedpaper) ) { # if not, create a new one, save it and send him there
 			$message = __('A new paper can be coded now.');
+			$alert = 'alert-success';
 			$cid = $this->read(null);
 			$cid = $cid['Codedpaper']['id'];
 			if($cascade) {
@@ -23,9 +25,10 @@ class Codedpaper extends AppModel {
 			}
 		} else {
 			$message = __('The new coded paper could not be saved. Please, try again.');
+			$alert = 'alert-error';
 			$cid = null;
 		}
-		return array('cid' => $cid,'message' => $message);
+		return array('cid' => $cid,'message' => $message,'alert'=>$alert);
 	}
 	public function findDeep($id) {
 		return $this->find('first', # get this user's paper

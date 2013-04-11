@@ -37,13 +37,12 @@
 	          <div class="container nav-collapse">
 	            <ul class="nav">
 		<?php
-		if(AuthComponent::user() === NULL) { ?>
+		if(AuthComponent::user() === NULL): ?>
 	                <li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
 				    <li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
-		<?php }
-		else {?>
+		<?php
+		else: ?>
 					<li><?php echo $this->Html->link("Logout [". AuthComponent::user('Group.name').'] '.AuthComponent::user('username'), '/users/logout'); ?></li>
-		<?php }?>
 				<li class="divider-vertical"></li>
 				<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Coding'); ?><span class="caret"></span></a>
@@ -52,8 +51,14 @@
 			                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
 			                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
 			                <li><?php echo $this->Html->link('Leaderboard', '/users/leaderboard'); ?></li>
+			                <li><?php echo $this->Html->link('Send feedback', 'mailto:'.Configure::read('Pubmed.email')
+.'?subject=Archival%20Project%20Support'); ?></li>
 			            </ul>
 				</li>
+				<?php
+			endif;
+				?>
+			<?php if(AuthComponent::user('Group.name')=='admin'): ?>
 			  	<li class="divider-vertical"></li>
 				<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Admin'); ?><span class="caret"></span></a>
@@ -65,6 +70,7 @@
 			                <li><?php echo $this->Html->link('Export Excel', '/joinedCodedpapers/export/excel'); ?></li>
 			            </ul>
 				</li>
+			<?php endif; ?>
 				<?php echo $this->fetch('more_nav'); ?>
 				</ul>
 	          </div><!--/.nav-collapse -->

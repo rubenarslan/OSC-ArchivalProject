@@ -56,8 +56,6 @@ class PapersController extends AppController {
 		pr ($this->Paper->fetchByDOIpubmed($DOI));
 		exit;
 	}
-	# todo: improve inline help in coding form
-	# todo: calculate p-values based on test statistic
 
 	# todo: more gamificiation, i.e. Levels, Badges, Points, Progress Bars, a leaderboard, ...?
 		# related: make it easy for disoriented coders to find someone at an intermediate level (lots of badges) to ask for advice

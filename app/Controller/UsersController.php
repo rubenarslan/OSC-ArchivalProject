@@ -69,6 +69,7 @@ email.
 Best regards,
 
 the OSC Archival Project team");
+				$this->Session->setFlash(__('The reset link was sent to your email address.'));
 				$this->redirect("/");
 			}
 		}
@@ -93,11 +94,11 @@ the OSC Archival Project team");
 						'password' => $this->request->data['User']['password'],
 					));
 					if($this->User->save()) {
-						$this->Session->setFlash(__('Passwort successfully changed. Log in now.'));
+						$this->Session->setFlash(__('Passwort successfully changed. Log in now.'),'alert-success');
 						$this->redirect("/users/login");
 					}
 				} else {
-					$this->Session->setFlash(__('Passwort reset token was invalid. Please follow the link in your email or copy it to the browser.'));
+					$this->Session->setFlash(__('Passwort reset token was invalid. Please follow the link in your email or copy it to the browser.'),'alert-error');
 				}
 			}
 		}
@@ -135,7 +136,7 @@ the OSC Archival Project team");
 		if ($this->request->is('post')) {
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
-				$this->Session->setFlash(__('The user has been saved'));
+				$this->Session->setFlash(__('The user has been saved'),'alert-info');
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The user could not be saved. Please, try again.'));

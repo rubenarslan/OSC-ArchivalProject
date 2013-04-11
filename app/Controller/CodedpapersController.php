@@ -6,7 +6,8 @@ class CodedpapersController extends AppController {
 		if($admin) return true;
 		
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','morestudies','compare'))) return true; # viewing and adding is allowed to all users. comparing, indexing and adding empty stuff too.
+		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','morestudies','compare'))) return true; 
+		# viewing and adding is allowed to all users. comparing, indexing and adding empty stuff too.
 		
 
 		$codedpaper_id = $this->request->params['pass'][0];
@@ -38,7 +39,7 @@ class CodedpapersController extends AppController {
 		}
 		
 		$insertcp = $this->Codedpaper->createDummy($id,$this->Auth->user('id'));
-		$this->Session->setFlash($insertcp['message']);
+		$this->Session->setFlash($insertcp['message'],$insertcp['alert']);
 		$cid = $insertcp['cid'];
 		if($cid !== null)
 			$this->redirect('code/'.$cid);
@@ -63,7 +64,7 @@ class CodedpapersController extends AppController {
 #				}
 			}
 			else {
-				$this->Session->setFlash("Could not save.");
+				$this->Session->setFlash("Could not save.",'alert-error');
 			}
 		}
 		### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)

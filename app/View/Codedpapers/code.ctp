@@ -70,7 +70,9 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 <li class="btn-nav">
 	<button id="navSave" class="btn" disabled="disabled">Saved</button>
 </li>
-<?php $this->end(); ?>
+<?php $this->end(); 
+echo $this->Session->flash();
+?>
 <h1>Code paper <?php echo $this->Html->link('View <span class="icon-eye-open"></span>', 
 	array('controller' => 'papers','action' => 'view', $this->data['Paper']['id']), 
 	array('escape' => false, 'class' => 'btn btn-large'));?></h1>
@@ -82,45 +84,71 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 	<?php  echo $this->data['Paper']['abstract']; ?>
 </p>
 <?php
-if(isset($onlyView) AND !$this->data['Codedpaper']['completed']) {
-	die('Not yet complete.');
+if(
+	AuthComponent::user('Group.name')!=='admin' AND 
+ 	isset($onlyView) AND 
+	!$this->data['Codedpaper']['completed']
+) 
+	{
+	echo $this->element('alert-info',array(
+		'bold' => 'Not yet complete',
+		'message'=>'This paper has not yet been marked complete, so only admins can view it.'
+	));
 }
-if(isset($onlyView)) {
-	echo $this->Form->create("Codedpaper",array(
-		'inputDefaults' => array('disabled' => 'disabled'),
+else 
+{
+	if(
+		AuthComponent::user('Group.name')==='admin' AND 
+	 	isset($onlyView) AND 
+		!$this->data['Codedpaper']['completed']
+	) 
+		{
+		echo $this->element('alert-info',array(
+			'bold' => 'Not yet complete',
+			'message'=>'You can view this paper, because you\'re an admin, but it has not been marked as complete yet.'
 		));
 	}
-else {
-	echo $this->Form->create("Codedpaper");
-}
-echo $this->Session->flash();
-echo $this->Form->hidden("Paper.id");
-echo $this->Form->hidden("Paper.DOI");
-echo $this->Form->hidden("id");
-echo $this->Form->hidden("paper_id");
+	
+	if(isset($onlyView)) 
+	{
+		echo $this->Form->create("Codedpaper",array(
+			'inputDefaults' => array('disabled' => 'disabled'),
+			));
+	}
+	else 
+	{
+		echo $this->Form->create("Codedpaper");
+	}
+	echo $this->Form->hidden("Paper.id");
+	echo $this->Form->hidden("Paper.DOI");
+	echo $this->Form->hidden("id");
+	echo $this->Form->hidden("paper_id");
 
-echo $this->element('study', array(
-	"data" => $this->data
-));
+	echo $this->element('study', array(
+		"data" => $this->data
+	));
 
-echo '<div class="form-actions"><div class="btn-group">';
-echo $this->Form->end(array(
-    'label' => 'Save!',
-    'id' => 'CodedpaperCodeFormSubmit',
-	'class' => 'btn btn-large',
-	'div' => false,
-));
-?>
-	<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
-	<label id="CodedpaperCompletedLabel" class="btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
-		<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
-		Complete (for others to view)
-	</label>
+	echo '<div class="form-actions"><div class="btn-group">';
+	echo $this->Form->end(array(
+	    'label' => 'Save!',
+	    'id' => 'CodedpaperCodeFormSubmit',
+		'class' => 'btn btn-large',
+		'div' => false,
+	));
+	?>
+		<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
+		<label id="CodedpaperCompletedLabel" class="btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
+			<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
+			Complete (for others to view)
+		</label>
+		</div>
 	</div>
-</div>
-<?php
-pr($this->validationErrors);
-?>
+	<?php
+	pr($this->validationErrors);
+	?>
+	<?php
+}
+	?>
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript">
 //<![CDATA[
@@ -288,9 +316,44 @@ function saveform() {
 			}); // refocus it when the data has been replaced
 		}, 
 		type:"post", 
-		url: $("#CodedpaperCodeFormSubmit").closest("form").attr('action')
+		url: $("#CodedpaperCodeFormSubmit").closest("form").attr('action'),
+		timeout: 2000,
+		error: 
+        function(e, x, settings, exception) 
+		{
+            var message;
+            var statusErrorMap = {
+                '400' : "Server understood the request but request content was invalid.",
+                '401' : "Unauthorised access.",
+                '403' : "You were logged out while editing. Please open a new tab and login there, so that no data is lost.",
+                '404' : "Page not found.",
+                '500' : "Internal Server Error.",
+                '503' : "Service Unavailable"
+            };
+            if (e.status) 
+			{
+                message =statusErrorMap[e.status];
+				if(!message)
+					message= (typeof e.statusText != 'undefined' && e.statusText != 'error') ? e.statusText : 'Unknown error. Check your internet connection.';
+            }
+			else if(exception=='parsererror')
+                message="Parsing JSON Request failed.";
+			else if(exception=='timeout')
+                message="Request timed out.";
+			else if(exception=='abort')
+                message="Request was aborted by the server.";
+			else
+				message= (typeof e.statusText != 'undefined' && e.statusText != 'error') ? e.statusText : 'Unknown error. Check your internet connection.';
+			
+	        bootstrap_alert(message, 'Error!');
+		}
 	};
 	$.ajax(options);
+}
+function bootstrap_alert(message,bold) {
+	var $alert = $('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>' + (bold ? bold:'Problem' ) + '</strong> ' + message + '</div>');
+	$('#main-content').prepend( $alert);
+	$alert[0].scrollIntoView(false);
 }
 $(document).ready(function () {
 	if(typeof autosaveglobal == 'undefined') {
@@ -300,7 +363,6 @@ $(document).ready(function () {
 	}
 	
 	activateinputs();
-	$("#flashMessage").delay(2000).fadeOut(1000);
 	$("#CodedpaperCodeFormSubmit").click( function (event) {
 		saveform();
 		return false;
