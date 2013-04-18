@@ -110,7 +110,10 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 
 	echo '<div class="row-fluid sampleinfo">';
 		echo $this->Form->input("Study.$s.Test.$t.N_total",array(
-			'class' => 'span8', 'div'=> array('class'=>"span2"), 'label' => 'N total',
+			'class' => 'span8', 
+			'div'=> array('class'=>"span2"), 
+			'step' => 1,
+			'label' => 'N total',
 			'placeholder' => 'Sample size')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.data_points_excluded",array(
@@ -170,11 +173,17 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 				),
 			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 
 			'label' => 'Effect size statistic',
+			'type' => 'number',
 			'placeholder' => 'Choose one',
 			)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic_value",array(
-			'class' => 'span8', 'div'=> array('class'=>"span3"), 'label' => 'Reported effect size')
+			'class' => 'span8', 
+			'div'=> array('class'=>"span3"), 
+			'label' => 'Reported effect size',
+			'step' => 'any',
+			
+		)
 		);
 		echo '<div class="span4 coding-hint">Look in the menus for test and effect size statistics for this effect test. Both, or only one may be reported.</div>';
 		
@@ -199,7 +208,11 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'class' => 'span12', 'div'=> array('class'=>"span1"), 'label' => 'df')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic_value",array(
-			'class' => 'span9', 'div'=> array('class'=>"span2"), 'label' => 'value')
+			'class' => 'span9', 
+			'div'=> array('class'=>"span2"), 
+			'label' => 'value',
+			'step' => 'any',
+		)
 		);
 		echo '<div class="span4 offset1 coding-hint">Enter the name and value of the test statistic and its associated degrees of freedom.</div>';
 	echo '</div>';
@@ -209,10 +222,15 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'class' => 'select2pvalue span11',
 			'div'=> array('class'=> "span3"), 
 			'label' => 'Significance (reported)', 
-			'placeholder' => 'p-value (0.00 - 1)')
+			'placeholder' => 'p-value (0.00 - 1)'
+		)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.computed_significance_of_test",array(
-			'class' => 'span9', 'div'=> array('class'=>"span3"), 'label' => '(exactly computed)')
+			'class' => 'span9', 
+			'div'=> array('class'=>"span3"), 
+			'label' => '(exactly computed)',
+			'step' => 'any',
+		)
 		);
 	echo '</div>';
 	
@@ -278,41 +296,13 @@ echo '</div></div>';
 	
 }
 
-echo "<h5 id='$addtestid'>";
+echo "<h5 id='$addtestid' class='adder_elm'>";
 echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
-	array('controller' => 'codedpapers', 'action' => 'moretests'), array('class' => 'btn btn-mini'));
+	array('controller' => 'codedpapers', 'action' => 'moretests','?' => array(
+		's' => $s,
+		'tstart' => $t,
+		'study_id' => $study_id,
+		)
+	), array('class' => 'btn btn-mini'));
 echo "</h5>";
 ?>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function () {
-	$('.copysample').each(function(i,elm) { // copy the sample information from the preceding test if it exists
-		$(elm).off('click','*');
-		$(elm).on('click', function(evnt) {
-			currenttestinputs = $(evnt.target).closest('.sampleinfo').find('input,textarea');
-			prevtestinputs = $(evnt.target).closest('.formblock').prev('.formblock').find('.sampleinfo input,.sampleinfo textarea');
-			for(i=0; i < prevtestinputs.length; i++) { // only if a previous test exists
-				currenttestinputs[i].value = prevtestinputs[i].value;
-				$(currenttestinputs[i]).trigger('change'); // so the textarea may be shown
-			}
-			return false;
-		});
-	});
-	$("#<?=$addtestid?> a.btn").bind("click", function (event) {
-		$.ajax( {
-			data:"s=<?=$s?>&tstart=<?=$t?>&study_id=<?=$study_id;?>", 
-			dataType:"html", 
-			success:function (data, textStatus) {
-				$("#<?=$addtestid?>").replaceWith(data);
-			}, 
-			url:"<?php echo $this->webroot; ?>codedpapers/moretests"
-			});
-		return false;
-	});
-	$("[rel=tooltip]").tooltip();
-	
-<?php if($newadd) echo	"activateinputs(); // new inputs need the JS love too
-"; ?>
-});
-//]]>;
-</script>

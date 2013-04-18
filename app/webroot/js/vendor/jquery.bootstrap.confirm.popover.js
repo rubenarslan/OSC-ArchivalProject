@@ -1,6 +1,6 @@
 /*
 Copyright (c) 2011 Damien Antipa, http://www.nethead.at/, http://damien.antipa.at
-
+ 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 "Software"), to deal in the Software without restriction, including
@@ -8,10 +8,10 @@ without limitation the rights to use, copy, modify, merge, publish,
 distribute, sublicense, and/or sell copies of the Software, and to
 permit persons to whom the Software is furnished to do so, subject to
 the following conditions:
-
+ 
 The above copyright notice and this permission notice shall be
 included in all copies or substantial portions of the Software.
-
+ 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -32,7 +32,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
  */
 (function($){
-	$.fn.extend({
+	jQuery.fn.extend({
 		confirmDialog: function(options) {
 			var defaults = {
 				message: '<strong>Are you sure</strong>',				
@@ -46,14 +46,27 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 							'</div>' +
 						'</div>',
 				cancelButton: 'Cancel',
-				confirmButton: 'Delete',
+				confirmButton: 'Delete'
 			};
 			var options =  $.extend(defaults, options);
 			
 			return this.each(function() {
 				var o = options;
 				var $elem = $(this)
-
+				
+				
+				//is there an existing click handler registered
+				if ($._data($elem.get(0), "events") && $._data($elem.get(0), "events").click) 
+				{
+					//save the handler (TODO: assumes only one)
+					var targetClickFun = $._data($elem.get(0), "events").click[0].handler;
+					//unbind it to prevent it firing
+					$elem.off('click');
+				}else
+				{
+					//assume there is a href attribute to redirect to
+					var targetClickFun = function() {window.location.href = $elem.attr('href');};
+				}
 				
 				$elem.bind('click', function(e) {
 					e.preventDefault();
@@ -84,32 +97,16 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 							marginTop: '5px',
 							textAlign: 'right'
 						});
-
+ 
 						$dialog.find('a.btn').css({
 							marginLeft: '3px'
 						});
 						
 						$dialog.find('p.message').html(o.message);
 						
-						function targetclickfun () {
-							deletelink = $(e.currentTarget).attr('href');
-							if(deletelink!='#') {
-								$.ajax( { 
-									dataType:"html", 
-									success:function (data, textStatus) {
-										if(data.length < 40) 
-											$($("form")[0]).prepend('<div id="flashMessage" class="message">'+data+'</div>');
-										else location.reload();
-									}, 
-									url:deletelink
-									});
-							}
-							$(e.target).closest('div.formblock').remove();
-							unsavedChanges();
-						}
 						$dialog.find('a.btn:eq(0)').text(o.confirmButton).bind('click', function(e) {
 							$dialog.remove();
-							targetclickfun();
+							targetClickFun();
 							return false;
 						});
 						

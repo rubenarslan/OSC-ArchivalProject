@@ -31,10 +31,26 @@ App::uses('AppController', 'Controller');
  */
 class PagesController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
-		parent::isAuthorized($user); # allow admins to do anything
-
 		$req_action = $this->request->params['action'];
-		if(in_array($req_action, array('display'))) return true; # viewing and adding is allowed to all users
+		$page = $this->request->params['pass'][0];
+
+		#return false;
+		
+		if(in_array($req_action, array('display'))
+			AND in_array($page, array('coding_scheme','home','feedback'))) return true; # viewing and adding is allowed to all users
+
+		return parent::isAuthorized($user); # allow admins to do anything
+	}
+	function beforeFilter()
+	{
+		$req_action = $this->request->params['action'];
+		$page = $this->request->params['pass'][0];
+		
+#		die($this->request->params['pass'][0]);
+		if(in_array($req_action, array('display'))
+			AND in_array($page, array('coding_scheme','home'))) $this->Auth->allow('display'); # viewing and adding is allowed to all users
+		
+		parent::beforeFilter();
 	}
 /**
  * Controller name

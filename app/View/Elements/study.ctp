@@ -126,27 +126,12 @@ echo '</div></div>';
 
 }
 
-echo "<h4 id='$addstudyid'>";
+echo "<h4 id='$addstudyid' class='adder_elm'>";
 echo  $this->Html->link("Add Study ".($s+1),
-	array('controller' => 'codedpapers', 'action' => 'morestudies'), array('class' => 'btn')
+	array('controller' => 'codedpapers', 'action' => 'morestudies','?' => array(
+		'sstart' => $s,
+		'codedpaper_id' => $codedpaper_id,
+		)), array('class' => 'btn')
 	);
 echo "</h4>";
 ?>
-<script type="text/javascript">
-//<![CDATA[
-$(document).ready(function () {
-	$("#<?=$addstudyid?> a.btn").bind("click", function (event) {
-		$.ajax( {
-			data:"sstart=<?=$s?>&codedpaper_id=<?=$codedpaper_id?>", 
-			dataType:"html", 
-			success:function (data, textStatus) {
-				$("#<?=$addstudyid?>").replaceWith(data);
-			}, 
-			url:"<?php echo $this->webroot; ?>codedpapers/morestudies"
-		});
-		return false;
-	});
-	
-});
-//]]>;
-</script>

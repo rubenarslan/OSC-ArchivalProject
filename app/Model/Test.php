@@ -38,11 +38,17 @@ class Test extends AppModel {
 			'required' => true,
             'allowEmpty' => true
 		),
+		'N_total' => array(
+	       'rule'    => array("naturalNumber",true),
+           'required' => true,
+           'allowEmpty' => true,
+	       'message' => 'N total must be a natural number'
+	    ),
 		'data_points_excluded' => array(
 	       'rule'    => array("naturalNumber",true),
            'required' => true,
            'allowEmpty' => true,
-	       'message' => 'Must be a natural number'
+	       'message' => 'Data points excluded must be a natural number.'
 	    ),
 		'reasons_for_exclusions' => array(
 			'rule' => 'notEmpty',
@@ -59,7 +65,7 @@ class Test extends AppModel {
 			'rule'    => "naturalNumber",
             'required' => true,
             'allowEmpty' => true,
-            'message' => 'Must be a natural number'
+            'message' => 'N used in analysis must be a natural number.'
         ),
 		'inferential_test_statistic' => array(
 	        'rule' => 'notEmpty',
@@ -71,7 +77,7 @@ class Test extends AppModel {
 		        'rule'     => array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
 	            'allowEmpty' => true,
-		        'message'  => 'Numbers only, decimals marked by dot.',
+		        'message'  => 'Inferential test statistic: Numbers only, decimals marked by dot.',
 		    )
 		),
 	    'degrees_of_freedom' => array(
@@ -89,7 +95,7 @@ class Test extends AppModel {
 		        'rule'    => array('range', 0, 1.0000000000001),
 		        'required' => true,
 	            'allowEmpty' => true,
-		        'message'  => 'Numbers only, decimals marked by dot.',
+		        'message'  => 'Computed significance: Numbers only, decimals marked by dot.',
 		    )
 	    ),
 	    'hypothesis_supported' => array(
@@ -107,7 +113,7 @@ class Test extends AppModel {
 		        'rule'     => 'decimal', #array('decimal',NULL,"/^\d+(\.\d+)?$/"),
 		        'required' => true,
 	            'allowEmpty' => true,
-		        'message'  => 'Numbers only, decimals marked by dot.',
+		        'message'  => 'Reported effect size: Numbers only, decimals marked by dot.',
 		    )
 	    ),	    
     );

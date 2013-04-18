@@ -9,14 +9,23 @@
 		<!--[if lt IE 9]>
       		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
-		<script src="<?php echo $this->webroot; ?>js/twitter/bootstrap/jquery-1.8.3.js"></script>
 
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/twitter/bootstrap/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/select2.css" />
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/bootstrap.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/twitter/bootstrap/jquery.bootstrap.confirm.popover.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/main.css" />
+		
+		
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.9.1.js"><\/script>')</script>
+
+        <script src="<?php echo $this->webroot; ?>js/vendor/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.min.js"></script>
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/vendor/jquery.bootstrap.confirm.popover.js"></script>
+		
+        <script src="<?php echo $this->webroot; ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo $this->webroot; ?>js/vendor/js-webshim/minified/polyfiller.js"></script>
+		
+		<?php echo $this->Js->writeBuffer(); ?>
 		
     	<?php
 			echo $this->fetch('meta');
@@ -50,9 +59,9 @@
 			                <li><?php echo $this->Html->link('List available papers', '/papers/index'); ?></li>
 			                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
 			                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
+			                <li><?php echo $this->Html->link('Coding scheme', '/pages/coding_scheme'); ?></li>
 			                <li><?php echo $this->Html->link('Leaderboard', '/users/leaderboard'); ?></li>
-			                <li><?php echo $this->Html->link('Send feedback', 'mailto:'.Configure::read('Pubmed.email')
-.'?subject=Archival%20Project%20Support'); ?></li>
+			                <li><?php echo $this->Html->link('Send feedback', '/pages/feedback'); ?></li>
 			            </ul>
 				</li>
 				<?php
@@ -100,6 +109,5 @@
 	      </footer>
 
 	    </div> <!-- /container -->
-<?php echo $this->Js->writeBuffer(); ?>
 	</body>
 </html>

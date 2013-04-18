@@ -27,20 +27,26 @@ class TestsController extends AppController {
 	}
 	public function delete($id = null) {
 		$this->Test->id = $id;
-		if (!$this->request->is('ajax')) $ajax = TRUE; else $ajax = FALSE;
 		if (!$this->Test->exists()) {
 			throw new NotFoundException(__('Invalid Test'));
 		}
+		
+		$msg = 'Test not deleted.';
+		$kind = 'alert-error';
+		
 		if ($this->Test->delete()) {
-			if($ajax) {
-				$this->Session->setFlash(__('Test deleted'));
-				$this->redirect("/codedpapers/index_mine");
-			} else {
-				echo 'Test deleted';
-				exit;
-			}
+			$msg = __('Test deleted');
+			$kind = 'alert-info';
+			$goto = "/codedpapers/index_mine";
 		}
-		$this->Session->setFlash(__('Test was not deleted'));
-		$this->redirect("/codedpapers/index_mine");
+		
+		if (!$this->request->is('ajax')) {
+			if(isset($msg) ) $this->Session->setFlash($msg,$kind);
+			if(isset($goto)) $this->redirect($goto);
+		}
+		else {
+			$this->set(compact('msg','kind'));
+			$this->render('/Codedpapers/message');
+		}
 	}
 }

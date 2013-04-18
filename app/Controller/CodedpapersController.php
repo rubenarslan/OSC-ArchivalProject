@@ -2,8 +2,6 @@
 App::uses('AppController', 'Controller');
 class CodedpapersController extends AppController {
 	function isAuthorized($user = null, $request = null) {	
-		$admin = parent::isAuthorized($user); # allow admins to do anything
-		if($admin) return true;
 		
 		$req_action = $this->request->params['action'];
 		if(in_array($req_action, array('view', 'add', 'index_mine', 'index','moretests','morestudies','compare'))) return true; 
@@ -27,7 +25,8 @@ class CodedpapersController extends AppController {
 				return true;
 			}
 		}
-		return false;
+		
+		return parent::isAuthorized($user); # allow admins to do anything
 	}
 	public function add ($id = NULL) {
 		
@@ -47,32 +46,55 @@ class CodedpapersController extends AppController {
 			$this->redirect('index/');
 		exit;
 	}
-	public function code ($id = NULL) {
+	public function code ($id = NULL) 
+	{
 		$this->Codedpaper->id = $id;
 				
-		if (!$this->Codedpaper->exists()) {
+		if (!$this->Codedpaper->exists())
 		    throw new NotFoundException('Invalid coded paper');
-		}
-		if (!$this->request->is('get')) { # if it was posted or ajaxed			
-			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) {
-#				if($this->request->is('ajax')) { # commented this out, because I'm reloading the form again
-#					echo 'Study saved.';
-#					exit;
-#				} 
-#				else {
-#					$this->Session->setFlash('Study Saved!');
-#				}
+		
+		if ($this->request->is('post') OR $this->request->is('ajax')) 
+		{
+			if($this->Codedpaper->saveAssociated($this->request->data, array("deep" => TRUE)	)) 
+			{
+				$msg = __('Study saved.');
+				$kind = 'alert-info';
 			}
 			else {
-				$this->Session->setFlash("Could not save.",'alert-error');
+				$msg = __('Study could not be saved!');
+				$kind = 'alert-error';
 			}
 		}
-		### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)
-		$this->request->data = $this->Codedpaper->findDeep($id);
-
-		$replicatesStudyId = $this->Codedpaper->Study->getReplicable($id);
 		
-		$this->set(compact('replicatesStudyId'));
+		$errors = array_unique(Set::flatten($this->Codedpaper->validationErrors));
+		if(!empty($errors))
+		{
+			function inc($matches) {
+			    return ++$matches[1];
+			}
+			
+			foreach($errors AS $field => $error) {
+				$field =  preg_replace_callback( "|(\d+)|", "inc", $field);
+				$field = Inflector::humanize(str_replace("."," ",$field));
+				
+				$msg .= "<br>". $field . ": ". $error;
+			}
+		}
+		
+		if (!$this->request->is('ajax')) {
+			if(isset($msg) ) $this->Session->setFlash($msg,$kind);
+			
+			### get data again (if I submitted abstract and title as hidden fields, I wouldn't need to do it)
+			$this->request->data = $this->Codedpaper->findDeep($id);
+
+			$replicatesStudyId = $this->Codedpaper->Study->getReplicable($id);
+		
+			$this->set(compact('replicatesStudyId'));
+		}
+		else {
+			$this->set(compact('msg','kind'));
+			$this->render('message');
+		}
 	}
 	public function morestudies () {
 		$replicatesStudyId = $this->Codedpaper->Study->getReplicable();

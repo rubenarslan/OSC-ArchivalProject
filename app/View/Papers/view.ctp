@@ -1,5 +1,6 @@
 <div class="papers view">
 <h2><?php  echo __('Paper'); ?></h2>
+<p>We cannot supply you with this manuscript, but your library will likely have access to this article. Please see your project coordinator if you cannot access this manuscript.</p>
 <p class="lead"><?php echo h($paper['Paper']['APA']); ?></p>
 
 <blockquote><?php echo h($paper['Paper']['abstract']); ?>
