@@ -1,7 +1,7 @@
 <h1><?php echo __('Register'); ?></h1>
 <?php echo $this->Form->create('User', array('class' => 'form-horizontal')); ?>
 <div class="control-group">
-<?php   echo $this->Form->input('username', array('class' => 'span4','autofocus'=>'autofocus', 'label' => array('class' => 'control-label'), 'between'=> '<div class="controls">', 'after' => '</div>'));
+<?php   echo $this->Form->input('username', array('class' => 'span4','autofocus'=>'autofocus', 'label' => array('class' => 'control-label', 'text' => 'Your name'), 'between'=> '<div class="controls">', 'after' => '</div>'));
 ?>
 </div>
 <div class="control-group">

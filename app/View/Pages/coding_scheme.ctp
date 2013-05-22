@@ -5,8 +5,7 @@
 	<li><a href="#organization"><i class="icon-chevron-right"></i> Organization</a></li>
 	<li><a href="#articles"><i class="icon-chevron-right"></i> &nbsp;&nbsp;Articles</a></li>
 	<li><a href="#studies"><i class="icon-chevron-right"></i> &nbsp;&nbsp;Studies</a></li>
-	<li><a href="#effects"><i class="icon-chevron-right"></i> &nbsp;&nbsp;Effects</a></li>
-	<li><a href="#tests"><i class="icon-chevron-right"></i> &nbsp;&nbsp;Tests</a></li>
+	<li><a href="#effects"><i class="icon-chevron-right"></i> &nbsp;&nbsp;Effect tests</a></li>
 </ul>
 </div>
 <?php $this->end(); ?>
@@ -15,29 +14,31 @@
    <p class="lead">What is the coding scheme?</p>
 </header>
 
-<p>In <strong>Stage 1</strong>, articles from the 2008 sample will be coded according to a scheme. <br>
-	In <strong>Stage 2</strong>, coders will search the literature forward for articles published since then that have explicitly replicated one or more of each 2008 article’s effects.</p>
-
-<p>The Stage 1 coding scheme can be applied to any empirical article in psychology that reports quantitative methods and inferential statistics. It follows a “nested” format, explained below. </p>
-
+<p>
+	In Stage 1, articles from the 2008 sample will be coded according to a scheme. In Stage 2, coders will search the literature forward for articles published after that sample, that have explicitly replicated one or more of each 2008 article’s key effects.
+</p>
+<p>	The Stage 1 coding scheme can be applied to any empirical article in psychology that reports quantitative methods and inferential statistics. It follows a “nested” format, explained below.  
+</p>
+<p>	The scheme is implemented using a Web front end at <a href="http://archivalproject.org/" title="This website">http://archivalproject.org/</a>. Coders should register with a username and password, log in, and proceed to the “Coding” section (tab at the top of the page) where they can select from a number of articles to code.</p>
+	
 <section id="organization">
 <h2>Moving from the highest level of organization to the lowest: </h2>
 
 <ol>
 	<li>We start with a number of <b>articles</b>. </li>
 	<li>Each article reports one or more <b>studies</b>. These are reported within the article and numbered (“Study 1,” Study 5a” and so forth). </li>
-	<li>Each study contains one or more <b>effects</b>, each of which is related to the hypotheses of the study. Effects are specific relationships among groups of conceptual variables, which the study may test in several different ways with manipulations and measures. Some complex effects – like those supporting mediation or interaction hypotheses – will involve more than two variables. 
+	<li>
+		Each study contains one or more key <b>effect tests</b>, each of which is related to the hypotheses of the study. Effects are specific relationships among groups of conceptual variables, which the study may test in several different ways with manipulations and measures. Some complex effect tests – like those supporting mediation or interaction hypotheses – will involve more than two variables.
+	<p><i>For example, if a study manipulates hunger by recruiting participants either before or after lunch, and measures self-control by asking them their preference for some money now or more money later, the underlying variables are “hunger” and “self-control.” The hypothesis may be that “hunger will increase self-control” but even if the authors don’t state a clear hypothesis, the article should state that they are interested in the relationship between the two variables.  </i></p>
+	<p>One study report may contain many effect tests. However, we are interested in two particular kinds of effect tests, and only these should be coded:</p>
 
-	<p><i>For example, if a study manipulates hunger by recruiting participants either before or after lunch, and measures self-control by asking them their preference for some money now or more money later, the underlying variables are “hunger” and “self-control.” The hypothesis may be that “hunger will increase self-control” but even if the authors don’t state a clear hypothesis, the article should state that they are interested in the relationship between the two variables. </i></p>
-	<p>One study report may contain many effects. However, we are interested in two particular kinds of effects, and only these should be coded:</p>
+	<h4>Tests of key novel effects</h4>
 
-	<h4>Key novel effects</h4>
-
-	<p>We are assuming that the Abstract will report the effects related to each study that are both novel to the article, and critical for the overall argument of the article. To find these effects, look only at the Abstract. Each key effect may be reported either as hypotheses (e.g., “We expected that gender would relate to coping style”), as findings (“ e.g., “Women showed more interdependent coping styles than men”), or as both. Create a separate effect for each relationship among variables mentioned in the Abstract. If an effect applies to multiple studies (e.g. “We expected that gender would relate to coping style. Three questionnaire studies tested this hypothesis”), create a separate effect under each study.</p>
+	<p>We are assuming that the Abstract will report the effects related to each study that are both novel to the article, and critical for the overall argument of the article. To find these effects, look only at the Abstract. Each key effect may be reported either as hypotheses (e.g., “We expected that gender would relate to coping style”), as findings (e.g., “Women showed more interdependent coping styles than men”), or as both. Create a separate test for each test in the Results of a relationship among variables mentioned in the Abstract. If an effect test applies to multiple studies (e.g. “We expected that gender would relate to coping style. Three questionnaire studies tested this hypothesis”), create a separate test under each study.</p>
 
 	<h4>Replication effects</h4>
 
-	<p>This kind of effect is more difficult to identify, and will require reading the Introduction and Discussion of the article as well as the Abstract. Here, we are looking for effects in the present study that the authors specifically link to the methods and results of one or more previously published articles. What’s more, all the variables in the effect, and the relationship among them, must correspond to a similar effect found previously. </p>
+	<p>This kind of test is more difficult to identify, and will require reading the Introduction and Discussion of the article as well as the Abstract. Here, we are looking for effect tests in the present study that the authors specifically link to the methods and results of one or more previously published articles. What’s more, all the variables in the effect, and the relationship tested among them, must correspond to a similar effect found previously.  </p>
 
 	<p>References to replication effects may or may not use the word “replicate” – some alternatives are:</p>
 	<blockquote>
@@ -45,44 +46,46 @@
 		Because [previous study] found [X], we also expect that …<br>
 		Unlike [previous study], we used a general population sample, which may explain why we did not find [X] as they did.
 	</blockquote>
-	<p>The variables need not literally be the same as the previous study but must be presented as measuring the same things. If the emphasis is on changing</p>
+	<p>The variables need not literally be the same as the previous study but must be presented as representing the same concepts. For example, in a study of the effects of attractiveness on face memory, the concept of “attractiveness” can be represented by other-rating (measurement), self-rating (measurement) or altering photos to be more or less symmetrical (manipulation).</p>
 
-	<p>Note also that there is a common technique called “replicate and extend” in which a study incorporates the measures and manipulations corresponding to of a previous study, so is able to replicate its hypothesis, but then adds new measures or manipulations to answer novel questions. Your division of effects should distinguish between new effects and replication effects</p>
+	<p>Note also that there is a common technique called “replicate and extend” in which a study incorporates the measures and manipulations corresponding to a previous study. Under this technique, the study is able to replicate the previous study’s hypothesis, but on the basis of the new measures or manipulations it can also answer novel questions. The replication test in this design is any test that parallels the previous study. It is possible for a study to replicate and extend a previous one, but not report a statistical test of the replication effect corresponding to the original study’s finding, in which case the test should be entered into the coding scheme but with the statistics left as missing.</p>
+	<p><i>
+		Example 1: An article reports a study that presented symmetrical and asymmetrical toys to 3 year old children, recording their interest in each. An article published afterwards cites the first article, but says it will use the same method while testing children 18 months, 3 years, 5 years and 7 years old. Here, the effect of toy shape for the 3 year olds replicates the first study, while the other conditions seek to extend the findings to other ages.<br><br>
+		Example 2: An article criticizes a previously published demographic study looking at the effects of gender on support for left-wing policy positions, because it did not take into account the fact of a pay gap between men and women, making it possible that economic class and not gender account for the effects. It looks at the same data but now controls for income using multiple regression, and shows that the gender effect is still there but much weaker. If the article reports the gender-policy relationship before the income factor is added, that is a replication test of the original, and the test controlling for pay extends the findings.
+		
+	</i></p>
 
 	<h5>Specific design issues in effects: Overall versus specific effects</h5>
 	<p>Sometimes an effect is phrased in terms of an overall effect, which then has sub-effects that can be tested. Examples of this are:</p>
 
 <ol>
-	<li>An experiment with five conditions, where the overall ANOVA for the experiment shows that there are differences among conditions, but the key effect is a comparison pitting one condition against two control conditions.</li>
+	<li>An experiment with five conditions, where the overall ANOVA for the experiment shows that there are differences among conditions, but the key test is a comparison pitting one condition against two control conditions.</li>
 	<li>An effect that states that men should show a stronger correlation between two variables than women do. This is sometimes tested by looking at the size and significance of each correlation separately. However, it is better to directly test the difference in size of the two correlations overall, or to carry out an equivalent analysis by testing the overall interaction effect between the continuous IV and gender upon the DV.</li>
 	<li>An effect that states that an experimental manipulation should work on people from one culture but not from another. Again, this can be tested by looking separately within each culture, or by doing an overall 2x2 interaction analysis.</li>
 </ol>
+<p>The coding scheme provides places to report both the highest-level and the most specific statistical tests, if these are given in the original article.</p>
+
 <h5>Specific design issues in effects: Model testing</h5>
 <p>Some statistical analyses – in particular, structural equation modeling – take an approach called “model testing” where the authors propose a complex model involving multiple variables and are interested in how well the model fits the data. </p>
 
 <p>When the goal is to test a model, there is no need to list all the relationships among variables separately; simply create one effect for each model tested. However, if the authors focus in on specific effects within models (for example, they place special importance on a path linking three variables) then these should get their own effect.</p>
 </li>
-	<li>Finally, each effect will have one or more statistical <b>tests</b> of significance. Effects can have multiple tests if the underlying variables that are key to the effect are measured or manipulated in more than one way. Tests are stated in terms of what was actually done to manipulate and measure variables.
-		<p><i>In the above example, if the authors report a t-test between the before and after lunch conditions on mean money preference, that is one test related to the hypothesis that hunger increases self-control. If they also calculate the correlation between a measure of hunger and money preference, that is another test of the same effect, because they are using a different method (measured hunger, rather than manipulated time of recruitment) to get at the same conceptual variable (hunger). Likewise, if they report another t-test between conditions where the dependent variable measures self-control through number of candies eaten out of a dish, rather than money preference, this would be a test related to the same effect, but with a different measure of the conceptual variable “self-control.”</i></p>
-<p>Another way to think of the nesting is to move from the lowest level of organization to the highest. So, each entry in the database represents a single significance test of a hypothesis that is related to the major effects in the study. Not all significance tests get their own entry; for example, if the hypothesis being tested is mentioned in the results section but not in the Introduction or discussion, it doesn’t get an entry. Each significance test is associated with an effect it is testing; a study it was part of; and an article it was part of.</p>
-
-	<p>Different pieces of information are associated with the different levels in the database. For example, there is one p value per statistical test so that goes in at the “test” level. Whether a hypothesis was presented as a prediction of the effect goes in at the “effect” level, and you don’t need to enter it separately for each of the tests that relate to that effect. Whether the study is presented by its authors as a replication relates to the study level, and again, you don’t need to enter it separately for each test within that study.</p>
-
-	<p>The coding scheme is entered through an online front-end at <a href="http://archival.dyden.de/">http://archival.dyden.de/</a>, and ends up as one .xls format spreadsheet per journal, centrally stored (e.g. on Google Docs) and updated by contributors. Each spreadsheet has two pages. One lists articles and article-level information; the other lists the studies and effects within each article, with one row per hypothesis test.</p>
-	 </li>
 </ol>
 </section>
+
+<h3>Coding scheme</h3>
+<p>Different pieces of information are associated with the different levels in the database. For example, there is one p value per statistical test so that goes in at the “test” level. But whether the study is presented by its authors as a replication relates to the study level, and you don’t need to enter it separately for each test within that study. </p>
+<p>Note also that you can have multiple tests of one hypothesis or effect, but each test has its own coding. It’s OK to repeat statements of variables or hypotheses from test to test if there are multiple tests of the same hypotheses or the same variables.</p>
+
 <section id="articles">
 <h4>Coding scheme: Article-level information</h4>
 
 <ol>
-	<li>Article ID number (assigned by us, format = 2 digit journal code + 4 digit article code)<br>
-		<i>The journal code is 01 for Psychological Science; 02 for Journal of Personality and Social Psychology; 03 for Journal of Experimental Psychology: Learning, Memory and Cognition. The article code is assigned with the first two digits being the issue number (01, 02 and so on) and the second two being the article number within that issue, counting only empirical articles and starting from 01, 02 etc. So, a JEP:LMC article that is the fifth empirical article in issue 1 of the time period being looked at would be 030105.</i></li>
-
-		<li>Journal (the three initial journals will be coded PS, JPSP, JEPLMC)</li>
-		<li>Bibliographic information (year, volume, pages, title, authors, DOI)</li>
-		<li>Number of studies (treating e.g. “1a” and “1b” as separate studies).</li>
-		<li>Number of article citations on a fixed date near the completion of the project (to be filled in last).</li>
+	<li>DOI of article: This is the Digital Object Identifier number uniquely identifying the article that can be found on the first page of each article. It will help in automatic extraction of the other reference data (title, page numbers, etc.)</li>
+	<li>Journal (the three initial journals will be coded PS, JPSP, JEPLMC)</li>
+	<li>Bibliographic information (year, volume, pages, title, authors, DOI)</li>
+	<li>Number of studies (treating e.g. “1a” and “1b” as separate studies).</li>
+	<li>Number of article citations on a fixed date near the completion of the project (to be filled in last).</li>
 </ol>
 </section>
 
@@ -96,8 +99,11 @@
 	<br><br><i>Example: The current paper cites a previous paper that initially developed and validated a previously used methodology to measure attitudes, the Implicit Color Test (ICT). If the current paper’s hypothesis is that the ICT would also be valid among a community sample of adults, not just university students, then this is a replication. If the current paper’s hypothesis is that people subjected to a mindfulness exercise would show more favorable ICT scores, then this is a use of the method, not a replication of the validation article.</i>
 	<br><br>This scheme is meant to also count replications that are nested within a larger design, as part of a “replicate and extend” research strategy.
 	<br><br><i>For example, if a study reports that two of its conditions replicate conditions and measures from a previous study, but there are two additional conditions to answer additional questions and three additional measures, this should be counted as a replication based on the conditions and measures that do replicate previous work. </i>
+	<br><br>Once a replication study is identified, it is coded further on the degree of similarity between it and the previous study:<br><br>
+	<blockquote>Example: The current paper cites a previous paper that initially developed and validated a previously used methodology to measure attitudes, the Implicit Color Test (ICT). If the current paper’s hypothesis is that the ICT would also be valid among a community sample of adults, not just university students, then this is a replication. If the current paper’s hypothesis is that people subjected to a mindfulness exercise would show more favorable ICT scores, then this is a use of the method, not a replication of the validation article.</blockquote>
 	<br>The codes for replication follow.
 	<li><ul>
+		<li>N: Novel study, no replication; if “replication” is chosen instead, these codes become available:</li>
 		<li>D: Direct replication. The stated goal is, at least in part of the design, to exactly reproduce the hypothesis and methods of the previous study, making only those changes that are necessary to achieve the same psychological meaning among the new participant population. <i>Example 1: A study of stereotypes in Canada that used ice hockey players as a target group might be directly replicated in Australia by changing the target group to rugby players and pretesting for new stereotypical associations, while keeping everything else the same. Example 2: A study of lexical decision times done in Romania using Romanian words is directly replicated in Spain, with the necessary alteration of using Spanish words. Example 3: A study of psychological resilience in the aftermath of the Hurricane Katrina disaster in the US is directly replicated among those affected by the 2011 tornado outbreak, changing only references to the event. </i></li>
 		<li>C: Conceptual replication. The study’s stated goal is, at least in part of the design, to test the hypothesis of the previous study, using the same conceptual variables but changing their operationalization in ways that go beyond merely adapting the materials for a new population or occasion. </li>
 		<li>A conceptual replication can be done to increase internal validity (seeing if an effect replicates if the method excludes an alternate explanation), ecological validity (seeing if an effect replicates if an analogous procedure is followed using more naturalistic stimuli or setting), or external validity (seeing if the effect replicates across different conceptual incarnations of the same manipulations and measures). Note that a test of the same theory covered by previous research is not enough to warrant the “conceptual replication” label: the hypothesis (that is, a statement of relationships among variables) leading to a previous effect must be replicated.</li>
@@ -106,58 +112,48 @@
 		<li>+#: After the letter code, a number code without brackets is placed to show that the study is presented as a replication/extension of an earlier study in the article itself, instead of, or in addition to, replicating another article.</li>
 		<li>N: No replication mentioned.</li>
 	</ul></li>
-	<li>Article replicated: Give the full, APA format reference for the article that the authors referenced as the source for the replication effect. If more than one article is cited, give the one from which the methods were most directly taken; if this cannot be determined, give the most recent one chronologically. If the study replicates a previous study in the same article, code as “Same.”</li>
-	<li>Study replicated: From the article cited previously, if it is a multi-study article, give the number of the study with methodology closest to the present study’s, or give 1 if there is only one study.</li>
+	<li>Article replicated: Give the DOI number for the article that the authors referenced as the source for the replication effect. If more than one article is cited, give the one from which the methods were most directly taken; if this cannot be determined, give the earliest one chronologically. If the study replicates a previous study in the same article, code as “This article”.</li>
+	<li>Study replicated: From the article cited previously, if it is a multi-study article, give the number of the study with methodology closest to the present study’s, or give 1 if there is only one study. This may also include a previous study in the same article</li>
 	<li>Author overlap?: Code this as Same if the present study replicates a previous paper in the article; Yes if the present study’s article has at least one author in common with the article being replicated; No if the two articles have no authors in common.</li>
 </ol>
 </section>
 <section id="effects">
-<h4>Dividing studies into effects: </h4>
+<h4>Dividing studies into effect tests: </h4>
 
-<p>The primary effects of each study are defined as those which deal with a point about the data mentioned in the Abstract, either as an expectation or result. Each result is accompanied by a hypothesis which may or may not match the result, but involves the same variables. </p>
+<p>As previously discussed, tests should be coded if they directly relate to a statement about the study’s hypotheses or results made in the Abstract; or if they are a replication of an effect from a previous study. </p>
 
-<p>Effects (results and hypotheses) should be stated as a relationship between or among variables. This can be either directional (X will be related positively/negatively to Y) or nondirectional (X will be related to Y). Effects involving multiple categories or conditions should be stated as completely as possible (if a prediction states that condition 1 will show higher anxiety than condition 2, and that both will be higher than the control condition, all three comparisons should be stated.) </p>
+<p>Studies in psychology often include multiple hypothesis tests in their Results section. By requiring that tests of non-replication effects be mentioned in the Abstract in order to be coded, we reduce the often numerous hypotheses and statistical tests in a study, keeping only the ones vital to the main points being made.</p>
 
-<p>More complex results can be stated as relations among multiple variables (Controlling for A and B, X will be related positively to Y; X’s effect will be moderated by Z such that it has a positive effect on Y only at high levels of Z).</p>
-
-<p>Studies in psychology often include multiple hypothesis tests in their Analyses section. By requiring that effects be mentioned in the Abstract in order to be coded, we reduce the often numerous hypotheses and statistical tests in a study, keeping only the ones vital to the main points being made.</p>
-
-<p><i>EXAMPLE: A study’s abstract reads in part, “Performing a sequential training task was expected to improve memory. This was shown across three studies; in Study 3, this effect was found only among those with an analytic learning style. In Study 2, we predicted that the sequential training task would further improve memory if repeated, but this was not shown to be the case.” </i></p>
-
-<p><i>This yields five effects of interest. Each of the three studies has the effect “Sequential training task relates positively to memory”; Study 2 has the additional effect “repeating the sequential training task, as opposed to taking it once, will further improve memory” which was predicted but not found; Study 3 has the additional effect, “Learning style interacts with the sequential training task; only with an analytic learning style does the task relate positively to memory.”</i></p>
-
-<p>If the research is explicitly exploratory – for example, looking at plausible predictors of a phenomenon with no aforementioned ideas about which will be most important – the study’s hypothesis and results can be stated as effects at the most general level: there are some relationships among the variables studied. </p>
-
-<p>Effect-level information:</p>
-
-<ol>
-	<li>Code number of effect (assign these in order – 1,2,3 and so on - in order of mention).</li>
-	<li>If there is a prior hypothesis relevant to the effect (that is, stated by the author as their own expectation about the research, before the results are presented), write it here, followed by the page number or numbers you found the statement on. Hypotheses are usually found near the end of the Introduction section, or in text introducing a new study between reports of studies. If the hypothesis is the same as the previous effect’s hypothesis, type “See above.” If there is no stated hypothesis before the results, type “None.”</li>
-		<li><ol>
-		<li>By “relevant” we mean involving the same kind of relationship among the same variables. For example, if a hypothesis states that anxiety relates positively to closeness, this is relevant to the effect stated in the Abstract that anxiety relates negatively to closeness. </li>
-		<li>Hypotheses about interactions between variables may be particularly difficult to state completely, but should be reported in much the same way the authors state them (for example “Men, more so than women, should show effects of the treatment.”)</li>
-		<li>If there are more specific hypotheses comparing groups, the kind of predictions that might be supported by planned comparisons, these should be reported. (for example, “More anxiety was expected in the noise group and lights group than in the silence group or the control”)</li>
-		<li>Sometimes an author may state two conflicting hypotheses and expresses no clear preference between the two, preferring to let the data decide. If this appears to be the case, write both hypotheses and in square brackets the word [Alternatives].</li>
-	</ol></li>
-	<li>Whether the effect is a novel effect that is mentioned in the abstract (“yes”), or a replication effect (“no”; a replication effect may or may not be stated in the abstract).</li>
-</ol>
-</section>
-<section id="tests">
-<h4>Dividing effects within studies into tests:</h4>
-
-<p>Each hypothesis within each study may be tested one or more times, depending on how many ways the study has to operationalize the independent and dependent variables of a hypothesis. </p>
+<p>Each effect within each study may be tested one or more times, depending on how many ways the study has to operationalize the independent and dependent variables of a hypothesis. </p>
 
 <p><i>Example: A study manipulates belief in free will, then measures belief in free will after the manipulation. It tests the hypothesis that <b>low belief in free will relates to less moral orientation</b> by relating the manipulation IV to two different DVs: a self-report measure of moral identity, and a behavioural measure of cheating. Both DVS are tested to see if they vary as a function of the manipulation, and tested correlationally to see if they relate to the measures variable of belief in free will. There are therefore four tests of the hypothesis here.</i></p>
 
-<p>Coders need to agree on the number of tests for each hypothesis and which variables they involve before proceeding. Sometimes, too, different operationalizations will be mentioned in the Abstract as separate effects. This ultimately will have little impact on the analysis of the dataset, so the Abstract should be taken as the authority on which way to proceed, no matter how arbitrarily the authors have decided to describe their effects there. </p>
+<p>Tests should be stated as a relationship between or among specific variables that are measured or manipulated in the study. Each test should have a statistical test associated with it that leads to a p-value. Statistically, a test can include both a general p-value (for an overall ANOVA, interaction, regression or structural equation model, etc.) and a more specific series of values (for contrasts and comparisons within an ANOVA, simple effects within an interaction, effects of specific variables within a regression, etc.) The coding scheme allows you to enter statistics associated with one general p-value and one or more specific p-values for each test.</p>
 
-<p><i>Example: In the previously mentioned study, the Abstract could a) mention all four tests as separate effects (code as 4 effects); b) mention the two different DVs as separate effects, while the tests are only mentioned in the article body text( code as 2 effects each with 2 tests); or c) only mention that low belief in free will was found to relate to less moral orientation (code as one effect with 4 tests).</i></p>
+<p>Disagreement among coders on the number of tests reported or what the tests involve will of course create discrepancies in coding reports. Therefore, it is important to see if the basic number and meaning of tests is the same, before proceeding to compare codings.</p>
 
 <h5>Test-level information:</h5>
 
 <ol>
-	<li>Analytic design codes (use only one) </li>
-	<li><ol>
+	<li>If the test is on a subsample or the overall sample of participants in this study, type which subgroup this effects test is for. For example, if one of the phrases in the Abstract is a summary of the results separately for men and women, create two effects tests, and type that one effects test is “women” on this line, and for the other effects test type “men.”</li>
+	<li>Names of any variables that are treated as independent variables(s) in the test, separated by commas. <i>Some examples of independent variables are: categorical variables in an ANOVA or t-test; covariates in an ANCOVA; repeated-measures variables such as “time of testing” or “stimulus type”; moderator in a moderation analysis; predictors in a regression.</i> </li>
+	<li>Names of any other variables in the test, including dependent variables, separated by commas. <i>Some examples are: the dependent variable in an ANOVA, t-test or regression; the variables in a correlation or chi-square analysis; the mediator and dependent variable in a mediation analysis.</i></li>
+	<li>Does the test correspond to hypotheses presented in the Introduction section of the article? Note that more than one test can correspond to a single hypothesis. Hypothesis are usually stated near the end of an Introduction. They do not have to be presented in a separate “hypothesis” section or as a list; many hypotheses, especially in short articles, are presented informally as a prediction in text, for example, “We expected that people who had exercised recently would be more likely to discount their emotional reaction.” A replication test will have the same hypothesis as the study it is trying to replicate.
+		<ul>
+			<li>Yes, directional: The test deals with a <strong>directional</strong> hypothesis that is stated in the Introduction – a hypothesis that not only states that two or more variables will be related to each other, but the direction of that relationship. In a simple test, this will be a description of a positive or negative relationship between two variables, or a description of which groups should have the higher means. In a more complex test, a directional hypothesis attempts to use similar language to describe an interaction or model.
+				<blockquote>Example 1: “People who had exercised recently should be more likely to discount their emotional reaction.” This is a directional hypothesis says that one variable – exercise – will increase another. In other words, it predicts a positive relationship between the variables.<br><br>
+Example 2: “Men, but not women, should show increased threat response in the condition where masculinity is questioned, and not in the other condition.” This is a directional hypothesis for an interaction between gender and condition. It specifically describes the pattern of results that is expected.
+</blockquote></li>
+			<li>Yes, nondirectional. The test deals with a <strong>nondirectional</strong> hypothesis that is stated in the Introduction – a hypothesis that only states that two or more variables should be related, but does not specify the expected direction anywhere in the Introduction. This code also applies to an Introduction that proposes multiple alternative hypotheses relevant to different possibilities for the same test, but only if the authors do not commit themselves to supporting one of those hypotheses over the other. 
+				<blockquote>Example 1: “People who had exercised recently and people who had not will show differences in discounting their emotional reaction.” If there are no other clues to the authors’ expectations in the Introduction, this should be taken as a nondirectional hypothesis, because it doesn’t say whether exercise will increase or decrease discounting.<br><br>
+					
+							Example 2: “Self-esteem maintenance theory would predict that men, but not women, should show increased threat response in the condition where masculinity is questioned, and not in the other condition. Gender-system justification theory would predict that both women and men should show equally increased threat responses if masculinity is questioned. We carried out this experiment to see which theory was better supported in this context.” If the authors do not elsewhere say that they support one theory over the other, this can be treated as a nondirectional hypothesis.
+</blockquote></li>
+			<li>No, no hypothesis relevant to the test. This code applies to effect mentioned in the Abstract but not relevant to the hypotheses in the Introduction, or to replication effects which were not included in the Introduction’s hypotheses.</li>
+		</ul>
+	</li>
+	
+	<li>Analytic design codes (use only one) <ol>
 		<li><b>C = correlational/multivariate analysis without manipulation</b>
 		<br>The test uses a number of variables that were measured at the same or different time – including continuous or categorical variables - but none of the test’s variables relate to the outcome of a controlled experimental manipulation.</li>
 		<li><b>IA = correlational/multivariate internal analysis of manipulation check</b>
@@ -170,6 +166,9 @@
 			<br>The test has multiple independent variables, at least one of which would be coded “X” and at least one of which would be coded “RM” (that is, a mixed design with both between- and with-participant factors).</li>
 		<li><b>Q = quasi- experimental analysis of manipulation effect</b>
 			<br>One or more of the test’s independent variables represents different “treatments” given to participants in situations under the researcher’s control, but without being able to assign participants randomly.</li>
+		<li><strong>O = Other</strong>
+A design is used that does not fit any of these categories. The coder should briefly describe the design, using whatever short term or label for the design the authors use.
+</li>
 	</ol></li>
 	<li>Methodology code (use as many as apply, separated by forward slashes)</li>
 	<li><ol>
@@ -183,9 +182,9 @@
 			<br><i>Some common examples: an implicit measurement task inferring attitudes from patterns of response times; a projective story task which is then coded for implicit themes; analyzing participant’s free writing for subtle uses of grammar that reveal attitudes toward groups (as opposed to directly expressed attitudes toward groups).</i></li>
 		<li><b>BC = behavioral/choice measures:</b> The analysis involves at least one variable that measures the participant’s behavior by observation, or gives the participant a choice that he or she believes to have consequences outside the immediate experimental context.
 			<br><i>Some common examples: a gambling task where the participant can win real money (but not a task where everyone is paid the same amount regardless of performance); a choice of whether to interact with another person in the next phase of the experiment, even though the experiment uses deception and the person does not really exist; observations of nonverbal behavior; a choice to give your email address to receive further messages about the environment.</i></li>
+		<li><b>O = Other</b>
+A methodology is used that does not fit any of these categories. The coder should briefly describe the methodology, using whatever short term or label for the methodology the authors use.</li>
 	</ol></li>
-	<li>Names of any variables that are treated as independent variables(s) in the test, separated by commas. <i>Some examples of independent variables are: categorical variables in an ANOVA or t-test; covariates in an ANCOVA; repeated-measures variables such as “time of testing” or “stimulus type”; moderator in a moderation analysis; predictors in a regression.</i> </li>
-	<li>Names of any other variables in the test, including dependent variables, separated by commas. <i>Some examples are: the dependent variable in an ANOVA, t-test or regression; the variables in a correlation or chi-square analysis; the mediator and dependent variable in a mediation analysis.</i></li>
 	<li><b>Number of participants or data points excluded from analysis.</b> This should not include data that were genuinely missing (procedural errors, failure to answer, drop-outs from multiple waves of a study), but should include data that the researchers had, but chose to exclude.</li>
 	<li><b>Reasons for excluding data</b>, separated by commas if multiple reasons given (using the author’s words as much as possible)</li>
 	<li>Type of statistical test used, in the authors’ words (examples: ANCOVA; structural equation model; mediation analysis with bootstrapping)</li>
@@ -212,6 +211,15 @@
 			<li>Effect size in SEM is complicated; if hypotheses depend on specific parameters (paths), use the standardized coefficient for that particular path.</li>
 			<li>Sometimes effect size is not reported. In that case enter “No ES.”</li>
 		</ol></li>
-	<li><b>Statistical power of the test</b>, if reported in the article, as a proportion between 0 and 1 (for example, .88). If absent, enter “No power reported.”</li>
 </ol>
+
+<p>Additional “specific test” sections can be generated by requesting additional entries for items 10-13 in the front end. These will hold the results of more specific tests. For example, if the overall test is an interaction, the specific tests can report the results of simple effects tests within that interaction. Only those tests that are relevant to replication effects, or effects mentioned in the Abstract, should be entered.</p>
+
+<h6>Examples of when to enter specific tests</h6>
+<ul>
+	<li>The abstract says “Men responded with higher stress in the gender role threat condition than the control condition, while women did not.” Later on in the Results, you find that the interaction between gender and condition is significant, and you enter its stats into the “general test” section. The authors then go on to do simple effects tests and show that among men, the effect of condition on stress is significant, while among women, the effect of condition on stress is not. Here you would enter two specific tests, one for each simple effects test.</li>
+<li>You determine that this study is a partial replication of a previous study that had two conditions; this study keeps those two conditions but adds a third. The three conditions are the independent variable in an ANOVA, and the authors</li>
+</ul>
+
+
 </section>

@@ -10,21 +10,37 @@
       		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
     	<![endif]-->
 
-		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/twitter/bootstrap/bootstrap.css" />
+		
+		<?php
+		if(!Configure::read('debug')):
+		?>
+			<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+			<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+			<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+		<?php
+		else:
+		?>
+			<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.9.1.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/bootstrap.min.css" />
+	        <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/font-awesome.min.css">
+			<script src="<?php echo $this->webroot; ?>js/vendor/bootstrap.min.js"></script>
+		<?php
+		endif;
+		?>	
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/select2.css" />
-		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/main.css" />
-		
-		
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo $this->webroot; ?>js/vendor/jquery-1.9.1.js"><\/script>')</script>
-
-        <script src="<?php echo $this->webroot; ?>js/vendor/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.min.js"></script>
-		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/vendor/jquery.bootstrap.confirm.popover.js"></script>
-		
+       <link rel="stylesheet" href="<?php echo $this->webroot; ?>css/bootstrap-responsive.min.css">
+		<!--[if IE 7]>
+		<link rel="stylesheet" href="<?php echo $this->webroot; ?>css/font-awesome-ie7.min.css">
+		<![endif]-->
         <script src="<?php echo $this->webroot; ?>js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <script src="<?php echo $this->webroot; ?>js/vendor/js-webshim/minified/polyfiller.js"></script>
 		
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.min.js"></script>
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/vendor/jquery.bootstrap.confirm.popover.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/main.css" />
+ 
 		<?php echo $this->Js->writeBuffer(); ?>
 		
     	<?php

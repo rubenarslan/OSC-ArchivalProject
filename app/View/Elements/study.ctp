@@ -71,14 +71,14 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 					'class' => 'study-freetext span12',
 					'label' => false,
 					'rows' => 2,
-					'placeholder' => "… or if it's not yet coded, paste a free-form reference.",
+					'placeholder' => "… or paste a free-form reference.",
 					'div' => array('class' => 'span8 no-left-margin' ),
 				));
 			echo $this->Form->input("Study.$s.replication_freetext_study", array(
 					'class' => 'study-freetext span12',
 					'label' => false,
-					'rows' => 2,
-					'placeholder' => "(if multi-study paper, identify study here)",
+					'type' => 'text',
+					'placeholder' => "(identify study)",
 					'div' => array('class' => 'span4' ),
 				));
 		echo '</div>';

@@ -1,3 +1,7 @@
+body
+{
+    margin-top: 70px;
+}
 input.boxless-nameinput[type='text']:focus {
 	border:0;
 }
@@ -88,4 +92,17 @@ section,header {
 }
 .select2variables .select2-choices {
 	height:81px;
+}
+.tooltip-inner {
+    white-space:pre-wrap;
+}
+input[type=radio] + label {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline;
+  margin: 0;
+}
+.hidden {
+  display: none;
+  visibility: hidden;
 }

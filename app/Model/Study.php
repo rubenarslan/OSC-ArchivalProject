@@ -39,26 +39,23 @@ class Study extends AppModel {
 	public function getReplicable($id = NULL) {
 		if($id !==NULL AND !is_numeric($id)) die('NUMBER!');
 		if($id === NULL) $where = '';
-		else $where = "WHERE studies.id != $id";
-		$all_studies = $this->query("SELECT studies.id,studies.name,papers.first_author,papers.year,papers.title,users.username FROM studies
+		else $where = "WHERE studies.codedpaper_id = ".((int)$id);
+		$all_studies = $this->query("SELECT studies.id,studies.name,papers.first_author,papers.year,papers.title FROM studies
 		LEFT JOIN
 			codedpapers
 			ON codedpapers.id = studies.codedpaper_id
 		LEFT JOIN papers
 			ON papers.id = codedpapers.paper_id
-		LEFT JOIN users
-			ON users.id = codedpapers.user_id
 		".$where);
 
 		if(count($all_studies)> 0) {
 			$study_names = array_combine(
 					array_merge((array)'', Set::extract($all_studies,"{n}.studies.id") ), 
-					array_merge((array)'', Set::format($all_studies,"{0} ({1}): {2} – {3} coded by {4}", array(
+					array_merge((array)'', Set::format($all_studies,"{3} ({0}, {1})", array(
 						"{n}.papers.first_author",
 						"{n}.papers.year",
 						"{n}.papers.title",
-						"{n}.studies.name",
-						"{n}.users.username")
+						"{n}.studies.name")
 					) )
 			);
 		} else {

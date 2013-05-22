@@ -150,30 +150,9 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic",array(
-			'options' => array(
-				'' => '',
-				'r' => 'r',
-				'partial.r' => 'partial r',
-				'r.squared' => 'R²',
-				'delta.r.squared' => 'ΔR²',
-				'regression.b' => 'B (regression coefficient)',
-				'regression.beta' => 'b* (standardized regression coefficient)',
-				'cohens.d' => 'Cohen\'s d\' (t-test)', 
-				'anova.d' => 'd (ANOVA)', 
-				'f.squared' => 'f²', 
-				'eta.squared' => 'η²', 
-				'partial.eta.squared' => 'partial η²', 
-				'omega.squared' => 'ω²', 
-				'odds.ratio' => 'Odds Ratio', 
-				'spearmans.rho' => 'Spearman\'s rho (rank order correlation)', 
-				'phi.coefficient' => 'Phi coefficient', 
-				'cramers.v' => 'Cramer\'s v', 
-				'sem.coefficient' => 'SEM coefficient (details in comments please)', 
-				'multilevel.coefficient' => 'Multilevel coefficient (details in comments please)', 
-				),
-			'class' => 'select2effect_size_statistic span12', 'div'=> array('class'=> "span3 select2no-margin"), 
+			'class' => 'select2effect_size_statistic span12', 
+			'div'=> array('class'=> "span3 select2no-margin"), 
 			'label' => 'Effect size statistic',
-			'type' => 'number',
 			'placeholder' => 'Choose one',
 			)
 		);
@@ -191,12 +170,6 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.inferential_test_statistic",array(
-			'options' => array(
-				'' => '',
-				'chi.square' => 'χ²', 
-				't' => 't', 
-				'z' => 'z', 
-				'F' => 'F'),
 			'class' => 'select2inferential_test_statistic span12 select2no-margin', 
 			'div'=> array('class'=> "span2"), 
 			'label' => 'Test stat.',

@@ -39,7 +39,16 @@ class AppController extends Controller {
 	    ), 'Csv', 'Ordinal');
 	public $components = array(
 			'Session',
-	        'Auth' => array('authorize' => array(
+	        'Auth' => array(
+				'authenticate' => array(
+					    'Form' => array(
+				                'fields' => array(
+									'username' => 'email',
+									'password' => 'password',
+								),
+				            )
+				),
+				'authorize' => array(
 		'Controller' => 
 			array(
 				'userModel' => 'User',

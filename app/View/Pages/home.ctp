@@ -35,3 +35,7 @@ We also start with the same three journals as the Replication Project, represent
 <p>Contributors, both undergraduate and coordinator, can list participation in the Archival Project on their CV.  This will be a great way to show to employers and graduate schools your experience and interest in distributed projects, technical tasks, scientific literature, and teamwork.</p>
 <p>Before more specific articles on research questions are begun, there will be an open publication online of the database. This database will carry collective authorship from all individuals who have contributed five or more accurate codings (i.e., collective name such as OSC Archival Project in the citation, but with all authors listed in documents appended to the database itself), as well as those who participated in coordinating roles. In the case of coding teams, all members will be listed if at least five accurate codings per team member have been submitted by the whole team.</p>
 <p>Exceptional coders will be rewarded with honors: at the close of Phase 1 of the project, a (virtual) “Gold Medal” will go to the individual or group who contributes the highest number of accurate codings per person, a “Silver Medal” to the three runners-up, and a “Bronze Medal” to the next ten runners-up after that. These honors can be listed and explained on a CV as well, and will be posted on the open database.</p>
+<!--
+<?php
+	print_r($_SERVER);
+?>-->

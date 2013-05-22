@@ -1,12 +1,12 @@
 Archival Project
 ================
 
-This is a framework for the [OSC](http://openscienceframework.org) [Archival Project](http://archival.dyden.de), 
+This is a framework for the [OSC](http://openscienceframework.org) [Archival Project](http://archivalproject.org), 
 which aims to code psychological studies' statistics.
 
 It's written using CakePHP and makes use of jQuery, Twitter Bootstrap and Select2.
 
-The code is missing the Config directory, which can be taken from a CakePHP distribution. 
+Some code is missing the Config directory, which can be taken from a CakePHP 2.x distribution. 
 
 The code can probably be adapted to other meta-analyses, but it requires some knowledge of PHP and 
 JavaScript, jQuery to do so.  
@@ -25,3 +25,9 @@ I'm happy to be contacted and assist if you want to use this for noncommercial p
 	* autosaves
 * users can view and compare different codings of the same paper 
 * exports wide format data in CSV, TSV, HTML and Excel
+
+
+# todo:
+
+* todo: max 4 coders per paper? maybe in the future, not now
+* todo: drag and drop study order

@@ -15,6 +15,10 @@ function unsavedChanges () {
 		}
 	}
 }
+function updateOrder()
+{
+	
+}
 function updateProgress () {
 	formelms = $('#CodedpaperCodeForm input[type=text]:not([class*="select2-input"]),	#CodedpaperCodeForm input[type=number],			#CodedpaperCodeForm input[type=search],	#CodedpaperCodeForm select,	#CodedpaperCodeForm input[type=radio],	#CodedpaperCodeForm input[type=checkbox],	#CodedpaperCodeForm textarea').filter(':visible').filter(':not([class*="hidden"])');
 	either_or_elms = formelms.filter('[class*="study-freetext"]');
@@ -35,7 +39,7 @@ function activateInputs ($container) {
 	formelms.filter("input[name*='data_points_excluded']").each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			opt_hide = $(event.target).closest('div.row-fluid').find('textarea[name*=reasons_for_exclusions]').parent('div');
-			if($(event.target).attr('value')>0) {
+			if($(event.target).prop('value')>0) {
 				opt_hide.removeClass('hidden');
 			} else {
 				opt_hide.addClass('hidden');
@@ -49,14 +53,14 @@ function activateInputs ($container) {
 			n_excluded = $(event.target).closest('div.row-fluid').find('input[name*=data_points_excluded]');
 			n_total = $(event.target).closest('div.row-fluid').find('input[name*=N_total]');
 			
-			if(!isNaN(parseFloat(n_total.attr('value'))) && !isNaN(parseFloat(n_excluded.attr('value'))))
-				n_used.attr('value', n_total.attr('value') - n_excluded.attr('value') );
+			if(!isNaN(parseFloat(n_total.prop('value'))) && !isNaN(parseFloat(n_excluded.prop('value'))))
+				n_used.prop('value', n_total.prop('value') - n_excluded.prop('value') );
 		});
 		$(elm).trigger('change');
 	});
 	formelms.filter('input[type=radio][name*=hypothesized]').each(function(i,elm) {
 		$(elm).on('change',function (event) {
-			var val = $("input[name='" + $(event.target).attr('name') + "']:checked").attr('value');
+			var val = $("input[name='" + $(event.target).attr('name') + "']:checked").prop('value');
 			opt_hide1 = $(event.target).closest('div.row-fluid').find("div.prior_hypothesis");
 			opt_hide2 = $(event.target).closest('div.formblock').find("input[type=radio][id*='HypothesisSupportedYes']").parent('div').parent('div');			
 			if(val != 'No, no hypothesis') {
@@ -71,13 +75,10 @@ function activateInputs ($container) {
 	});
 	formelms.filter("select[name*='[replication]']").each(function(i,elm) {
 		$(elm).on('change',function (event) {
-			opt_hide1 = $(event.target).closest('div.row-fluid').find("select[name*='replicates_study_id']").parent('div');
 			opt_hide2 = $(event.target).closest('div.row-fluid').find('div.replication_optional');
-			if($(event.target).attr('value') != 'Novel' && $(event.target).attr('value') != '') {
-				opt_hide1.removeClass('hidden');
+			if($(event.target).prop('value') != 'Novel' && $(event.target).prop('value') != '') {
 				opt_hide2.removeClass('hidden');
 			} else {
-				opt_hide1.addClass('hidden');
 				opt_hide2.addClass('hidden');
 			}
 		});
@@ -92,17 +93,129 @@ function activateInputs ($container) {
 	$container.find("select.select2studies").select2({
 		minimumResultsForSearch: 10,
 		allowClear: true,
-		placeholder: 'Choose a coded study from this list'
+		placeholder: 'Choose a previous study in this paper'
 	});
+	var pvalue_stats = 
+		[
+		{id: 'ns', 			text: 'ns'},
+		{id: '†', 			text: '†'},
+		{id: 'p<.10', 		text: 'p<.10'},
+		{id: 'marginal', 	text: 'marginal'},
+		{id: '*', 			text: '*'},
+		{id: 'significant', text: 'significant'},
+		{id: 'p<.05', 		text: 'p<.05'},
+		{id: '**',			text: '**'},
+		{id: 'p<.01',		text: 'p<.01'},
+		{id: '***', 		text: '***'},
+		{id: 'p<.001', 		text: 'p<.001'}
+		];
 	$container.find("input.select2pvalue").select2({
-		minimumResultsForSearch: 20,
-		tags: ['ns','†','p<.10','marginal','*','significant','p<.05','**','p<.01','***','p<.001'], 
+		createSearchChoice:function(term, data)
+		{ 
+			if ($(data).filter(function() 
+			{ 
+				return this.text.localeCompare(term)===0; 
+			}).length===0) 
+			{
+				return {id:term, text:term};
+			} 
+		},
+	    initSelection : function (element, callback) {
+			var data = {id: element.val(), text: element.val()};
+			$.each(pvalue_stats, function(k, v) {
+			                       if(v.id ==  element.val()) {
+			                           data = v;
+			                           return false;
+			                       } 
+            });
+	        callback(data);
+	    },
+		data: pvalue_stats, 
 		multiple: false, 
 		allowClear: true,
 		maximumSelectionSize: 1, 
-		formatSelectionTooBig: function(maxSize) {
-			return "Enter the p-value, its range or choose from these common representations.";
-		} 
+		placeholder: "Enter the p-value, its range or choose from these common representations."
+	});
+	var effect_stats = [
+	{'id': 'r', text: 'r'},
+	{'id': 'partial.r', text: 'partial r'},
+	{'id': 'r.squared', text: 'R²'},
+	{'id': 'delta.r.squared', text: 'ΔR²'},
+	{'id': 'regression.b', text: 'B (regression coefficient)'},
+	{'id': 'regression.beta', text: 'b* (standardized regression coefficient)'},
+	{'id': 'cohens.d', text: 'Cohen\'s d\' (t-test)'},
+	{'id': 'anova.d', text: 'd (ANOVA)'},
+	{'id': 'f.squared', text: 'f²'},
+	{'id': 'eta.squared', text: 'η²'},
+	{'id': 'partial.eta.squared', text: 'partial η²'},
+	{'id': 'omega.squared', text: 'ω²'},
+	{'id': 'odds.ratio', text: 'Odds Ratio'},
+	{'id': 'spearmans.rho', text: 'Spearman\'s rho (rank order correlation)'},
+	{'id': 'phi.coefficient', text: 'Phi coefficient'},
+	{'id': 'cramers.v', text: 'Cramer\'s v'},
+	{'id': 'sem.coefficient', text: 'SEM coefficient (details in comments please)'},
+	{'id': 'multilevel.coefficient', text: 'Multilevel coefficient (details in comments please)'}
+	];
+	$container.find("input.select2effect_size_statistic").select2({
+		createSearchChoice:function(term, data)
+		{ 
+			if ($(data).filter(function() 
+			{ 
+				return this.text.localeCompare(term)===0; 
+			}).length===0) 
+			{
+				return {id:term, text:term};
+			}
+		},
+	    initSelection : function (element, callback) {
+			var data = {id: element.val(), text: element.val()};
+			$.each(effect_stats, function(k, v) {
+			                       if(v.id ==  element.val()) {
+			                           data = v;
+			                           return false;
+			                       } 
+            });
+	        callback(data);
+	    },
+		data: effect_stats, 
+		multiple: false, 
+		allowClear: true,
+		maximumSelectionSize: 1, 
+		placeholder: "Choose an effect size statistic or type your own.",
+	});
+	
+	var test_stats = [ 
+		{id: 'chi.sq', text: 'χ²'}, 
+		{id: 't', text: 't'},
+		{id: 'z', text: 'z'},
+		{id: 'F', text: 'F'}
+	];
+	$container.find("input.select2inferential_test_statistic").select2({
+		createSearchChoice:function(term, data)
+			{ 
+				if ($(data).filter(function() 
+				{ 
+					return this.text.localeCompare(term)===0; 
+				}).length===0) 
+				{
+					return {id:term, text:term};
+				}
+			},
+	    initSelection : function (element, callback) {
+			var data = {id: element.val(), text: element.val()};
+			$.each(test_stats, function(k, v) {
+			                       if(v.id ==  element.val()) {
+			                           data = v;
+			                           return false;
+			                       } 
+            });
+	        callback(data);
+	    },
+		data: test_stats, 
+		multiple: false, 
+		allowClear: true,
+		maximumSelectionSize: 1, 
+		placeholder: "Choose a test statistic or type your own.",
 	});
 	
 	$container.find("textarea.select2methodology_codes").select2({
@@ -201,7 +314,9 @@ function activateInputs ($container) {
 		});
 		return false;
 	});
-	$("[rel=tooltip]").tooltip();
+	$("[rel=tooltip]").tooltip({
+		container:'body', html:true
+	});
 	
 	formelms.each(function(i,elm) {
 		$(elm).on('change',unsavedChanges);
