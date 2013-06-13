@@ -15,7 +15,7 @@ for($t=$tstart; $t < $length; $t++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Test.$t.id");
-	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete this test'><i class='icon-trash'></i></a> ";
+	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete this test'><i class='icon-trash hastooltip'></i></a> ";
 	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
 	echo $this->Form->input("Study.$s.Test.$t.name",array(
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Test description (optional)')
@@ -150,8 +150,8 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.reported_effect_size_statistic",array(
-			'class' => 'select2effect_size_statistic span12', 
-			'div'=> array('class'=> "span3 select2no-margin"), 
+			'class' => 'select2effect_size_statistic select2no-margin span12', 
+			'div'=> array('class'=> "span3"), 
 			'label' => 'Effect size statistic',
 			'placeholder' => 'Choose one',
 			)
@@ -192,7 +192,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.reported_significance_of_test",array(
-			'class' => 'select2pvalue span11',
+			'class' => 'select2pvalue span11 select2no-margin',
 			'div'=> array('class'=> "span3"), 
 			'label' => 'Significance (reported)', 
 			'placeholder' => 'p-value (0.00 - 1)'
@@ -276,6 +276,6 @@ echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
 		'tstart' => $t,
 		'study_id' => $study_id,
 		)
-	), array('class' => 'btn btn-mini'));
+	), array('class' => 'btn adder btn-mini'));
 echo "</h5>";
 ?>

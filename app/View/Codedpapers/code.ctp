@@ -137,14 +137,14 @@ else
 	));
 	?>
 		<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
-		<label  rel="tooltip" title="Push button in to let others <br>view your coded paper" id="CodedpaperCompletedLabel" class="btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
+		<label  title="Push button in to let others <br>view your coded paper" id="CodedpaperCompletedLabel" class="hastooltip btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
 			<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
 			Complete
 		</label>
 		</div>
 	</div>
 	<?php
-	pr($this->validationErrors);
+	debug($this->validationErrors);
 	?>
 	<?php
 }

@@ -103,7 +103,11 @@ class CodedpapersController extends AppController {
 		$this->request->data = $this->Codedpaper->Study->createDummy($this->request->query['codedpaper_id'], $this->request->query['sstart']);
 	}
 	public function moretests () {
-		$this->request->data = $this->Codedpaper->Study->Test->createDummy($this->request->query['study_id'], $this->request->query['s'], $this->request->query['tstart']);
+		$this->request->data = $this->Codedpaper->Study->Test->createDummy(
+			array( 'id' => $this->request->query['study_id'] ), 
+			$this->request->query['s'], 
+			$this->request->query['tstart']
+		);
 	}
 	public function compare ($id1 = NULL, $id2 = NULL) {
 		if (!$this->Codedpaper->exists($id1)) 

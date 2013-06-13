@@ -20,17 +20,36 @@ function updateOrder()
 	
 }
 function updateProgress () {
-	formelms = $('#CodedpaperCodeForm input[type=text]:not([class*="select2-input"]),	#CodedpaperCodeForm input[type=number],			#CodedpaperCodeForm input[type=search],	#CodedpaperCodeForm select,	#CodedpaperCodeForm input[type=radio],	#CodedpaperCodeForm input[type=checkbox],	#CodedpaperCodeForm textarea').filter(':visible').filter(':not([class*="hidden"])');
+	formelms = $('#CodedpaperCodeForm input[type=text]:not([class*="select2-input"]), #CodedpaperCodeForm input[type=number], #CodedpaperCodeForm input[type=search], #CodedpaperCodeForm select, #CodedpaperCodeForm input[type=radio], #CodedpaperCodeForm input[type=checkbox],	#CodedpaperCodeForm textarea').filter(':visible').filter(':not([class*="hidden"])').filter(function() {
+   return !($(this).css('visibility') == 'hidden'); // this shit is necessary for visibility: hidden. the pseudo-selector is about display:none (because vis.hidden still takes space)
+});;
 	either_or_elms = formelms.filter('[class*="study-freetext"]');
 	
-	var nonZ = 0;
+
+	var formelm_names = {};
 	formelms.map(function() {
-	  nonZ += ($(this).val()=='') ? 0 : 1;
+		var done = 0;
+		if($(this).attr('type') == 'radio' || $(this).attr('type') == 'checkbox')
+			done = ($(this).prop('checked')=='') ? 0 : 1;
+		else
+			done = ($(this).val()=='') ? 0 : 1;
+			
+		if($(this).attr('name') && ! formelm_names[$(this).attr('name')] )
+			formelm_names[$(this).attr('name')] = done;
 	});
-	var prog = 100 * (nonZ / (formelms.length - either_or_elms.length)) + '%';
+	var done = 0; var not_done = 0;
+	$.each(formelm_names,function(elm,val){
+		if(parseFloat(this))
+			done += 1
+		else
+			not_done += 1;
+	});
+
+	var prog = 100 * (done / (done + not_done - either_or_elms.length)) + '%';
 	if(prog > 100) prog = 100;
 	$('#codingprogress').css('width',prog);
 }
+
 function activateInputs ($container) {
 	var formelms = $container.find('input[type=text], input[type=number], input[type=search], select, input[type=radio], input[type=checkbox],  textarea');
 	formelms.each(function(i,elm) {
@@ -47,6 +66,7 @@ function activateInputs ($container) {
 		});
 		$(elm).trigger('change');
 	});
+	
 	formelms.filter("input[name*='data_points_excluded'],input[name*='N_total']").each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			n_used = $(event.target).closest('div.row-fluid').find('input[name*=N_used_in_analysis]');
@@ -58,6 +78,7 @@ function activateInputs ($container) {
 		});
 		$(elm).trigger('change');
 	});
+	
 	formelms.filter('input[type=radio][name*=hypothesized]').each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			var val = $("input[name='" + $(event.target).attr('name') + "']:checked").prop('value');
@@ -73,6 +94,7 @@ function activateInputs ($container) {
 		});
 		$(elm).trigger('change');
 	});
+	
 	formelms.filter("select[name*='[replication]']").each(function(i,elm) {
 		$(elm).on('change',function (event) {
 			opt_hide2 = $(event.target).closest('div.row-fluid').find('div.replication_optional');
@@ -85,16 +107,18 @@ function activateInputs ($container) {
 		$(elm).trigger('change');
 	});
 	
-	$container.find("select.select2replication,select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
+	formelms.filter("select.select2replication,select.select2replication_code, select.select2effect_size_statistic, select.select2inferential_test_statistic, select.select2analytic_design_code").select2({
 		minimumResultsForSearch: 20,
 		allowClear: true,
 		placeholder: '',
 	});
-	$container.find("select.select2studies").select2({
+	
+	formelms.filter("select.select2studies").select2({
 		minimumResultsForSearch: 10,
 		allowClear: true,
 		placeholder: 'Choose a previous study in this paper'
 	});
+	
 	var pvalue_stats = 
 		[
 		{id: 'ns', 			text: 'ns'},
@@ -109,7 +133,7 @@ function activateInputs ($container) {
 		{id: '***', 		text: '***'},
 		{id: 'p<.001', 		text: 'p<.001'}
 		];
-	$container.find("input.select2pvalue").select2({
+	formelms.filter("input.select2pvalue").select2({
 		createSearchChoice:function(term, data)
 		{ 
 			if ($(data).filter(function() 
@@ -118,7 +142,7 @@ function activateInputs ($container) {
 			}).length===0) 
 			{
 				return {id:term, text:term};
-			} 
+			}
 		},
 	    initSelection : function (element, callback) {
 			var data = {id: element.val(), text: element.val()};
@@ -156,7 +180,7 @@ function activateInputs ($container) {
 	{'id': 'sem.coefficient', text: 'SEM coefficient (details in comments please)'},
 	{'id': 'multilevel.coefficient', text: 'Multilevel coefficient (details in comments please)'}
 	];
-	$container.find("input.select2effect_size_statistic").select2({
+	formelms.filter("input.select2effect_size_statistic").select2({
 		createSearchChoice:function(term, data)
 		{ 
 			if ($(data).filter(function() 
@@ -190,7 +214,8 @@ function activateInputs ($container) {
 		{id: 'z', text: 'z'},
 		{id: 'F', text: 'F'}
 	];
-	$container.find("input.select2inferential_test_statistic").select2({
+	
+	formelms.filter("input.select2inferential_test_statistic").select2({
 		createSearchChoice:function(term, data)
 			{ 
 				if ($(data).filter(function() 
@@ -218,7 +243,7 @@ function activateInputs ($container) {
 		placeholder: "Choose a test statistic or type your own.",
 	});
 	
-	$container.find("textarea.select2methodology_codes").select2({
+	formelms.filter("textarea.select2methodology_codes").select2({
 		tags: [
 			{id:'A',text:'archival measures'},
 			{id:'BI', text:'brain imaging measures' },
@@ -232,7 +257,7 @@ function activateInputs ($container) {
 		tokenSeparators : [',',', '] 
 	});
 	
-	$container.find("textarea.select2variables").select2({
+	formelms.filter("textarea.select2variables").select2({
 		tags: [], 
 		allowClear: true, 
 		tokenSeparators : [',',', '],
@@ -240,7 +265,6 @@ function activateInputs ($container) {
 			return "Enter the variables, type 'comma' to add a new one.";
 		}
 	});
-		
 	$container.find('a.selfdestroyer').each(function(i,elm) {
 		var $elm = $(elm);
 		$elm.off('click','*')
@@ -296,32 +320,36 @@ function activateInputs ($container) {
 			return false;
 		});
 	});
-		
-	$container.find(".adder_elm a.btn").bind("click", function (event) 
+	
+	$container.find("a.btn.adder").on("click", function (event) 
 	{
 		var oldlink = this.href;
-		var test_adder = $(this).closest('.adder_elm');
+		var adder_elm = $(this).closest('.adder_elm');
 		$.ajax( 
 		{
 			url: oldlink,
 			dataType:"html", 
-			success:function (data, textStatus) 
-			{
-				var dat = $(data);
-				activateInputs(dat);
-				test_adder.replaceWithPolyfill(dat);
-			}
-		});
+		})
+		.done(function (data, textStatus) 
+		{
+			var dat = $(data);
+			adder_elm.replaceWithPolyfill(dat);
+			activateInputs(dat);
+		})
+		.fail(ajaxErrorHandling);
 		return false;
 	});
-	$("[rel=tooltip]").tooltip({
-		container:'body', html:true
+	
+	$(".hastooltip").tooltip({
+		container: 'body', 
+		html:true
 	});
 	
 	formelms.each(function(i,elm) {
 		$(elm).on('change',unsavedChanges);
-	});	
+	});
 }
+
 function saveform() {
 	options = {
 		data: $("#CodedpaperCodeFormSubmit").closest("form").serialize(), 
@@ -349,11 +377,13 @@ function saveform() {
 		}
 	});
 }
+
 function bootstrap_alert(message,bold) {
 	var $alert = $('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>' + (bold ? bold:'Problem' ) + '</strong> ' + message + '</div>');
 	$('#main-content').prepend( $alert);
 	$alert[0].scrollIntoView(false);
 }
+
 $(document).ready(function () {
 	if(typeof autosaveglobal == 'undefined') {
 		lastSave = $.now(); // only set when loading the first time
@@ -391,6 +421,7 @@ $(document).ready(function () {
 		}
 	};
 });
+
 function ajaxErrorHandling (e, x, settings, exception) 
 {
 	var message;
@@ -418,5 +449,5 @@ function ajaxErrorHandling (e, x, settings, exception)
 	else
 		message= (typeof e.statusText != 'undefined' && e.statusText != 'error') ? e.statusText : 'Unknown error. Check your internet connection.';
 
-	bootstrap_alert(message, 'Fehler.');
+	bootstrap_alert(message, 'Error.');
 }

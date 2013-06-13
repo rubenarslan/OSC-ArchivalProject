@@ -115,17 +115,21 @@ class Test extends AppModel {
 	            'allowEmpty' => true,
 		        'message'  => 'Reported effect size: Numbers only, decimals marked by dot.',
 		    )
-	    ),	    
+	    ),
     );
-	public function createDummy ($study_id, $sstart, $tstart = 0) {
+	public function createDummy ($study, $sstart, $tstart = 0) {
 		$this->create();
-		$data = array('Test' => array('study_id' => $study_id));
+		$data = array(
+			'Test' => array('study_id' => $study['id'])
+		);
 		if($dummyentry = $this->save($data,$validate=FALSE)) {
-			return array('Study' => array($sstart => 
-				array('id' => $study_id, 
-					'Test'=> array($tstart => $dummyentry['Test'])
-					)
-				)); # stupid acrobatics...
+			$ret = array('Study' => 
+				array(
+					$sstart => $study
+				)
+			);
+			$ret['Study'][$sstart]['Test'] = array($tstart => $dummyentry['Test']);
+			return $ret;
 		}
 		else { debug($this->validationErrors); die(); }
 	}

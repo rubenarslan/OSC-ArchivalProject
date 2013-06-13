@@ -10,6 +10,9 @@ if($newadd = isset($sstart)) {
 }
 
 $codedpaper_id = Set::classicExtract($this->data,"Codedpaper.id"); # we need to give this to the add-button
+if(!$codedpaper_id)
+	$codedpaper_id = Set::classicExtract($this->data,"Study.$sstart.codedpaper_id"); # we need to give this to the add-button	
+
 $addstudyid = "study_adder";
 
 for($s= $sstart; $s < $length; $s++) {
@@ -17,7 +20,7 @@ for($s= $sstart; $s < $length; $s++) {
 echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	$destroylink = $this->webroot.'studies/delete/'.Set::classicExtract($this->data,"Study.$s.id");
-	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' rel='tooltip' title='Delete whole study'><i class='icon-trash'></i></a> ";
+	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete whole study'><i class='icon-trash hastooltip'></i></a> ";
 	echo "Study Nr. ".($s+1)." ";
 	echo $this->Form->input("Study.$s.name",array(
 		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Description (optional)')
@@ -131,7 +134,7 @@ echo  $this->Html->link("Add Study ".($s+1),
 	array('controller' => 'codedpapers', 'action' => 'morestudies','?' => array(
 		'sstart' => $s,
 		'codedpaper_id' => $codedpaper_id,
-		)), array('class' => 'btn')
+		)), array('class' => 'btn adder')
 	);
 echo "</h4>";
 ?>

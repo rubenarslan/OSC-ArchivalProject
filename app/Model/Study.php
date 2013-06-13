@@ -27,10 +27,12 @@ class Study extends AppModel {
 	);
 	public function createDummy ($codedpaper_id, $sstart = 0, $cascade=true) {
 		$this->create();
-		$data = array('Study' => array('codedpaper_id' => $codedpaper_id));
+		$data = array('Study' => 
+			array('codedpaper_id' => $codedpaper_id)
+		);
 		if($dummyentry = $this->save($data,$validate=FALSE)) {
 			if($cascade) {
-				return $this->Test->createDummy($dummyentry['Study']['id'],$sstart,0);
+				return $this->Test->createDummy($dummyentry['Study'],$sstart,0);
 			}
 			else return array('Study' => array($sstart => $dummyentry['Study'])); # stupid acrobatics...
 		}

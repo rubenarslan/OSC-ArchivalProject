@@ -106,3 +106,7 @@ input[type=radio] + label {
   display: none;
   visibility: hidden;
 }
+.progress-nav {
+	margin-top:10px;
+	margin-bottom:-10px;
+}
