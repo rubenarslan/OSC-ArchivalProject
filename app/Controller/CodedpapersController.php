@@ -101,6 +101,11 @@ class CodedpapersController extends AppController {
 		$this->set(compact('replicatesStudyId')); 
 		
 		$this->request->data = $this->Codedpaper->Study->createDummy($this->request->query['codedpaper_id'], $this->request->query['sstart']);
+		
+		if (!$this->request->is('ajax')) {
+			$this->Session->setFlash('Please enable JS.','alert-info');
+			$this->redirect('code/'.$this->request->query['codedpaper_id']);
+		}
 	}
 	public function moretests () {
 		$this->request->data = $this->Codedpaper->Study->Test->createDummy(
@@ -108,6 +113,11 @@ class CodedpapersController extends AppController {
 			$this->request->query['s'], 
 			$this->request->query['tstart']
 		);
+		
+		if (!$this->request->is('ajax')) {
+			$this->Session->setFlash('Please enable JS.','alert-info');
+			$this->redirect('code/'.$this->request->query['codedpaper_id']);
+		}
 	}
 	public function compare ($id1 = NULL, $id2 = NULL) {
 		if (!$this->Codedpaper->exists($id1)) 

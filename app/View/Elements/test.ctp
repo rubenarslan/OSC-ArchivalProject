@@ -8,6 +8,7 @@ if($newadd = isset($tstart)) {
 	else $length = 0;
 	$tstart = 0; # start from the beginning
 }
+$codedpaper_id = Set::classicExtract($this->data,"Study.$s.codedpaper_id"); # we need to give this to the add-button
 $study_id = Set::classicExtract($this->data,"Study.$s.id"); # we need to give this to the add-button
 $addtestid = "test{$s}";
 
@@ -275,6 +276,7 @@ echo  $this->Html->link("Add effect test ".($s+1).'.'.($t+1),
 		's' => $s,
 		'tstart' => $t,
 		'study_id' => $study_id,
+		'codedpaper_id' => $codedpaper_id,
 		)
 	), array('class' => 'btn adder btn-mini'));
 echo "</h5>";

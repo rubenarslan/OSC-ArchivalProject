@@ -335,6 +335,7 @@ function activateInputs ($container) {
 			var dat = $(data);
 			adder_elm.replaceWithPolyfill(dat);
 			activateInputs(dat);
+			updateProgress();
 		})
 		.fail(ajaxErrorHandling);
 		return false;
