@@ -1,0 +1,1 @@
+if(jQuery.jgrid!=null){jQuery.jgrid.fluid={fluidGrid:function(c){var b=$(this),a=$.extend({example:b.closest(".ui-jqgrid").parent(),offset:0},c||{}),d=$(a.example).innerWidth()+a.offset;b.setGridWidth(d)}};$.fn.extend({fluidGrid:jQuery.jgrid.fluid.fluidGrid})}

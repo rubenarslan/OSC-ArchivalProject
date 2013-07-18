@@ -1,0 +1,958 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Archival Project Coding Tutorial</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/mytheme.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <script src="js/jquery-1.10.1.js"></script>
+    <script src="lightbox/js/lightbox.js"></script>
+    <link href="lightbox/css/lightbox.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside of this container is displayed as a slide -->
+<div class="slides">
+<section>
+    <br>
+    <br>
+    <br>
+    <h2>Learning to Code for</h2>
+    <h2>
+        <span style="font-size: 112px; color: #3c78d8; ">COS-Archival</span>
+    </h2>
+    <div>
+            <span style="color: #3c78d8; ">
+                <br>
+            </span>
+    </div>
+    <div>
+            <span style="color: #3c78d8; ">
+                <br>
+            </span>
+    </div>
+</section>
+<section>
+        <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3>
+        <span style="color: #3c78d8">
+            Navigation:
+        </span>
+    </h3>
+    <br>
+    <p style="font-size: 32px">
+        Each topic has a section of its own. Topics are listed at the top of the page; click on one to jump to it.
+    </p>
+    <br>
+    <p style="font-size: 26px">
+        Use your keyboard arrow keys or click on the arrows in the bottom right corner to move through the tutorial.
+    </p>
+    <img src="arrows.png">
+    <p style="font-size: 20px">
+        The <span style="color: #3c78d8;">left arrow key</span> will bring you to the last slide you viewed in the previous topic.
+    </p>
+    <p style="font-size: 20px"> The <span style="color: #3c78d8;">right arrow key</span> will move you forward to the next topic.
+    </p>
+    <p style="font-size: 20px">
+        The <span style="color: #3c78d8;">up and down arrow keys</span> will move you through a topic.
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+        <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h3>
+        <span style="color: #3c78d8; ">Contents:</span>
+    </h3>
+    <div>
+        <br>
+    </div>&nbsp; &nbsp;&nbsp;<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42718/map.gif">
+</section>
+<section>
+
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 1; left: 158px; top: 101px;" class="absolute-element">
+        Abstracts tell us what information we will need to pay attention to.</p>
+    <p style="text-align: left; position: absolute; width: 612px; height: 295px; z-index: 1; left: 158px; top: 202px;" class="absolute-element">
+        <span style="font-size: 68px; color: #3c78d8;">We only code results mentioned in the abstract.</span>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+                <span style="font-size: 50px;">
+                    <br>
+            <br>
+            <br>
+            </span>
+    </p>
+    <div>
+        <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 101px;" class="absolute-element">
+                <span style="font-size:48px;">
+                    <span style="color: #3c78d8; ">
+                        Therefore, we scan the abstract for results and general statements about the hypothesis or conclusions.
+                    </span>
+                </span>
+            <br>
+        </p>
+    </div>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+    </p>
+    <h2>Example:<span style="text-align: left; white-space: pre-wrap; color: rgb(0, 0, 0);">  &nbsp;</span>
+    </h2>
+    <h2>
+        <span style="text-align: left; white-space: pre-wrap; color: rgb(0, 0, 0);">&nbsp;</span>
+        <span style="color: rgb(0, 0, 0); text-align: left; white-space: pre-wrap;">   </span>
+    </h2>
+    <div>
+        <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 141px;" class="absolute-element">
+            <span style="font-size: 16px;"> "...Here we show that <span style="background-color: rgb(255, 255, 0);">conflict triggers increased goal shielding </span>on the conflict trial itself. Subjects performed a spatial compatibility task during which they had to notice rare prospective memory cues. <span style="background-color: rgb(255, 255, 0);">Such cues were overlooked more often on conflict trials than on non-conflict trials</span>, a <span style="background-color: rgb(109, 158, 235);">result indicating that shielding of the current goal and inhibition of distractors were increased on the current trial when it involved a response conflict.</span> Thus, evidence for <span style="background-color: rgb(255, 255, 0);">enhanced recruitment of control following conflict may partly reflect aftereffects of goal shielding on the conflict trial itself</span>."</span>
+            <br>
+        </p>
+        <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 540px;" class="absolute-element">
+            <span style="font-size: 16px;">Goschke, 2008</span>
+        </p>
+        <br>
+    </div>
+
+    <img class="absolute-element" style="position: absolute; left: 5px; top: 270px;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/39751/abstracts-example2.gif">
+    <img class="absolute-element" style="position: absolute; left: 760px; top: 300px;" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41334/abstracts-example.gif">
+        <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>
+        <span style="color: rgb(60, 120, 216);">Read the Following Abstract:</span>
+        <br>
+    </h2>
+    <div>
+        <p>
+        </p>
+        <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 190px;" class="absolute-element">
+            <span style="font-size: 16px;">"Extant research on gene-environment interplay centers almost exclusively on environmental moderation of genetic expression (G × E interaction). However, there is another key source of gene-environment interplay: gene-environment correlation (rGE)....Indeed, no study (see Jaffee &amp; Price, 2007) has yet directly evaluated the core proposition of evocative rGE: Are particular social experiences evoked by one's genotype? The aim of the current study was to do just this via a novel design combining molecular genetics and social psychology experimental techniques."</span>
+        </p>
+    </div>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 535px;" class="absolute-element">
+        <span style="font-size: 16px;">(Burt, 2008)</span>
+    </p>
+
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>
+        Test Question:
+    </h2>
+    <p>
+        <span style="font-size: 24px;">Which lines in the abstract describe the test we are coding?</span>
+    </p>
+
+    </p>
+    <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42886/Abstract-tq1-i.gif" rel="lightbox">
+        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/39723/abstract-tq1-a1.gif">
+    </a>
+    <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42888/Abstract-tq1-c.gif" rel="lightbox">
+        <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42706/abstract-tq1-a2.gif" style="">
+    </a>
+        <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>
+        <span style="color: rgb(60, 120, 216);">Read the Following Abstract:</span>
+    </h2>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 195px;" class="absolute-element">
+        <span style="font-size: 16px;">"Previous research has shown that the detectability of a local change in a visual image is essentially independent of the complexity of the image when the interstimulus interval (ISI) is very short, but is limited by a low-capacity memory system when the ISI exceeds 100 ms. In the study reported here, listeners made same/different judgments on pairs of successive "chords" (sums of pure tones with random frequencies)...Overall, our data suggest that change detection is based on different mechanisms in audition and vision."</span>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 540px;" class="absolute-element">
+                <span style="font-size: 16px;">Demany, 2008
+                </span>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #3c78d8; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>
+        Test Question:
+    </h2>
+    <p>
+        <span style="font-size: 24px;">Which lines in the abstract told us what the test we are coding would be about?</span>
+    </p>
+    <p style="font-size: 15px; font-style: normal; font-variant: normal;">
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42897/Abstract-tq2-i.gif" rel="lightbox">
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42707/abstract-tq2-a1.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42898/Abstract-tq2-c.gif" rel="lightbox">
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42708/abstract-tq2-a2.gif" style="">
+        </a>
+        <br>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+</section>
+<section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #3c78d8; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 101px;" class="absolute-element">
+                    <span style="font-size: 68px;">
+                        <span style="color: #3c78d8; ">
+                            Hypotheses can be directional or non-directional.
+                        </span>
+                    </span>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 270px;" class="absolute-element">
+        <span style="font-family: inherit; font-style: inherit; font-variant: inherit; font-size: 24px;">A directional hypothesis</span>
+        <span style="font-size: 24px;">means that the researchers have a specific idea of how the DVs will relate to one another (ie. one will be larger than the other or they will be equal).</span>&nbsp;<span style="font-size: 24px;">A non-directional hypothesis means that the researchers are only claiming that the DVs will be different.</span>
+    </p>
+    <p>
+                    <span style="font-size: 18px;">
+                        <br>
+                    </span>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #3c78d8; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2 style="text-align: right; position: absolute; left: 0; top: 100px;" class="absolute-element">
+                    <span style="color: rgb(60, 120, 216);">
+                        <span style="font-size: 54px;">
+                            <span>Directional:&nbsp;</span>
+                        </span>
+                    </span>
+    </h2>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 0; top: 185px; font-size: 18px; font-style: italic; font-variant: normal;" class="absolute-element;">"We expected that participants who were shown the visual stimulus would have greater recall than those who were not."</p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 0; top: 240px; font-size: 18px; font-style: italic; font-variant: normal;" class="absolute-element;">"We predicted that more errors would be made in the group without time for practice."</p>
+    <h2 style="text-align: right; position: absolute; left: 400px; top: 320px;" class="absolute-element">
+        <span style="font-size: 54px; color: #3c78d8; ">Non-Directional: &nbsp;&nbsp;</span>
+    </h2>
+    <p style="text-align: right; position: absolute; width: 608px; height: 102px; z-index: 4; left: 350px; top: 430px; font-size: 18px; font-style: italic; font-variant: normal;" class="absolute-element;">
+        <span>"We will explore the relationship between depth perception and distance estimates."</span>
+    </p>
+    <p style="text-align: right; position: absolute; width: 608px; height: 102px; z-index: 4; left: 350px; top: 390px; font-size: 18px; font-style: italic; font-variant: normal;" class="absolute-element;">
+        <span>"Do breakfast eaters differ in weight on average from non-breakfast eaters?"</span>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #3c78d8; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Test Question:</h2>
+    <p>What kind of hypothesis is found in Santos, 2008?</p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 230px; font-size: 18px; font-variant: normal;" class="absolute-element">"If this is the case, and if adults with ASD have reduced top-down influence, then categorization should have a smaller influence on perceptual processing in adults with ASD than in control subjects."</p>
+                <span style="font-size: 16px;">
+                    <p>
+                        <br>
+                    </p>
+                    <p>
+                        <br>
+                    </p>
+                    <p>
+                        <br>
+                    </p>
+                    <p>
+                        <br>
+                    </p>
+                    <p>
+                        CLICK:
+                    </p>
+                    <p>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44523/Hypotheses-tq1-c.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41231/hypotheses-q1-a1.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44522/Hypotheses-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41232/hypotheses-q1-a2.gif" style="">
+                        </a>
+                        <br>
+                    </p>
+                </span>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #3c78d8; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>Test Question:</h2>
+    <p>What kind of hypothesis is found in Goshke, 2008?</p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 230px; font-size: 18px; font-variant: normal;" class="absolute-element">
+        "We predicted that PM cues would be overlooked (i.e., not acted upon) more often on high- than on low-conﬂict trials because on high-conﬂict trials the current goal (i.e., to perform the ongoing task) is automatically shielded from distracting information."</p>
+                    <span style="font-size: 16px;font-family: Quicksand,serif;">
+                        <p>
+                            <span>CLICK:</span>
+                            <br>
+                        </p>
+
+                            <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42918/Hypotheses-tq2-c.gif" rel="lightbox">
+                                <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41233/hypotheses-q1-a1.gif" >
+                            </a>
+                            <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42919/Hypotheses-tq2-i.gif" rel="lightbox">
+                                <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41234/hypotheses-q1-a2.gif">
+                            </a>
+                                <br>
+
+                    </span>
+
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+</section>
+<section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #3c78d8; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <p>
+                    <span style="font-size: 62px; color: #3c78d8; ">
+                        <br>
+                    </span>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 101px;" class="absolute-element">
+        <span style="font-size: 48px; color: #3c78d8; ">Methodology coding requires you to examine the processes researchers undertook to gather their data.</span>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #3c78d8; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+     <span style="text-align: center; position: absolute; width: 608px; height: 102px; z-index: 4; left: 163px; top: 180px;" class="absolute-element">
+        <span style="font-size: 48px; color: #3c78d8;">Select an option to learn more about it:</span>
+    </span>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44667/meth-archival.gif" rel="lightbox">
+            <img align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41239/methodology-q1-a1.gif" style="">
+        </a>
+
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44668/meth-brain-imagin.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41240/methodology-q1-a2.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44669/meth-judgement.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41241/methodology-q1-a3.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44670/meth-physiological.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41242/methodology-q1-a4.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44671/meth-self-report.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41243/methodology-q1-a5.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44672/meth-indirect.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41244/methodology-q1-a6.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44673/meth-behavioral.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41245/methodology-q1-a7.gif" style="">
+        </a>
+    </div>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #3c78d8; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>TEst Question:</h2>
+    <div>Based on the following quote, which methodologies were used in Burt, 2008?</div>
+    <div>
+        <br>
+    </div>
+    <div>
+        <br>
+    </div>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 250px; font-size: 18px; font-variant: normal;" class="absolute-element">"After 45 to 60 min, participants adjourned to individual rooms to complete sociometric rankings (on a scale of 1-4, with 1 meaning 'I liked this person best')...DNA was obtained via Oragene...saliva collection kits."</p>
+                <span style="font-family: Quicksand,serif; font-size: 16px">
+                    <p>
+                        <br>
+                    </p>
+                    <p>
+                        CLICK:</p>
+                    <p style="font-size: 10px">
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42929/methodology-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41239/methodology-q1-a1.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42929/methodology-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41240/methodology-q1-a2.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42927/methodology-tq1-c.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41241/methodology-q1-a3.gif" style="">
+                        </a>
+                    </p>
+                    <p style="font-size: 10px">
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42927/methodology-tq1-c.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41242/methodology-q1-a4.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42929/methodology-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41243/methodology-q1-a5.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42929/methodology-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41244/methodology-q1-a6.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/42929/methodology-tq1-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41245/methodology-q1-a7.gif" style="">
+                        </a>
+                    </p>
+                </span>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #3c78d8; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2>TEst Question:</h2>
+    <div>Based on the following quote, which methodologies were used in Demany, 2008?</div>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 250px; font-size: 18px; font-variant: normal;" class="absolute-element">"On each trial, the listener was presented with two successive ‘‘chords’’ (sums of pure tones) and had to indicate if they were identical or not. The listener, sitting in a sound attenuated booth, gave his or her responses by clicking a computer mouse on two virtual buttons.
+    </p>
+                <span style="font-family: Quicksand,serif;">
+                    <p>
+                        <span style="font-family: Quicksand,serif; font-size: 16px">CLICK:</span>
+                    </p>
+                    <p>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41249/methodology-q1-a1.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41250/methodology-q1-a2.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41251/methodology-q1-a3.gif" style="">
+                        </a>
+                        <br>
+                    </p>
+                    <p>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41252/methodology-q1-a4.gif" style="">
+                        </a>
+                        <a href= "https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44500/methodology-tq2-c.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41253/methodology-q1-a5.gif" >
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41254/methodology-q1-a6.gif" style="">
+                        </a>
+                        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44501/methodology-tq2-i.gif" rel="lightbox">
+                            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41255/methodology-q1-a7.gif" style="">
+                        </a>
+                        <br>
+                    </p>
+                </span>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+</section>
+<section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #3c78d8; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+                    <span style="font-size: 62px; color: #3c78d8; ">
+                        <br>
+                    </span>
+    </p>
+    <p>
+                <span style="font-size: 62px; color: rgb(60, 120, 216);">
+                    <br>
+                </span>
+    </p>
+    <p style="text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 101px;" class="absolute-element">
+        <span style="font-size: 48px; color: rgb(60, 120, 216);">Analytic code design refers to the design of the experiment, and relates to which tests are run to find effects.</span>
+        <br>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #3c78d8; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <br>
+    </div>
+    <div>
+     <span  align="middle" style="position: absolute; width: 608px; height: 102px; z-index: 4; left: 163px; top: 180px;" class="absolute-element">
+        <span style="font-size: 48px; color: #3c78d8;">Select an option to learn more:</span>
+    </span>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href= "https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44620/analytic-ia.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44584/analytic-q1-IA.gif">
+        </a>
+
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44634/analytic-c.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41260/analytic-q1-a1.gif">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44625/analytic-x.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41261/analytic-q1-a2.gif">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44632/analytic-q.gif" rel="lightbox">
+            <img align="middle"  src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41263/analytic-q1-a3.gif">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44631/analytic-RM.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41267/analytic-q2-a3.gif">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44627/analytic-rmx.gif" rel="lightbox">
+            <img  align="middle" src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44585/analytic-q1-RMX.gif">
+
+        </a>
+
+    </div>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #3c78d8; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2 style="font-style: normal; font-variant: normal;">TEST QUESTION:</h2>
+    <p>Based on the following information from Burt, 2008, what analytic design code is appropriate?</p>
+    <p>
+        <br>
+    </p>
+    <p>
+        <br>
+    </p>
+    <p>
+        <br>
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <br>
+    </p>
+    <ul style=" list-style: none; text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 250px; font-size: 22px; font-variant: normal;" class="absolute-element">
+        <li>- participants give DNA samples</li>
+        <li>- participants rank their co<span>horts' personalities</span>
+        </li>
+        <li>
+            <span>- researchers assess DNA for serotenergic activity and <span>
+            <p>&nbsp;&nbsp;&nbsp;analyze its relationship with personality rankings</p>
+            </span>
+            </span>
+        </li>
+    </ul>
+    <p style="font-size: 5px;">
+        &nbsp;
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        CLICK:
+    </p>
+    <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44506/methodology-tq2-i.gif" rel="lightbox">
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41260/analytic-q1-a1.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44506/methodology-tq2-i.gif" rel="lightbox">
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41261/analytic-q1-a2.gif" style="">
+        </a>
+        <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44505/methodology-tq2-c.gif" rel="lightbox">
+            <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41263/analytic-q1-a3.gif" style="">
+        </a>
+        <br>
+    </p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #3c78d8; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #000000; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2 style="font-style: normal; font-variant: normal;">TEST QUESTION:</h2>
+    <p>Based on the following information from Demany, 2008, what analytic design code is appropriate?</p>
+    <ul style=" list-style: none; text-align: left; position: absolute; width: 608px; height: 102px; z-index: 4; left: 158px; top: 250px; font-size: 22px; font-variant: normal;" class="absolute-element">
+        <li>- participants all listen to pairs of tones where one tone is <p>&nbsp;&nbsp;followed by another that has a 50% chance of differing </p> <p>&nbsp;&nbsp;from the first</p>
+        </li>
+        <li>- length of time between the first and second tone varied <p>&nbsp;&nbsp;&nbsp;by trial</p>
+        </li>
+    </ul>
+        <span style="font-family: Quicksand,serif; font-size: 36px; font-style: normal; font-variant: normal;">
+            <br>
+            <br>
+            <br>
+            <br>
+        <p style="font-family: Quicksand,serif; font-size: 16px; font-style: normal; font-variant: normal;">
+            CLICK:</p>
+
+            <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44508/analytic-tq2-i.gif" rel="lightbox">
+                <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41265/analytic-q1-a1.gif">
+            </a>
+            <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44508/analytic-tq2-i.gif" rel="lightbox">
+                <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41266/analytic-q1-a2.gif">
+            </a>
+            <a href="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/44509/analytic-tq2-i.gif" rel="lightbox">
+                <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/jlcohoon/images/41267/analytic-q2-a3.gif">
+            </a>
+
+        </span>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 400px"><br><br><br></p>
+    <p class="absolute-element" style="position: absolute; left: 0; top: 500px"><br><br><br></p>
+
+</section>
+</section>
+<section>
+    <div align="center">
+        <table>
+            <tbody style="font-family: Quicksand,serif; font-size: 18px;">
+            <tr>
+                <td><a href="#/3"><span style="color: #000000; ">Abstracts - </span></a></td>
+                <td><a href="#/4"><span style="color: #000000; ">Hypotheses - </span></a></td>
+                <td><a href="#/5"><span style="color: #000000; ">Methodology - </span></a></td>
+                <td><a href="#/6"><span style="color: #000000; ">Analytic Code Design - </span></a></td>
+                <td><a href="#/7"><span style="color: #3c78d8; ">Review</span></a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <h3>
+            <span style="color: #3c78d8; ">Let's review!</span>
+        </h3>
+                <iframe width="558" height="419" src="http://www.youtube.com/embed/n6uIxT2GK2Q" frameborder="0" allowfullscreen="">
+                </iframe>
+
+
+</section>
+</div>
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+            // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+
+</script>
+
+</body>
+</html>

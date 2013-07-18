@@ -1,0 +1,4555 @@
+body
+{
+	padding:0;
+	font-family:Arial;
+	font-size:12px;
+	color:#696969;
+	line-height:16px;
+	margin:0 auto;
+    max-width: 1440px;
+    min-width: 1185px;
+	behavior: url(/includes/resources/csshover3-source.htc);
+}
+ul
+{
+    margin:0px;
+    padding:0px;
+}
+/*Homepage styles -------------------------------------------- */
+#container
+{
+	width:960px;
+	height:720px;
+	margin-left: auto; 
+	margin-right: auto;
+	/*  commented background: URL(/images/common/bluetheme/navigation/backgroundbg.jpg);*/
+	background-position:top left;
+	background-repeat:repeat-x;
+	text-align:left;
+	padding-left:5px;
+	padding-right:5px;
+}
+#container_noheroImg
+{
+	width:960px;
+	height:720px;
+	margin-left: auto; 
+	margin-right: auto;
+	/*commented */
+	/*background: URL(/images/common/bluetheme/navigation/backgroundbg.jpg);*/
+	background-position:top left;
+	background-repeat:repeat-x;
+	text-align:left;
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#ffffff;
+}
+* html #container_noheroImg #rightDiv
+{
+	height:699px;
+}
+/*Hero Image*/
+#mainDiv
+{
+	width:100%;
+	float:left;
+	background:url(/images/common/graphics/home_bg.jpg) no-repeat top left;
+	/* changed */
+	margin-top:-16px;
+}
+.firstBg
+{
+    background:url(/images/common/graphics/1_WelcomeToAnthem_rotation.jpg) no-repeat top left;
+}
+.secondBg
+{
+    background:url(/images/common/graphics/2_NurseLine_rotation.jpg) no-repeat top left;
+}
+.thirdBg
+{
+    background:url(/images/common/graphics/3_PreventiveCare_rotation.jpg) no-repeat top left;
+}
+.fourthBg
+{
+    background:url(/images/common/graphics/4_Network-Choice_rotation.jpg) no-repeat top left;
+}
+.fifthBg
+{
+    background:url(/images/common/graphics/5_MyHealthAdvant_rotation.jpg) no-repeat top left;
+}
+
+#bcbsga_mainDiv
+{
+	width:100%;
+	background-image:url(/images/common/graphics/home_bg.jpg);
+	background-position:top left;
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:-16px;
+}
+#abc_mainDiv
+{
+	width:100%;
+	background-image:url(/images/common/graphics/home_bg.jpg);
+	background-position:top left;
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:-16px;
+}
+/*Hero Image -------------------------------------------- */
+#leftDiv
+{
+	margin-right:470px;
+	height:699px;
+	float:left;
+	width: 494px;
+}
+/*No Hero Image -------------------------------------------- */
+#leftDiv_noheroImg
+{
+	margin-right:467px;
+	height:699px;
+	float:left;
+	background-color:#ffffff;
+}
+/*Logo Home Page*/
+.logo_home
+{
+	margin-top:30px;
+	margin-left:15px;
+	float:left;	
+}
+.img_main_div 
+{
+	float:left;
+	width: 100%;
+	display: block;
+	height: 292px;
+}
+.banner_buttons_div
+{
+	margin-top:-48px;
+	margin-left:36px;
+	float:left;
+	width: 100%;
+	display: block;
+	position: relative;
+}
+.banner_buttons_div img.oneOff, .banner_buttons_div img.oneOn,
+.banner_buttons_div img.twoOff, .banner_buttons_div img.twoOn,
+.banner_buttons_div img.threeOff, .banner_buttons_div img.threeOn,
+.banner_buttons_div img.fourOff, .banner_buttons_div img.fourOn,
+.banner_buttons_div img.fiveOff, .banner_buttons_div img.fiveOn,
+.banner_buttons_div img.play, .banner_buttons_div img.pass
+{
+    width: 22px;
+    background: transparent url(/images/common/graphics/buttons.png) no-repeat 0px 0px;
+}
+.banner_buttons_div img.oneOn { background-position: -22px 0px; }
+.banner_buttons_div img.twoOff { background-position: -44px 0px; }
+.banner_buttons_div img.twoOn { background-position: -66px 0px; }
+.banner_buttons_div img.threeOff { background-position: -88px 0px; }
+.banner_buttons_div img.threeOn { background-position: -110px 0px; }
+.banner_buttons_div img.fourOff { background-position: -132px 0px; }
+.banner_buttons_div img.fourOn { background-position: -154px 0px; }
+.banner_buttons_div img.fiveOff { background-position: -176px 0px; }
+.banner_buttons_div img.fiveOn { background-position: -198px 0px; }
+.banner_buttons_div img.play { background-position: -220px 0px; }
+.banner_buttons_div img.pass { background-position: -242px 0px; }
+.bcbsga_logo_home
+{
+	margin-top:40px;
+	margin-left:48px;
+	float:left;	
+}
+.abc_logo_home
+{
+	margin-top:40px;
+	margin-left:48px;
+	float:left;	
+}
+/*Logo Inner Pages*/
+.logo
+{
+	padding-top:32px;
+	margin-left:23px;
+	width:100%;
+}
+/*Fix for Group Logo alignment*/
+.logo img {
+	clear:left;
+	padding:6px 16px;
+	border-left:Solid 1px #dadada;
+}
+
+.logo a img {
+	padding-left:0;
+	border-left:none;
+}
+.jqmodalContent .logo 
+{
+	margin:0;
+}
+.jqmodalContent .logo img {
+	border:none;
+	clear:none;
+	padding:0;
+}
+
+#dualcoverage .logo img {
+border:none;
+clear:none;
+padding:0;
+}
+.bcbsga_logo
+{
+	margin-top:-4px;
+}
+.abc_logo
+{
+	margin-top:-4px;
+}
+/*Logo for MicroSites*/
+.logo_home_micro
+{
+    margin-top:20px;
+}
+/*Footer styles -------------------------------------------- */
+.homeFooter
+{
+    clear:left;
+   /* padding-top:8px;*/
+    width:105%;
+}
+.homeFooter .Footercontent {
+    background-image: url("/images/common/bluetheme/navigation/footer_repeat_img.jpg");
+    background-repeat: repeat-x;
+    float: left;
+    line-height: 15px;
+    margin-bottom: -2%;
+    margin-top: -9px;
+    width: 101%;
+}
+.homeFooter ul
+{
+	margin:0;
+	padding:0;
+}
+.homeFooter li:first-child
+{
+	border-left:none;
+}
+.homeFooter li
+{
+	color:#61a0d0;
+	font-size:10px;
+	list-style:none;
+	display:inline;
+	border-left:solid 1px #b4b4b4;
+	padding-left:12px;
+	padding-right:12px;
+}
+.homeFooter a:link, .homeFooter a:visited, .homeFooter a:active
+{
+	color:#0078AB;
+	text-decoration:none;
+	font-size:11px;
+}
+.homeFooter a:hover
+{
+    text-decoration:underline;
+}    
+.homecopyright{Color: #B4B4B4; font-size:10px; margin:0px 215px 0px 0;float:left;width:81%;}
+
+.copyright{Color: #B4B4B4; font-size:10px; float:left;margin-top:0px;*margin-top:0px;margin-left:10px}
+
+/*Panels Styles -------------------------------------------- */
+#anthem
+{
+	background:url(/images/common/bluetheme/navigation/green_bar.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+	margin-right:-1px;	
+}
+
+#plans
+{
+	background:url(/images/common/bluetheme/navigation/blue_bar.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+}
+
+#health
+{
+	background:url(/images/common/bluetheme/navigation/purple_bar.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+	margin-right:1px;
+}
+
+.borderAnthem
+{
+   border-right: solid 5px #B3B936;    
+}
+.borderPlans
+{
+    border-right: solid 5px #5393CF;  
+}
+.borderHealth
+{
+   border-right: solid 5px #B9469B;
+}
+/*Styles for input boxes, images h1-h5 and so on -------------------------------------------- */
+h1
+{
+	font-size:24px;
+	color:#444444;
+	font-weight:normal;
+	line-height:24px;
+}
+h2
+{
+	font-size:18px;
+	color:#444444;
+	padding-bottom:12px;
+	font-weight:normal;	
+}
+.subH1
+{
+	font-size:10px;
+	color:#8f8f8f;
+	padding-bottom:4px;	
+}
+label
+{
+	font-size:11px;
+}
+a:link,a
+{
+	color:#0078AB;
+	text-decoration:none;
+}
+a:visited
+{
+	color:#0078AB;
+	text-decoration:none;
+}
+a:hover
+{
+	color:#0078AB; 
+	text-decoration:underline;
+}
+a:active
+{
+	color:#366087; 
+	text-decoration:underline; 
+}
+/* .inputbox2 .updnWatermark label
+{
+    margin-left: 48px;
+    margin-top:0px;
+ 
+    margin-top:-5px\9;
+    *margin-top: 0px;
+    
+} */
+.small
+{
+	font-size:10px;
+	font-weight:bold;	
+}
+.hint
+{
+    font-style:italic;
+    padding-left:10px;	
+}
+.hint_register
+{
+    font-size:11px;	
+}
+/*Global styles for link and input buttons -------------------------------------------- */
+.buttonwrapper
+{
+     
+}
+button[disabled]:active, button[disabled],
+input[type="reset"][disabled]:active,
+input[type="reset"][disabled],
+input[type="button"][disabled]:active,
+input[type="button"][disabled],
+select[disabled] > input[type="button"],
+select[disabled] > input[type="button"]:active,
+input[type="submit"][disabled]:active,
+input[type="submit"][disabled] {
+  color: GrayText;
+  cursor: default;
+}
+a.button, span.button{
+    background:url(/images/common/bluetheme/navigation/bluebtn_left.png) no-repeat top left;
+    display: inline-block;
+    /**display: inline;*/
+    font-size:11px;
+    height: 24px;
+    padding-left: 4px; 
+    text-decoration: none;
+	 overflow:hidden !important;
+    /*behavior: url(/includes/resources/iepngfix.htc);*/
+}
+a.button, span.button, x:-moz-any-link, x:default {
+    padding-left: 4px;
+}
+a:link.button, a:visited.button, a:active.button
+{
+    color: #ffffff;
+}
+.button input
+{
+    border:0px;
+    color:#ffffff;
+    font-size:11px;
+	cursor: hand;
+	margin:0;
+}
+.button button
+{
+    border:0;
+    color:#ffffff;
+    font-size:11px;
+	cursor: hand;
+	padding-bottom:3px;
+	margin:0;
+}
+a.button span, span.button button
+{
+    background:url(/images/common/bluetheme/navigation/bluebtn_right.png) no-repeat top right;
+    display: inline-block;
+    padding: 4px 11px 8px 4px;
+    margin-right:10px;
+    color:#ffffff;
+	text-transform:uppercase;
+	font-weight:bold;
+	overflow:visible;
+}
+span.button input
+{
+	background:url(/images/common/bluetheme/navigation/bluebtn_right.png) no-repeat top right;
+	display: inline-block;
+    *display: inline;
+    padding: 4px 11px 8px 4px;
+    margin-right:10px;
+    color:#ffffff;
+	text-transform:uppercase;
+	font-weight:bold;
+	overflow:visible;
+}
+.button:hover, span.button:hover
+{
+    background:url(/images/common/bluetheme/navigation/bluebtn_left_hover.png) no-repeat top left;
+    /*display: inline-block;
+    font-size:11px;
+    height: 24px;
+    padding-left: 4px;
+    text-decoration:none;*/
+}
+.button:hover, span.button:hover, x:-moz-any-link, x:default {
+    padding-left: 4px;
+}
+a.button:hover span, span.button input:hover, span.button button:hover
+{
+    background:url(/images/common/bluetheme/navigation/bluebtn_right_hover.png) no-repeat top right;
+	overflow:visible;
+    /*display: inline-block;
+    padding: 4px 11px 4px 4px;*/
+}
+/* Shop for MainLinks Styles -------------------------------------------- */
+.mainLinks 
+{
+	margin-top:-5px;	
+}
+.mainLinks p
+{
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+.mainLinks h2
+{
+	margin:0px;
+	padding-top:0px;
+	width:180px;
+	text-transform:uppercase;	
+}
+.mainLinks ul
+{
+	margin:0px;
+	padding:0px;
+	width:180px;
+	text-transform:uppercase;
+}
+.mainLinks ul li
+{
+	margin-left:0px;
+	border-top:solid 1px #ffffff;
+	list-style:none;
+	font-weight:bold;
+	font-size:14px;
+	/*  changed */
+	/*padding:4px;*/
+	  margin-top: -2px;
+	text-transform:none;
+}
+.mainLinks a:link, .mainLinks a:visited, .mainLinks a:active
+{
+	color:#0078AB;
+	text-decoration:none;
+	font-size:14px;
+	text-transform:none;
+	font-weight:normal;
+}
+.mainLinks a:hover
+{
+    text-decoration:underline;
+    color:#0078AB;
+	font-weight:normal;
+}
+/* Search box styles -------------------------------------------- */
+.search
+{
+	/*height:24px;*/
+}
+.inptSearchBox
+{	background: URL(/images/common/bluetheme/navigation/search_txtbox.gif);
+	background-position:left top;
+	background-repeat:no-repeat;
+	vertical-align:top;
+	margin:-1px -3px 2px 5px;
+	padding:2px 4px;
+	color:#A4A4A4;
+	width:110px;
+	height:20px;
+	border:0px;
+}
+.btnSearch
+{
+	height:24px;
+	width:32px;
+	border:0px;
+}
+/*Login box table styles */
+#login
+{
+	padding-top:30px;
+	 margin-left: -3px;
+}
+.imgCustCare
+{
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: top;
+    float: left;
+    background-image: url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+    background-repeat: repeat-x;
+    border-top: solid 4px #0277AC;
+    margin: -30px 0px 15px 0px; 
+	*margin:-30px 0px 15px 0px;
+	margin:-35px 0px 15px 0px\9;
+	position:absolute;
+}
+
+#loginforgotusername
+{
+	padding-top:60px;
+}
+#login_register
+{
+	padding:5px 0 0 5px;
+}
+#login_newregister
+{
+	padding-top:60px;
+	/*margin-top:15px;*/
+	
+	/*margin-top:20px\9;*/
+}
+#login_home
+{
+	padding-top:20px;
+}
+.loginTop
+{
+	background: URL(/images/common/bluetheme/navigation/loginbox_top.png);
+	background-position:left top;
+	background-repeat:no-repeat;
+	height:4px;
+	overflow:hidden;
+	/*margin-top:15px;
+	margin-top:0px\9;*/
+	/*padding-top: 15px;*/
+	
+	
+}
+/*.loginTopRegistration
+{
+	background: URL(/images/common/bluetheme/navigation/loginbox_top.png);
+	background-position:left top;
+	background-repeat:no-repeat;
+	height:4px;
+	overflow:hidden;
+	margin-top:30px;
+}*/
+.loginMid
+{
+	background: URL(/images/common/bluetheme/navigation/loginbox_bg.jpg);
+	background-position:left top;
+	background-repeat:repeat-x;
+	background-color:#dadada;
+	vertical-align:top;
+	/*behavior: url(/includes/resources/iepngfix.htc);*/
+	overflow:hidden;
+	width:194px;
+	border-left: thin solid #CCCCCC;
+    border-right: thin solid #CCCCCC;
+    /* margin-top: 15px; - This is the reason for the space above the login content between the login top. */
+}
+.loginMid ul
+{
+	padding:0 3px;
+	vertical-align:top;
+}
+.loginMid table
+{
+	vertical-align:top;
+}
+.loginBottom
+{
+	background: url('/images/common/bluetheme/navigation/loginbox_bottom.png') no-repeat left top;
+	height:6px;
+	margin-top:-1px;
+	overflow:hidden;
+}
+.loginBottom_register
+{
+	background: url('/images/common/bluetheme/navigation/loginbox_bottom.png') no-repeat left top;
+	height:6px;
+	margin-top:-1px;
+	overflow:hidden;
+}
+.loginBottom_hotstate
+{
+	background: url('/images/common/bluetheme/navigation/login_bottom.jpg') no-repeat left top;
+	height:7px;
+	margin-top:-1px;
+	overflow:hidden;
+}
+.signInlbl
+{
+	/*font-size:12px;*/
+	/*color:#ffffff;*/
+	padding-bottom:8px;
+	padding-top:8px;
+	/*font-weight:bold;*/
+	float:left;
+	margin-right:10px;
+	/*text-transform:uppercase;*/
+	/*background:url("/images/common/graphics/member_login.jpg") no-repeat scroll left top transparent*/
+}
+#searchcontrol_searchButton,#searchcontrolgrid_searchbutton
+{
+color:#FFFFFF;
+}
+.welcomelbl
+{
+	padding-bottom:2px;
+	padding-top:8px;
+	float:left;
+	margin-right:10px;
+	*margin-left: -7px;
+}
+.viewdemo {
+		
+	margin-bottom:-15px;
+	margin-top:2px;
+	float:left;
+	*margin-top:-12px;
+	margin-left:8px;
+}
+.viewdemo a:link, .viewdemo a:visited, .viewdemo a:hover, .viewdemo a:active
+{
+	
+	text-decoration:none;
+}
+/*Side list styles for the Login Area -------------------------------------------- */
+.side_list	
+{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	margin-bottom:-2px;
+}
+.side_list li	
+{
+	display:block;
+	text-align:left;
+}
+
+.GlobalHeaderABChome
+{
+ background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  line-height:20px;
+  margin-top:0px;
+  padding:0 0 0 0;
+  margin-left:-25px;
+  margin-bottom: -22px;
+  *margin-bottom: -32px;
+   width:105%;
+}
+
+.GlobalHeaderABChome .GlobalHeader h4
+{
+ margin: 2px 15px 17px;
+ vertical-align: text-top;
+ }
+ .LoginText
+{
+	 text-align:left;
+	 padding-left: 10px;
+	 padding-top:5px\9;
+	 
+}
+.GlobalHeaderABChome .GlobalHeader
+{
+    color: #888888;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 2px 15px 10px;
+    padding-left: 0;
+    text-decoration: none;
+    width: 100%;
+}
+.GlobalHeaderABChome .GlobalHeader .spanimgbutons
+{
+	height: 20px;
+    margin-left: 10%;
+    margin-top: -24px;
+    vertical-align: top;
+}
+.GlobalHeaderPlans .GlobalHeader .spanimgbutons
+{	
+	float:left;
+	margin-top:-25px;
+	/*width:60%;*/
+	margin-left:58%;
+	height:20px;
+	*height:26px;
+	height:20px\9;
+	float:none\9;
+	margin-left:19%\9;
+	
+}
+.GlobalHeaderBCBSGA
+        {
+ background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  line-height:20px;
+  margin-top:0px;
+  padding:0 0 0 0;
+  margin-left:-25px;
+  margin-bottom: 38px;
+  margin-bottom:-5px\9;
+   width:105%;
+}
+.GlobalHeaderPlans
+{
+ background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  margin-top:0px;
+line-height:20px;
+padding:0 0 0 0;
+}
+.GlobalHeadercolorproviderfinder
+{
+	background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  margin-top:0px;
+line-height:20px;
+padding:0 0 0 0;
+}
+.GlobalHeaderForgotPassword
+{
+	background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  margin-top:0px;
+line-height:20px;
+padding:0 0 0 0;
+width:102%;
+}
+.GlobalHeadercolor
+{
+ background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+  background-repeat :repeat-x;
+  border-top:solid 4px #0277AC;
+  margin-top:0px;
+line-height:20px;
+padding:0 0 0 0;
+}
+.shopforlist li a:link,.shopforlist li a:visited,.shopforlist li a:active
+{
+	display:block;
+	text-align:left;
+	/*font-size:14px;*/
+	margin-bottom:-2px;
+}
+#shopforplans ul
+{
+	list-style:none;
+}
+.bottommargin
+{
+	margin-bottom:15px;
+}
+/*dinesh added */
+.side_head 
+{
+	padding:5px;
+}
+ul li .side_head {   
+    list-style:none;      
+    margin:0px 0px 1px 0px;  
+    font-size:11px; 
+    background-image:url(/images/common/bluetheme/navigation/login_links_bg.jpg);   
+    background-repeat:repeat-x;     
+    background-position:bottom; 
+    color:#696969;
+    vertical-align:middle; 
+} 
+.close_side_head
+{
+	background-image:url(/images/common/bluetheme/navigation/arrow_circle.png);   
+    background-repeat:no-repeat;     
+    background-position:left 1.5px; 
+    padding-left:20px;
+    white-space: nowrap;
+}
+.side_head_paymybill {
+    display: none;
+}
+.close_side_head_paymybill
+{
+	background-image:url(/images/common/bluetheme/navigation/paymybill_off.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+	margin-top:-2px;
+    height:30px;
+    white-space: nowrap;
+    cursor:pointer;
+}
+.open_side_head_paymybill
+{
+	background-image:url(/images/common/bluetheme/navigation/paymybill_on.jpg);   
+}
+.close_side_head_costInfo_flatcorners
+{
+	background-image:url(/images/common/bluetheme/navigation/estimate-cost_collapse.jpg);
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+    height:45px;
+    white-space: nowrap;
+    display: none;
+}
+.open_side_head_costInfo_flatcorners
+{
+	background-image:url(/images/common/bluetheme/navigation/estimate-cost_expand.jpg);   
+}
+.close_side_head_finddoc
+{
+	background-image:url(/images/common/bluetheme/navigation/find_a_doctor.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+    height:46px;
+    white-space: nowrap;
+    cursor:pointer;
+}
+
+
+.close_side_head_costInfo
+{
+	background-image:url(/images/common/bluetheme/navigation/EstimateCost_off.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+    height:42px;
+    white-space: nowrap;
+    display: none;
+    cursor:pointer;
+}
+
+.open_side_head_finddoc
+{
+	background-image:url(/images/common/bluetheme/navigation/find_a_doctor_down.jpg);   
+}
+
+.open_side_head_costInfo
+{
+	background-image:url(/images/common/bluetheme/navigation/EstimateCost_on.jpg);   
+}
+
+
+.close_side_head_finddoc_flatcorners
+{
+	background-image:url(/images/common/bluetheme/navigation/findadoctor_off.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+    height:45px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.open_side_head_finddoc_flatcorners
+{
+	background-image:url(/images/common/bluetheme/navigation/findadoctor_on.jpg);   
+}
+.close_side_head_refill
+{
+	background-image:url(/images/common/bluetheme/navigation/prescription_benefits.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-10px;
+	width:196px;
+    height:29px;
+    white-space: nowrap;
+    cursor:pointer;
+}
+.open_side_head_refill
+{
+	background-image:url(/images/common/bluetheme/navigation/prescription_benefits_down.jpg);   
+}
+.close_side_head_refill_Sr
+{
+	background-image:url(/images/common/bluetheme/navigation/refill_a_prescription.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-10px;
+	width:196px;
+    height:29px;
+    white-space: nowrap;
+}
+.open_side_head_refill_Sr
+{
+	background-image:url(/images/common/bluetheme/navigation/refill_a_prescription_down.jpg);   
+}
+.close_side_head_claims
+{
+	background-image:url(/images/common/bluetheme/navigation/check_a_claim.jpg);   
+	background-repeat:no-repeat;  
+	padding-left:-20px;
+	width:196px;
+    height:32px;
+    white-space: nowrap;
+    cursor:pointer;
+   /* border-top:solid 1px #c3c3c3;*/
+}
+.open_side_head_claims
+{
+	background-image:url(/images/common/bluetheme/navigation/check_a_claim_down.jpg);   
+}
+
+
+.close_side_head img
+{
+	vertical-align:middle;
+}
+* html .close_side_head
+{
+	background-image:url(/images/common/bluetheme/navigation/arrow_circle.png);   
+    background-repeat:no-repeat;     
+    background-position:left 1.5px; 
+    padding-left:20px;
+	width:14px;
+    height:14px;
+    white-space: nowrap;
+}
+.open_side_head
+{
+	background-image:url(/images/common/bluetheme/navigation/arrow_circle_down.png);   
+    background-repeat:no-repeat;     
+    background-position:left 1.5px;
+    padding-left:20px; 
+}
+ul li .side_body 
+{   
+    display: none;
+    vertical-align:top;
+    margin-top:-1px;
+    margin-bottom:-2px;
+    padding:3px;
+    background-image:url(/images/common/bluetheme/navigation/login_links_bodybg.jpg);   
+    background-repeat:repeat;     
+    background-position:bottom; 
+    border-right:solid 1px #c3c3c3;
+    border-left:solid 1px #c3c3c3;
+    width:188px;
+}
+
+ul li .side_body_claims 
+{
+    display: none;
+    vertical-align:top;
+    margin-top:-1px;
+    margin-bottom:1px;
+    padding:3px;
+    background-image:url(/images/common/bluetheme/navigation/login_links_bodybg.jpg);   
+    background-repeat:repeat;     
+    background-position:bottom; 
+    border-right:solid 1px #c3c3c3;
+    border-left:solid 1px #c3c3c3;
+    border-bottom:solid 1px #c3c3c3;
+    width:188px;
+    
+      border-bottom-left-radius: 5px;
+       border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+     -moz-border-radius-bottomright: 5px;
+    -webkit-border-radius-bottomright: 5px;
+    -webkit-border-radius-bottomleft: 5px;
+    }
+/* Information for links -------------------------------------------- */
+.infofor
+{
+	color:#696969;
+	font-size:11px;	
+	margin-top:-10px;
+	text-transform:uppercase;
+}
+.infofor h2
+{
+    font-size:11px;
+    padding-bottom:0px;
+    text-transform:uppercase;    
+    font-weight:normal;
+    letter-spacing:1px;
+}
+.infofor ul
+{
+	margin:0px;
+	padding:0px;	
+}
+.infofor li
+{
+	list-style:none;
+	padding-left:11px;
+	text-transform:capitalize;	
+	font-size:12px;
+}
+.infofor a:link, .infofor a:visited, .infofor a:active
+{
+	color:#0078AB;
+	text-decoration:none;
+	font-size:11px;
+}
+.infofor a:hover
+{
+    text-decoration:underline;
+}
+/* Ajax Modal styles */
+.modalBackground
+{
+background-color:#000000;
+filter:alpha(opacity=70);
+-moz-opacity: 0.7; 
+opacity:0.7;
+}
+.modalPopup 
+{
+	width:300px;
+	height:auto;
+	border: 1px solid #719cd3;
+	background-color:#ffffff;
+	/**position:fixed;
+	*position:fixed;
+	top:50%;
+	left:50%;
+	margin:0;
+	padding:0;
+	z-index:120; */ 
+}
+.ajaxmodalContent
+{
+	/*border: 1px solid #719cd3;
+	padding:1px 8px 0 1px;
+	background-color:#ffffff;*/
+}
+* html .modalBackground { /*position: absolute; */ 
+/*height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');*/ 
+} 
+* html .modalPopup{ /*position:absolute;*/ }
+/*Jquery UI Dialog Styles*/
+.dialogbox { border-radius: 6px 6px 6px 6px; }
+.dialogbox .ui-widget-header {height:20px; border:none; color:#696969; margin-top:3px;}
+/*Dynamic modal styles*/
+.modal-overlay   
+{   
+    position:fixed;   
+    top:0;   
+    right:0;   
+    bottom:0;   
+    left:0;   
+    height:100%;   
+    width:100%;   
+    margin:0;   
+    padding:0;   
+    background-color:#000000;
+    filter:alpha(opacity=70);
+    -moz-opacity: 0.7;
+    opacity:0.7;
+    z-index:119; 
+}   
+.modal-window   
+{   
+    position:fixed;
+    top:50%;
+    left:50%;
+    margin:0;
+    padding:0;
+    z-index:120;  
+}
+.modalContent
+{
+	/*border: 1px solid #719cd3; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; color: #000; font-weight: normal; */
+	background-color:#ffffff;
+}
+*:first-child+html .modalContent
+{
+	padding:1px 8px 0 1px;
+	background-color:#ffffff;
+}
+* html .modalContent
+{
+	padding:1px 8px 0 1px;
+	background-color:#ffffff;
+}
+.mwContent
+{
+	padding:5px;	
+}
+.mwtitle 
+{
+	height:20px; padding:1px 10px;
+}
+*:first-child+html .mwtitle 
+{
+	height:20px; padding:1px 10px; margin-right:-1px;
+}
+* html .mwtitle 
+{
+	height:20px; padding:1px 10px; margin-right:-1px;
+}
+.close-window   
+{   
+    position:absolute;   
+    width:32px;   
+    height:32px;   
+    right:8px;   
+    top:1px;   
+    background:transparent url('/images/common/graphics/close_button.jpg') no-repeat scroll right top;   
+    text-indent:-99999px;   
+    overflow:hidden;   
+    cursor:pointer; 
+    margin-top:7px;   
+} 
+* html .modal-overlay { position: absolute;   
+    height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');   
+} 
+* html .modal-window { position:absolute; }
+.selectoverlay {
+	filter: alpha(opacity=70); 
+	background-color:Gray;
+	filter:alpha(opacity=70);
+	-moz-opacity: 0.7;
+	opacity:0.7;
+	z-index:119;
+}
+/* Sliding Modal styles -------------------------------------------- */
+.slidingmodal-overlay  
+{
+    position:fixed;   
+    top:0;   
+    right:0;   
+    bottom:0;   
+    /*left:20px;*/ 
+    height:100%;   
+    width:100%;   
+    margin:0;   
+    padding:0;   
+    background-color:#000000;
+    filter:alpha(opacity=70);
+    -moz-opacity: 0.7;
+    opacity:0.7;
+    z-index:119;   
+}
+.slidingmodal-window   
+{
+    position:absolute;
+    top:0;
+    right:15px;
+	left:15px;
+    margin:0;
+    padding:0;
+    z-index:120;
+    display:none;
+	background-color:#ffffff;
+	border: solid 5px #439cc1;
+	border-top: 0px;
+	background-image:url('/images/common/bluetheme/navigation/customer_care_bg.jpg'); background-repeat:repeat-x; background-position:bottom;
+}
+* html .slidingmodal-overlay { position: absolute; height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px'); }
+* html .slidingmodal-window { position:absolute;right:15px; left:15px; }
+.ccSlideUp
+{
+	position:absolute;
+	right:-6px;
+	bottom:-29px;
+	background:url('/images/common/bluetheme/navigation/customer_care_close.png') no-repeat scroll right bottom;
+	text-indent:-99999px;overflow:hidden;cursor:pointer;
+	height:24px;
+	width:205px;
+}
+.closecc
+{   
+    background:transparent url('/images/common/bluetheme/navigation/closeuparrrow.jpg') no-repeat right top; 
+    color:#cccccc;
+	cursor:pointer;
+	font-weight:bold;
+	height:20px;
+	overflow:hidden;
+	position:absolute;
+	right:20px;
+	text-align:left;
+	top:15px;
+	width:55px;
+}
+a:link.closecc ,  a:visited.closecc, a:hover.closecc, a:active.closecc
+{
+	color:#cccccc;
+	text-decoration:none;
+}
+/*Start Styles for sliding Panels and inner pages -------------------------------------------- */
+.pageBody
+{
+	background-image:url(/images/common/bluetheme/navigation/top_barheader_bg.jpg);
+	background-repeat:repeat-x;
+	background-position:top left;
+	min-width:1020px;	
+}
+#innerAnthem
+{
+	background:url(/images/common/bluetheme/navigation/greenbar_inner.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+	background-color:#B3B936;	
+}
+#innerPlans
+{
+	background:url(/images/common/bluetheme/navigation/bluebar_inner.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+	background-color:#5393CF;
+}
+#innerHealth
+{
+	background:url(/images/common/bluetheme/navigation/purplebar_inner.jpg);
+	background-position:top left;
+	background-repeat:repeat-y;
+	background-color:#B9469B;
+}
+#anthemCollapsed
+{
+	background:url(/images/common/bluetheme/navigation/green_bar.jpg);
+	background-position:top right;
+	background-repeat:repeat-y;
+	background-color:#B3B936;
+	width:55px;	
+}
+#plansCollapsed
+{
+	background:url(/images/common/bluetheme/navigation/blue_bar.jpg);
+	background-position:top right;
+	background-repeat:repeat-y;
+	background-color:#B3B936;	
+	width:55px;
+}
+#healthCollapsed
+{
+	background:url(/images/common/bluetheme/navigation/purple_bar.jpg);
+	background-position:top right;
+	background-repeat:repeat-y;
+	background-color:#B3B936;
+	width:55px;	
+}
+#contents
+{
+	background-image:url(/images/common/bluetheme/navigation/top_barheader_bg.jpg);
+	background-repeat:repeat-x;
+	background-position:top left;
+	height:850px;
+	background-color:#ffffff;
+}
+#contents_slider
+{
+	height:850px;
+	background-color:#ffffff;
+}
+#contents_aboutus
+{
+	background-image:url(/images/common/greentheme/navigation/top_barheader_bg.jpg);
+	background-repeat:repeat-x;
+	background-position:top left;	
+	height:850px;
+	background-color:#ffffff;
+}
+.headerimage_AD
+{
+	background-image:url(/images/Wellpointpublic/bluetheme/Header_AD.jpg);
+	background-repeat:repeat-x;
+	background-position:top right;	
+}
+.headerimage_PB
+{
+	background-image:url(/images/Wellpointpublic/bluetheme/Header_PB.jpg);
+	background-repeat:repeat-x;
+	background-position:top right;	
+}
+.headerimage_HW
+{
+	background-image:url(/images/Wellpointpublic/bluetheme/Header_HW.jpg);
+	background-repeat:repeat-x;
+	background-position:top right;	
+}
+
+/* dinesh added */
+
+.GlobalHeader
+{
+color:#888888;
+font-weight:bold;
+font-size:11px;
+/*padding:5px 10px 5px 10px;*/
+text-decoration:none;
+padding-left:0px;
+width:100%;
+margin:2px 0px 10px 0px;
+margin:2px 0px 0px 0px \9; 
+}
+.GlobalHeader h4 
+{
+margin:2px 15px -42px 15px;
+vertical-align:text-top;
+/*width:60%;*/
+*font-size:11px;
+margin:2px 15px 0px 15px\9;
+}
+/*.GlobalHeader img
+{
+vertical-align:middle;
+margin:2px 15px 10px 15px;
+color:#4b92b2;
+text-decoration:none;
+}*/
+.GlobalHeadercolor
+{
+	margin-top:0px;
+	margin-bottom:0px;
+}
+.GlobalHeaderRegistration .GlobalHeader .spanimgbutons
+{
+	float:left;
+	margin-top:-24px;
+/*width:60%;*/
+height:20px;
+	margin-left:810px;
+	height:26px;\9
+}
+.GlobalHeaderForgotPassword .GlobalHeader h4
+{
+vertical-align:text-top;
+/*width:60%;*/
+*font-size:11px;
+margin:2px 15px 0px 15px;
+}
+.GlobalHeaderNewRegistration .GlobalHeader h4
+{
+vertical-align:text-top;
+/*width:60%;*/
+*font-size:11px;
+margin:2px 15px 0px 15px;
+}
+.GlobalHeaderNewRegistration .GlobalHeader .spanimgbutons
+{
+float:left;
+	margin-top:-24px;
+/*	width:60%;*/
+	margin-left:60%;
+	height:20px;
+	height:26px\9;
+	margin-left:63%\9;
+}
+.GlobalHeaderRegistration .GlobalHeader .spanimgbutons
+{
+	float:left;
+	margin-top:-24px;
+/*	width:60%;*/
+	margin-left:68%;
+	height:20px;
+	height:26px;\9
+}
+.GlobalHeadercolorproviderfinder .GlobalHeader .spanimgbutons
+{
+	float:left;
+	margin-top:-24px;
+	/*	width:60%;*/
+	margin-left:63%;
+	height:20px;
+	height:26px\9;
+	margin-left:61%\9;
+}
+.GlobalHeadercolor .GlobalHeader .spanimgbutons
+{	
+	float:left;
+	margin-top:-25px;
+	/*	width:60%;*/
+	margin-left:52%;
+	height:20px;
+	*height:26px\9;
+	*margin-left:56%\9;
+	*float:left;
+	*margin-top:-25px;
+	float:none\9;
+	margin-left:14%\9;
+	margin-top:0px\9;
+	height:auto\9;
+}
+.GlobalHeadercolorhome .GlobalHeader .spanimgbutons
+{
+	float: left;
+    height: 20px;
+    margin-left: 55%;
+    margin-top: -24px;
+	margin-left:54.9%\9;
+	*margin-left:53.2%;
+	height:26px\9;
+	vertical-align:top;
+}
+.GlobalHeadercolor .GlobalHeader h4 {
+    margin: 2px 0px -10px;
+    vertical-align: text-top;
+  
+     margin: 2px 0px -4px \9;
+     *margin: 0px 15px -9px;
+     width:100%;
+}
+.GlobalHeaderHealthwellness .GlobalHeader h4
+{
+	margin: 2px 15px -10px;
+    vertical-align: text-top;
+    
+    margin: 2px 15px -4px \9;
+    *margin: 2px 15px -9px \9;
+}
+.GlobalHeaderHealthwellness .GlobalHeader .spanimgbutons
+{
+	float:left;
+	margin-top:-24px;
+	/*width:60%;*/
+	margin-left:62.5%;
+	height:20px;
+	float:none\9;
+	height:26px\9;
+	margin-left:23%\9;
+}
+
+.GlobalHeader #blank
+{
+ width:25px;
+}
+
+.Headerbutton
+{
+
+vertical-align:middle;
+margin:2px -10px 10px 15px;
+color:#4b92b2;
+text-decoration:none;
+
+}
+.Footercontent
+{
+ background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+  margin-top:-9px;
+ /* margin-left:-25px;*/
+  float:left;
+  width:100%;
+  line-height:15px;
+  margin-bottom:-2%;
+   margin-bottom:0%\9;
+}
+.Footercontentconsumer
+{
+ background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+  margin-top:0px;
+  margin-left:0px;
+  float:left;
+  width:100%;
+  line-height:15px;
+}
+.Footercontentconsumer a:link
+{
+	Color: #0078AB;
+	font-size:10px;
+}
+.Footercontent a:link
+{
+	Color: #0078AB;
+	font-size:10px;
+}
+.FooterText
+{
+	float:left;
+	background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+	margin:-15px 5px 0 10px;
+	padding:-15px 5px 0 10px;
+}
+.Footercontent span,.Footercontentconsumer span
+{
+	float:left;
+	margin:15px 0px 30px 0;
+	border-right:solid 1px #FFFFFF;
+	padding-right:10px;
+	padding-left:10px;
+}
+.Footernoborder
+{
+	border-right:none;
+}
+.footerAnthemDifference .Footercontent
+{
+ background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+  margin-top:-9px;
+  margin-left:0px;
+  float:left;
+  width:100%;
+  line-height:15px;
+} 
+.footerPlansBenefits .Footercontent
+{
+	background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+  margin-top:-9px;
+  margin-left:0px;
+  float:left;
+  width:100%;
+  line-height:15px;
+}
+.footerheathwellness .Footercontent
+{
+ background-image:url(/images/common/bluetheme/navigation/footer_repeat_img.jpg);
+  background-repeat :repeat-x;
+  margin-top:-9px;
+  margin-left:0px;
+  float:left;
+  width:100%;
+  line-height:15px;
+}
+.GlobalHeadercolorproviderfinder .customercaretop
+{
+	float:left;
+	margin-left: 79%;
+    margin-top: -2.3%;
+    margin-bottom:10px;
+     margin-top: -2.5%\9;
+     margin-left: 79.5%\9;
+     height:22px;
+}
+.GlobalHeaderHealthwellness .customercaretop
+{
+	float:left;
+	  margin-left: 81.5%;
+    margin-top: -1.9%;
+    margin-bottom:10px;
+    margin-top: -2.2%\9;
+    height:22px;
+	
+}
+.GlobalHeaderRegistration .customercaretop
+{
+	float:left;
+	margin-top:-34px;
+	/*width:60%;*/
+	margin-left:810px;
+	height:22px;
+}
+.GlobalHeaderNewRegistration
+{
+ background-image :url(/images/common/bluetheme/navigation/header_repeat_img.jpg);
+background-repeat :repeat-x;
+border-top:solid 4px #0277AC;
+margin-top:0px;
+line-height:20px;
+padding:0 0 0 0;
+width:103%\9;
+*width:102%;
+}
+.imgRegistrationCustCare
+{
+	margin-top:-5px\9;
+	*margin-top:auto;
+}
+.GlobalHeaderNewRegistration .customercaretop
+{
+float: left;
+    height: 22px;
+    margin-left: 78.5%;
+    margin-top: -1.9%;
+    margin-top:-2.2%\9;
+}
+.GlobalHeaderPlans .GlobalHeader h4
+{
+ margin: 2px 15px -10px;
+ vertical-align: text-top;
+  margin: 0px 15px -10px \9;
+}
+.GlobalHeaderPlans .customercaretop
+{
+  float: left;
+    height: 18px;
+    margin-left: 78%;
+    margin-top: -2%;
+    margin-left: 77%\9;
+    *margin-top:-2.3%;
+}
+.GlobalHeadercolor .customercaretop
+{
+	float: left;
+    margin-left: 73%;
+    margin-top: -2%;
+    margin-bottom:10px;
+     *margin-top: -2.3%\9;
+     height:22px;
+}
+.GlobalHeadercolorhome .customercaretop
+{
+	float: left;
+    height: 22px;
+    margin-left: 76%;
+    margin-top: -4.2%;
+     margin-top: -3.6%\9;
+     
+}
+
+
+
+#usefultools span,#shopforlinks span 
+{
+	
+text-align:left;
+}
+#usefultools ul li
+{
+	padding:0px;
+	/*border:solid 1px black;*/
+}
+.shopforborder
+{
+	 background: url("/images/common/bluetheme/navigation/loginbox_bottom.png") no-repeat scroll left top transparent;
+    height: 6px;
+    margin-top: -1px;
+    overflow: hidden;
+    width:92%;
+}
+.HeaderLanguages
+{
+margin:7px 15px 5px 15px;
+vertical-align:middle;
+color:#4b92b2;
+text-decoration:none;
+}
+*.HeaderLanguages
+{
+	margin:5px 15px 5px 15px;
+}
+.otheranthemsites
+{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+	margin-bottom:-2px;
+	}
+.otheranthemsites li	
+{
+	display:block;
+	text-align:left;
+	float:left;
+}
+#OtherAnthem
+{
+	margin:10px 0px 10px 0px;
+	width:100%;
+}
+.otheranthemsites li
+{
+	margin-left:-7px;
+	font-size:12px;
+	font-weight:normal;
+}
+.seperator
+{
+	color:#0078AB;
+}
+.ListHeader
+{
+Font: TV Nord Condensed;
+Font-Size: 15px;
+Color: #444444;
+font-weight:bold;
+margin-bottom:5px;
+margin-top:15px
+*margin-top:-5px;
+}
+.ListHeaderOtherAnthem
+{
+	Font: TV Nord Condensed;
+Font-Size: 14px;
+Color: #444444;
+font-weight:bold;
+}
+#shopforplans
+{
+	margin-top:-10px;
+}
+.GlobalHeadercolorhome .GlobalHeader h4
+{
+	margin: 2px 15px 17px;
+    vertical-align: text-top;
+    margin:2px 15px 16px \9;
+     *margin:2px 15px 19px;
+} 
+/*dinesh added */
+#utilBar
+{
+	height:49px;
+}
+#utilBar img
+{
+	padding-right:2px;
+}
+#utilBar a:link, #utilBar a:visited, #utilBar a:hover, #utilBar a:active
+{
+	font-size:10px;
+	text-decoration:none;
+	padding:0px 17px;	
+}
+.headerNav a:link, .headerNav a:visited, .headerNav a:hover, .headerNav a:active
+{
+	font-size:10px;
+	text-decoration:none;
+	padding:5px;	
+}
+#header_blue
+{
+	height:125px;
+	border-bottom:solid 3px #1879BF;
+}
+#header_green
+{
+	height:125px;
+	border-bottom:solid 3px #B3B936;
+}
+#header_purple
+{
+	height:125px;
+	border-bottom:solid 3px #A81882;
+}
+#header_noline
+{
+	height:125px;
+}
+/*Styles for Anthem Difference SubMenu -------------------------------------------- */
+.subMenuGreen
+{
+	padding-top:20px;
+	border-bottom:solid 1px #9a9f2e;
+}
+.subMenuGreen ul
+{
+	margin:0px;
+	padding:0px;
+}
+.subMenuGreen ul li
+{
+	list-style:none;
+	border-top:solid 1px #9a9f2e;
+	padding:9px 9px 9px 15px;
+	display:block;
+}
+.subMenuGreen ul li:first-child
+{
+	list-style:none;
+	border-top:solid 0px #9a9f2e;
+	padding-top:0;
+	display:block;
+}
+.subMenuGreen a:link, .subMenuGreen a:visited, .subMenuGreen a:hover, .subMenuGreen a:active
+{
+	color:#ffffff;
+	text-decoration:none;
+}
+.subMenuG1 ul
+{
+	font-size:11px;	
+	font-weight:bold;
+	margin:0px;
+	padding:0px;
+	margin:10px 0px -10px 0px;
+}
+.subMenuG1 ul li
+{
+	list-style:none;
+	padding:8px;
+}
+.subMenuG1 ul li a:link
+{
+	color:#757823;
+	text-decoration:none;
+}
+.subMenuG1 ul li a:visited
+{
+	color:#757823;
+	text-decoration:none;
+}
+.subMenuG1 ul li a:hover
+{
+	color:#757823;
+	text-decoration:none;
+}
+.subMenuG1 ul li a:active
+{
+	color:#757823;
+	text-decoration:none;
+}
+.subMenuG1 ul li:first-child
+{
+	list-style:none;
+	border-top:solid 1px #9a9f2e;
+	padding:8px;
+}
+.subMenuG1 ul li:last-child
+{
+	list-style:none;
+	border-bottom:solid 0px #9a9f2e;
+	padding:8px;
+}
+.green
+{
+	color:#757823;
+	background-color:#CED17C;
+	border-bottom:solid 6px #9a9f2e;
+	font-size:11px;
+	font-weight:bold;
+}
+.green a:link, .green a:visited, .green a:hover, .green a:active
+{
+	color:#757823;
+}
+.green1
+{
+	color:#757823;
+	background-color:#e1e4b0;
+}
+/*Styles for Plans and Benefits SubMenu -------------------------------------------- */
+.subMenuBlue
+{
+	padding-top:20px;
+	border-bottom:solid 1px #477FB2;
+}
+.subMenuBlue ul
+{
+	margin:0px;
+	padding:0px;
+}
+.subMenuBlue ul li
+{
+	list-style:none;
+	border-top:solid 1px #477FB2;
+	padding:9px 9px 9px 15px;
+	display:block;
+}
+.subMenuBlue ul li:first-child
+{
+	list-style:none;
+	border-top:solid 0px #477FB2;
+	padding-top:0;
+	display:block;
+}
+.subMenuBlue a:link, .subMenuBlue a:visited, .subMenuBlue a:hover, .subMenuBlue	 a:active
+{
+	color:#ffffff;
+	text-decoration:none;
+}
+.subMenuB1 ul
+{
+	font-size:11px;	
+	font-weight:bold;
+	margin:0px;
+	padding:0px;
+	margin:10px 0px -10px 0px;
+}
+.subMenuB1 ul li
+{
+	list-style:none;
+	padding:8px;
+}
+.subMenuB1 ul li a:link
+{
+	color:#366087;
+	text-decoration:none;
+}
+.subMenuB1 ul li a:visited
+{
+	color:#366087;
+	text-decoration:none;
+}
+.subMenuB1 ul li a:hover
+{
+	color:#366087;
+	text-decoration:none;
+}
+.subMenuB1 ul li a:active
+{
+	color:#366087;
+	text-decoration:none;
+}
+.subMenuB1 ul li:first-child
+{
+	list-style:none;
+	border-top:solid 1px #477FB2;
+	padding:8px;
+}
+.subMenuB1 ul li:last-child
+{
+	list-style:none;
+	border-bottom:solid 0px #477FB2;
+	padding:8px;
+}
+.blue
+{
+	color:#366087;
+	background-color:#8FB9E0;
+	border-bottom:solid 6px #4479AB;
+	font-size:11px;
+	font-weight:bold;
+}
+.blue a:link, .blue a:visited, .blue a:hover, .blue a:active
+{
+	color:#366087;
+}
+.blue1
+{
+	color:#366087;
+	background-color:#B6D1EB;
+}
+/*Styles for Health and Wellness SubMenu -------------------------------------------- */
+.subMenuPurple
+{
+	padding-top:20px;
+	border-bottom:solid 1px #9F3C85;
+}
+.subMenuPurple ul
+{
+	margin:0px;
+	padding:0px;
+}
+.subMenuPurple ul li
+{
+	list-style:none;
+	border-top:solid 1px #9F3C85;
+	padding:9px 9px 9px 15px;
+	display:block;
+}
+.subMenuPurple ul li:first-child
+{
+	list-style:none;
+	border-top:solid 0px #9F3C85;
+	padding-top:0;
+	display:block;
+}
+.subMenuPurple a:link, .subMenuPurple a:visited, .subMenuPurple a:hover, .subMenuPurple a:active
+{
+	color:#ffffff;
+	text-decoration:none;
+}
+.subMenuP1 ul
+{
+	font-size:11px;	
+	font-weight:bold;
+	margin:0px;
+	padding:0px;
+	margin:10px 0px -10px 0px;
+}
+.subMenuP1 ul li
+{
+	list-style:none;
+	padding:8px;
+}
+.subMenuP1 a:link
+{
+	color:#592349;
+	text-decoration:none;
+}
+.subMenuP1 a:visited
+{
+	color:#592349;
+	text-decoration:none;
+}
+.subMenuP1 a:hover
+{
+	color:#592349;
+	text-decoration:none;
+}
+.subMenuP1 a:active
+{
+	color:#592349;
+	font-weight:bold;
+	text-decoration:none;
+}
+.subMenuP1 ul li:first-child
+{
+	list-style:none;
+	border-top:solid 1px #9F3C85;
+	padding:8px;
+}
+.subMenuP1 ul li:last-child
+{
+	list-style:none;
+	border-bottom:solid 0px #9F3C85;
+	padding:8px;
+}
+.purple
+{
+	color:#782E65;
+	background-color:#D187bE;
+	border-bottom:solid 6px #983A80;
+	font-size:11px;
+	font-weight:bold;
+}
+.purple a:link, .purple a:visited, .purple a:hover, .purple a:active
+{
+	color:#782E65;
+}
+.purple1
+{
+	color:#782E65;
+	background-color:#E1B1D5;
+}
+/*Styles for Account Summary Main contents*/
+.innerNavImg
+{
+	background-image:url(/images/common/bluetheme/navigation/shadow_bg.jpg);
+	background-repeat:no-repeat;
+	background-position:bottom left;
+	width:100%;
+	min-height:320px;
+}
+/*Inner Pages Navlist styles*/
+ul.innerNav 
+{
+	margin:0px;
+	padding:0px;
+}
+ul.innerNav li
+{
+	margin-right:0px;
+	border-top:solid 1px #cccccc;
+	list-style:none;
+	font-weight:bold;
+	width:184px;
+	height:26px;
+}
+ul.innerNav li a:link
+{
+	display:block;
+	width:184PX;
+	height:26px;
+	color:#0078AB;
+	text-decoration:none;
+}
+ul.innerNav li a:visited
+{
+	color:#0078AB;
+	text-decoration:none;
+}
+ul.innerNav li a:hover
+{
+	display:block;
+	height:26px;
+	color:#696969;
+	text-decoration:none;
+	background-image:url(/images/common/graphics/arrow_bargrey.jpg);
+}
+ul.innerNav li a:active
+{
+	display:block;
+	height:26px;
+	color:#696969;
+	text-decoration:none;
+	background-image:url(/images/common/graphics/arrow_bargrey.jpg);
+}
+/*Footer styles*/
+.footer
+{
+	/*position:relative;*/
+	margin-top:75px;
+	border-top:solid 2px #0078AB;
+	float:left;
+	width:100%;
+}
+.footer ul
+{
+	margin: 0 0 0 -12px;
+	padding:0px;
+	padding-top:5px;
+}
+.footer li
+{
+	list-style:none;
+	display:inline;
+	border-left:solid 1px #cccccc;
+}
+.footer li:first-child
+{
+	padding-left:0px;
+	border-left:none;	
+}
+.footer a:link, .footer a:visited, .footer a:active
+{
+	color:#0078AB;
+	font-size:10px;
+	text-decoration:none;
+	padding-left:12px;
+	padding-right:12px;
+}
+.footer a:hover
+{
+    text-decoration:underline;
+}
+.footer a.selected
+{
+	color:#696969;
+	cursor:default;
+	text-decoration:none;
+}
+/*HW footer links on Consumer*/
+.hwfooter a:link, .hwfooter a:visited, .hwfooter a:active, .hwfooter a.selected {
+color:#0078AB;
+cursor:pointer;
+}
+.hwfooter a:hover.selected {
+text-decoration:underline;
+}
+/*Health and Wellness styles -------------------------------------------- */
+.subpageheader{font-size:10px; color:#8f8f8f; text-decoration:none; text-transform:uppercase;}
+.border1px{ border-bottom:solid 1px #ececec; margin-top:10px; width:100%; margin-bottom:10px; }
+#happierhealthier{width:50%; float:left; padding-top:5px; padding-right:100px; }
+#happierhealthier ul{ font-family:Arial Narrow; font-size:26px; color:#A71881; text-decoration:none; margin:0px; padding-bottom:10px; line-height:20PX; }
+#happierhealthier li{ font-family:Arial; color:#696969; text-decoration:none; margin-left:30px; padding:1px;}
+
+.contenttext{ font-family:Arial; color:#696969; text-decoration:none;}
+.gryheadertxtmed{ font-family:Arial; font-size:18px; color:#696969; text-decoration:none;}
+.bluebheader{ font-family:Arial; font-size:14px; color:#0078ab; text-decoration:none;}
+#bmiCalorie_links {font-family: arial; font-size: 12px; font-weight: bold; color: #0078ab; text-transform:uppercase; float:right; }
+#bmiCalorie_links ul{ margin:0px;}
+#bmiCalorie_links li{ list-style-type:none; text-indent:40px;
+     border-top:solid 1px #ececec; padding:10px 0px 10px 0px; background-image:url(/images/common/bluetheme/navigation/bluearrow.gif); background-repeat:no-repeat; background-position:left; text-align:right;}                   
+#featured {float:left; width:100%; margin-top:15px;}
+#featured .futrdfrm{float:left; width:50%;}
+#featured .futrdfrm_ttle{font-size:18px; text-decoration:none; font-weight:normal; padding-bottom:10px;  }
+#featured .futrdfrm_bluettle{color:#0078ab; font-size:14px; padding-bottom:5px;  }
+#featured .futrdfrm_date{ font-family:Helvetica; color:#b4b4b4; font-size:10px; padding-bottom:5px; }
+#featured .futrdfrm_drnme{font-family:Helvetica; font-size:10px;padding-bottom:5px; }
+#featured .futrdfrm_viewcomets{font-size:11px; color:#b4b4b4; float:left; margin-top:10px; }
+#featured .futrdfrm_comments{float:left; }
+#featured .futrdfrm_rating{float:right; }
+#featured .futrdtip{float:right;}
+#featured .futrdtip_ttle{font-size:18px; text-decoration:none; font-weight:normal; text-align:left; }
+#featured .futrdtip_bluettle{color:#0078ab; font-size:14px; }
+#featured .futrdtip_more{color:#0078ab; }
+#featured .futrdtip_image{ width:93px; height:71px; padding:10px; float:left;}
+
+/*Plans and Benefits Styles -------------------------------------------- */
+#healthcare{font-size:16px;  text-decoration:none; font-weight:normal; color:#696969; padding:15px 0px 5px 0px;}
+#healthcare ul{font-size:16px; }
+#healthcare li{line-height:20px;margin-left:10px;}
+
+/* getting started 3 columns*/
+.column1{font-size:11px; color:#717171; text-decoration:none; float:left; width:33%;}
+
+.column2{font-size:11px; color:#717171; float:left; width:33%;}
+.column2 b{color:#696969; font-weight:bold; }
+.column2 ul{font-weight:bold; }
+.column2 li{font-size:11px; color:#717171; list-style-type:none; }
+
+.column3{font-size:11px; color:#717171; float:right; width:33%;}
+.column3 b{color:#696969; font-weight:bold; }
+.column3 ul{font-weight:bold;}
+.column3 li{font-size:11px; color:#717171; list-style-type:none;}
+
+.font12gry{color:#696969;}
+
+/*Medical Plan Styles other than comman styles -------------------------------------------- */
+
+.mp_content{color:#696969; padding-bottom:15px;}
+.mp_chkboxcontent{color:#696969; padding:0px 0px 15px 20px; text-align:justify;}
+
+#medicalplan .header{font-size:24px; }
+
+/*Styles for tabbed divs -------------------------------------------- */
+/*.tabNavigation{margin:0px; float:left;	}
+.tabNavigation ul{ margin:0px; width:50%;}
+
+.tabNavigation ul li { list-style:none; display:inline;}
+
+.tabNavigation ul li A {padding: 0px;	color: #000; text-decoration: none;	}
+
+.tabNavigation ul li A.selected, tabNavigation LI A:hover {color:#fff; padding-top:0px; }
+		
+.tabNavigation ul li A:focus {	outline: 0;	}
+
+#first {float:left; width:100%}
+
+#second {float:left; width:100%}
+
+.tabs{font-size:18px; text-decoration:none; color:#696969;   margin:0px;}
+
+.rightfloat{float:right; text-align:right;}		
+#symptomchecker {background-repeat:repeat-x;  margin-top:10px;
+    font-family:Arial; background-image:url(/images/common/bluetheme/navigation/gradient_203px.jpg); float:left; background-position:bottom; border-bottom:solid 1px #dadada; height:259px;}
+#symptomchecker .scheader{float:left; width:100%;}
+#symptomchecker b{font-size:18px; text-decoration:none; color:#696969;  font-weight:normal; float:left; width:50%}
+#symptomchecker .btndiv{float:right; }
+.buttonmale{background-image:url(/images/common/bluetheme/navigation/btnmale.gif); background-repeat:no-repeat; float:left; width:56px;height:22px; margin:0px }
+.buttonfemale{background-image:url(/images/common/bluetheme/navigation/btnfemale.gif);background-repeat:no-repeat; width:65px;height:22px; margin:0px }
+
+#symptomchecker .scbottom{font-family:Arial; float:left; width:100%; margin-top:20px;}
+#symptomchecker .imgbrd{ border-right:solid 1px #ececec; float:left; width:45%; margin:0px 15px 25px 15px;}
+
+#symptomchecker .checkboxes{font-family:Arial; float:right; width:50%; font-size:14px; color:#696969; }
+
+#symptomchecker .chkbxsttl{float:left; font-size:14px; color:#696969; width:100%; }
+#symptomchecker .chkbxstxt{float:left; color:#0078ab;}
+
+#chkbxstxtlft{float:left; width:50%; text-align:left;}
+#chkbxstxtlft ul{font-size:14px;}
+#chkbxstxtlft ul li{text-decoration:none; color:#0078ab; display:block; padding-bottom:5px;}
+#chkbxstxtlft input{margin-right:5px;}
+
+#chkbxstxtrht{float:right; width:49%; text-align:left; display:inline;}
+#chkbxstxtrht ul{font-size:14px;}
+#chkbxstxtrht ul li{text-decoration:none; color:#0078ab; display:block; padding-bottom:5px;}*/
+
+/* Plans and Benifits Dental Claims -------------------------------------------- */
+/*#pb_dental_tabbox{margin-top:30px; }
+.tabbar{float:left; width:100%; z-index:100;}
+.tabopen{background: URL('/images/common/bluetheme/navigation/dental_plans_tabopen_lft.jpg');	background-position:top left; background-repeat:no-repeat;float:left;
+         margin:0px 5px 0px 0px; }
+.tabopen:hover{	background: URL('/images/common/bluetheme/navigation/dental_plans_tabclose_lft.jpg');	background-position:top left;	background-repeat:no-repeat; float:left;}
+.tabopenlink{background: URL('/images/common/bluetheme/navigation/dental_plans_tabopen_rht.jpg');	background-position:top right;	background-repeat:no-repeat;
+	margin-left:6px; color:#5d5d5d; height:23px; font-family:Arial;	padding:5px 5px 0px 0px; float:left;}
+	
+.tabopenlink:hover{	background: URL('/images/common/bluetheme/navigation/dental_plans_tabclose_rht.jpg'); background-position:top right;	background-repeat:repeat-x;	margin-left:6px; padding:5px 5px 0px 0px; }
+
+.tabopenlink a:link{color:#5d5d5d;	text-decoration:none;	}
+.tabopenlink a:visited{color:#5d5d5d;	text-decoration:none;}
+.tabopenlink a:hover{text-decoration:underline;}
+.tabopenlink a:active{color:#5d5d5d;	text-decoration:none;}
+
+.tabopen_topgrad{background: transparent url('/images/common/bluetheme/navigation/dental_plans_top_grad.jpg') repeat-x   bottom; 
+   font-size:11px; float:left; width:100%; border-top:solid 1px #dadada; margin:0px; padding:10px;}
+.tabopen_topgrad select{font-size:11px; margin:0px 20px 0px 5px;}
+.tabopen_btmgrad{background: transparent url('/images/common/bluetheme/navigation/dental_plans_btm_grad_80.jpg') repeat-x bottom; min-height:80px; 
+  float:left; padding-top:15px; vertical-align:bottom; width:100%;}
+.tabopen_btmgrad div{float:left; margin:10px 10px 0px 10px; line-height:20px; width:30%;}
+.tabopen_btmgrad div ul{margin:0px; padding:0px;}
+.tabopen_btmgrad div li{ list-style-type:none;}
+.tabopen_btmgrad .lileft{display:inline-block; width:57%; margin:0px; float:left; border-bottom:solid 1px #d7d7d7; border-left:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_btmgrad .liright{display:inline-block; width:37%; margin:0px;  float:left; border-bottom:solid 1px #d7d7d7; border-left:solid 1px #d7d7d7; border-right:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_btmgrad li .label{ padding-left:8px;  border-right:solid 1px #d7d7d7; display:inline-block; width:60%; margin-right:15px;}
+.tabopen_btmgrad .lirightnoborder{ display:inline-block; width:37%; margin:0px;  float:left; border-bottom:solid 0px #d7d7d7;  border-left:solid 1px #d7d7d7; border-right:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_btmgrad .lileftnoborder{display:inline-block; width:57%; margin:0px; float:left; border-bottom:solid 0px #d7d7d7; border-left:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_med{float:left;  width:100%;}
+.tabopen_med div{float:left; margin:10px 10px 0px 10px;  line-height:20px; width:30%;}
+.tabopen_med div ul{margin:0px; padding:0px;}
+.tabopen_med div li{ list-style-type:none; float:left; }
+.tabopen_med li .label{ padding-left:8px;  border-right:solid 1px #d7d7d7; display:inline-block; width:60%; margin-right:15px;}
+.tabopen_med .lileft{display:inline-block; width:57%; margin:0px; float:left; border-bottom:solid 1px #d7d7d7; border-left:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_med .liright{display:inline-block; width:37%; margin:0px;  float:left; border-bottom:solid 1px #d7d7d7; border-left:solid 1px #d7d7d7; border-right:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_med .lirightnoborder{ display:inline-block; width:37%; margin:0px;  float:left; border-bottom:solid 0px #d7d7d7;  border-left:solid 1px #d7d7d7; border-right:solid 1px #d7d7d7; text-indent:10px}
+.tabopen_med .lileftnoborder{display:inline-block; width:57%; margin:0px; float:left; border-bottom:solid 0px #d7d7d7; border-left:solid 1px #d7d7d7; text-indent:10px}
+.progressbar{background:url('/images/common/bluetheme/navigation/dental_plans_progress.jpg'); background-repeat:no-repeat;  text-align:right; padding-right:5px; width:100%;}
+.progrsbartotal{ text-align:right; padding-right:5px; }*/
+
+/* Start Global Grid Styles -------------------------------------------- */
+/* #grid{padding:20px;}
+#grid .itemsgry{background: transparent url('/images/common/bluetheme/navigation/dntlpln_dntlclaims_grybg_36.jpg') repeat-x; height:36px;  max-height:36px;
+                 font-size:18px; color:#ffffff; padding:5px 0px 0px 10px; width:100%; float:left;}               
+#grid .pgno_gry{background: transparent url('/images/common/bluetheme/navigation/dntlpln_grid_pgs_bg.jpg') repeat-x; height:36px; max-height:32px; text-align:center;}
+#grid .pgno_text{ color:#717171;  }
+#grid .header{max-height:39px;}
+#grid .titleselctd{background: transparent url('/images/common/bluetheme/navigation/dntlclaim_grid_hedr_bg_slected.jpg') repeat-x bottom; border-left:solid 1px #ffffff; border-right:solid 1px #ffffff;}
+#grid .title{background: transparent url('/images/common/bluetheme/navigation/dntlclaim_grid_hedr_bg.jpg') repeat-x bottom; }
+
+#grid .rndbtm_lft{ float:left; background: transparent url('/images/common/bluetheme/navigation/dntlpln_grid_btm_lft.jpg') no-repeat; }
+#grid .rndbtm_rht{ float:left; background: transparent url('/images/common/bluetheme/navigation/dntlpln_grid_btm_rht.jpg') no-repeat; }
+#grid .grdrow_one{ background-color:#fafafa; line-height:30px; font-size:11px; text-indent:5px; border-top:solid 1px #ffffff; border-bottom:solid 1px #eeeeee; }
+#grid .grdrow_two{ background-color:#f0f0f0;  line-height:30px; font-size:11px; text-indent:5px; border-top:solid 1px #fafafa; border-bottom:solid 1px #e5e5e5; }
+*/
+/* Start Dental Claims modify details -------------------------------------------- */
+/*#modify{}
+#modify .topbg{background:transparent url('/images/common/bluetheme/navigation/dntlclaim_tp_top.jpg') repeat-x bottom; height:28px; margin:0px;  padding:0px; border:solid 0px #ffffff;}
+#modify .topbg span{ float:left; }
+#modify .topbg span img{float:left; vertical-align:bottom; padding-top:23px;}
+#modify .topbg img{float:right; margin:0px;}
+#modify .boxmodify{border:solid 1px #ffffff; margin:0px 5px 5px 5px; width:99%; margin-right:5px; display:inline-block;
+                   background: url('/images/common/bluetheme/navigation/dntlclaim_inner_tp_grad.jpg'); background-position:top; background-repeat:repeat-x; background-color:#ffffff;}
+#modify .rows{ width:100%; float:left;  font-size:11px; color:#696969; line-height:23px; border-bottom:solid 1px #e9e9e9; margin-bottom:5px; }
+#modify .lastrow{background: url('/images/common/bluetheme/navigation/dntlclaim_inner_tp_grad.jpg'); background-position:bottom; background-repeat:repeat-x; 
+                line-height:26px; width:100%; float:left; border:solid 0px #ffffff; }#modify .checkboxes{}
+#modify .open{}
+#modify .close{}
+.modifycontentborder{ background-color:#ececec; border-left:solid 1px #dadada; border-right:solid 1px #dadada; padding:0px;
+                      width:100%; }*/
+                      
+/*Anthem Dependant codes*/
+a.mcrounded { outline: none; border: none; text-decoration: none; cursor: pointer; white-space: nowrap; vertical-align: middle; display: -moz-inline-box; display: inline-block; overflow: visible; }
+
+.depcode1 { padding: 5px 0; }
+.depcode1 a { background-color: #5d9674; color: #fff; padding: 2px 6px; }
+
+.depcode2 { padding: 5px 0; }
+.depcode2 a { background-color: #719ed0; color: #fff; padding: 2px 6px; }
+
+.depcode3 { padding: 5px 0; }
+.depcode3 a { background-color: #f28411; color: #fff; padding: 2px 6px; }
+
+.depcode4 { padding: 5px 0; }
+.depcode4 a { background-color: #0078ab; color: #fff; padding: 2px 6px; }
+
+.depcode5 { padding: 5px 0; }
+.depcode5 a { background-color: #e0d700; color: #fff; padding: 2px 6px; }
+
+.depcode6 { padding: 5px 0; }
+.depcode6 a { background-color: #e4a130; color: #fff; padding: 2px 6px; }
+
+.depcode7 { padding: 5px 0; }
+.depcode7 a { background-color: #2d59a8; color: #fff; padding: 2px 6px; }
+
+.depcode8 { padding: 5px 0; }
+.depcode8 a { background-color: #b2b936; color: #fff; padding: 2px 6px; }
+
+.depcode9 { padding: 5px 0; }
+.depcode9 a { background-color: #f3d28f; color: #fff; padding: 2px 6px; }
+
+.depcode10 { padding: 5px 0; }
+.depcode10 a { background-color: #99b560; color: #fff; padding: 2px 6px; }
+
+.depcode11 { padding: 5px 0; }
+.depcode11 a { background-color: #a81882; color: #fff; padding: 2px 6px; }
+
+.depcode12 { padding: 5px 0; }
+.depcode12 a { background-color: #e0a69d; color: #fff; padding: 2px 6px; }
+/*End Anthem Dependant Codes */ 
+/*GridView Styles */
+.tablestyle
+{
+ font-family: arial;
+ font-size: small;
+ border-left: solid 1px #dadada;
+ border-bottom: solid 1px #dadada;
+}
+.altrowstyle 
+{
+    background-color: #f0f0f0;
+ border-top:1px solid #fafafa;
+ border-bottom:1px solid #e5e5e5;    
+}
+.rowstyle 
+{
+    background-color: #fafafa;
+    border-top:1px solid #fdfdfd;
+ border-bottom:1px solid #eeeeee;
+}
+.headerstyle th 
+{
+    background:url(/images/common/graphics/sprite.png) repeat-x 0px 0px;
+    border-color: #dadada #cbcbcb #cbcbcb #dadada;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium;
+    color: #000;
+    padding: 8px 5px 8px 10px;
+    text-align: center;
+    vertical-align: bottom;
+}  
+.headerstyle th a
+{
+    font-weight: normal;
+ text-decoration: none;
+ text-align: center;
+    color: #000;
+ display: block;
+    padding-right: 10px;
+}    
+.rowstyle .sortaltrow, .altrowstyle .sortaltrow 
+{
+    background-color: #fafafa;
+}
+.rowstyle .sortrow, .altrowstyle .sortrow 
+{
+    background-color: #f0f0f0;
+}
+.rowstyle td, .altrowstyle td 
+{
+    padding: 8px 10px 8px 10px;
+    border-right: solid 1px #cbcbcb;
+}
+.headerstyle .sortascheader 
+{
+    background: url(/images/common/graphics/sprite.png) repeat-x 0px -100px;
+}
+.headerstyle .sortascheader a 
+{
+    background: url(/images/common/graphics/dt-arrow-up.png) no-repeat right 50%;
+} 
+.headerstyle .sortdescheader 
+{
+    background: url(/images/common/graphics/sprite.png) repeat-x 0px -100px;
+}   
+.headerstyle .sortdescheader a 
+{
+    background: url(/images/common/graphics/dt-arrow-dn.png) no-repeat right 50%;
+} 
+/*End Grid Styles */  
+/*Dual coverage blue / green header */
+.blueheader_text
+{
+	color:#61a0d0;
+} 
+/*Welcomebox Styles*/
+.mbrname
+{
+	font-size:16px;
+	text-transform:uppercase;
+	font-weight:bold;
+	padding-bottom:5px;
+}
+
+.userinfo table
+{
+	font-size:10px; /*increment by 1px for text sizing*/
+}
+
+/* Dashboard Styles */
+.loading
+{
+	background: url(/images/common/graphics/loader2.gif) no-repeat;
+	height: 16px;
+	width: 16px;
+}
+.carousel
+{
+	width: 100%;
+	float: left;
+	background-color: #FFFFFF;
+}
+.dashboard
+{
+	background: url(/images/wellpointconsumer/bluetheme/customize_Gradientbg.jpg) repeat-x top left;
+}
+.dashboard .page_left
+{
+	background: url(/images/wellpointconsumer/bluetheme/pagination_arrowleft.png) no-repeat top left;
+	width:40px;
+}
+.dashboard .dash_icons
+{
+	vertical-align:top;
+	text-align:center;
+	overflow:hidden;
+}
+.dashboard .page_right
+{
+	background: url(/images/wellpointconsumer/bluetheme/pagination_arrowright.png) no-repeat top right;
+	width:40px;
+}
+
+.dashboard_tutorial
+{
+	text-align: right;
+	vertical-align: middle;
+	margin-right: 5em;
+}
+
+.pageLeft_disabled
+{
+    background: url(/images/wellpointconsumer/bluetheme/pagination_arrowleft_disabled.png) no-repeat center left;
+    width: 25px;
+    margin-top:30px;
+}
+
+.pageRight_disabled
+{
+    background: url(/images/wellpointconsumer/bluetheme/pagination_arrowright_disabled.png) no-repeat center right;
+    width: 25px;
+	float:right;
+	margin-top:30px;
+}
+
+/* Begin Color specific Classes */
+.gadgetBox_purple
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_middle.jpg) repeat-x top center;
+	background-color: #ffffff;
+	margin:20px 0px; 
+}
+.gadgetTitleBar_purple
+{
+	height: 21px;
+	cursor: move;
+	width: 100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_left.jpg) no-repeat top left;
+	margin-bottom: 10px;
+}
+
+.gadgetTitle_menuIcons_purple
+{
+	color: #ffffff;
+	float: right;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_right.jpg) no-repeat top right;
+	padding-right: 10px;
+	padding-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.gadgetBox_purple_minimize
+{
+	background: url(/images/wellpointconsumer/bluetheme/purple_minimize.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_purple_open
+{
+	background: url(/images/wellpointconsumer/bluetheme/purple_plus.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+.gadgetBox_purple_close
+{
+    background: url(/images/wellpointconsumer/bluetheme/purple_close.jpg) no-repeat;
+    height: 13px;
+    width: 13px;
+}
+
+/* Blue */
+.gadgetBox_blue
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_middle.jpg) repeat-x top center;
+	background-color: #ffffff;
+	margin: 20px 0px; 
+}
+.gadgetTitleBar_blue
+{
+	height: 21px;
+	cursor: move;
+	width: 100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_left.jpg) no-repeat top left;
+	margin-bottom: 10px;
+}
+.gadgetTitle_menuIcons_blue
+{
+	color: #ffffff;
+	float: right;
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_right.jpg) no-repeat top right;
+	padding-right: 10px;
+	padding-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.gadgetBox_blue_minimize
+{
+	background: url(/images/wellpointconsumer/bluetheme/blue_minimize.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_blue_open
+{
+	background: url(/images/wellpointconsumer/bluetheme/blue_open.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_blue_close
+{
+    background: url(/images/wellpointconsumer/bluetheme/blue_close.jpg) no-repeat;
+    height: 13px;
+    width: 13px;
+}
+.gadgetBox_blue_help
+{
+	background: url(/images/wellpointconsumer/graphics/question_mark.png) no-repeat;
+	height: 14px;
+	width: 14px;
+}
+
+/* Green */
+.gadgetBox_green
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_middle.jpg) repeat-x top center;
+	background-color: #ffffff;
+	margin: 20px 0px; 
+}
+.gadgetTitleBar_green
+{
+	height: 21px;
+	cursor: move;
+	width: 100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_left.jpg) no-repeat top left;
+	margin-bottom: 10px;
+}
+
+.gadgetTitle_menuIcons_green
+{
+	color: #ffffff;
+	float: right;
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_right.jpg) no-repeat top right;
+	padding-right: 10px;
+	padding-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.gadgetBox_green_minimize
+{
+	background: url(/images/wellpointconsumer/bluetheme/green_minimize.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_green_open
+{
+	background: url(/images/wellpointconsumer/bluetheme/green_open.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_green_close
+{
+    background: url(/images/wellpointconsumer/bluetheme/green_close.jpg) no-repeat;
+    height: 13px;
+    width: 13px;
+}
+
+/* Gray */
+.gadgetBox_gray
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_middle.jpg) repeat-x top center;
+	background-color: #ffffff;
+	margin: 10px 0px; 
+}
+
+.gadgetBox_gray .gadgetBody
+{
+    margin-top:0px;
+}
+
+.gadgetTitleBar_gray
+{
+	height: 21px;
+	cursor: move;
+	width: 100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_left.jpg) no-repeat left top;
+}
+
+.gadgetTitleBar_gray a:link, .gadgetTitleBar_gray a:visited, .gadgetTitleBar_gray a:active, .gadgetTitleBar_gray a:hover
+{
+    color:#ffffff;
+    text-decoration:underline;
+}
+.gadgetTitle_menuIcons_gray
+{
+	color: #ffffff;
+	float: right;
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_right.jpg) no-repeat right top;
+	padding-right: 10px;
+	padding-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+	color: #ffffff;
+}
+
+.gadgetBox_gray_minimize
+{
+	background: url(/images/wellpointconsumer/bluetheme/gray_minimize.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+
+.gadgetBox_gray_open
+{
+	background: url(/images/wellpointconsumer/bluetheme/gray_open.jpg) no-repeat;
+	height: 13px;
+	width: 13px;
+}
+.gadgetBox_gray_close
+{
+    background: url(/images/wellpointconsumer/bluetheme/gray_close.jpg) no-repeat;
+    height: 13px;
+    width: 13px;
+}
+.gadgetBox_gray_help
+{
+background: url(/images/wellpointconsumer/graphics/question_mark_gry.gif) no-repeat;
+height: 13px;
+width: 13px;
+}
+
+/* End Color specific Classes */
+
+/* Begin CustomizeContent Gadget Classes */
+.customizeContent
+{
+	background: url(/images/wellpointconsumer/bluetheme/customize_Gradientbg.jpg) repeat-x top left;
+	padding-top:5px;
+	border-left:1px solid #DADADA;
+	border-right:1px solid #DADADA;
+}
+.customizeContent_gadgetBody
+{
+   	padding: 0px;
+	display: block;
+	background-color: #fff;
+	
+}
+.customizeContent_Title
+{
+	color: #ffffff;
+	font-weight: bold;
+	font-style: normal;
+	padding-left: 10px;
+	padding-top:1px;
+	width: 33%;
+}
+
+.customizeContent_menuIcons
+{
+	color: #ffffff;
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_right.jpg) no-repeat right top;
+	padding-right: 5px;
+	text-align: right;
+	padding-top: 3px;
+	width: 190px;
+	cursor: pointer;
+}
+
+.customizeContent_pagerIcons_Fill
+{
+	background: url(/images/wellpointconsumer/graphics/circlewhite_fill.png) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	margin-right: 3px;
+}
+
+.customizeContent_pagerIcons_noFill
+{
+	background: url(/images/wellpointconsumer/graphics/circlewhite_nofill.png) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	margin-right: 3px;
+	cursor: pointer;
+}
+
+.slider
+{
+	overflow: hidden;
+	margin-top: 5px;
+	height: 90px;
+	
+}
+.slider ul
+{
+	float: left;
+	list-style-type: none;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	width: 100%;
+}
+
+.slider ul li
+{
+	margin-right: 10px;
+	display: inline;
+	float: left;
+	width: 18%;
+}
+
+/* End CustomizeContent Gadget Classes */
+
+
+/* Customize Content Icon Classes */
+
+/*Currently Used Icons */
+.medicineIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/medicinebox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.medicineIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/medicinebox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.claimsIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.claimsIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.healthassesment
+{
+    background: url('/images/wellpointconsumer/bluetheme/healthaccessmentbox.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.healthassesment_disabled
+{
+    background: url('/images/wellpointconsumer/bluetheme/healthaccessmentbox_disabled.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.hospitalfinder
+{
+    background: url('/images/wellpointconsumer/bluetheme/hospitalfinderbox.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.hospitalfinder_disabled
+{
+    background: url('/images/wellpointconsumer/bluetheme/hospitalfinderbox_disabled.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.treatmentcostadvisor
+{
+    background: url('/images/wellpointconsumer/bluetheme/treatmentcostadvisorbox.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.treatmentcostadvisor_disabled
+{
+    background: url('/images/wellpointconsumer/bluetheme/treatmentcostadvisorbox_disabled.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.healthrecord
+{
+    background: url('/images/wellpointconsumer/bluetheme/healthrecordbox.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.healthrecord_disabled
+{
+    background: url('/images/wellpointconsumer/bluetheme/healthrecordbox_disabled.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+
+
+/*End Currently Used Icons */
+
+.healthCalendarIcon
+{
+	background: url('/images/wellpointconsumer/bluetheme/calendarbox.png') no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.healthCalendarIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/calendarbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.communitiesIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/communitesbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.communitiesIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/communitesbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.providerIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/providerbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.providerIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/providerbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.rewardsIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/rewardsbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.rewardsIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/rewardsbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.emergencyContactIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.emergencyContactIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.videoOfTheDayIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.videoOfTheDayIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/claimsbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.recentvisitprovIcon
+{
+	background: url(/images/wellpointconsumer/bluetheme/recentvisitprovbox.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+
+.recentvisitprovIcon_disabled
+{
+	background: url(/images/wellpointconsumer/bluetheme/recentvisitprovbox_disabled.png) no-repeat;
+	height: 88px;
+	width: 81px;
+}
+.loading
+{
+	background: url(/images/wellpointconsumer/bluetheme/loading.gif);
+}
+/* End Customize Content Icon Classes */
+
+/* Title Icons */
+.medicineCabinetTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/medications_pills_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.recentClaimsTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/claims_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.healthAssessmentTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/healthassessment_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.hopsitalFinderTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/hospitalfinder_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.treatmentCostAdvisorTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/treatmentcostadvisor_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.healtRecordTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/healthrecord_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.recentVisitedProviderTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/recentvisitprovb_icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+
+.inboxTitle_Icon
+{
+    background: url(/images/wellpointconsumer/bluetheme/inbox_Icon.png) no-repeat;
+    height: 48px;
+    width: 46px;
+}
+/* End Title Icons */
+
+.gadgetBox
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_middle.jpg) repeat-x top;
+	white-space: nowrap;
+}
+.gadgetTitleBar
+{
+	cursor: move;
+	height: 21px;
+	width: 100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_left.jpg) no-repeat top left;
+}
+
+.gadgetTitle_menuIcons
+{
+	color: #ffffff;
+	float: right;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_right.jpg) no-repeat top right;
+	padding-right: 10px;
+	padding-top: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+/* Generic Classes used */
+.gadgetTitle_icon
+{
+	color: #ffffff;
+	font-weight: bold;
+	font-style: normal;
+	float: left;
+	margin-top: -11px; /*position: relative;*/
+	padding-left: 10px;
+}
+
+.gadgetTitle_text
+{
+	float: left;
+	font-weight: bold;
+	font-size: 12px;
+	color: #ffffff;
+	padding:1px 5px 0 5px;
+}
+
+.gadgetBody
+{
+	padding: 0px;
+	display: block;
+	background-color: #ffffff;
+	border-left:1px solid #DADADA;
+	border-right:1px solid #DADADA;
+	margin-top:-10px;
+	margin-bottom:-5px;
+	padding-top:10px;
+}
+
+.gadgetContent
+{
+	overflow: auto;
+    clear: both;
+    margin: 5px
+}
+.customizeContent
+{
+	overflow: auto;
+	clear: both
+}
+/* End Generic Classes for Gadgets */
+
+/* Gadget Dropzone Classes */
+.gadgetDropZone
+{
+	width: 100%;
+	height: auto;
+	padding: 0.5em;
+	margin-top: 10px;
+	background-color: #fff;
+	vertical-align: top;
+	list-style: none;
+}
+
+.gadgetDropZone_active
+{
+	padding: 0.5em;
+	background-color: #EFEFEF;
+	visibility: visible !important;
+	overflow: auto;
+	height: 100px;
+}
+
+/* End Gadget Dropzone Classes */
+
+/* Paging Classes */
+.pageLeft
+{
+	background: url(/images/wellpointconsumer/bluetheme/pagination_arrowleft.png) no-repeat center left;
+	width: 25px;
+	margin-top:30px;
+}
+
+.pageRight
+{
+	background: url(/images/wellpointconsumer/bluetheme/pagination_arrowright.png) no-repeat center right;
+	width: 25px;
+	float:right;
+	margin-top:30px;
+}
+
+.pagerIcons
+{
+	vertical-align: middle;
+	text-align: center;
+	width: 33%;
+}
+/* End Paging Classes */
+
+/*Rounded Corners dosen't work in ie */
+#roundedcorner
+{
+    border:1px solid #DADADA;
+}
+.ui-roundcorner
+{
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+}
+.ui-roundcorner-padding
+{
+
+}
+#bottomround-1
+{
+    border-bottom:1px solid #DADADA;
+    border-left:1px solid #DADADA;
+    border-right:1px solid #DADADA;
+}
+.ui-btmround
+{
+    padding:0.2em;
+}
+.ui-roundcorner-bottom
+{
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+}
+/*End Rounded Corners for gadgets*/
+
+/* Start Roundes boxes */
+.corner .b, .corner .b b
+{
+	height:5px;
+	background-image:url(/images/wellpointconsumer/bluetheme/round_corner.png);
+}
+.corner .c
+{
+	background:#ffffff;
+	border-color:#62707d;
+	border-left-width:1px;
+	border-right-width:1px;
+}
+/* Rounded boxes */
+.boxes .b, .boxes .b b{
+height:5px;
+background-image:url(/images/wellpointconsumer/bluetheme/boxes.png);
+}
+
+.boxes .c{
+background:#e3e9f5;
+border-color:#62707d;
+border-left-width:1px;
+border-right-width:1px;
+}
+
+/* Webparts surrounding margins*/
+.round{
+margin-bottom:0px;
+}
+.round .c{
+/* inner content padding */
+
+border-top:0;
+border-bottom:0;
+border-style:solid;
+}
+.round .b, .round .b b{
+display:block;
+overflow:hidden;
+}
+.round .b b{
+float:right;
+width:50%;
+}
+.r{
+background-position:top right;
+}
+.round .b .r{
+background-position:bottom right;
+}
+.round .b{
+background-position:bottom left;
+}
+.round .br{
+clear:both;
+display:block;
+overflow:hidden;
+height:0px;
+}
+/* End Round boxes */
+
+/* message display page purple */
+.message_list_purple 
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_middle.jpg) repeat-x top center;
+	white-space:nowrap;
+}
+.message_head_purple
+{
+	height:21px;
+	cursor: pointer;
+	width:100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_left.jpg) no-repeat top left;
+}	
+.message_head_purple .title
+{
+	color:#ffffff;
+	font-weight: bold;
+	font-style: normal;
+	float:left;
+	margin-top:-11px;
+	position:relative;
+	padding-left:10px;
+}
+.message_head_purple .icons
+{
+	color: #ffffff;
+	float:right;
+	background: url(/images/wellpointconsumer/bluetheme/boxpurple_right.jpg) no-repeat top right;
+	padding-right:10px;
+	padding-top:3px;
+	vertical-align:middle;
+}
+
+.message_body_purple 
+{
+	width:100%;
+	padding: 0px;
+}
+
+/* message display page Blue */
+.message_list_blue 
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_middle.jpg) repeat-x top center;
+	white-space:nowrap;
+}
+.message_head_blue  
+{
+	height:21px;
+	cursor: pointer;
+	width:100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_left.jpg) no-repeat top left;
+}	
+.message_head_blue .title
+{
+	color:#ffffff;
+	font-weight: bold;
+	font-style: normal;
+	float:left;
+	margin-top:-11px;
+	position:relative;
+	padding-left:10px;
+}
+.message_head_blue .icons 
+{
+	color: #ffffff;
+	float:right;
+	background: url(/images/wellpointconsumer/bluetheme/boxblue_right.jpg) no-repeat top right;
+	padding-right:10px;
+	padding-top:3px;
+	vertical-align:middle;
+}
+
+.message_body_blue 
+{
+	width:100%;
+	padding: 0px;
+}
+/* message display page Blue */
+.message_list_green
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_middle.jpg) repeat-x top center;
+	white-space:nowrap;
+}
+.message_head_green  
+{
+	height:21px;
+	cursor: pointer;
+	width:100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_left.jpg) no-repeat top left;
+}	
+.message_head_green .title
+{
+	color:#ffffff;
+	font-weight: bold;
+	font-style: normal;
+	float:left;
+	margin-top:-11px;
+	position:relative;
+	padding-left:10px;
+}
+.message_head_green .icons 
+{
+	color: #ffffff;
+	float:right;
+	background: url(/images/wellpointconsumer/bluetheme/boxgreen_right.jpg) no-repeat top right;
+	padding-right:10px;
+	padding-top:3px;
+	vertical-align:middle;
+}
+
+.message_body_green 
+{
+	width:100%;
+	padding: 0px;
+}
+/* message display page Blue */
+.message_list_gray 
+{
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_middle.jpg) repeat-x top center;
+	white-space:nowrap;
+}
+.message_head_gray  
+{
+	height:21px;
+	cursor: pointer;
+	width:100%;
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_left.jpg) no-repeat left top;
+}	
+.message_head_gray .title
+{
+	color:#ffffff;
+	font-weight: bold;
+	font-style: normal;
+	padding-left:10px;
+	width:190px;
+}
+
+.message_head_gray .images
+{
+	vertical-align:middle;
+	text-align:center;
+}
+.message_head_gray .icons 
+{
+	color: #ffffff;
+	background: url(/images/wellpointconsumer/bluetheme/boxgry_right.jpg) no-repeat right top;
+	padding-right:5px;
+	text-align:right;
+	padding-top:3px;
+	width:190px;
+}
+
+.message_body_gray 
+{
+	width:100%;
+}
+
+/*Rotating Promo Area*/
+#rotatingpromoarea
+{
+	padding-bottom:15px;
+}
+
+.adContent h2
+{
+    margin-top: 0px;
+    margin-bottom: -2px;
+} 
+
+.adContentWrapper
+{
+    height: 70px;
+    /*overflow: hidden;*/
+    margin-top:-10px;
+} 
+.adContentWrapper p
+{
+    margin:0px;
+    padding:0px;
+}
+.adContent
+{
+    display: block;
+    height: 100px;
+    margin-left: 12px;
+    margin-top: 0px;
+    overflow: hidden;
+    width: 85%;
+}
+.adContent h1
+{
+	margin-top: -8px;
+	margin-bottom: 4px;
+    font-size: 18px;
+}
+
+.rotatingAds
+{
+    background: url("/images/common/graphics/promoBnrGradient.jpg") repeat-x top left;
+    height: 70px;
+    overflow: hidden;
+    /* These two borders were showing up extra inside the box.  Taking these out sould result in no double lines on the right and left
+    border-right:1px solid #CCCCCC;
+    border-left:1px solid #CCCCCC;*/
+}
+
+.adNavigation
+{
+    float: right;
+    margin-right: 15px;
+    margin-top:10px;
+}
+
+.ad_circles
+{
+    padding: 5px;
+    padding-top: 0px;
+    width:50px;
+}
+
+.ad_circles div
+{
+    position: relative;
+    float: left;
+    margin: 1px;
+    cursor: pointer;
+    margin-left: 2px;
+} 
+
+.ad_controls
+{
+    margin-top:6px;
+}
+
+.ad_controls div
+{
+    float: left;
+    position: relative;
+    cursor: pointer;
+    top:5px;
+} 
+
+.adCircle_nofill
+{
+    background: url(/images/wellpointconsumer/graphics/circlegry_nofill.png) no-repeat;
+    height: 9px;
+    width: 9px;
+}
+
+.adCircle_fill
+{
+    background: url(/images/wellpointconsumer/graphics/circlegry_fill.png) no-repeat;
+    height: 9px;
+    width: 9px;
+}
+
+
+* html .customizeContent_pagerIcons_Fill
+{
+	background: url(/images/wellpointconsumer/graphics/circlewhite_fill.gif) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	margin-right: 3px;
+}
+
+* html .customizeContent_pagerIcons_noFill
+{
+	background: url(/images/wellpointconsumer/graphics/circlewhite_nofill.gif) no-repeat;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	margin-right: 3px;
+	cursor: pointer;
+}
+
+.pause
+{
+    background: url(/images/wellpointconsumer/bluetheme/promo_nav_pause.png) no-repeat;
+    height: 20px;
+    width: 18px;
+}
+
+.pause_disabled
+{
+    background: url(/images/wellpointconsumer/bluetheme/promo_nav_pause_disabled.png) no-repeat;
+    height: 20px;
+    width: 18px;
+}
+
+.prev
+{
+    background: url(/images/wellpointconsumer/bluetheme/promo_nav_left.png) no-repeat;
+    height: 20px;
+    width: 20px;
+}
+
+.next
+{
+    background: url(/images/wellpointconsumer/bluetheme/promo_nav_right.png) no-repeat;
+    height: 20px;
+    width: 21px;
+}
+
+/* CustomerCare New pages styles */
+.tablebrd{vertical-align:top; margin:0px;}
+.cctittle{font-size:16px; font-weight:bold;}
+#ccleft{width:67%; padding-left:11px; padding-top:19px;}
+#ccright{width:33%; padding:20px 21px 0px 18px;}
+#ccselectstate table{padding:3px 3px 3px  5px; background-color:#C0DDEB; width:25%;  font-weight:bold;}
+#ccselectstate select{float:right; font-weight:normal; color:#696969;}
+#ccselectstate h3{margin:5px 0px;}
+.ccselectstatetext{}
+.ccselectstatebar{background-color:#dcecf3; width:35%; padding:3px; height:22px; }
+.ccselectbarright{width:156px; text-align:right; float:right;}
+.ccselectdropdown{color:#696969; border: solid 1px #d7d7d7; width:156px; }
+#ccmaincontent{border:solid 1px #0078ac; margin-top:20px;}
+#ccnavigation{width:100%; float:left;}
+#contentcc{width:100%; display:inline-block; padding-top:10px;}
+
+.pretty-hover, #callus:hover{background: #f1f8fa; border-bottom:solid 3px #ffffff; }
+#callus{float:left; width:33.25%; border-bottom:solid 3px #007aad; background-color:#eaeef1; height:29px; 
+          padding-top:14px; text-align:center; font-size:16px; color:#007aad; }
+#callus img{ vertical-align:middle;}
+#callus a, #callus a:visited, #callus a:active{ color: #0078AB; text-decoration:none; padding: 0px; margin:0px;}
+
+#selectedcallus{width:33.20%; float:left; border-bottom:solid 3px #ffffff; height:29px; padding-top:14px; text-align:center; font-size:16px; 
+                color:#0078ac; }
+#selectedcallus img{ vertical-align:middle; padding-right:4px;}
+#selectedcallus a, #selectedcallus a:visited, #selectedcallus a:active{color: #0078AB; text-decoration:none; padding: 0px; margin:0px;}
+
+
+.pretty-hover, #emailus:hover {background: #f1f8fa;  border-bottom:solid 3px #ffffff; }
+#emailus{float:left; width:33.25%; border-right:solid 1px #6b696c;  border-bottom:solid 3px #007aad;  border-left:solid 1px #6b696c;  
+          background-color:#eaeef1; height:29px; padding-top:14px; text-align:center; font-size:16px; color:#007aad;}
+#emailus  img{ vertical-align:middle;}
+#emailus a, #emailus a:visited, #emailus a:active{ color: #0078AB; text-decoration: none; }
+
+#selectedemailus{width:33.20%; float:left; border-bottom:solid 3px #ffffff; height:29px; padding-top:14px; text-align:center; font-size:16px; 
+                 color:#0078ac; border-left:solid 1px #6b696c;  border-right:solid 1px #6b696c;}
+#selectedemailus img{ vertical-align:middle; padding-right:4px;}
+#selectedemailus a, #selectedemailus a:visited, #selectedemailus a:active{color: #0078AB; text-decoration:none; }
+
+
+.pretty-hover, #writeus:hover {   background: #f1f8fa;  border-bottom:solid 3px #ffffff; }
+#writeus{ float:left; width:33.25%; border-bottom:solid 3px #007aad; background-color:#eaeef1;
+          height:29px; padding-top:14px; text-align:center; font-size:16px; color:#007aad;} 
+#writeus img{ vertical-align:middle;}
+#writeus a, #writeus a:visited, #writeus a:active{ color: #0078AB; text-decoration: none;}
+
+#selectedwriteus{width:33.20%; float:left; border-bottom:solid 3px #ffffff; height:29px; padding-top:14px; text-align:center; font-size:16px; 
+                 color:#0078ac;}
+#selectedwriteus img{ vertical-align:middle; padding-right:4px;}
+#selectedwriteus a, #selectedwriteus a:visited, #selectedwriteus a:active{color: #0078AB; text-decoration:none;}
+
+/* JAA styles */
+.ccSlideUpjaa
+{
+	position:absolute;
+	right:-6px;
+	bottom:-29px;
+	background:url('/images/common/bluetheme/navigation/customer_care_close_jaa.png') no-repeat scroll right bottom;
+	text-indent:-99999px;overflow:hidden;cursor:pointer;
+	height:24px;
+	width:205px;
+}
+.pretty-hover, #callusjaa:hover{background: #f1f8fa; border-bottom:solid 3px #ffffff; }
+#callusjaa{float:left; width:49.94%; border-bottom:solid 3px #007aad; background-color:#eaeef1; height:29px; 
+          padding-top:14px; text-align:center; font-size:16px; font-weight:bold; color:#007aad; }
+#callusjaa img{ vertical-align:middle;}
+#callusjaa a, #callusjaa a:visited, #callusjaa a:active{ color: #0078AB; text-decoration:none; padding: 0px; margin:0px;}
+
+#selectedcallusjaa{width:49.93%; float:left; border-bottom:solid 3px #ffffff; height:29px; padding-top:14px; text-align:center; font-size:16px; 
+                font-weight:bold; color:#0078ac; }
+#selectedcallusjaa img{ vertical-align:middle; padding-right:4px;}
+#selectedcallusjaa a, #selectedcallusjaa a:visited, #selectedcallusjaa a:active{color: #0078AB; text-decoration:none; padding: 0px; margin:0px;}
+
+
+.pretty-hover, #writeusjaa:hover {   background: #f1f8fa;  border-bottom:solid 3px #ffffff; }
+#writeusjaa{ float:left; width:49.94%; border-bottom:solid 3px #007aad; background-color:#eaeef1;  font-weight:bold; 
+          height:29px; padding-top:14px; text-align:center; font-size:16px; color:#007aad; border-left:1px solid #6B696C;} 
+#writeusjaa img{ vertical-align:middle;}
+#writeusjaa a, #writeusjaa a:visited, #writeusjaa a:active{ color: #0078AB; text-decoration: none;}
+
+#selectedwriteusjaa{width:49.94%; float:left; border-bottom:solid 3px #ffffff; height:29px; padding-top:14px; text-align:center; font-size:16px; 
+                 font-weight:bold; color:#0078ac; border-left:1px solid #6B696C; }
+#selectedwriteusjaa img{ vertical-align:middle; padding-right:4px;}
+#selectedwriteusjaa a, #selectedwriteusjaa a:visited, #selectedwriteusjaa a:active{color: #0078AB; text-decoration:none;}
+
+
+/*END JAA styles */
+
+
+#findagent{background-image:url(/images/common/graphics/findagent_background.jpg); background-repeat:repeat-x; display:inline-block; 
+           width:100%; }
+           
+#findagent div{padding-left:10px; border-bottom:solid 1px #0078AC; padding-bottom:10px;}
+
+#findagent img{ vertical-align:middle}
+/*end of new styles for 3 tabs */
+
+.closebtn{}
+.lefttitleborder{ width:100%; border-bottom:solid 3px #66aecd; height:25px;  
+           font-size:18px; letter-spacing:1px; color:#696969;}
+           
+#quicklinks{padding-bottom:5px; font-size:12px; margin-top:0px;}
+#quicklinks a:hover{  text-decoration:underline;}
+#quicklinks a, #quicklinks a:active{ color: #0078AB; text-decoration: none;   }
+#quicklinks ul {margin:0px;padding-left:0;}
+#quicklinks ul li {display:inline-block;width:100%;list-style-type:none;padding:5px 0px 5px 0px;border-bottom:#dadada 1px solid;}
+
+#quicklinks h2{ width:100%; border-bottom:solid 3px #66aecd; height:22px; font-size:18px; letter-spacing:1px; color:#696969; margin-bottom:10px;}
+
+#faq{padding-bottom:5px; font-size:12px; margin-top:0px; }
+#faq a:hover{ text-decoration:underline;}
+#faq a, #faq a:active{color: #0078AB; text-decoration: none;  display:block;  }
+#faq ul {margin:0px;padding-left:0;}
+#faq ul li{ background-image: url(/images/common/bluetheme/navigation/cc_li_arrow.jpg); background-repeat:no-repeat; background-position:3px;  padding:5px 5px 5px 15px; 
+    border-bottom: #dadada 1px solid;    list-style:none;   }
+    
+#faq h2{ width:100%; border-bottom:solid 3px #66aecd; height:23px; font-size:18px; letter-spacing:1px; color:#696969; margin:0px 0px 10px 0px;}
+#faq h1{ width:100%; border-bottom:solid 3px #66aecd; height:23px; font-size:18px; letter-spacing:1px; color:#696969; margin:0px 0px 10px 0px;}
+
+#otherresources{padding-bottom:5px; font-size:12px; margin-top:0px;}
+#otherresources a:hover{text-decoration:underline;   }
+#otherresources a, #otherresources a:active{ color: #0078AB; text-decoration: none;   }
+#otherresources ul {margin:0px;padding-left:0;}
+#otherresources ul li {display:inline-block;width:100%;list-style-type:none;padding:5px 0px 5px 0px;border-bottom:#dadada 1px solid;}
+
+#otherresources h2{ width:100%; border-bottom:solid 3px #66aecd; height:23px; font-size:18px; letter-spacing:1px; color:#696969; margin:0px 0px 10px 0px;}
+
+#ccintrocontent{}
+#ccintrocontent p{padding:10px 0px;}
+
+/*Consumer About-us pages*/
+#mainDiv_Aboutus
+{
+    background-color:#ffffff;
+    background-image:url(/images/common/bluetheme/navigation/top_barheader_bg.jpg);
+    background-repeat:repeat-x;
+    background-position:top left;
+    float:left;
+    width:100%;    
+}
+#rightDiv_Aboutus
+{
+    /*background:#FFFFFF url(/images/common/bluetheme/navigation/backgroundbg.jpg) repeat-x scroll left top;*/
+	width:372px;
+	height:100%;
+}
+#container_Aboutus
+{
+    background:#FFFFFF url(/images/common/bluetheme/navigation/backgroundbg.jpg) repeat-x scroll left top;
+    /*height:720px;*/
+    margin-left:auto;
+    margin-right:auto;
+    padding-right:5px;
+    text-align:left; 
+}
+.copyright_Aboutus
+{
+    Color: #B4B4B4; 
+    font-size:10px;
+}
+.copyright_loginpanel
+{
+    margin:0px;
+    width:100%;
+}
+.footer_Aboutus
+{
+    border-top:2px solid #0078AB;
+    margin-top:20px;
+}
+.footer_Aboutus ul
+{
+	margin:0 0 0 -12px;
+	padding:5px 0 0;
+}
+.footer_Aboutus li:first-child
+{
+	border-left:none;
+}
+.footer_Aboutus li
+{
+	color:#61a0d0;
+	font-size:10px;
+	list-style:none;
+	display:inline;
+	border-left:solid 1px #61a0d0;
+	padding-left:12px;
+	padding-right:12px;
+}
+.footer_Aboutus a.selected
+{
+	color:#696969;
+	cursor:default;
+	text-decoration:none;
+}
+/* Health and Wellness Carousel*/
+.hw_ArrowLeft
+{
+	background: url(/images/wellpointconsumer/bluetheme/leftarrow.gif) no-repeat center left;
+	width:50px;
+	height:50px;
+}
+.hw_ArrowRight
+{
+	background: url(/images/wellpointconsumer/bluetheme/rightarrow.gif) no-repeat center right;
+	width:50px;
+	height:50px;
+}
+
+/* CSS for FAQ's collapse/expand*/
+
+#faq {
+    /*width: 350px;*/
+}
+#faq a {
+	text-decoration: none;
+	display: block;
+}
+#faq p {
+    vertical-align: top;
+    padding: 3px;
+    margin-left: 16px;
+    font: 12px arial,sans-serif; 
+}
+#faq ol {
+    padding: 2px 0 2px 30px;
+}
+.faq_collapse {
+    background: url(/images/common/bluetheme/navigation/ccArrowRight.gif) no-repeat left 5px;
+    padding-left: 18px; 
+}
+.faq_expand {
+    background: url(/images/common/bluetheme/navigation/ccArrowDown.gif) no-repeat left top;
+    padding-left: 18px; 
+}
+a.disableLink
+{
+    text-decoration:none;
+    color:#696969;
+	cursor:default;
+}
+.faqbottomlink
+{
+    text-align:right;
+    background:none;
+}
+/* Error Messaging */
+.errorTitle
+{
+	padding: 3px 10px 0 20px;
+	float: left;
+	display: inline;
+	min-height:20px;
+	height: auto !important;
+	height: 20px;
+    font-size:12px;
+    font-weight:bold;
+    color:#cb6a5c;
+	background:transparent url(/Images/common/graphics/alert_tri.png) no-repeat scroll top left;
+}
+
+.errorHint
+{
+	padding: 3px 10px 0 20px;
+	float: left;
+	display: inline;
+	min-height:20px;
+	height: auto !important;
+	height: 20px;
+    font-size:11px;
+    font-weight:bold;
+    color:#cb6a5c;
+	background:transparent url(/Images/common/graphics/alert_tri.png) no-repeat scroll top left;
+}
+/*HealthandWellness landing page styles*/
+.healthrisk
+{
+    width:27%;
+    margin-right:2.9%;
+    float:left;
+}
+.healthtopics ol
+{
+}
+.healthtopics ul
+{
+}
+.healthtopics li
+{    
+    border-bottom:1px solid #cccccc;
+    padding:5px 0px;
+    list-style-type:decimal;
+    color:#0078AB;
+}
+.healthtopics
+{
+	width:40%;
+	margin-right:2.9%;
+	float:left;
+}
+.alertsrecalls
+{
+    width:27.1%;
+    float:left;
+}
+.alertsrecalls ul
+{
+    margin-left:0px;
+}
+.alertsrecalls li
+{
+    list-style-type:disc;
+    color:#0078AB;
+}
+.healthylifestyles
+{
+	width:40%;
+	margin-right:2.9%;
+	float:left;
+}
+.healthylifestyles ul
+{
+}
+.healthylifestyles ul  li
+{
+    margin-left:-42px;
+}
+.regioncontent
+{
+    width:27.1%;
+    float:left;
+}
+.healthrecords
+{
+    width:70%;
+    float:left;
+    margin-right:2.9%;
+}
+.healthrecords .box1inside
+{
+    height:155px;
+}
+.americanspecialityhealth
+{
+	width:100%;
+	float:left;
+	margin-right:2.9%;
+}
+.americanspecialityhealth .box1inside
+{
+	height:155px;
+}
+.betterhealth
+{
+    width:27%;
+    float:left;
+}
+.betterhealth .box6inside
+{
+    height:117px;
+}
+.betterhealth ul
+{
+    margin:0 0 0 -20px;
+}
+.betterhealth img
+{
+    padding:0 5px 0px 0px;
+}
+.healthylifestyles h4, .regioncontent h4, .alertsrecalls h4, .healthtopics h4, 
+.healthrisk h4
+{
+    margin:5px 0px;
+    text-align:center;
+}
+.prepareforsurgery
+{
+    width:27%;
+    margin-right:2.9%;
+    float:left;
+}
+.videopodcasts
+{
+    width:40%;
+	margin-right:2.9%;
+	float:left;
+}
+.childhood
+{
+    width:27.1%;
+    float:left;
+}
+.healthprof
+{
+}
+/*Cutomizationblock styles*/
+.healthnurse
+{
+    width:27%;
+    margin-right:2.9%;
+    float:left;
+}
+.futuremoms
+{
+    width:40%;
+	margin-right:2.9%;
+	float:left;
+}
+.caremanagement
+{
+    width:27.1%;
+    float:left;
+}
+.healthylife
+{
+    width:27%;
+    margin-right:2.9%;
+    float:left;
+}
+.myhealthcoach
+{
+    width:40%;
+	margin-right:2.9%;
+	float:left;
+}
+.healthnurse .box1inside, .futuremoms .box1inside, .caremanagement .box1inside,
+.myhealthcoach .box1inside, .healthylife .box1inside,
+.prepareforsurgery .box1inside, .videopodcasts .box1inside, .childhood .box1inside
+{
+height:130px;
+overflow:auto;
+}
+/*End HealthandWellness landing page styles*/
+
+/*style moved from global.css for senior font-size:10px*/
+/* Alternate Rows for Tables */
+table.stripe {
+	background-color: #DADADA;
+	margin:10px 0 15px;
+	font-size:10px;
+	width: 100%;
+	text-align: left;
+}
+table.stripe thead tr th, table.stripe tfoot tr th {
+	background-color: #ECECEC;
+	background-image: url(/images/common/graphics/tableheaderbg.png);
+	border-top:1px solid #FAFAFA;
+	border-bottom:1px solid #E5E5E5;
+	font-size:10px;
+	padding: 10px 6px;
+}
+table.stripe tbody td {
+	color: #3D3D3D;
+	padding: 10px 6px;
+	vertical-align: top;
+	border-top:1px solid #FDFDFD;
+	border-bottom:1px solid #EEEEEE;
+}
+table.stripe tbody tr.odd td {
+	border-top:1px solid #FAFAFA;
+	border-bottom:1px solid #E5E5E5;
+}
+/*Welcome Box*/
+.welcomeheader
+{
+	/*color:#ffffff;*/
+	/*padding:5px 5px 5px 10px;*/
+	font-size:11px; /*increment by 1px for text sizing*/
+}
+.welcomeheader a:link, .welcomeheader a:visited, .welcomeheader a:hover, .welcomeheader a:active
+{
+	/*color:#ffffff;*/
+	text-decoration:underline;
+}
+/*Pharmacy Styles Start */
+.selectBox {padding: 1px 0 0 0; width: 110px; font-size:10px;}
+.results {width: 162px;padding: 0px 0px 2px 10px;}
+.results a,.results a:hover {text-decoration: none;cursor: pointer;font-size:10px;}
+.results table tr:hover { background-color: #f3f3f3;cursor: pointer;}
+.preferredDrug {margin-right:8px;float:right;}
+.preferredDrug label {vertical-align:middle;font-weight:bold;font-size:9px;}
+.infoContent span {text-align:justify;font-size:9px;}
+
+/*Historical Claims*/
+.historicalbody
+{
+    min-width: 100%;
+}
+.historical_copyright
+{
+    font-size:10px;
+    color:#B4B4B4;
+}
+
+.disclaimer {
+	font-size: 10px;  
+	color: #818181;
+}
+
+.data {
+	font-size: 10px;
+	padding-bottom : 5px;
+	padding-left : 4px;
+	padding-right : 4px;
+	padding-top : 5px;}
+
+.AccountHeader
+{
+     font-size: 10px;
+     color: #51954C;
+}
+
+
+/*tabs styles*/
+.tab_content
+        {
+            padding-bottom: 15px;
+        }
+#tabContainer {
+	font-size:10px;
+	background-color: Transparent;
+	float: left;
+	width: 100%;
+}
+#tabContainer ul {
+	margin:0;
+	padding:5px 10px 0 5px;
+	list-style:none; z-index:100;
+}
+#tabContainer li 
+{
+	/*border-bottom:solid 1px #cccccc;*/
+	float:left;
+	margin:0 1px 0 0;
+	padding:0 0 0 4px;
+	background-image: url(/images/common/graphics/type2_left.jpg);
+	background-repeat: no-repeat;  margin-bottom:-1px;
+}
+#tabContainer a {
+	float:left;
+	display:block;
+	padding:5px 7px 4px 5px;
+	text-decoration:none;
+	color:#999999;
+	background-image: url(/images/common/graphics/type2_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right top;
+}
+#tabContainer a:hover {
+	color:#000000;
+}
+#tabContainer li:hover{
+	color:#333;
+	background-image: url(/images/common/graphics/type2_left_on.jpg);
+}
+#tabContainer li:hover a{
+	background-position:right top;
+	background-image: url(/images/common/graphics/type2_right_on.jpg);
+	color: #000000;
+}
+#tabContainer .current {
+	background-image: url(/images/common/graphics/type2_left_on.jpg) !important;
+	color: #000 !important;
+} 
+#tabContainer .current a {
+	background-image: url(/images/common/graphics/type2_right_on.jpg) !important;
+	color: #000 !important;
+}
+
+*:first-child+html .tabstbl {
+    padding-right:11px;
+} 
+
+* html .tabstbl
+{
+	padding-right:11px;	
+}   
+/*End Tabs Styles */
+
+/*Table Sorter Styles */
+table.tablesorter 
+{
+	background-color: #DADADA;
+	margin:10px 0 15px;
+	font-size:10px;
+	width: 100%;
+	text-align: left;
+	}
+	table.tablesorter thead tr th, table.tablesorter tfoot tr th 
+{
+		background-color: #ECECEC;
+		border: 1px solid #FFF;
+		font-size:10px;
+		padding: 10px 6px;
+	}
+	table.tablesorter thead tr .header 
+{
+		background-image: url(/images/common/graphics/bg.gif);
+		background-repeat: no-repeat;
+		background-position: center right;
+		cursor: pointer;
+	}
+	table.tablesorter tbody td {
+		color: #3D3D3D;
+		padding: 10px 6px;
+		background-color: #FAFAFA;
+		vertical-align: top;
+		border-top:1px solid #FDFDFD;
+		border-bottom:1px solid #EEEEEE;
+	}
+	table.tablesorter tbody tr.odd td {
+		background-color:#F0F0F0;
+		border-top:1px solid #FAFAFA;
+		border-bottom:1px solid #E5E5E5;
+	}
+	table.tablesorter thead tr .headerSortUp {
+		background-image: url(/images/common/graphics/asc.gif);
+	}
+	table.tablesorter thead tr .headerSortDown {
+		background-image: url(/images/common/graphics/desc.gif);
+	}
+	table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: #DADADA;
+	}
+/*End Table Sorter */
+
+/* Pager styles (these are shared with Jarrad) */
+
+#accountcontrol_gridPagerTop ul.pages, #accountcontrol_gridPagerBottom ul.pages
+{
+    display: block;
+    border: none;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin: 10px 0 50px;
+    padding: 0;
+}
+
+#accountcontrol_gridPagerTop ul.pages li, #accountcontrol_gridPagerBottom ul.pages li
+{
+    list-style: none;
+    float: left;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    padding: 5px;
+}
+
+#accountcontrol_gridPagerTop ul.pages li:hover, #accountcontrol_gridPagerBottom ul.pages li:hover
+{
+    border: 1px solid #003f7e;
+}
+
+#accountcontrol_gridPagerTop ul.pages li.pgEmpty, #accountcontrol_gridPagerBottom ul.pages li.pgEmpty
+{
+    border: 1px solid #eee;
+    color: #eee;
+}
+
+#accountcontrol_gridPagerTop ul.pages li.pgCurrent, #accountcontrol_gridPagerBottom ul.pages li.pgCurrent
+{
+    border: 1px solid #003f7e;
+    color: #000;
+    font-weight: 700;
+    background-color: #eee;
+}
+/*Grid Styles*/
+#searchcontrol_gridPagerTop ul.pages, #searchcontrol_gridPagerBottom ul.pages
+{
+    display: block;
+    border: none;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin: 10px 0 50px;
+    padding: 0;
+}
+
+#searchcontrol_gridPagerTop ul.pages li, #searchcontrol_gridPagerBottom ul.pages li
+{
+    list-style: none;
+    float: left;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    margin: 0 5px 0 0;
+    padding: 5px;
+}
+
+#searchcontrol_gridPagerTop ul.pages li:hover, #searchcontrol_gridPagerBottom ul.pages li:hover
+{
+    border: 1px solid #003f7e;
+}
+
+#searchcontrol_gridPagerTop ul.pages li.pgEmpty, #searchcontrol_gridPagerBottom ul.pages li.pgEmpty
+{
+    border: 1px solid #eee;
+    color: #eee;
+}
+
+#searchcontrol_gridPagerTop ul.pages li.pgCurrent, #searchcontrol_gridPagerBottom ul.pages li.pgCurrent
+{
+    border: 1px solid #003f7e;
+    color: #000;
+    font-weight: 700;
+    background-color: #eee;
+}
+/* Profile Styles */
+.idCardLink
+{
+    text-decoration: none;
+    color: Blue;
+    cursor: pointer;
+    font-size: 10px;
+}
+.referralRequiredField
+{
+    font-size: 8px;
+    font-style: italic;
+}
+.profilesubnote 
+{
+    color:#000000;
+    font-size:10px;
+}
+
+.memberDOB
+{
+    font-size: 9px;
+    text-align: center;
+}
+
+.disclaimerText{font-size: 8px;}
+
+/* begin benefit summary section*/
+.centeredImage {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+div#benefitSummaryAscx table {
+  /*width: 10%;*/
+}
+div#benefitSummaryAscx table thead tr th {
+  /* WLPRD00136152 - This was causing compression of benefit summary grid when it was opened.
+  width:100px;*/
+}
+div#benefitSummaryAscx table tfoot {
+  background-color: #FAFAFA;
+  text-align: left;
+  font-size:10px;
+  
+}
+
+div#benefitSummaryAscx table tfoot td{
+ border-right: solid 1px #cbcbcb; 
+  border-top: solid 1px #cbcbcb;
+ 
+}
+
+/* begin benefit common section*/
+.historicalClaims {
+	text-align: right;
+	color: blue;
+	margin-right: 20px;
+}
+
+.tablePBEligibilityWrapper
+{
+    width: 100%;
+}
+
+/* Balance Summary - Start*/
+div#benefitSummaryAscx table.TableBalSum
+{
+    font-family: Arial; 
+    width: 100%;
+}
+
+div#benefitSummaryAscx table.TableHIPBalSum 
+{
+	font-family:Arial;
+	font-size:10px;
+	width:100%;
+}
+
+div#benefitSummaryAscx table.tblHIPBalance
+{
+    width: 100%; 
+    padding-left:5px;    
+}
+
+div#benefitSummaryAscx table.tblBalance
+{
+    width: 100%; 
+    padding: 0px 20px 0 20px;
+}
+/*HW medicare styles*/
+.roatingmessages
+{
+    float:left;
+}
+.medresources
+{
+    float:left;
+    width:48.5%;
+    padding-right:20px;
+}
+.carealerts
+{
+    float:left;
+    width:48.5%;
+}
+.healthtopicsm
+{
+    float:left;
+    width:48.5%;
+    padding-right:20px;
+}
+.preventivecarem
+{
+    float:left;
+    width:48.5%;
+}
+.nurseline
+{
+    float:left;
+    width:48.5%;
+    padding-right:20px;
+}
+.patitentsafety
+{
+    float:left;
+    width:48.5%;
+}
+
+/*Styles for City pages*/
+.cityintro
+{
+    float:left;
+    width:80.5%;
+    padding-right:10px;
+    padding-bottom:10px;
+}
+.quote_city
+{
+    float:left;
+    width:18%;
+    padding-bottom:10px;
+}
+.quote_city strong
+{
+    font-size:18px;
+    font-weight:normal;
+}
+.quote_city p
+{
+    font-size:14px;
+    line-height:17px;
+}
+.maincontent_city
+{
+    float:left;
+}
+.morecontent_city
+{
+    padding-top:10px;
+    float:left;
+    width:100%;
+}
+/* PROD00341302 Plans & Benefits_Overview */
+.tickLabels
+{
+    font-size:10px;
+}
+#searchGrid .ui-jqgrid .ui-jqgrid-sortable{cursor:pointer; color:#366087;}
+/*Styles for Microsites*/
+#container_micros
+{
+	width:960px;
+	height:720px;
+	margin-left: auto; 
+	margin-right: auto;
+	text-align:left;
+	padding-left:5px;
+	padding-right:5px;
+}
+.login_micros
+{
+    float:left;
+    padding:10px 10px 10px 0px;
+}
+.contact_micros
+{
+    float:left;
+    margin-top:80px;
+}
+.copyright_micros
+{
+    border-top:2px solid #0078AB;
+    color:#B4B4B4;
+    font-size:10px;
+    width:100%;
+    float:left;
+    padding-top:10px;
+}
+.privacy_micros
+{
+    float:left;
+    margin-bottom:10px;
+}
+.microcontent
+{
+    width:100%;
+    float:left;
+}
+.paymybill
+{	
+	text-indent:-3px; 
+}
+
+/* for login user control page button styles*/
+
+   .loginbutton
+{
+	
+	border:0 none;
+}
+
+a.loginbutton span, span.loginbutton input, span.loginbutton loginbutton {
+    background: url("/images/common/bluetheme/navigation/securebutton.jpg") repeat scroll 0 0 transparent;
+    width:78px;
+    height:30px;
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 10px;
+    text-align:right;
+    overflow: visible;
+    padding: 3px 2px 8px 4px;
+    text-transform: uppercase;
+    cursor:pointer;
+}
+
+.loginbutton input 
+{
+	cursor:hand;
+    border: 0 none;
+    color: #FFFFFF;
+	 font-size: 11px;
+    font-size: 12px\9;
+    margin: 0;
+}
+
+/* for login regular public styles*/
+
+    .secureloginlink
+    {
+    text-align:left;
+	margin-right:-10px;
+	padding-top:5px;
+	padding-bottom:5px;
+	width:178px;
+	text-align:justify;   	
+    }
+.loginlinksection
+{
+	text-align:left;
+	margin-right:-10px;
+	background-color:White;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+#rotatingpromoarea .box1inside
+{
+  padding-left:0px;
+  padding-right:0px;
+}
