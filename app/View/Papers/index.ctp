@@ -1,5 +1,23 @@
-<div class="papers index">
-	<h2><?php echo __('Papers'); ?></h2>
+<?php
+$this->start('sub_nav');
+?>
+<ul class="nav-offset3 sub_nav nav nav-pills">
+  <li class="active"><?php echo $this->Html->link(__('All papers'),'/papers/index'); ?></li>
+  <li><?php echo $this->Html->link(__('Leaderboard'),'/users/leaderboard'); ?></li>
+  <li><?php echo $this->Html->link('Coding scheme', '/pages/coding_scheme'); ?></li>
+</ul>
+<?php
+$this->end();
+?>
+
+<div class="offset1 papers index span13">
+	<h2><?php echo __('All articles'); ?> <?php if(AuthComponent::user('Group.name')=='admin'): ?>
+		<small>
+		<?php echo $this->Html->link(__('add new'), '/papers/add'); ?></li>
+	</small>
+	<?php endif; ?></h2>
+	
+	
 	<table class="table">
 	<tr>
 			<th><?php echo $this->Paginator->sort('DOI'); ?></th>
@@ -26,13 +44,16 @@
 			<div class="btn-toolbar">
 				<div class="actions btn-group">
 					<?php echo $this->Html->link(__('View'), array('action' => 'view', $paper['Paper']['id']), array('class' => 'btn')); ?>
+		 			<?php if(AuthComponent::user('Group.name')=='admin'): ?>
 					 <button class="btn dropdown-toggle" data-toggle="dropdown">
 					    <span class="caret"></span>
 					 </button>
+					 
 					<ul class="dropdown-menu">
 						<li><?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $paper['Paper']['id'])); ?></li>
 						<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $paper['Paper']['id']), null, __('Are you sure you want to delete # %s?', $paper['Paper']['id'])); ?></li>
 					</ul>
+					<?php endif; ?>
 				</div>
 			<?php
 			echo $this->element('get_multiple', array('paper_id' => $paper['Paper']['id']));

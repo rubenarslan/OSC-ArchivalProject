@@ -1,4 +1,4 @@
-<div class="papers form">
+<div class="offset2 papers form">
 	<h1><?php echo __('Add Paper'); ?></h1>
 <?php echo $this->Form->create('Paper', array('class' => 'form-horizontal')); ?>
 	<p class="span10">

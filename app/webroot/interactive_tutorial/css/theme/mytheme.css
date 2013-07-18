@@ -6,8 +6,7 @@
  */
 @font-face {
   font-family: 'Quicksand';
-  src: url("lib/font/Quicksand-Light.otf");
-  src: url("lib/font/Quicksand-Light.otf") format("embedded-opentype"), url("lib/font/Quicksand-Light.otf") format("woff"), url("../../lib/font/Quicksand_Light.otf") format("truetype"), url("../../lib/font/Quicksand_Light.otf") format("svg");
+  src: url("https://fonts.googleapis.com/css?family=Quicksand:400,700,400italic,700italic");
   font-weight: normal;
   font-style: normal; }
 

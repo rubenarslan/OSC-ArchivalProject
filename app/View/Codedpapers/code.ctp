@@ -59,17 +59,20 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 </div>
 </div>
 <?php $this->end(); ?>
-<?php $this->start('more_nav'); ?>
-<li class="divider-vertical"></li>
-<li class="progress-nav">
-	<div class="progress progress-striped span4">
-    <div class="bar" style="width: 0%;" id="codingprogress"></div>
-    </div>
-</li>
-<li class="divider-vertical"></li>
-<li class="btn-nav">
-	<button id="navSave" class="btn" disabled="disabled">Saved</button>
-</li>
+<?php $this->start('sub_nav'); ?>
+<ul class="nav-offset2 sub_nav nav">
+  <li class="progress-nav" title="Your coding progress" class="hastooltip">
+	  	<div class="progress progress-striped span4">
+	      <div class="bar" style="width: 0%;" id="codingprogress"></div>
+	      </div>
+  </li>
+	<li class="divider-vertical"></li>
+  
+  <li><button id="navSave" class="btn" disabled="disabled">Saved</button></li>
+</ul>
+
+
+
 <?php $this->end(); 
 echo $this->Session->flash();
 ?>

@@ -1,7 +1,7 @@
 Archival Project
 ================
 
-This is a framework for the [OSC](http://openscienceframework.org) [Archival Project](http://archivalproject.org), 
+This is a framework for the [COS](http://openscienceframework.org) [Archival Project](http://archivalproject.org), 
 which aims to code psychological studies' statistics.
 
 It's written using CakePHP and makes use of jQuery, Twitter Bootstrap, Webshims Lib and Select2.

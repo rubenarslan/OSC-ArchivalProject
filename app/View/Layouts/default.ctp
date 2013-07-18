@@ -38,6 +38,7 @@
 		
 		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/select2.min.js"></script>
 		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/vendor/jquery.bootstrap.confirm.popover.js"></script>
+		<script type="text/javascript" src="<?php echo $this->webroot; ?>js/main.js"></script>
 		
 		<link rel="stylesheet" type="text/css" href="<?php echo $this->webroot; ?>css/main.css" />
  
@@ -48,9 +49,9 @@
     	?>
 
 	</head>
-	<body data-spy="scroll" data-offset="70">
+	<body data-spy="scroll" data-offset="100">
 
-	    <div class="navbar navbar-fixed-top">
+	    <div class="navbar-whiter navbar navbar-fixed-top">
 	      <div class="navbar-inner">
 	        <div class="container">
 	          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -58,50 +59,69 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <?php echo $this->Html->link('OSC-Archival', '/', array('class' => 'brand')); ?>
+	          <?php echo $this->Html->link('<img alt="COS Archival" src="'.$this->webroot.'img/cos_archival_logo_mini.png" width="136" height="22">', '/', array('class' => 'brand','escape'=>false)); ?>
 	          <div class="container nav-collapse">
 	            <ul class="nav">
-		<?php
-		if(AuthComponent::user() === NULL): ?>
-	                <li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
-				    <li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
-		<?php
-		else: ?>
-					<li><?php echo $this->Html->link("Logout [". AuthComponent::user('Group.name').'] '.AuthComponent::user('username'), '/users/logout'); ?></li>
-				<li class="divider-vertical"></li>
-				<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Coding'); ?><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-			                <li><?php echo $this->Html->link('List available papers', '/papers/index'); ?></li>
-			                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
-			                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
-			                <li><?php echo $this->Html->link('Coding scheme', '/pages/coding_scheme'); ?></li>
-			                <li><?php echo $this->Html->link('Leaderboard', '/users/leaderboard'); ?></li>
-			                <li><?php echo $this->Html->link('Send feedback', '/pages/feedback'); ?></li>
-			            </ul>
-				</li>
-				<?php
-			endif;
-				?>
-			<?php if(AuthComponent::user('Group.name')=='admin'): ?>
-			  	<li class="divider-vertical"></li>
-				<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Admin'); ?><span class="caret"></span></a>
-						<ul class="dropdown-menu">
-			                <li><?php echo $this->Html->link('List users', '/users/index'); ?></li>
-			                <li><?php echo $this->Html->link('Add paper', '/papers/add'); ?></li>
-			                <li><?php echo $this->Html->link('Export CSV', '/joinedCodedpapers/export/CSV'); ?></li>
-			                <li><?php echo $this->Html->link('Export TSV', '/joinedCodedpapers/export/TSV'); ?></li>
-			                <li><?php echo $this->Html->link('Export Excel', '/joinedCodedpapers/export/excel'); ?></li>
-			            </ul>
-				</li>
-			<?php endif; ?>
+	                <li><?php echo $this->Html->link('About the Archival Project', '/'); ?></li>
+	                <li><?php echo $this->Html->link('Getting involved', '/pages/getting_involved'); ?></li>
+
+<?php
+if(AuthComponent::user() !== NULL): ?>
+
+	                <li><?php echo $this->Html->link('Your dashboard', '/papers/index'); ?></li>
+	                <li><?php echo $this->Html->link('Contact', '/pages/feedback'); ?></li>
+
+<?php
+else:
+?>
+			    <li><?php echo $this->Html->link('Sign up', '/users/register', array('class'=>'')); ?></li>
+
+<?php
+endif;
+?>
+				
+				
+
+				
+<?php
+if(AuthComponent::user() === NULL): ?>
+	            <li><?php echo $this->Html->link('Login', '/users/login', array('class'=>'')); ?></li>
+<?php
+else: ?>
+				<li><?php echo $this->Html->link("Logout", '/users/logout', array('title' => 
+					 "[". AuthComponent::user('Group.name').'] '.AuthComponent::user('username'))); ?></li>
+<?php endif; ?>
+				
+<?php if(AuthComponent::user('Group.name')=='admin'): ?>
+  	<li class="divider-vertical"></li>
+	<li class="dropdown">
+			<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Admin'); ?><span class="caret"></span></a>
+			<ul class="dropdown-menu">
+                <li><?php echo $this->Html->link('List users', '/users/index'); ?></li>
+                <li><?php echo $this->Html->link('Add paper', '/papers/add'); ?></li>
+                <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
+                <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
+				
+                <li><?php echo $this->Html->link('Interactive tutorial', '/interactive_tutorial'); ?></li>
+                <li><?php echo $this->Html->link('Export CSV', '/joinedCodedpapers/export/CSV'); ?></li>
+                <li><?php echo $this->Html->link('Export TSV', '/joinedCodedpapers/export/TSV'); ?></li>
+                <li><?php echo $this->Html->link('Export Excel', '/joinedCodedpapers/export/excel'); ?></li>
+            </ul>
+	</li>
+<?php endif; ?>
 				<?php echo $this->fetch('more_nav'); ?>
-				</ul>
+			</ul>
+				
+				<?php echo $this->fetch('sub_nav'); ?>
 	          </div><!--/.nav-collapse -->
+  	  		
 	        </div>
+	  		
 	      </div>
+  		
 	    </div>
+		
+	
 
 	  <div class="container-fluid">
 	                <div class="row-fluid">
@@ -120,8 +140,8 @@
 
 	        </div><!--/row-->
 
-	      <footer>
-	        <p>&copy; Archival Project <?php echo date('Y'); ?></p>
+	      <footer class="offset3">
+			  <p><img alt="COS" src="<?=$this->webroot?>img/cos_logo_mini.png" width="50" height="30"> &copy; Archival Project <?php echo date('Y'); ?></p>
 	      </footer>
 
 	    </div> <!-- /container -->

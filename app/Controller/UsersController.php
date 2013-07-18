@@ -10,7 +10,7 @@ class UsersController extends AppController {
 		
 		if($admin) return true;
 		
-		if(in_array($req_action, array('index'))) return true; # viewing and adding is allowed to all users
+		if(in_array($req_action, array('index','leaderboard'))) return true; # viewing and adding is allowed to all users
 	}
 	public function leaderboard() {
 		$this->set($this->User->getAchievement());
@@ -25,6 +25,7 @@ class UsersController extends AppController {
 	    }
 	}
 	public function logout() {
+        $this->Session->setFlash(__('You have successfully logged out', 'alert-success'));
 	    $this->redirect($this->Auth->logout());
 	}
     public function register() {
@@ -54,7 +55,7 @@ class UsersController extends AppController {
 				$email = new CakeEmail('smtp');
 				$email
 				    ->to($user['email'])
-				    ->subject(__('Reset password OSC Archival Project'))
+				    ->subject(__('Reset password COS Archival Project'))
 				    ->send(
 "Dear user,
 
@@ -68,7 +69,7 @@ email.
 
 Best regards,
 
-the OSC Archival Project team");
+the COS Archival Project team");
 				$this->Session->setFlash(__('The reset link was sent to your email address.'));
 				$this->redirect("/");
 			}
