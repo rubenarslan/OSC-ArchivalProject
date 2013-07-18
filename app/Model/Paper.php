@@ -46,6 +46,26 @@ class Paper extends AppModel {
 		if(!$mult) $mult = array();
 		return $mult;
 	}
+	public function hasUserCoded ($paper_id = null, $user_id=null) {
+		$mult = $this->find('first', # GET THAT PAPER
+			array(
+				"conditions" => array(
+					'Paper.id' => $paper_id,
+					),
+				'fields' => 'id',
+				'contain' => array(
+					'Codedpaper' => array( 
+						'fields' => array('id','completed'),
+						'User' => array('fields' => 'username'),
+						'conditions' => array( 'user_id' => $user_id ) 
+						),
+				) 
+			));
+		if(isset($mult['Codedpaper'][0]))
+			return $mult['Codedpaper'][0]['completed'];
+		else 
+			return null;
+	}
 	public function fetchByFreeForm($freeform = null) {
 #		echo urldecode($freeform)."<br>";
 		$freeform = urldecode($freeform);

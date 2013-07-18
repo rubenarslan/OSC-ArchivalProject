@@ -48,7 +48,7 @@ class PagesController extends AppController {
 		
 #		die($this->request->params['pass'][0]);
 		if(in_array($req_action, array('display'))
-			AND in_array($page, array('coding_scheme','home'))) $this->Auth->allow('display'); # viewing and adding is allowed to all users
+			AND in_array($page, array('coding_scheme','home','getting_involved'))) $this->Auth->allow('display'); # viewing and adding is allowed to all users
 		
 		parent::beforeFilter();
 	}

@@ -1,6 +1,6 @@
 body
 {
-    margin-top: 70px;
+    margin-top: 100px;
 }
 input.boxless-nameinput[type='text']:focus {
 	border:0;
@@ -43,7 +43,7 @@ input.boxless-nameinput[type='text'] {
 }
 
 .osfa-affix-sidenav.affix {
-	top:70px;
+	top:100px;
 	width:200px;
 }
 
@@ -79,8 +79,8 @@ input.boxless-nameinput[type='text'] {
 }
 
 section,header {
-	padding-top: 60px;
-	margin-top: -60px;
+	padding-top: 100px;
+	margin-top: -100px;
 }
 
 .no-left-margin {
@@ -109,4 +109,36 @@ input[type=radio] + label {
 .progress-nav {
 	margin-top:10px;
 	margin-bottom:-10px;
+}
+.navbar .nav.sub_nav
+{
+	border-top:#D4D4D4 solid 1px;
+	clear:both;
+}
+.navbar .nav.nav-offset1
+{
+	margin-left:130px;
+}
+.navbar .nav.nav-offset2
+{
+	margin-left:230px;
+}
+.navbar .nav.nav-offset3
+{
+	margin-left:350px;
+}
+footer {
+	margin-top:20px;
+	clear:both;
+}
+.row-fluid div.sidenav-span
+{
+	width:200px;
+}
+
+.navbar-whiter .navbar-inner
+{
+	background-color:#FEFEFE;
+    background-image: none;
+	box-shadow:none;
 }

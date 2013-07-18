@@ -1,5 +1,14 @@
+<?php
+$this->start('sub_nav');
+?>
+<ul class="nav-offset3 sub_nav nav nav-pills">
+  <li><?php echo $this->Html->link(__('All papers'),'/papers/index'); ?></li>
+  <li><?php echo $this->Html->link(__('Leaderboard'),'/users/leaderboard'); ?></li>
+  <li class="active"><?php echo $this->Html->link('Coding scheme', '/pages/coding_scheme'); ?></li>
+</ul>
+<?php $this->end(); ?>
 <?php $this->start('sidebar'); ?>
-<div class="span3">
+<div class="sidenav-span">
 <ul class="nav nav-list osfa-affix-sidenav" data-spy="affix">
 	<li class="active"><a href="#overview"><i class="icon-chevron-right"></i> Overview</a></li>
 	<li><a href="#organization"><i class="icon-chevron-right"></i> Organization</a></li>
