@@ -2,16 +2,12 @@
 $this->start('sub_nav');
 ?>
 <ul class="nav-offset2 sub_nav nav nav-pills">
-  <li><a href="#coders">What Coders Do</a></li>
-  <li><a href="#benefits">Benefits of Coding</a></li>
-  <li><a href="#eligible">Who is Eligible</a></li>
+  <li class="active"><?php echo $this->Html->link(__('Getting Involved'),'/pages/getting_involved'); ?></li>
+  <li><?php echo $this->Html->link('Interactive tutorial', '/interactive_Tutorial'); ?></li>
 </ul>
-<?php
-$this->end();
-?>
-<div class="offset2">
-
-<h3 id="coders">What Coders Do</h3>
+<?php $this->end(); ?>
+<div class="middle center span6">
+	<h3 id="coders">What Coders Do</h3>
 <p>Our volunteers follow the established COS coding scheme to collect the primary data from a selection of articles published in 2008.</p>
 
 <h3 id="benefits">Benefits of Coding</h3>

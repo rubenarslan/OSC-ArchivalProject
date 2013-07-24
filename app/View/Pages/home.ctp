@@ -1,20 +1,15 @@
-<?php
-$this->start('sub_nav');
-?>
-<ul class="nav-offset1 sub_nav nav nav-pills">
-  <li><a href="#goals">Goals</a></li>
-  <li><a href="#other_osc_projects">Other COS Projects</a></li>
-</ul>
-<?php
-$this->end();
-?>
-<div class="offset2">
+<div class="middle center span6 no-sub-nav">
 
 <h4><big><strong>COS-Archival</strong></big> is an online project coding psychology research articles, spread across many teams and locations. <br><br></h4>
 
 <p><img src="<?=$this->webroot?>img/cos_logo.png" width="150"><br><br></p>
 
-<p><?=$this->Html->link('Sign up here!','/users/register',array('class' => 'btn btn-large btn-info'))?><br><br></p>
+<p>
+	<div class="btn-group">
+		<?=$this->Html->link('Sign up','/users/register',array('class' => 'btn btn-large btn-warning'))?>
+		<?=$this->Html->link('Sign in','/users/login',array('class' => 'btn btn-large btn-warning'))?>
+		<?=$this->Html->link('Watch tutorial','/interactive_tutorial',array('class' => 'btn btn-large btn-warning'))?>
+	</div><br><br></p>
 
 <h3 id="goals">Goals</h3>
 <p>

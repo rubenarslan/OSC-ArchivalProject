@@ -18,6 +18,7 @@ $this->start('sub_nav');
 </ul>
 </div>
 <?php $this->end(); ?>
+<div class="span9 scoot">
 <header id="overview">
    <h1>Coding scheme</h1>
    <p class="lead">What is the coding scheme?</p>
@@ -232,3 +233,4 @@ A methodology is used that does not fit any of these categories. The coder shoul
 
 
 </section>
+</div>

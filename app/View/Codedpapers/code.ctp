@@ -76,6 +76,7 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 <?php $this->end(); 
 echo $this->Session->flash();
 ?>
+<div class="scoot span9">
 <h1>Code paper <?php echo $this->Html->link('View <span class="icon-eye-open"></span>', 
 	array('controller' => 'papers','action' => 'view', $this->data['Paper']['id']), 
 	array('escape' => false, 'class' => 'btn btn-large'));?></h1>
@@ -152,6 +153,7 @@ else
 	<?php
 }
 	?>
+</div>
 <?php echo $this->Js->writeBuffer(); ?>
 <script type="text/javascript" src="<?php echo $this->webroot; ?>js/code.js"></script>
 <?php if(isset($onlyView)) {

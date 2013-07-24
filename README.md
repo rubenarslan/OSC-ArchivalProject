@@ -27,5 +27,4 @@ I'm happy to be contacted and assist if you want to use this for noncommercial p
 * exports wide format data in CSV, TSV, HTML and Excel
 
 # todo:
-* todo: max 4 coders per paper? maybe in the future, not now
 * todo: drag and drop study order

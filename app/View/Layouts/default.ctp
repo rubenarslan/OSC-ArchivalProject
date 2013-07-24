@@ -50,7 +50,7 @@
 
 	</head>
 	<body data-spy="scroll" data-offset="100">
-
+	<div class="bigouterbox">
 	    <div class="navbar-whiter navbar navbar-fixed-top">
 	      <div class="navbar-inner">
 	        <div class="container">
@@ -59,7 +59,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </a>
-	          <?php echo $this->Html->link('<img alt="COS Archival" src="'.$this->webroot.'img/cos_archival_logo_mini.png" width="136" height="22">', '/', array('class' => 'brand','escape'=>false)); ?>
+	          <?php echo $this->Html->link('<img alt="COS Archival" src="'.$this->webroot.'img/cos_archival_logo_mini.png" width="43" height="22">', '/', array('class' => 'brand','escape'=>false)); ?>
 	          <div class="container nav-collapse">
 	            <ul class="nav">
 	                <li><?php echo $this->Html->link('About the Archival Project', '/'); ?></li>
@@ -102,7 +102,6 @@ else: ?>
                 <li><?php echo $this->Html->link('List my coded papers', '/codedpapers/index_mine'); ?></li>
                 <li><?php echo $this->Html->link('List all coded papers', '/codedpapers/index'); ?></li>
 				
-                <li><?php echo $this->Html->link('Interactive tutorial', '/interactive_tutorial'); ?></li>
                 <li><?php echo $this->Html->link('Export CSV', '/joinedCodedpapers/export/CSV'); ?></li>
                 <li><?php echo $this->Html->link('Export TSV', '/joinedCodedpapers/export/TSV'); ?></li>
                 <li><?php echo $this->Html->link('Export Excel', '/joinedCodedpapers/export/excel'); ?></li>
@@ -124,10 +123,10 @@ else: ?>
 	
 
 	  <div class="container-fluid">
-	                <div class="row-fluid">
-	                        <?php echo $this->fetch('sidebar'); ?>
+            <div class="row-fluid">
+                <?php echo $this->fetch('sidebar'); ?>
 
-	           	<div id="main-content" class="span9">
+	           	<div id="main-content">
 
 					<?php
 					    echo $this->Session->flash();
@@ -140,10 +139,13 @@ else: ?>
 
 	        </div><!--/row-->
 
-	      <footer class="offset3">
+	      <footer class="row-fluid">
+			  <div class="span6 center">
 			  <p><img alt="COS" src="<?=$this->webroot?>img/cos_logo_mini.png" width="50" height="30"> &copy; Archival Project <?php echo date('Y'); ?></p>
+		  </div>
 	      </footer>
 
 	    </div> <!-- /container -->
+	</div>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-<div class="offset2 papers form">
+<div class="scoot papers span10 form">
 	<h1><?php echo __('Add Paper'); ?></h1>
 <?php echo $this->Form->create('Paper', array('class' => 'form-horizontal')); ?>
 	<p class="span10">
@@ -15,8 +15,8 @@
 				'between'=> '<div class="controls">', 
 				'after' => '<span class="help-inline">Please enter the <abbr class="initialism" title="Document Object Identifier">DOI</abbr>.</span></div>', 
 				'label' => array('text' => '<abbr class="initialism" title="Document Object Identifier">DOI</abbr>',
-				'class' => 'control-label', 
-				'escape' => false), 
+					'class' => 'control-label', 
+					'escape' => false), 
 			));
 	?>	
 	</div>
@@ -33,17 +33,7 @@
 		</div>
 <?php echo $this->Form->end(array(
 	    'label' => 'Add new paper and try to auto-retrieve metadata!',
-		'class' => 'btn btn-large btn-success',
+		'class' => 'offset1 btn btn-large btn-success',
 		'div' => false,
 	)); ?>
-</div>
-<div class="actions btn-group">
-	<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><?php echo __('Actions'); ?><span class="caret"></span>
-	  </a>
-	<ul class="dropdown-menu">
-
-		<li><?php echo $this->Html->link(__('List Papers'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Codedpapers'), array('controller' => 'codedpapers', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Codedpaper'), array('controller' => 'codedpapers', 'action' => 'add')); ?> </li>
-	</ul>
 </div>

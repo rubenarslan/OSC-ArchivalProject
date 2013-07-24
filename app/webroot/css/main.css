@@ -117,15 +117,15 @@ input[type=radio] + label {
 }
 .navbar .nav.nav-offset1
 {
-	margin-left:130px;
+	margin-left:110px;
 }
 .navbar .nav.nav-offset2
 {
-	margin-left:230px;
+	margin-left:210px;
 }
 .navbar .nav.nav-offset3
 {
-	margin-left:350px;
+	margin-left:270px;
 }
 footer {
 	margin-top:20px;
@@ -141,4 +141,13 @@ footer {
 	background-color:#FEFEFE;
     background-image: none;
 	box-shadow:none;
+}
+.center {
+	text-align:center;
+}
+.scoot {
+	margin-left:20px !important;
+}
+.no-sub-nav {
+	margin-top:-50px;
 }

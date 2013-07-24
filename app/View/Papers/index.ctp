@@ -10,7 +10,7 @@ $this->start('sub_nav');
 $this->end();
 ?>
 
-<div class="offset1 papers index span13">
+<div class="scoot papers index">
 	<h2><?php echo __('All articles'); ?> <?php if(AuthComponent::user('Group.name')=='admin'): ?>
 		<small>
 		<?php echo $this->Html->link(__('add new'), '/papers/add'); ?></li>
