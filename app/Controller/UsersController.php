@@ -50,6 +50,7 @@ class UsersController extends AppController {
 					'conditions' => array('User.email' => $this->request->data['User']['email'] ),
 					'limit' => 1,
 				));
+				if(isset($user) AND isset($user['User']) AND isset($user['User']['email'])):
 				$user = $user['User'];
 		    	$reset_token = $this->User->generateResetToken($user['id']);
 				$email = new CakeEmail('smtp');
@@ -72,6 +73,10 @@ Best regards,
 the COS Archival Project team");
 				$this->Session->setFlash(__('The reset link was sent to your email address.'));
 				$this->redirect("/");
+				else:
+					$this->Session->setFlash(__('This email address is not registered.'));
+					$this->redirect("/users/login");
+			endif;
 			}
 		}
 		public function resetPassword($email = null,$reset_token = null) {
@@ -95,11 +100,11 @@ the COS Archival Project team");
 						'password' => $this->request->data['User']['password'],
 					));
 					if($this->User->save()) {
-						$this->Session->setFlash(__('Passwort successfully changed. Log in now.'),'alert-success');
+						$this->Session->setFlash(__('Password successfully changed. Log in now.'),'alert-success');
 						$this->redirect("/users/login");
 					}
 				} else {
-					$this->Session->setFlash(__('Passwort reset token was invalid. Please follow the link in your email or copy it to the browser.'),'alert-error');
+					$this->Session->setFlash(__('Password reset token was invalid. Please follow the link in your email or copy it to the browser.'),'alert-error');
 				}
 			}
 		}
