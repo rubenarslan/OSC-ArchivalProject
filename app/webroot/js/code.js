@@ -341,10 +341,6 @@ function activateInputs ($container) {
 		return false;
 	});
 	
-	$(".hastooltip").tooltip({
-		container: 'body', 
-		html:true
-	});
 	
 	formelms.each(function(i,elm) {
 		$(elm).on('change',unsavedChanges);

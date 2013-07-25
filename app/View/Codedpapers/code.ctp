@@ -1,11 +1,11 @@
 <?php $this->start('sidebar'); ?>
 <div class="well span3">
-<h3>Tips</h3>
-<p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well), <strong>use it</strong>, so you aren't interrupted by autosaves.</p>
-<p>Autosaves should disturb you as little as possible, but when you're caught in the process of typing, they may be confusing. <br>
+<h4>Tips</h4>
+<p>You can save at any time with Ctrl+Enter (simply Enter works in single-line fields as well).</p>
+<p>Autosaves should disturb you as little as possible.<br>
 	<button type="button" id="toggle_autosave" class="btn btn-inverse" data-toggle="button">Toggle Autosave <i class="icon-refresh icon-white"></i></button></p>
-<h4><?= $this->Html->link('Coding scheme', array('controller' => 'pages','action' => 'coding_scheme')); ?></h4>
-<h4>Coded by others</h4>
+<h5><?= $this->Html->link('Coding scheme', array('controller' => 'pages','action' => 'coding_scheme')); ?></h5>
+<h5>Coded by others</h5>
 <?php
 echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper']['id'],'user_name' => $this->data['User']['username']));
 ?>
@@ -61,10 +61,13 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 <?php $this->end(); ?>
 <?php $this->start('sub_nav'); ?>
 <ul class="nav-offset2 sub_nav nav">
-  <li class="progress-nav" title="Your coding progress" class="hastooltip">
-	  	<div class="progress progress-striped span4">
+  <li class="progress-nav" title="Your coding progress (scales dynamically with number of studies and optional fields)" class="hastooltip">
+	  <div class="">
+	  <div class="span" style="text-align:right;margin-right:10px">Coding progress:</div>
+	  	<div class="progress progress-striped span4 no-left-margin">
 	      <div class="bar" style="width: 0%;" id="codingprogress"></div>
 	      </div>
+	  </div>
   </li>
 	<li class="divider-vertical"></li>
   
