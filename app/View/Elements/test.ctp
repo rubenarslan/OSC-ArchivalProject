@@ -19,7 +19,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete this test'><i class='icon-trash hastooltip'></i></a> ";
 	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
 	echo $this->Form->input("Study.$s.Test.$t.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Test description (optional)')
+		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Test description')
 	);
 	echo "</h5>";
 	?>
@@ -65,6 +65,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		echo $this->Form->input("Study.$s.Test.$t.subsample",array(
 			'class' => 'span12', 
 			'type' => 'text',
+			'label' => array('title' => 'Applies if only some of the participants in the study were part of this test; different from exclusions'),
 			'placeholder' => 'Was this test done on a subsample/-group? If so, please note its characteristics.',
 			'div'=> array('class'=>"span8"))
 		);
@@ -73,6 +74,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 		
 	echo '<div class="row-fluid">';
 		echo $this->Form->input("Study.$s.Test.$t.analytic_design_code",array(
+			'label' => array('title' => 'The conceptual setup of the study'),
 			'options' => array(
 				'' => '',
 				'C' => 'C: correlational/multivariate analysis without manipulation',
@@ -90,6 +92,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 
 	echo $this->Form->input("Study.$s.Test.$t.methodology_codes", array(
 		'class' => "span12 select2no-margin select2methodology_codes", 
+		'label' => array('title' => 'The processes used to obtain data'),
 		'div'=> array('class'=>"span4"),
 		)
 	);
@@ -115,11 +118,13 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'div'=> array('class'=>"span2"), 
 			'step' => 1,
 			'label' => 'N total',
+			'label' => array('title' => 'The full sample or subsample, before exclusions'),
 			'placeholder' => 'Sample size')
 		);
 		echo $this->Form->input("Study.$s.Test.$t.data_points_excluded",array(
 			'class' => 'span8', 'div'=> array('class'=>"span2 no-left-margin"), 'label' => 'N excluded',
-			'placeholder' => 'if any'
+			'placeholder' => 'if any',
+			'label' => array('text' => 'N excluded','title' => 'The number of data points excluded from this analysis'),
 			)
 		);
 		echo $this->Form->input("Study.$s.Test.$t.N_used_in_analysis",array(
@@ -135,7 +140,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 			'label' => false,
 			)
 		);
-		echo '<div class="span2">You can <a href="#" class="copysample">copy</a> this information from the test before.</div>';
+		echo '<div class="span2">You can <a title="If there is a previous test in the same study, the sample numbers will be copied" href="#" class="copysample">copy</a> this information from the test before.</div>';
 	echo '</div>';
 
 	echo '<div class="row-fluid">';

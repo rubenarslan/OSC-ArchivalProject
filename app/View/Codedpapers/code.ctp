@@ -24,7 +24,7 @@ echo $this->element('get_other_codings', array('paper_id' => $this->data['Paper'
 			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseDirect">Direct</a>
 		</div>
 		<div id="collapseDirect" class="accordion-body collapse">
-			<div class="accordion-inner">Direct replication. The stated goal is , at least in part of the design, to exactly reproduce the hypothesis and methods of the previous study, making only those changes that are necessary to achieve the same psychological meaning among the new participant population. Example 1:  A study of stereotypes in Canada that used ice hockey players as a target group might be directly replicated in Australia by changing the target group to rugby players and pretesting for new stereotypical associations, while keeping everything else the same. Example 2: A study of lexical decision times done in Romania using Romanian words is directly replicated in Spain, with the necessary alteration of using Spanish words. Example 3: A study of psychological resilience in the aftermath of the Hurricane Katrina disaster in the US is directly replicated among those affected by the 2011 tornado outbreak, changing only references to the event.</div>
+			<div class="accordion-inner">Direct replication. The stated goal is, at least in part of the design, to exactly reproduce the hypothesis and methods of the previous study, making only those changes that are necessary to achieve the same psychological meaning among the new participant population. Example 1:  A study of stereotypes in Canada that used ice hockey players as a target group might be directly replicated in Australia by changing the target group to rugby players and pretesting for new stereotypical associations, while keeping everything else the same. Example 2: A study of lexical decision times done in Romania using Romanian words is directly replicated in Spain, with the necessary alteration of using Spanish words. Example 3: A study of psychological resilience in the aftermath of the Hurricane Katrina disaster in the US is directly replicated among those affected by the 2011 tornado outbreak, changing only references to the event.</div>
 		</div>
 	</div>
 	<div class="accordion-group">
@@ -140,11 +140,12 @@ else
 	    'label' => 'Save!',
 	    'id' => 'CodedpaperCodeFormSubmit',
 		'class' => 'btn btn-large',
+		'title' => 'Save your progress manually',
 		'div' => false,
 	));
 	?>
 		<input type="hidden" id="CodedpaperCompleted_" name="data[Codedpaper][completed]" value="0">
-		<label  title="Push button in to let others <br>view your coded paper" id="CodedpaperCompletedLabel" class="hastooltip btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
+		<label  title="Finished? Push button in to let others <br>view your coded paper" id="CodedpaperCompletedLabel" class="hastooltip btn btn-large btn-success<?=($this->data['Codedpaper']['completed']===true)?' active':''; ?>">
 			<input type="checkbox" id="CodedpaperCompleted" name="data[Codedpaper][completed]" class="hidden" value="1" <?=($this->data['Codedpaper']['completed']===true)?'checked="checked"':''; ?>>
 			Complete
 		</label>

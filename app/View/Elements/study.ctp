@@ -23,7 +23,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete whole study'><i class='icon-trash hastooltip'></i></a> ";
 	echo "Study Nr. ".($s+1)." ";
 	echo $this->Form->input("Study.$s.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Description (optional)')
+		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Description')
 	);
 	echo "</h3>";
 	?>
@@ -34,7 +34,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	echo $this->Form->hidden("Study.$s.codedpaper_id");	
 	
 	echo '<div class="row-fluid">
-		<span class="span1">Replication: </span>';
+		<span class="span1" title="The meaning of each replication code is available on the left">Replication: </span>';
 		echo '<div class="span3">';
 			echo $this->Form->input("Study.$s.replication", array(
 				'options' => array('' => '', 
@@ -82,6 +82,7 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 					'label' => false,
 					'type' => 'text',
 					'placeholder' => "(identify study)",
+					'title' => 'If you\'re referring to a multi-study paper, please identify which study in it you mean',
 					'div' => array('class' => 'span4' ),
 				));
 		echo '</div>';
