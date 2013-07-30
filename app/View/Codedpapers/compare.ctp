@@ -14,14 +14,15 @@
 <h4>View the two papers individually.</h4>
 <ul class="btn-group">
 	<li class="btn">
-		<?php echo $this->Html->link(__('Left'), "/codedpapers/code/". $c1['Study.0.codedpaper_id']); ?>
+		<?php echo $this->Html->link(__('Left'), "/codedpapers/view/". $c1['Study.0.codedpaper_id']); ?>
 	</li>
 	<li class="btn">
-		<?php echo $this->Html->link(__('Right'), "/codedpapers/code/". $c2['Study.0.codedpaper_id']); ?>
+		<?php echo $this->Html->link(__('Right'), "/codedpapers/view/". $c2['Study.0.codedpaper_id']); ?>
 	</li>
 </ul>
 </div>
 <?php $this->end(); ?>
+<div class="span9">
 <h1>Compare coded papers</h1>
 
 <table class="table">
@@ -30,26 +31,41 @@
 function inc($matches) {
     return ++$matches[1];
 }
-
-foreach($c1 as $key => $val) {
+asort($keys);
+$missing = 'missingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissing';
+foreach($keys as $key) {
+	if(array_key_exists($key,$c1)) $val = $c1[$key];
+	else $val = $missing;
+	if(array_key_exists($key,$c2)) $val2 = $c2[$key];
+	else $val2 = $missing;
+	
 	$isid = substr($key,-3);
 	if($isid != '_id' AND $isid!='.id') {
 		$key1 =  preg_replace_callback( "|(\d+)|", "inc", $key);
 		$key1 = Inflector::humanize(str_replace("."," ",$key1));
+		
+		$dist = levenshtein($val,$val2);
+		$longest = max(array(strlen($val),strlen($val2)));
+		if($dist===-1 AND $val!==$val2) $perc = 0;
+		elseif($longest===0) $perc = null;
+		else $perc = 1-$dist/$longest;
+		$hsl = $perc * 120;
+		if($perc!==null)
+			$color = "hsl($hsl,50%,50%)";
+		else $color = 'gray';
+		
+		if($val===$missing) $val = '<i>missing</i>';
+		if($val2===$missing) $val2 = '<i>missing</i>';
+		
 	?>
 	<tr>
 		<th><?=$key1?></th>
-		<td><?=$val?></td>
-		<td><?=$c2[$key] ?></td>
+		<td style="border-right:10px solid <?=$color?>"><?=$val?></td>
+		<td><?=$val2 ?></td>
 	</tr>
 <?php
 	}
 }
 ?>
 </table>
-<?php echo $this->Js->writeBuffer(); ?>
-<script type="text/javascript">
-//<![CDATA[
-
-//]]>
-</script>
+</div>

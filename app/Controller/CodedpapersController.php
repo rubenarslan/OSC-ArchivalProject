@@ -132,6 +132,7 @@ class CodedpapersController extends AppController {
 		$comparison = $this->Codedpaper->compare($id1,$id2);
 		$this->set('c1',$comparison[0]);
 		$this->set('c2',$comparison[1]);
+		$this->set('keys',$comparison[2]);
 	}
 	public function view($id = null) {
 		$this->Codedpaper->id = $id;
