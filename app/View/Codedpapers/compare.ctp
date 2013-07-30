@@ -33,29 +33,39 @@ function inc($matches) {
 }
 asort($keys);
 $missing = 'missingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissingmissing';
-foreach($keys as $key) {
+foreach($keys as $key):
 	if(array_key_exists($key,$c1)) $val = $c1[$key];
 	else $val = $missing;
 	if(array_key_exists($key,$c2)) $val2 = $c2[$key];
 	else $val2 = $missing;
 	
 	$isid = substr($key,-3);
-	if($isid != '_id' AND $isid!='.id') {
+	if($isid != '_id' AND $isid!='.id'):
 		$key1 =  preg_replace_callback( "|(\d+)|", "inc", $key);
 		$key1 = Inflector::humanize(str_replace("."," ",$key1));
 		
 		$dist = levenshtein($val,$val2);
 		$longest = max(array(strlen($val),strlen($val2)));
-		if($dist===-1 AND $val!==$val2) $perc = 0;
-		elseif($longest===0) $perc = null;
-		else $perc = 1-$dist/$longest;
+		if($dist===-1 AND $val!==$val2):
+			$perc = 0;
+		elseif($longest===0): 
+			$perc = null;
+		else: 
+			$perc = 1-$dist/$longest;
+		endif;
 		$hsl = $perc * 120;
-		if($perc!==null)
+		if($perc!==null):
 			$color = "hsl($hsl,50%,50%)";
-		else $color = 'gray';
+		else:
+			$color = 'gray';
+		endif;
 		
-		if($val===$missing) $val = '<i>missing</i>';
-		if($val2===$missing) $val2 = '<i>missing</i>';
+		if($val===$missing): 
+			$val = '<i>missing</i>';
+		endif;
+		if($val2===$missing):
+			$val2 = '<i>missing</i>';
+		endif;
 		
 	?>
 	<tr>
@@ -64,8 +74,8 @@ foreach($keys as $key) {
 		<td><?=$val2 ?></td>
 	</tr>
 <?php
-	}
-}
+	endif;
+endforeach;
 ?>
 </table>
 </div>

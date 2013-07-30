@@ -8,7 +8,7 @@
 	<div class="btn-group">
 		<?=$this->Html->link('Sign up','/users/register',array('class' => 'btn btn-large btn-warning'))?>
 		<?=$this->Html->link('Sign in','/users/login',array('class' => 'btn btn-large btn-warning'))?>
-		<?=$this->Html->link('Watch tutorial','/interactive_tutorial',array('class' => 'btn btn-large btn-warning'))?>
+		<?=$this->Html->link('Watch tutorial','/interactive_tutorial/#',array('class' => 'btn btn-large btn-warning'))?>
 	</div><br><br></p>
 
 <h3 id="goals">Goals</h3>

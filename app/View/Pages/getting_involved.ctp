@@ -3,7 +3,7 @@ $this->start('sub_nav');
 ?>
 <ul class="nav-offset2 sub_nav nav nav-pills">
   <li class="active"><?php echo $this->Html->link(__('Getting Involved'),'/pages/getting_involved'); ?></li>
-  <li><?php echo $this->Html->link('Interactive tutorial', '/interactive_Tutorial'); ?></li>
+  <li><?php echo $this->Html->link('Interactive tutorial', '/interactive_tutorial/#'); ?></li>
 </ul>
 <?php $this->end(); ?>
 <div class="middle center span6">

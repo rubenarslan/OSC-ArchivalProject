@@ -73,16 +73,30 @@ class Codedpaper extends AppModel {
 		$c1 = Set::remove($c1,'Study.{n}.Codedpaper');
 		$c1 = Set::remove($c1,'Study.{n}.created');
 		$c1 = Set::remove($c1,'Study.{n}.modified');
-		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.Study');
-		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.created');
-		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.modified');
-		
+		$c1 = Set::remove($c1,'Study.{n}.certainty_key_effect_tests');
+		$c1 = Set::remove($c1,'Study.{n}.certainty_replication_status');
+
 		$c2 = Set::remove($c2,'Study.{n}.Codedpaper');
 		$c2 = Set::remove($c2,'Study.{n}.created');
 		$c2 = Set::remove($c2,'Study.{n}.modified');
+		$c2 = Set::remove($c2,'Study.{n}.certainty_key_effect_tests');
+		$c2 = Set::remove($c2,'Study.{n}.certainty_replication_status');
+		
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.Study');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.created');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.modified');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.certainty_hypothesis');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.certainty_meth_var');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.certainty_statistics');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.certainty_hypothesis_supported');
+		
 		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.Study');
 		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.created');
 		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.modified');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.certainty_hypothesis');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.certainty_meth_var');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.certainty_statistics');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.certainty_hypothesis_supported');
 #		debug($c1);
 		$c1 = Set::flatten($c1); 
 		$c2 = Set::flatten($c2);
