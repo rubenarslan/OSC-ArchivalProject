@@ -36,13 +36,26 @@ class Codedpaper extends AppModel {
 				"recursive" => 3,
 				"conditions" => array(
 					'Codedpaper.id' => $id
-					)
+					),
+				'contain' => array(
+					'Paper' => array(),
+					'User' => array(),
+					'Study' => array( 
+						'order' => array('Study.name ASC','Study.id ASC'),
+						'Test' => array(
+							'order' => array('Test.name ASC','Test.id ASC'),
+						),
+					),
+				) 
 			));
 	}
 	public function compare ($id1 = NULL, $id2 = NULL) {
 		$c1 = $this->findDeep($id1);
 		$c2 = $this->findDeep($id2);
-		unset($c1['Paper']);	unset($c2['Paper']);
+		unset($c1['Paper']);
+		unset($c2['Paper']);
+		unset($c1['Codedpaper']);
+		unset($c2['Codedpaper']);
 		
 		function array_unshift_assoc(&$arr, $key, $val)
 		{
@@ -55,28 +68,27 @@ class Codedpaper extends AppModel {
 		$c2 = array_unshift_assoc($c2,"Coder's Email", $c2['User']['email']);
 		$c1 = array_unshift_assoc($c1,"Coder's Username", $c1['User']['username']);
 		$c2 = array_unshift_assoc($c2,"Coder's Username", $c2['User']['username']);
-		unset($c1['User']); unset($c1['Codedpaper']);
-		unset($c2['User']); unset($c2['Codedpaper']);
+		unset($c1['User']); 
+		unset($c2['User']); 
 		$c1 = Set::remove($c1,'Study.{n}.Codedpaper');
 		$c1 = Set::remove($c1,'Study.{n}.created');
 		$c1 = Set::remove($c1,'Study.{n}.modified');
-		$c1 = Set::remove($c1,'Study.{n}.Effect.{n}.Study');
-		$c1 = Set::remove($c1,'Study.{n}.Effect.{n}.created');
-		$c1 = Set::remove($c1,'Study.{n}.Effect.{n}.modified');
-		$c1 = Set::remove($c1,'Study.{n}.Effect.{n}.Test.{n}.created');
-		$c1 = Set::remove($c1,'Study.{n}.Effect.{n}.Test.{n}.modified');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.Study');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.created');
+		$c1 = Set::remove($c1,'Study.{n}.Test.{n}.modified');
 		
 		$c2 = Set::remove($c2,'Study.{n}.Codedpaper');
 		$c2 = Set::remove($c2,'Study.{n}.created');
 		$c2 = Set::remove($c2,'Study.{n}.modified');
-		$c2 = Set::remove($c2,'Study.{n}.Effect.{n}.Study');
-		$c2 = Set::remove($c2,'Study.{n}.Effect.{n}.created');
-		$c2 = Set::remove($c2,'Study.{n}.Effect.{n}.modified');
-		$c2 = Set::remove($c2,'Study.{n}.Effect.{n}.Test.{n}.created');
-		$c2 = Set::remove($c2,'Study.{n}.Effect.{n}.Test.{n}.modified');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.Study');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.created');
+		$c2 = Set::remove($c2,'Study.{n}.Test.{n}.modified');
 #		debug($c1);
-		$c1 = Set::flatten($c1); $c2 = Set::flatten($c2);
-		return array( Set::diff($c1,$c2), Set::diff($c2,$c1));
+		$c1 = Set::flatten($c1); 
+		$c2 = Set::flatten($c2);
+#		return array( Set::diff($c1,$c2), Set::diff($c2,$c1));
+		$keys = array_merge(array_keys($c1),array_keys($c2));
+		return array( $c1, $c2, $keys);
 	}
 }
 

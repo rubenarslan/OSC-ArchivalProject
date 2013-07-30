@@ -140,7 +140,7 @@ $this->start('sub_nav');
 
 <p>Tests should be stated as a relationship between or among specific variables that are measured or manipulated in the study. Each test should have a statistical test associated with it that leads to a p-value. Statistically, a test can include both a general p-value (for an overall ANOVA, interaction, regression or structural equation model, etc.) and a more specific series of values (for contrasts and comparisons within an ANOVA, simple effects within an interaction, effects of specific variables within a regression, etc.) The coding scheme allows you to enter statistics associated with one general p-value and one or more specific p-values for each test.</p>
 
-<p>Disagreement among coders on the number of tests reported or what the tests involve will of course create discrepancies in coding reports. Therefore, it is important to see if the basic number and meaning of tests is the same, before proceeding to compare codings.</p>
+<p>Disagreement among coders on the number of tests reported or what the tests involve will of course create discrepancies in coding reports. Therefore, it is important to see if the basic number and meaning of tests is the same, before proceeding to compare codings. The first coder should name and number each test (tests and studies will be ordered by their names), and second or higher coders should follow the names and numbering used by the first coder in their own coding, unless they disagree with the first coder’s scheme of dividing the study up into tests. Such disagreements will eventually be resolved by discussion.</p>
 
 <h5>Test-level information:</h5>
 

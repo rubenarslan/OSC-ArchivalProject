@@ -21,13 +21,20 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	$destroylink = $this->webroot.'studies/delete/'.Set::classicExtract($this->data,"Study.$s.id");
 	echo "<h3><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete whole study'><i class='icon-trash hastooltip'></i></a> ";
-	echo "Study Nr. ".($s+1)." ";
+	echo "Study ";
 	echo $this->Form->input("Study.$s.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Description')
+		'class' => 'boxless-nameinput', 
+		'label'=> false,
+		'div'=>false, 
+		'placeholder' => ($s+1).' Study number and name',
+		'title' => "Try to number and name this study, so that other coders will know which one you mean."
+		)
 	);
 	echo "</h3>";
 	?>
-	<p>You can add more studies <a href="#<?=$addstudyid;?>">below</a>.</p>
+	<p>If this study was previously coded, follow the previous coder’s study &amp; test names and numbering, as long as you agree with their scheme.
+<br>
+You can add more studies <a href="#<?=$addstudyid;?>">below</a>.</p>
 	<?php
 		
 	echo $this->Form->hidden("Study.$s.id");

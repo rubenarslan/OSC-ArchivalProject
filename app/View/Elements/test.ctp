@@ -17,9 +17,14 @@ echo '<div class="row-fluid formblock"><div class="span12">';
 	
 	$destroylink = $this->webroot.'tests/delete/'.Set::classicExtract($this->data,"Study.$s.Test.$t.id");
 	echo "<h5><a href='$destroylink' tabindex='-1' class='selfdestroyer btn btn-warning btn-mini' title='Delete this test'><i class='icon-trash hastooltip'></i></a> ";
-	echo "Test Nr. ".($s+1).'.'.($t+1).' ';
+	echo "Test ";
 	echo $this->Form->input("Study.$s.Test.$t.name",array(
-		'class' => 'boxless-nameinput', 'label'=> false,'div'=>false, 'placeholder' => 'Test description')
+		'class' => 'boxless-nameinput', 
+		'label'=> false,
+		'div'=>false, 
+		'placeholder' => ($s+1).'.'.($t+1).' Test number and name',
+		'title' => "Try to number, name or describe this test, so that other coders will know which one you mean."
+		)
 	);
 	echo "</h5>";
 	?>
