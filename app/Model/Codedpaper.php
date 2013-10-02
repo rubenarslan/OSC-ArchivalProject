@@ -101,7 +101,7 @@ class Codedpaper extends AppModel {
 		$c1 = Set::flatten($c1); 
 		$c2 = Set::flatten($c2);
 #		return array( Set::diff($c1,$c2), Set::diff($c2,$c1));
-		$keys = array_merge(array_keys($c1),array_keys($c2));
+		$keys = array_keys($c1) + array_keys($c2);
 		return array( $c1, $c2, $keys);
 	}
 }
