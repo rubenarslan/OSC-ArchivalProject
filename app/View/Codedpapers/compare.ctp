@@ -25,7 +25,7 @@
 <div class="span9">
 <h1>Compare coded papers</h1>
 
-<table class="table">
+<table class="table table-fixed">
 <?php
 
 function inc($matches) {
@@ -70,7 +70,7 @@ foreach($keys as $key):
 	?>
 	<tr>
 		<th><?=$key1?></th>
-		<td style="border-right:10px solid <?=$color?>"><?=$val?></td>
+		<td style="border-right:10px solid <?=$color?>;"><?=$val?></td>
 		<td><?=$val2 ?></td>
 	</tr>
 <?php

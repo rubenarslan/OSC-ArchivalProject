@@ -151,3 +151,6 @@ footer {
 .no-sub-nav {
 	margin-top:-50px;
 }
+.table-fixed {
+    table-layout:fixed;
+}

@@ -6,7 +6,7 @@ DROP SCHEMA IF EXISTS `default_schema` ;
 
 ALTER TABLE `archival`.`studies` ADD COLUMN `replication` VARCHAR(45) NULL DEFAULT NULL  AFTER `name` ;
 
-ALTER TABLE `archival`.`tests` CHANGE COLUMN `N_used_in_analysis` `N_used_in_analysis` INT(11) NULL DEFAULT NULL  AFTER `data_points_excluded` , ADD COLUMN `N_total` INT(11) NULL DEFAULT NULL  AFTER `other_variables` , ADD COLUMN `subsample` TEXT NULL DEFAULT NULL  AFTER `comment` ;
+ALTER TABLE `archival`.`tests` CHANGE COLUMN `N_used_in_analysis` `N_used_in_analysis` INT(11) NULL DEFAULT NULL  AFTER `data_points_excluded` , ADD COLUMN `prior_hypothesis_page` VARCHAR(10) NULL DEFAULT NULL  AFTER `prior_hypothesis` , ADD COLUMN `N_total` INT(11) NULL DEFAULT NULL  AFTER `other_variables` , ADD COLUMN `subsample` TEXT NULL DEFAULT NULL  AFTER `comment` ;
 
 ALTER TABLE `archival`.`users` ADD COLUMN `hashed_reset_token` VARCHAR(255) NULL DEFAULT NULL  AFTER `your_expertise` , ADD COLUMN `reset_token_expiration` DATETIME NULL DEFAULT NULL  AFTER `hashed_reset_token` ;
 
@@ -14,7 +14,7 @@ ALTER TABLE `archival`.`users` ADD COLUMN `hashed_reset_token` VARCHAR(255) NULL
 -- -----------------------------------------------------
 -- Placeholder table for view `archival`.`joined_codedpapers`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `archival`.`joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `pubmed_id` INT, `pubmed_nr_of_citations` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `number_of_citations` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication` INT, `replication_code` INT, `replicates_study_id` INT, `replication_freetext` INT, `replication_freetext_study` INT, `certainty_key_effect_tests` INT, `certainty_replication_status` INT, `study_comment` INT, `study_id` INT, `test_name` INT, `hypothesized` INT, `prior_hypothesis` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `N_total` INT, `data_points_excluded` INT, `N_used_in_analysis` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT, `comment` INT);
+CREATE TABLE IF NOT EXISTS `archival`.`joined_codedpapers` (`DOI` INT, `APA` INT, `title` INT, `first_author` INT, `journal` INT, `volume` INT, `issue` INT, `publisher` INT, `URL` INT, `year` INT, `page` INT, `type` INT, `abstract` INT, `readers` INT, `pubmed_id` INT, `pubmed_nr_of_citations` INT, `paper_id` INT, `user_id` INT, `created` INT, `modified` INT, `completed` INT, `number_of_citations` INT, `group_id` INT, `username` INT, `email` INT, `affiliated_institution` INT, `occupation` INT, `your_expertise` INT, `codedpaper_id` INT, `study_name` INT, `replication` INT, `replication_code` INT, `replicates_study_id` INT, `replication_freetext` INT, `replication_freetext_study` INT, `certainty_key_effect_tests` INT, `certainty_replication_status` INT, `study_comment` INT, `study_id` INT, `test_name` INT, `hypothesized` INT, `prior_hypothesis` INT, `prior_hypothesis_page` INT, `analytic_design_code` INT, `methodology_codes` INT, `independent_variables` INT, `dependent_variables` INT, `other_variables` INT, `N_total` INT, `data_points_excluded` INT, `N_used_in_analysis` INT, `reasons_for_exclusions` INT, `type_of_statistical_test_used` INT, `inferential_test_statistic` INT, `inferential_test_statistic_value` INT, `degrees_of_freedom` INT, `reported_significance_of_test` INT, `computed_significance_of_test` INT, `hypothesis_supported` INT, `reported_effect_size_statistic` INT, `reported_effect_size_statistic_value` INT, `certainty_hypothesis` INT, `certainty_meth_var` INT, `certainty_statistics` INT, `certainty_hypothesis_supported` INT, `subsample` INT, `comment` INT);
 
 
 USE `archival`;
@@ -42,7 +42,7 @@ studies.certainty_key_effect_tests, studies.certainty_replication_status,
 studies.study_comment,
 
 tests.study_id, tests.name AS test_name, 
-tests.hypothesized, tests.prior_hypothesis, 
+tests.hypothesized, tests.prior_hypothesis, prior_hypothesis_page, 
 tests.analytic_design_code, tests.methodology_codes, 
 tests.independent_variables, tests.dependent_variables, tests.other_variables,
 tests.N_total, tests.data_points_excluded, tests.N_used_in_analysis, 
@@ -50,7 +50,11 @@ tests.reasons_for_exclusions,
 tests.type_of_statistical_test_used, 
 tests.inferential_test_statistic, tests.inferential_test_statistic_value, tests.degrees_of_freedom,
 tests.reported_significance_of_test, tests.computed_significance_of_test, tests.hypothesis_supported,
-tests.reported_effect_size_statistic, tests.reported_effect_size_statistic_value, tests.`comment`
+tests.reported_effect_size_statistic, tests.reported_effect_size_statistic_value, 
+tests.certainty_hypothesis, tests.certainty_meth_var, tests.certainty_statistics, 
+tests.certainty_hypothesis_supported, 
+tests.subsample,
+tests.`comment`
 	FROM papers 
 	INNER JOIN codedpapers
 		ON papers.id = codedpapers.paper_id
