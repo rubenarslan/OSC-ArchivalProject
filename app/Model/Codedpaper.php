@@ -64,10 +64,8 @@ class Codedpaper extends AppModel {
 		   $arr = array_reverse($arr, true); 
 		   return $arr;
 		}
-		$c1 = array_unshift_assoc($c1,"Coder's Email", $c1['User']['email']);
-		$c2 = array_unshift_assoc($c2,"Coder's Email", $c2['User']['email']);
-		$c1 = array_unshift_assoc($c1,"Coder's Username", $c1['User']['username']);
-		$c2 = array_unshift_assoc($c2,"Coder's Username", $c2['User']['username']);
+		$c1 = array_unshift_assoc($c1,"Coders", '<a title="Email this coder" href="mailto:'.$c1['User']['email'].'">'.$c1['User']['username'].' <i class="icon-envelope"></i></a>');
+		$c2 = array_unshift_assoc($c2,"Coders", '<a title="Email this coder"  href="mailto:'.$c2['User']['email'].'">'.$c2['User']['username'].' <i class="icon-envelope"></i></a>');
 		unset($c1['User']); 
 		unset($c2['User']); 
 		$c1 = Set::remove($c1,'Study.{n}.Codedpaper');

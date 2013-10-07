@@ -66,7 +66,19 @@ foreach($keys as $key):
 		if($val2===$missing):
 			$val2 = '<i>missing</i>';
 		endif;
-		
+	
+	if($key1=='Coders'):
+		?>
+		<tr>
+			<th><?=$key1?></th>
+			<td style="border-right:10px solid black;"><?=$val?></td>
+			<td><?=$val2 ?></td>
+		</tr>
+<!--		<tr>
+		<th colspan="3" style="text-align:center"><big>Comparison</big></th>
+		</tr>
+-->	<?php
+	else:	
 	?>
 	<tr>
 		<th><?=$key1?></th>
@@ -74,6 +86,7 @@ foreach($keys as $key):
 		<td><?=$val2 ?></td>
 	</tr>
 <?php
+endif;
 	endif;
 endforeach;
 ?>
